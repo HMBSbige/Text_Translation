@@ -1,0 +1,475 @@
+[General]
+Translator, "鄙哥"
+LangVersion, "3.1.0.0"
+
+
+[Icon]
+iVBORw0KGgoAAAANSUhEUgAAABAAAAAMCAYAAABr5z2BAAABS2lUWHRYTUw6Y29tLmFkb2JlLnht
+cAAAAAAAPD94cGFja2V0IGJlZ2luPSLvu78iIGlkPSJXNU0wTXBDZWhpSHpyZVN6TlRjemtjOWQi
+Pz4KPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyIgeDp4bXB0az0iQWRvYmUgWE1Q
+IENvcmUgNS42LWMxMzggNzkuMTU5ODI0LCAyMDE2LzA5LzE0LTAxOjA5OjAxICAgICAgICAiPgog
+PHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50
+YXgtbnMjIj4KICA8cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0iIi8+CiA8L3JkZjpSREY+Cjwv
+eDp4bXBtZXRhPgo8P3hwYWNrZXQgZW5kPSJyIj8+IEmuOgAAAdRJREFUKJFVj0tuE1EQRU/VqzYO
+7vwwQpEQgwghMWIBbIEZK2Az7ILdRIgpI6QoiBAUFJzgOB33a7e734dBO5YYlKqudG+dKvn04f2P
+o93JtG1WSIqkdSB3PWpACBDDpkcIcdAxMiZzebec2/P98vjNkwPubo3URsrjR7gisTxd4EYZ+m5Y
+0Ack9MMcArvOkeY3e+YrXy8nj8vDd6/oZzNuTn4xeVGSpkp9cYdzGUK/pUvXQ4acVrRVVSsx4FQ5
+ejth+jrS/va0V55iR6APW+LDKyKC5ES8/oN0HaYKsa749vEz8b5h/GzMzlMjLBokJyRnEEUUcuxI
+TU2Y/2W0qnFWYDkEcojU5w2pC+y9LCEJzYXHuUTyDdHX5MaTvIdVg8sZG43QmLEcIjn0WGmoGP5s
+Rn99TV57or+Hdo3EgMSEqqMwQ8WhCAoYoUPdPqmq8N9P6W5m5LZDAWeKqkPU4VyBE0ER3LYypkVB
+WNyy+HJCqtfYWLBxgaIIIDDQ/guDIQiCpXXH/dlXol9T7I7QzDY4WMDBlvpw+sMyk9llOa4WHJSG
+ChvSYJCNuZBBG4JtbjtUYSJS2s+r2XnTMQ1JUDKQN+GMCDh0Q08oiiPiECaiXIY0/wdErvt5hXY4
+5wAAAABJRU5ErkJggg==
+
+
+[BFAPI]
+ErrorClientVersionTooOld, "您的客户端版本太旧。\n请更新应用程序后重试。"
+ErrorFailClientTime, "您电脑上的时间设置不正确。\n请检查系统时间后重试。"
+ErrorFailLogin, "请检查电子邮件地址和密码后重试。"
+ErrorFailPrefix, "连接您的 Binary Fortress 帐户失败。\n请检查您的 Internet 连接，并确认本程序未被电脑或网络上的代理服务器或防火墙禁止。"
+ErrorInvalidProTrialLicenseKey, "您的试用授权码似乎无效。\n请联系我们以获得更多信息。"
+ErrorItemSizeTooLarge, "您尝试同步的其中一个项目太大。\n您需要删除大的项目后尝试重试同步。"
+ErrorTrialExpiredPrompt, "您的专业版试用授权已过期。\n您希望联系我们并开始另一次试用吗?"
+ErrorUnknownProPurchasedLicenseKey, "您的授权码似乎无效。\n请联系我们以获得更多信息。"
+LoginPrompt, "您需要先输入 Binary Fortress 登录信息。\n您希望现在输入您的登录信息吗?"
+TitleSync, "正在与您的 Binary Fortress 帐户同步"
+
+
+[BFAPILoginControl_Controls]
+btnLogin, "登录(&L)"
+btnLogout, "注销(&L)"
+btnMyAccount, "我的帐户(&A)"
+btnMyLicenses, "我的授权(&M)"
+btnRegister, "注册(&R)"
+btnResetPassword, "重置密码"
+lblEmailAddress, "电子邮件地址:"
+lblName, "别名:"
+lblPassword, "密码:"
+
+
+[BFAPILoginControl_LicenseRestrictions]
+LicenseRestrictionBlock, "个人或公司，# 指示在授权名称"
+LicenseRestrictionEnterprise, "无限制的电脑，在公司所拥有的无限站点"
+LicenseRestrictionPersonalHome, "无限制的个人电脑，和只有您使用的一部公司电脑"
+LicenseRestrictionSite, "无限制的电脑，在一个站点"
+LicenseRestrictionStandard, "个人或公司，一部电脑"
+LicenseRestrictionSteam, "个人或公司，无限制的电脑，您是主要使用者且已安装 Steam"
+
+
+[BFAPILoginControl_Strings]
+ErrorEnterEmailAddress, "请输入有效的电子邮件地址后重试。"
+ErrorEnterPassword, "请输入您的密码后重试。"
+ErrorLoginFailed, "载入您的帐户信息失败。\n请检查电子邮件地址和密码后重试。"
+ErrorNoLicensesFound, "抱歉，找不到这个帐户的任何授权信息。\n如果需要任何帮助，请联系我们。"
+ErrorUnknownLicenses, "载入授权信息时发生错误。"
+ErrorUnknownLogin, "载入帐户信息时发生错误。"
+Note, "登入以检索您的授权码并与您的 Binary Fortress 帐户同步。"
+SelectLicensePrompt, "您目前正在使用免费版，专业版试用授权或授权码无效。\n您希望从 Binary Fortress 帐户载入授权码吗?"
+Title, "我的 Binary Fortress 帐户"
+TitleLoadingLicenses, "正在载入授权信息"
+
+
+[BFCodeEditorLookups]
+PromptSelectWindowStyles, "请选择窗口样式:"
+PromptSelectWindowStylesEx, "请选择扩展窗口样式:"
+RemoveConfirmOne, "您确定要移除选择的项目吗?"
+SelectAnItem, "请选择列表中一个项目后重试。"
+SelectAudioDevice, "请选择音频设备。"
+SelectMouseCursorLocation, "按一下以选择鼠标光标位置\n按下任意键取消"
+SendKeys_EditString, "编辑字符串"
+SendKeys_EnterString, "输入字符串:"
+SendKeys_mniAddKeyCombination, "加入按键组合"
+SendKeys_mniAddRawText, "加入 Raw 文本"
+SendKeys_mniAddText, "加入文本"
+SendKeys_Title, "SendKeys Builder"
+
+
+[BFFormAPIMyLicenses_Controls]
+colDateCreated, "建立日期"
+colDateExpires, "过期日"
+colLicenseKey, "授权码"
+colLicenseRestrictions, "授权限制"
+colLicenseType, "授权类型"
+colName, "名称"
+
+
+[BFFormAPIMyLicenses_Strings]
+ConfirmUseLicense, "您确定要使用此授权码吗?"
+ErrorSelectLicense, "请从列表选择授权后重试。"
+ShowNeedLicenseWarning, "从列表选择一个授权码，接着按一下 [确定] 按钮以使用该授权码。"
+Title, "我的授权"
+
+
+[BFFormDownload_Strings]
+ConfirmCancel, "您确定要取消这个下载吗?"
+Error, "发生错误。"
+Progress, "剩余: {0} KB (总计 {1} KB)"
+ProgressUnknown, "正在下载: {0} KB"
+
+
+[BFFormGetWallpaperFusionTag]
+ErrorSelectTag, "请选择 WallpaperFusion 标签并重试。"
+lblQuery, "筛选器:"
+Title, "WallpaperFusion 标签"
+
+
+[BFFormOnlineMacroBrowser]
+btnClose, "关闭(&C)"
+colCreatedBy, "建立者"
+colDownloads, "下载"
+colLanguage, "语言"
+colLastModified, "上次更新"
+lblQuery, "筛选器:"
+Loading, "正在载入..."
+
+
+[BFFormPerformanceCounters]
+btnThresholdAuto, "自动"
+gbStats, "选择的性能计数器状态"
+gbThreshold, "阈值:"
+lblCategory, "分类:"
+lblCounter, "计数器:"
+lblInstance, "执行个体:"
+lblStatsCurrent, "目前:"
+lblStatsMax, "最大:"
+lblStatsMin, "最小:"
+Title, "选择性能计数器"
+
+
+[BFFormProxySettings_Controls]
+btnSave, "保存"
+lblProxyAddress, "服务器地址:"
+lblProxyPassword, "密码:"
+lblProxyPassword2, "重新输入密码:"
+lblProxyPort, "端口:"
+lblProxyUsername, "用户名:"
+rdoCustomSettings, "使用自定义代理服务器设置(&C):"
+rdoNoProxy, "不使用代理服务器 (直接使用 Internet 连接)(&N)"
+rdoUseIESettings, "使用IE连接设置(&I)"
+
+
+[BFFormProxySettings_Strings]
+EnterServerAddress, "请输入 [代理服务器地址] 或选择 [不使用代理服务器]。"
+EnterServerPort, "请输入 [代理服务器端口] 或选择 [不使用代理服务器]。"
+PasswordDecryptionFailed, "您的 [Internet 连接设置] 似乎无效。\n您希望重新输入您的代理服务器密码以修复这些设置吗?"
+PasswordsNotMatch, "您的代理服务器密码不匹配，请重试。"
+Title, "Internet 连接设置"
+
+
+[BFFormSelectApplication]
+AllApplications, "所有应用程序"
+btnBrowse, "浏览(&B)"
+btnRefresh, "刷新(&R)"
+colApplication, "应用程序"
+colPath, "路径"
+GroupDesktopApplications, "桌面应用程序"
+GroupWindows8Applications, "Windows 8 应用程序"
+lblWindowPicker, "拖曳到窗口上方以自动选择该窗口的处理程序在列表中"
+PleaseSelectApplication, "请先选择一个应用程序。"
+Title, "选择应用程序"
+
+
+[BFFormSettingsAdvanced_Controls]
+btnDelete, "默认值"
+colSetting, "设置"
+colValue, "数值"
+lblFilter, "筛选器:"
+lblHelp, "双击设置来改变，更多信息请按一下 [帮助] 按钮。"
+
+
+[BFFormSettingsAdvanced_Strings]
+ErrorSaving, "保存此设置时发生错误。"
+SavedSuccessfully, "您的进阶设置储存成功。\n您可能需要重新启动应用程序使这个设置生效。"
+Title, "进阶设置"
+TitleEdit, "编辑进阶设置"
+
+
+[BFFormSettings_Controls]
+btnAdvancedSettings, "高级设置"
+btnAutoUpdateCheckNow, "立即检查更新(&U)"
+btnBackupSettings, "保存设置"
+btnLicenseChangeToFree, "改变成免费版"
+btnLicenseKeyRequestTrial, "申请新的试用授权"
+btnLicenseLoadOnline, "从 Binary Fortress 帐户载入"
+btnLicensePasteFromClipboard, "从剪贴板粘帖"
+btnProxySettings, "Internet 连接设置"
+btnRestoreSettings, "还原设置"
+btnTroubleshootingClearLog, "清除日志"
+btnTroubleshootingCopy, "复制到剪贴板"
+btnTroubleshootingOpenLog, "开启日志"
+chkAutoUpdate, "自动检查更新"
+chkAutoUpdateBeta, "检查新的测试版 (较新但不稳定)"
+chkAutoUpdateSteam, "自动检查更新 (Steam 可能忽略此设置)"
+colLanguageName, "名称"
+colLanguageRightToLeft, "由右到左"
+colLanguageTranslators, "翻译者"
+colLanguageVersion, "版本"
+gbAutoUpdate, "更新检查"
+gbLicenseReseller, "代理商信息"
+lblAutoUpdateWarningBASE, "警告: 自动更新目前停用，将不会提示您安装新的版本"
+lblLanguageGetMore, "更新和获取新的语言"
+lblLicenseExpires, "授权到期日:"
+lblLicenseKey, "授权码:"
+lblLicenseTo, "授权给:"
+tabAbout, "关于"
+tabLanguage, "语言"
+tabLicense, "授权码"
+tabOptions, "选项"
+tabOurApps, "我们的软件"
+tabTroubleshooting, "故障排除"
+
+
+[BFFormSettings_Strings]
+ChangeToFreeQuestion, "您确定要移除授权码并切换成免费版吗?"
+DebugLogCleared, "调试日志文件已成功清除。"
+DebugLogNotFound, "找不到调试日志文件。\n请确认您已先启用了调试日志。"
+FreeVersion, "免费版本"
+LicenseKeyRequestTrialDescription, "将在 2 个工作日内回复您。"
+LicenseKeyRequestTrialMessage, "我希望申请新的试用授权码，谢谢!"
+LogLevel0, "L0: 停用日志"
+LogLevel1, "L1: 最小日志"
+LogLevel2, "L2: 详细日志 (不建议)"
+LogLevel3, "L3: 所有日志 (不建议)"
+RegistryExportSuccess, "您的设置已成功导出。"
+RestoreSettingsFailed, "还原您的设置失败。"
+RestoreSettingsSuccess, "您的设置已成功还原。"
+SettingsLoadError, "载入设置时发生错误。"
+SettingsSaveError, "储存设置时发生错误。"
+Title, "设置"
+TroubleshootingCopyError, "复制故障排除信息失败。"
+TroubleshootingCopySuccess, "您的故障排除信息已经成功复制到剪贴板。"
+
+
+[BFFormSupportRequest_Controls]
+lblEmailAddress, "电子邮件地址:"
+lblMessage, "信息 (英文):"
+lblName, "您的名字:"
+lblSubject, "主题:"
+lblWarning, "故障排除和您的 Debug.log 文件中的信息将被加密并和此帮助请求一起发送，以便我们能更快的解决您的问题。"
+
+
+[BFFormSupportRequest_Strings]
+EnterEmailAddress, "请输入有效的电子邮件地址后重试。"
+EnterMessage, "请输入信息后重试。"
+EnterName, "请输入您的姓名并重试。"
+EnterSubject, "请输入主题。"
+SendSuccess, "您的信息已发送成功。\n我们将在 1 个工作日内与您联系。"
+Title, "提交帮助请求"
+TooLongEmailAddress, "请输入较短电子邮件地址后重试。"
+TooLongName, "请输入较短名字后重试。"
+
+
+[BFFormUpdateInvalidLicense]
+btnBuyNow, "购买专业版授权"
+btnLater, "以后再说"
+btnMoreInfo, "更多信息"
+lblInvalidLicense, "您的专业版授权码似乎无效!\n\n请确认您在 [设置] 窗口的 [授权码] 里输入了正确的授权码。\n\n如果您的授权码正确但仍看到此信息，请使用下面的 [帮助] 按钮联系 Binary Fortress 技术支援。"
+Title, "无效的授权码"
+
+
+[BFFormUpdate_Controls]
+btnChangeLog, "查看更新日志(&V)"
+btnDownloadOnly, "访问网站(&V)"
+btnInstallNow, "立即安装(&I)"
+btnInstallOnExit, "结束时安装(&X)"
+btnRemindMeLater, "稍候提醒我(&R)"
+btnSkipThisVersion, "忽略此版本(&S)"
+lblNewVersion, "新版本:"
+lblOldVersion, "目前版本:"
+lblUpdateNotes, "这个版本的更新内容:"
+lblUpdateSize, "更新大小:"
+
+
+[BFFormUpdate_Strings]
+ConfirmSkipVersion, "建议您更新到此新版本。\n您确定要忽略此更新吗?"
+DownloadFailedSave, "本机保存这个文件失败。"
+DownloadingUpdate, "正在下载更新"
+DownloadInvalidData, "服务器返回无效的数据，服务器寻找所需的文件可能有问题。"
+DownloadNoData, "网站未返回任何数据。"
+ErrorDownload, "尝试下载新版本时发生错误。"
+FreeNotice, "此次和之后所有的更新免费! 立刻更新并享用!"
+Title, "有可用的更新"
+UpdateProMessage, "您需要升级到专业版授权以使用一键更新。\n您想要更多关于升级的信息吗?"
+
+
+[BFHelpButton_Controls]
+mniDiscussions, "社区讨论"
+mniOnlineHelp, "在线帮助"
+mniSupportRequest, "请求帮助"
+
+
+[BFHotKey]
+ErrorHotKeyBindFailed, "按键组合绑定失败:"
+ErrorHotKeyComboInUse, "按键组合已经被使用。 可能有以下几种原因:\n- 已经在这个应用程序指定此按键组合\n- 另一个应用程序已经使用此按键组合\n- 内建 Windows 功能正在使用此按键组合\n\n请在设置中编辑或移除此按键组合。"
+ErrorIncorrectKeyValue, "无效的按键组合: 请输入按键值。"
+ErrorIncorrectNumberElements, "无效的按键组合: 按键数错误。"
+ErrorIncorrectNumberKeyMods, "无效的按键组合: 修饰键数错误。"
+ErrorInvalidKeyCombo, "您指定的按键组合无效。"
+ErrorSystemReserved, "您指定的按键组合已由 Windows 保留无法使用。"
+ErrorTooManyModifiers, "无效的按键组合: 太多修饰键。"
+HotKeyLabelKeys, "选择修饰键接著按下想要的按键"
+HotKeyLabelMouse, "选择修饰键接著按下想要的滑鼠按钮"
+
+
+[BFMessage]
+btnCopy, "复制到剪贴板(&C)"
+btnMoreInformation, "显示更多信息(&S)"
+
+
+[BFTextQuery]
+CaseSensitive, "区分大小写:"
+ErrorBracketMismatch, "错误: 括号不匹配。\n请补全括号或在查询中使用引号。"
+ErrorEscapeCharAtEnd, "错误: 在查询的结尾发现「\」字符。\n请避免出现或移除该字符。"
+ErrorExpectedMatchCountChar, "错误: 在位置 {0} 发现「:::cbc:::」。\n请补全括号或在查询中使用引号。"
+ErrorExpectedQuote, "错误: 在位置 {0} 发现 '"'。\n请确认避免出现 '"' 字符。"
+ErrorInvalidChar, "错误: 在位置 {1} 的字符「{0}」无效。\n请放在括号中。"
+ErrorInvalidDigit, "错误: 在位置 {0} 的数字无效。\n数字必须是正数且只包含数字字符。"
+MayContain, "可能包含:"
+MayEqual, "可能等于:"
+MayNotContain, "可能不包含:"
+MayNotEqual, "可能不等于:"
+MustContain, "必须包含:"
+MustEqual, "必须等于:"
+MustNotContain, "必须不包含:"
+MustNotEqual, "必须不等于:"
+Time, "一次"
+Times, "{0} 次"
+
+
+[BFUpdateCheck]
+AlreadyInProgress, "检查更新已经进行中..."
+ErrorRunningDownloadedFile, "尝试执行已下载的安装文件时发生错误。"
+FailedToGetVersion, "无法载入最新的版本号。"
+NoUpdate, "您已经正在使用最新的版本。"
+Title, "更新"
+
+
+[FormMain_Controls]
+mniExit, "退出"
+mniSettings, "设置"
+
+
+[FormMain_Strings]
+TextHardDrive, "硬盘"
+TextOff, "关闭"
+TextOn, "开启"
+TextValue, "数值"
+UnknownErrorMessage, "发生未知错误。"
+UpgradeTrialLicenseMessage, "TrayStatus 3 后我们推出了包含了高级功能的新的专业版授权!\n不需担心，我们不会从免费版移除任何现有的功能。\n我们提供 30 天的专业版免费试用，但您可以随时在「设置」 >「授权码」里变回免费版。"
+
+
+[FormSettings_Controls]
+btnPerfCounterAdd, "加入(&A)"
+btnPerfCounterEdit, "编辑(&E)"
+btnPerfCounterRemove, "移除(&R)"
+chkDefaultCapsLock, "显示大写锁定状态"
+chkDefaultKanaLock, "显示假名状态"
+chkDefaultNumLock, "显示小键盘锁定状态"
+chkDefaultScrollLock, "显示 Scroll Lock 状态"
+chkOnlyShowIconWhenKeyEnabled, "只在按键状态开启时显示"
+chkPlaySoundWhenKeyStatusChanges, "按键状态改变时播放声音"
+chkShowALT, "显示 ALT 键状态"
+chkShowAudioPlayback, "显示音频播放状态"
+chkShowCPU, "显示 CPU 使用率"
+chkShowCTRL, "显示 Ctrl 键状态"
+chkShowHD, "显示硬盘活动"
+chkShowHDActivitySeparate, "每个硬盘单独显示状态"
+chkShowMemory, "显示内存使用量"
+chkShowShift, "显示 Shift 键状态"
+chkShowTrayBalloonWhenKeyStatusChanges, "按键状态改变时显示托盘图标通知"
+chkShowWIN, "显示 Win 键状态"
+chkStartWithWindows, "随 Windows 自启动"
+colCategory, "分类"
+colCounter, "计数器"
+colInstance, "实例"
+colThreshold, "阈值"
+gbCustomIcons, "自定义性能计数器指示器"
+gbDefaultIcons, "默认指示器"
+gbHardDriveSettings, "硬盘活动设置"
+gbIconTheme, "图标主题"
+gbOptions, "选项"
+gbSounds, "声音"
+lblHardDriveRead, "读取阈值(Bytes):"
+lblHardDriveWrite, "写入阈值(Bytes):"
+pageStatusIndicators, "状态指示器"
+sndToggleOff, "按键切换关闭声音: (保留空白为默认值)"
+sndToggleOn, "按键切换开启声音: (保留空白为默认值)"
+
+
+[LicenseValidate_Strings]
+ExpiredPrompt, "抱歉，您的 TrayStatus 试用授权码已经过期。\n如果您已经购买授权，请在 TrayStatus 设置窗口中输入。\n\n您需要更多购买 TrayStatus 专业版的信息吗?"
+Invalid, "抱歉，您的授权码无效。"
+InvalidReseller, "抱歉，您的授权码只能使用在您代理商所提供的 TrayStatus。\n更多信息，请联系您的代理商。"
+LicenseProcessPro, "感谢您的注册!"
+LicenseProcessProRestoreSettingsPrompt, "检测到专业版设置的自动备份。\n此备份是在 {0} 天前。\n该设置会覆盖您的目前所有设置。您希望导入该设置吗? "
+LicenseProcessRemoved, "您的授权码已移除。"
+LicenseProcessTrial, "感谢您试用 TrayStatus 专业版!\n您的授权将于 {0:D} 到期。"
+TrialAlmostDonePrompt, "您的试用授权即将过期。\n如果您已经购买授权，请在 TrayStatus 设置窗口中输入。\n\n您需要更多购买 TrayStatus 专业版的信息吗?"
+
+
+[Words]
+Add, "加入(&A)"
+AdminSettingsLock, "某些设置由您的管理员所管理"
+Apply, "应用"
+ButtonEnterLicenseKey, "输入授权码(&E)"
+ButtonLater, "稍候(&L)"
+ButtonMoreInformation, "更多信息(&M)"
+ButtonUseFreeVersion, "使用免费版(&U)"
+Cancel, "取消(&C)"
+Close, "关闭"
+Copy, "复制(&C)"
+Cut, "剪切(&C)"
+Delete, "删除(&D)"
+Disable, "停用(&D)"
+Disabled, "已停用"
+Duplicate, "复制(&D)"
+Edit, "编辑(&E)"
+Enable, "启用(&E)"
+Enabled, "已启用"
+Error, "错误"
+ErrorNotAdminUACDisabled, "UAC 已停用，但您不是管理员，您请求的动作很可能会失败。\n请启用 UAC 或以管理员身分登入并重试。\n如果是最近停用 UAC，请务必重新启动电脑。"
+Exit, "退出(&X)"
+Help, "帮助"
+InvalidImageFile, "此图片似乎已被损毁或无法读取。"
+Name, "名字"
+NameLabel, "名字:"
+NeedProQuestion, "您需要升级到 TrayStatus 专业版以使用这个功能。\n您需要更多升级的信息吗?"
+NeedsProShort, "仅限专业版"
+Never, "永不"
+No, "否"
+OK, "确定(&O)"
+Paste, "粘帖(&P)"
+ProOnlyNotice, "专业版专属功能用蓝色突出显示"
+Redo, "重做(&R)"
+Remove, "移除(&R)"
+SelectAll, "全选(&S)"
+Start, "开始"
+Stop, "停止"
+Undo, "撤消(&U)"
+Unknown, "未知"
+Yes, "是"
+
+
+[Installer]
+AdditionalIcons, "额外图标:"
+CreateContextMenuItems, "加入到 Windows 右键菜单"
+CurrentUserOnly, "只对当前用户"
+DesktopIcon, "建立桌面图标(&D)"
+DotNetInstallNow, "您希望立即安装吗?"
+DotNetRequired40, "这个应用程序需要 Microsoft .NET Framework 4.0。"
+ForAllUsers, "对所有用户"
+LaunchNow, "立即启动"
+LicKeyInvalid, "这个授权码似乎无效。"
+LicKeyLabel, "授权码:"
+LicKeySelectOption, "请选择授权码选项后重试。"
+LicKeyText, "授权码选项:"
+LicKeyTextAdminLocked, "您的授权码已经由管理员所设置。"
+LicKeyTextChangeFree, "按一下 [设置] 窗口中 [改变成免费版] 以使用免费版。"
+LicKeyTextEnterOrFree, "请输入有效授权码或选择「使用试用版」。"
+LicKeyTextPaid, "使用此授权码:"
+LicKeyTextTrial, "使用试用版 (仅限第 1 次)，在试用后恢复成免费版本"
+RunAtStartup, "随 Windows 自启动"
+SteamKeyInvalid, "您的 Steam 授权码载入失败。\n请退出这个安装程序或应用程序并尝试在 Steam 内再次点击[安装]或[开始]。"
+TextBefore, "如果您目前有 TrayStatus 正在执行，安装这个新版本前请确认已经关闭。\n\n访问 https://www.traystatus.com 获取更新和帮助。"
+UninstallRemoveAllData1, "您希望完全移除所有的应用程序的设置、偏好设置和临时文件吗?"
+UninstallRemoveAllData2, "如果您将再次安装这个应用程序则不推荐。"
