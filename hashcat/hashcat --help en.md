@@ -1,6 +1,6 @@
 # hashcat - advanced password recovery
 
-Usage: hashcat [options]... hash|hashfile|hccapxfile [dictionary|mask|directory]...
+**Usage: hashcat [options]... hash|hashfile|hccapxfile [dictionary|mask|directory]...**
 
 ## Options
 
@@ -94,8 +94,8 @@ Options Short / Long| Type |Description| Example
 
 ## Hash modes
 
- |Name|Category
--|----|--------
+Num|Name|Category
+---|----|--------
 900|MD4|Raw Hash
 0|MD5|Raw Hash
 5100|Half MD5|Raw Hash
