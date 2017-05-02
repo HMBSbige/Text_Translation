@@ -19,9 +19,9 @@
 --status-timer|数字|设置自动更新屏幕间隔为X秒|--status-timer=1
 --machine-readable||以机器可读格式显示状态视图|
 --keep-guessing||被破解之后继续猜测Hash|
---loopback||导入目录中加入新的纯文本文件|
+--loopback||在induction目录中加入新的纯文本文件|
 --weak-hash-threshold|数字|当阈值为X时停止检查弱Hash|--weak=0
---markov-hcstat|File|指定要使用的hcstat文件|--markov-hc=my.hcstat
+--markov-hcstat|文件|指定要使用的hcstat文件|--markov-hc=my.hcstat
 --markov-disable||禁用马尔可夫链，模仿经典暴力破解|
 --markov-classic||启用经典马尔可夫链，无任何位置|
 -t,--markov-threshold|数字|当阈值X时停止接收新的马尔科夫链|-t 50
@@ -30,307 +30,307 @@
 --restore||从--session恢复会话|
 --restore-disable||不写入恢复文件|
 --restore-file-path|文件|指定恢复文件的路径|--restore-file-path=my.restore
--o,--outfile|File|定义恢复的Hash的输出文件|-o outfile.txt
+-o,--outfile|文件|定义恢复的Hash的输出文件|-o outfile.txt
 --outfile-format|数字|定义恢复的Hash的输出格式，参见下面的参考|--outfile-format=7
 --outfile-autohex-disable||在输出纯文本文件中禁用$HEX[]|
 --outfile-check-timer|数字|设置输出文件检查间隔为X秒|--outfile-check=30
--p,--separator|Char|Separator char for hashlists and outfile|-p :
---stdout||Do not crack a hash, instead print candidates only|
---show||Compare hashlist with potfile; show cracked hashes|
---left||Compare hashlist with potfile; show uncracked hashes|
---username||Enable ignoring of usernames in hashfile|
---remove||Enable removal of hashes once they are cracked|
---remove-timer|Num|Update input hash file each X seconds|--remove-timer=30
---potfile-disable||Do not write potfile|
---potfile-path|Dir|Specific path to potfile|--potfile-path=my.pot
---debug-mode|Num|Defines the debug mode (hybrid only by using rules)|--debug-mode=4
---debug-file|File|Output file for debugging rules|--debug-file=good.log
---induction-dir|Dir|Specify the induction directory to use for loopback|--induction=inducts
---outfile-check-dir|Dir|Specify the outfile directory to monitor for plains|--outfile-check-dir=x
---logfile-disable||Disable the logfile|
---hccapx-message-pair|Num|Load only message pairs from hccapx matching X|--hccapx-message-pair=2
---nonce-error-corrections|Num|The BF size range to replace AP's nonce last bytes|--nonce-error-corrections=16
---truecrypt-keyfiles|File|Keyfiles to use, separated with commas|--truecrypt-key=x.png
---veracrypt-keyfiles|File|Keyfiles to use, separated with commas|--veracrypt-key=x.txt
---veracrypt-pim|Num|VeraCrypt personal iterations multiplier|--veracrypt-pim=1000
--b,--benchmark||Run benchmark|
---speed-only||Return expected speed of the attack, then quit|
---progress-only||Return ideal progress step size and time to process|
--c,--segment-size|Num|Sets size in MB to cache from the wordfile to X|-c 32
---bitmap-min|Num|Sets minimum bits allowed for bitmaps to X|--bitmap-min=24
---bitmap-max|Num|Sets maximum bits allowed for bitmaps to X|--bitmap-max=24
---cpu-affinity|Str|Locks to CPU devices, separated with commas|--cpu-affinity=1,2,3
--I,--opencl-info||Show info about detected OpenCL platforms/devices|-I
---opencl-platforms|Str|OpenCL platforms to use, separated with commas|--opencl-platforms=2
--d,--opencl-devices|Str|OpenCL devices to use, separated with commas|-d 1
--D,--opencl-device-types|Str|OpenCL device-types to use, separated with commas|-D 1
---opencl-vector-width|Num|Manually override OpenCL vector-width to X|--opencl-vector=4
--w,--workload-profile|Num|Enable a specific workload profile, see pool below|-w 3
--n,--kernel-accel|Num|Manual workload tuning, set outerloop step size to X|-n 64
--u,--kernel-loops|Num|Manual workload tuning, set innerloop step size to X|-u 256
---nvidia-spin-damp|Num|Workaround NVIDIAs CPU burning loop bug, in percent|--nvidia-spin-damp=50
---gpu-temp-disable||Disable temperature and fanspeed reads and triggers|
---gpu-temp-abort|Num|Abort if GPU temperature reaches X degrees Celsius|--gpu-temp-abort=100
---gpu-temp-retain|Num|Try to retain GPU temperature at X degrees Celsius|--gpu-temp-retain=95
---powertune-enable||Enable power tuning. Restores settings when finished|
---scrypt-tmto|Num|Manually override TMTO value for scrypt to X|--scrypt-tmto=3
--s,--skip|Num|Skip X words from the start|-s 1000000
--l,--limit|Num|Limit X words from the start + skipped words|-l 1000000
---keyspace||Show keyspace base:mod values and quit|
--j,--rule-left|Rule|Single rule applied to each word from left wordlist|-j 'c'
--k,--rule-right|Rule|Single rule applied to each word from right wordlist|-k '^-'
--r,--rules-file|File|Multiple rules applied to each word from wordlists|-r rules/best64.rule
--g,--generate-rules|Num|Generate X random rules|-g 10000
---generate-rules-func-min|Num|Force min X functions per rule|
---generate-rules-func-max|Num|Force max X functions per rule|
---generate-rules-seed|Num|Force RNG seed set to X|
--1,--custom-charset1|CS|User-defined charset ?1|-1 ?l?d?u
--2,--custom-charset2|CS|User-defined charset ?2|-2 ?l?d?s
--3,--custom-charset3|CS|User-defined charset ?3|
--4,--custom-charset4|CS|User-defined charset ?4|
--i,--increment||Enable mask increment mode|
---increment-min|Num|Start mask incrementing at X|--increment-min=4
---increment-max|Num|Stop mask incrementing at X|--increment-max=8
+-p,--separator|字符|Hash表和输出文件的分隔符|-p :
+--stdout||不破解Hash，只打印候选值|
+--show||比较Hash表和pot文件，显示已破解的Hash|
+--left||比较Hash表和pot文件，显示未破解的Hash|
+--username||忽略Hash文件中的用户名|
+--remove||一旦破解，就删除Hash|
+--remove-timer|数字|每X秒更新输入的Hash文件|--remove-timer=30
+--potfile-disable||不写入pot文件|
+--potfile-path|目录|指定pot文件的路径|--potfile-path=my.pot
+--debug-mode|数字|定义调试模式(仅通过使用规则进行混合)|--debug-mode=4
+--debug-file|文件|调试规则的输出文件|--debug-file=good.log
+--induction-dir|目录|指定loopback的induction目录|--induction=inducts
+--outfile-check-dir|目录|指定监控纯文本文件的输出目录|--outfile-check-dir=x
+--logfile-disable||禁用日志文件|
+--hccapx-message-pair|数字|只从hccapx加载匹配X的消息对|--hccapx-message-pair=2
+--nonce-error-corrections|数字|用BF大小范围来取代AP最后字节的随机数|--nonce-error-corrections=16
+--truecrypt-keyfiles|文件|要使用的密匙文件，用逗号分隔|--truecrypt-key=x.png
+--veracrypt-keyfiles|文件|要使用的密匙文件，用逗号分隔|--veracrypt-key=x.txt
+--veracrypt-pim|数字|VeraCrypt的头部密钥生成的迭代次数(PIM)|--veracrypt-pim=1000
+-b,--benchmark||运行基准测试|
+--speed-only||返回预期的攻击速度，然后退出|
+--progress-only||返回理想进度的步骤大小和处理时间|
+-c,--segment-size|数字|为wordfile设置 X MB缓存|-c 32
+--bitmap-min|数字|设置位图最小为X位(bit)|--bitmap-min=24
+--bitmap-max|数字|设置位图最大为X位(bit)|--bitmap-max=24
+--cpu-affinity|字符串|设置CPU相关性，用逗号分隔|--cpu-affinity=1,2,3
+-I,--opencl-info||显示检测到的OpenCL平台/设备的信息|-I
+--opencl-platforms|字符串|要使用的OpenCL平台，用逗号分隔|--opencl-platforms=2
+-d,--opencl-devices|字符串|要使用的OpenCL设备，用逗号分隔|-d 1
+-D,--opencl-device-types|字符串|要使用的OpenCL设备类型，用逗号分隔|-D 1
+--opencl-vector-width|数字|手动覆盖OpenCL矢量宽度为X|--opencl-vector=4
+-w,--workload-profile|数字|设置工作负载配置文件，参见下面的参考|-w 3
+-n,--kernel-accel|数字|手动调整工作负载，将外圈步长设置为X|-n 64
+-u,--kernel-loops|数字|手动调整工作负载，将内圈步长设置为X|-u 256
+--nvidia-spin-damp|数字|可变通NVIDIA处理器热循环Bug，用百分比表示|--nvidia-spin-damp=50
+--gpu-temp-disable||禁用GPU温度和风扇速度的读取和触发|
+--gpu-temp-abort|数字|如果GPU温度达到X摄氏度，则中止|--gpu-temp-abort=100
+--gpu-temp-retain|数字|尝试将GPU温度保持在X摄氏度|--gpu-temp-retain=95
+--powertune-enable||启用电源调整。 完成后恢复设置|
+--scrypt-tmto|数字|手动覆盖scrypt的TMTO值为X|--scrypt-tmto=3
+-s,--skip|数字|跳过前X个单词|-s 1000000
+-l,--limit|数字|跳过单词后限制X个单词|-l 1000000
+--keyspace||显示密钥空间base：mod值后退出|
+-j,--rule-left|规则|单个规则应用于字典中左侧的每个单词|-j 'c'
+-k,--rule-right|规则|单个规则应用于字典中右侧的每个单词|-k '^-'
+-r,--rules-file|文件|多个规则应用于字典中的每个单词|-r rules/best64.rule
+-g,--generate-rules|数字|生成X个随机规则|-g 10000
+--generate-rules-func-min|数字|强制每个规则最小X个函数|
+--generate-rules-func-max|数字|强制每个规则最大X个函数|
+--generate-rules-seed|数字|强制RNG种子设置为X|
+-1,--custom-charset1|字符集|用户定义的字符集 ?1|-1 ?l?d?u
+-2,--custom-charset2|字符集|用户定义的字符集 ?2|-2 ?l?d?s
+-3,--custom-charset3|字符集|用户定义的字符集 ?3|
+-4,--custom-charset4|字符集|用户定义的字符集 ?4|
+-i,--increment||启用掩码增量模式|
+--increment-min|数字|在X处开始掩码递增|--increment-min=4
+--increment-max|数字|在X处停止掩码递增|--increment-max=8
 
 ## Hash种类
 
-Num|Name|Category
+编号|名称|类别
 ---|----|--------
-900|MD4|Raw Hash
-0|MD5|Raw Hash
-5100|Half MD5|Raw Hash
-100|SHA1|Raw Hash
-1300|SHA-224|Raw Hash
-1400|SHA-256|Raw Hash
-10800|SHA-384|Raw Hash
-1700|SHA-512|Raw Hash
-5000|SHA-3 (Keccak)|Raw Hash
-10100|SipHash|Raw Hash
-6000|RIPEMD-160|Raw Hash
-6100|Whirlpool|Raw Hash
-6900|GOST R 34.11-94|Raw Hash
-11700|GOST R 34.11-2012 (Streebog) 256-bit|Raw Hash
-11800|GOST R 34.11-2012 (Streebog) 512-bit|Raw Hash
-10|md5($pass.$salt)|Raw Hash, Salted and/or Iterated
-20|md5($salt.$pass)|Raw Hash, Salted and/or Iterated
-30|md5(unicode($pass).$salt)|Raw Hash, Salted and/or Iterated
-40|md5($salt.unicode($pass))|Raw Hash, Salted and/or Iterated
-3800|md5($salt.$pass.$salt)|Raw Hash, Salted and/or Iterated
-3710|md5($salt.md5($pass))|Raw Hash, Salted and/or Iterated
-4010|md5($salt.md5($salt.$pass))|Raw Hash, Salted and/or Iterated
-4110|md5($salt.md5($pass.$salt))|Raw Hash, Salted and/or Iterated
-2600|md5(md5($pass))|Raw Hash, Salted and/or Iterated
-3910|md5(md5($pass).md5($salt))|Raw Hash, Salted and/or Iterated
-4300|md5(strtoupper(md5($pass)))|Raw Hash, Salted and/or Iterated
-4400|md5(sha1($pass))|Raw Hash, Salted and/or Iterated
-110|sha1($pass.$salt)|Raw Hash, Salted and/or Iterated
-120|sha1($salt.$pass)|Raw Hash, Salted and/or Iterated
-130|sha1(unicode($pass).$salt)|Raw Hash, Salted and/or Iterated
-140|sha1($salt.unicode($pass))|Raw Hash, Salted and/or Iterated
-4500|sha1(sha1($pass))|Raw Hash, Salted and/or Iterated
-4520|sha1($salt.sha1($pass))|Raw Hash, Salted and/or Iterated
-4700|sha1(md5($pass))|Raw Hash, Salted and/or Iterated
-4900|sha1($salt.$pass.$salt)|Raw Hash, Salted and/or Iterated
-14400|sha1(CX)|Raw Hash, Salted and/or Iterated
-1410|sha256($pass.$salt)|Raw Hash, Salted and/or Iterated
-1420|sha256($salt.$pass)|Raw Hash, Salted and/or Iterated
-1430|sha256(unicode($pass).$salt)|Raw Hash, Salted and/or Iterated
-1440|sha256($salt.unicode($pass))|Raw Hash, Salted and/or Iterated
-1710|sha512($pass.$salt)|Raw Hash, Salted and/or Iterated
-1720|sha512($salt.$pass)|Raw Hash, Salted and/or Iterated
-1730|sha512(unicode($pass).$salt)|Raw Hash, Salted and/or Iterated
-1740|sha512($salt.unicode($pass))|Raw Hash, Salted and/or Iterated
-50|HMAC-MD5 (key = $pass)|Raw Hash, Authenticated
-60|HMAC-MD5 (key = $salt)|Raw Hash, Authenticated
-150|HMAC-SHA1 (key = $pass)|Raw Hash, Authenticated
-160|HMAC-SHA1 (key = $salt)|Raw Hash, Authenticated
-1450|HMAC-SHA256 (key = $pass)|Raw Hash, Authenticated
-1460|HMAC-SHA256 (key = $salt)|Raw Hash, Authenticated
-1750|HMAC-SHA512 (key = $pass)|Raw Hash, Authenticated
-1760|HMAC-SHA512 (key = $salt)|Raw Hash, Authenticated
-14000|DES (PT = $salt, key = $pass)|Raw Cipher, Known-Plaintext attack
-14100|3DES (PT = $salt, key = $pass)|Raw Cipher, Known-Plaintext attack
-14900|Skip32 (PT = $salt, key = $pass)|Raw Cipher, Known-Plaintext attack
-400|phpass|Generic KDF
-8900|scrypt|Generic KDF
-11900|PBKDF2-HMAC-MD5|Generic KDF
-12000|PBKDF2-HMAC-SHA1|Generic KDF
-10900|PBKDF2-HMAC-SHA256|Generic KDF
-12100|PBKDF2-HMAC-SHA512|Generic KDF
-23|Skype|Network Protocols
-2500|WPA/WPA2|Network Protocols
-4800|iSCSI CHAP authentication, MD5(CHAP)|Network Protocols
-5300|IKE-PSK MD5|Network Protocols
-5400|IKE-PSK SHA1|Network Protocols
-5500|NetNTLMv1|Network Protocols
-5500|NetNTLMv1+ESS|Network Protocols
-5600|NetNTLMv2|Network Protocols
-7300|IPMI2 RAKP HMAC-SHA1|Network Protocols
-7500|Kerberos 5 AS-REQ Pre-Auth etype 23|Network Protocols
-8300|DNSSEC (NSEC3)|Network Protocols
-10200|CRAM-MD5|Network Protocols
-11100|PostgreSQL CRAM (MD5)|Network Protocols
-11200|MySQL CRAM (SHA1)|Network Protocols
-11400|SIP digest authentication (MD5)|Network Protocols
-13100|Kerberos 5 TGS-REP etype 23|Network Protocols
-121|SMF (Simple Machines Forum) > v1.1|Forums, CMS, E-Commerce, Frameworks
-400|phpBB3 (MD5)|Forums, CMS, E-Commerce, Frameworks
-2611|vBulletin < v3.8.5|Forums, CMS, E-Commerce, Frameworks
-2711|vBulletin >= v3.8.5|Forums, CMS, E-Commerce, Frameworks
-2811|MyBB 1.2+|Forums, CMS, E-Commerce, Frameworks
-2811|IPB2+ (Invision Power Board)|Forums, CMS, E-Commerce, Frameworks
-8400|WBB3 (Woltlab Burning Board)|Forums, CMS, E-Commerce, Frameworks
-11|Joomla < 2.5.18|Forums, CMS, E-Commerce, Frameworks
-400|Joomla >= 2.5.18 (MD5)|Forums, CMS, E-Commerce, Frameworks
-400|WordPress (MD5)|Forums, CMS, E-Commerce, Frameworks
-2612|PHPS|Forums, CMS, E-Commerce, Frameworks
-7900|Drupal7|Forums, CMS, E-Commerce, Frameworks
-21|osCommerce|Forums, CMS, E-Commerce, Frameworks
-21|xt:Commerce|Forums, CMS, E-Commerce, Frameworks
-11000|PrestaShop|Forums, CMS, E-Commerce, Frameworks
-124|Django (SHA-1)|Forums, CMS, E-Commerce, Frameworks
-10000|Django (PBKDF2-SHA256)|Forums, CMS, E-Commerce, Frameworks
-3711|MediaWiki B type|Forums, CMS, E-Commerce, Frameworks
-13900|OpenCart|Forums, CMS, E-Commerce, Frameworks
-4521|Redmine|Forums, CMS, E-Commerce, Frameworks
-4522|PunBB|Forums, CMS, E-Commerce, Frameworks
-12001|Atlassian (PBKDF2-HMAC-SHA1)|Forums, CMS, E-Commerce, Frameworks
-12|PostgreSQL|Database Server
-131|MSSQL (2000)|Database Server
-132|MSSQL (2005)|Database Server
-1731|MSSQL (2012, 2014)|Database Server
-200|MySQL323|Database Server
-300|MySQL4.1/MySQL5|Database Server
-3100|Oracle H: Type (Oracle 7+)|Database Server
-112|Oracle S: Type (Oracle 11+)|Database Server
-12300|Oracle T: Type (Oracle 12+)|Database Server
-8000|Sybase ASE|Database Server
-141|Episerver 6.x < .NET 4|HTTP, SMTP, LDAP Server
-1441|Episerver 6.x >= .NET 4|HTTP, SMTP, LDAP Server
-1600|Apache $apr1$ MD5, md5apr1, MD5 (APR)|HTTP, SMTP, LDAP Server
-12600|ColdFusion 10+|HTTP, SMTP, LDAP Server
-1421|hMailServer|HTTP, SMTP, LDAP Server
-101|nsldap, SHA-1(Base64), Netscape LDAP SHA|HTTP, SMTP, LDAP Server
-111|nsldaps, SSHA-1(Base64), Netscape LDAP SSHA|HTTP, SMTP, LDAP Server
-1411|SSHA-256(Base64), LDAP {SSHA256}|HTTP, SMTP, LDAP Server
-1711|SSHA-512(Base64), LDAP {SSHA512}|HTTP, SMTP, LDAP Server
-15000|FileZilla Server >= 0.9.55|FTP Server
-11500|CRC32|Checksums
-3000|LM|Operating Systems
-1000|NTLM|Operating Systems
-1100|Domain Cached Credentials (DCC), MS Cache|Operating Systems
-2100|Domain Cached Credentials 2 (DCC2), MS Cache 2|Operating Systems
-12800|MS-AzureSync  PBKDF2-HMAC-SHA256|Operating Systems
-1500|descrypt, DES (Unix), Traditional DES|Operating Systems
-12400|BSDiCrypt, Extended DES|Operating Systems
-500|md5crypt, MD5 (Unix), Cisco-IOS $1$ (MD5)|Operating Systems
-3200|bcrypt $2*$, Blowfish (Unix)|Operating Systems
-7400|sha256crypt $5$, SHA256 (Unix)|Operating Systems
-1800|sha512crypt $6$, SHA512 (Unix)|Operating Systems
-122|OSX v10.4, OSX v10.5, OSX v10.6|Operating Systems
-1722|OSX v10.7|Operating Systems
-7100|OSX v10.8+ (PBKDF2-SHA512)|Operating Systems
-6300|AIX {smd5}|Operating Systems
-6700|AIX {ssha1}|Operating Systems
-6400|AIX {ssha256}|Operating Systems
-6500|AIX {ssha512}|Operating Systems
-2400|Cisco-PIX MD5|Operating Systems
-2410|Cisco-ASA MD5|Operating Systems
-500|Cisco-IOS $1$ (MD5)|Operating Systems
-5700|Cisco-IOS type 4 (SHA256)|Operating Systems
-9200|Cisco-IOS $8$ (PBKDF2-SHA256)|Operating Systems
-9300|Cisco-IOS $9$ (scrypt)|Operating Systems
-22|Juniper NetScreen/SSG (ScreenOS)|Operating Systems
-501|Juniper IVE|Operating Systems
-15100|Juniper/NetBSD sha1crypt|Operating Systems
-7000|FortiGate (FortiOS)|Operating Systems
-5800|Samsung Android Password/PIN|Operating Systems
-13800|Windows Phone 8+ PIN/password|Operating Systems
-8100|Citrix NetScaler|Operating Systems
-8500|RACF|Operating Systems
-7200|GRUB 2|Operating Systems
-9900|Radmin2|Operating Systems
-125|ArubaOS|Operating Systems
-7700|SAP CODVN B (BCODE)|Enterprise Application Software (EAS)
-7800|SAP CODVN F/G (PASSCODE)|Enterprise Application Software (EAS)
-10300|SAP CODVN H (PWDSALTEDHASH) iSSHA-1|Enterprise Application Software (EAS)
-8600|Lotus Notes/Domino 5|Enterprise Application Software (EAS)
-8700|Lotus Notes/Domino 6|Enterprise Application Software (EAS)
-9100|Lotus Notes/Domino 8|Enterprise Application Software (EAS)
-133|PeopleSoft|Enterprise Application Software (EAS)
-13500|PeopleSoft PS_TOKEN|Enterprise Application Software (EAS)
-11600|7-Zip|Archives
-12500|RAR3-hp|Archives
-13000|RAR5|Archives
-13200|AxCrypt|Archives
-13300|AxCrypt in-memory SHA1|Archives
-13600|WinZip|Archives
-14700|iTunes backup < 10.0|Backup
-14800|iTunes backup >= 10.0|Backup
-62XY|TrueCrypt|Full-Disk Encryption (FDE)
-X|1 = PBKDF2-HMAC-RIPEMD160|Full-Disk Encryption (FDE)
-X|2 = PBKDF2-HMAC-SHA512|Full-Disk Encryption (FDE)
-X|3 = PBKDF2-HMAC-Whirlpool|Full-Disk Encryption (FDE)
-X|4 = PBKDF2-HMAC-RIPEMD160 + boot-mode|Full-Disk Encryption (FDE)
-Y|1 = XTS  512 bit pure AES|Full-Disk Encryption (FDE)
-Y|1 = XTS  512 bit pure Serpent|Full-Disk Encryption (FDE)
-Y|1 = XTS  512 bit pure Twofish|Full-Disk Encryption (FDE)
-Y|2 = XTS 1024 bit pure AES|Full-Disk Encryption (FDE)
-Y|2 = XTS 1024 bit pure Serpent|Full-Disk Encryption (FDE)
-Y|2 = XTS 1024 bit pure Twofish|Full-Disk Encryption (FDE)
-Y|2 = XTS 1024 bit cascaded AES-Twofish|Full-Disk Encryption (FDE)
-Y|2 = XTS 1024 bit cascaded Serpent-AES|Full-Disk Encryption (FDE)
-Y|2 = XTS 1024 bit cascaded Twofish-Serpent|Full-Disk Encryption (FDE)
-Y|3 = XTS 1536 bit all|Full-Disk Encryption (FDE)
-8800|Android FDE <= 4.3|Full-Disk Encryption (FDE)
-12900|Android FDE (Samsung DEK)|Full-Disk Encryption (FDE)
-12200|eCryptfs|Full-Disk Encryption (FDE)
-137XY|VeraCrypt|Full-Disk Encryption (FDE)
-X|1 = PBKDF2-HMAC-RIPEMD160|Full-Disk Encryption (FDE)
-X|2 = PBKDF2-HMAC-SHA512|Full-Disk Encryption (FDE)
-X|3 = PBKDF2-HMAC-Whirlpool|Full-Disk Encryption (FDE)
-X|4 = PBKDF2-HMAC-RIPEMD160 + boot-mode|Full-Disk Encryption (FDE)
-X|5 = PBKDF2-HMAC-SHA256|Full-Disk Encryption (FDE)
-X|6 = PBKDF2-HMAC-SHA256 + boot-mode|Full-Disk Encryption (FDE)
-Y|1 = XTS  512 bit pure AES|Full-Disk Encryption (FDE)
-Y|1 = XTS  512 bit pure Serpent|Full-Disk Encryption (FDE)
-Y|1 = XTS  512 bit pure Twofish|Full-Disk Encryption (FDE)
-Y|2 = XTS 1024 bit pure AES|Full-Disk Encryption (FDE)
-Y|2 = XTS 1024 bit pure Serpent|Full-Disk Encryption (FDE)
-Y|2 = XTS 1024 bit pure Twofish|Full-Disk Encryption (FDE)
-Y|2 = XTS 1024 bit cascaded AES-Twofish|Full-Disk Encryption (FDE)
-Y|2 = XTS 1024 bit cascaded Serpent-AES|Full-Disk Encryption (FDE)
-Y|2 = XTS 1024 bit cascaded Twofish-Serpent|Full-Disk Encryption (FDE)
-Y|3 = XTS 1536 bit all|Full-Disk Encryption (FDE)
-14600|LUKS|Full-Disk Encryption (FDE)
-9700|MS Office <= 2003 $0/$1, MD5 + RC4|Documents
-9710|MS Office <= 2003 $0/$1, MD5 + RC4, collider #1|Documents
-9720|MS Office <= 2003 $0/$1, MD5 + RC4, collider #2|Documents
-9800|MS Office <= 2003 $3/$4, SHA1 + RC4|Documents
-9810|MS Office <= 2003 $3/$4, SHA1 + RC4, collider #1|Documents
-9820|MS Office <= 2003 $3/$4, SHA1 + RC4, collider #2|Documents
-9400|MS Office 2007|Documents
-9500|MS Office 2010|Documents
-9600|MS Office 2013|Documents
-10400|PDF 1.1 - 1.3 (Acrobat 2 - 4)|Documents
-10410|PDF 1.1 - 1.3 (Acrobat 2 - 4), collider #1|Documents
-10420|PDF 1.1 - 1.3 (Acrobat 2 - 4), collider #2|Documents
-10500|PDF 1.4 - 1.6 (Acrobat 5 - 8)|Documents
-10600|PDF 1.7 Level 3 (Acrobat 9)|Documents
-10700|PDF 1.7 Level 8 (Acrobat 10 - 11)|Documents
-9000|Password Safe v2|Password Managers
-5200|Password Safe v3|Password Managers
-6800|LastPass + LastPass sniffed|Password Managers
-6600|1Password, agilekeychain|Password Managers
-8200|1Password, cloudkeychain|Password Managers
-11300|Bitcoin/Litecoin wallet.dat|Password Managers
-12700|Blockchain, My Wallet|Password Managers
-13400|KeePass 1 (AES/Twofish) and KeePass 2 (AES)|Password Managers
-99999|Plaintext|PlaintextBlockchain, My Wallet
+900|MD4|纯Hash
+0|MD5|纯Hash
+5100|Half MD5|纯Hash
+100|SHA1|纯Hash
+1300|SHA-224|纯Hash
+1400|SHA-256|纯Hash
+10800|SHA-384|纯Hash
+1700|SHA-512|纯Hash
+5000|SHA-3 (Keccak)|纯Hash
+10100|SipHash|纯Hash
+6000|RIPEMD-160|纯Hash
+6100|Whirlpool|纯Hash
+6900|GOST R 34.11-94|纯Hash
+11700|GOST R 34.11-2012 (Streebog) 256-bit|纯Hash
+11800|GOST R 34.11-2012 (Streebog) 512-bit|纯Hash
+10|md5($pass.$salt)|纯Hash，盐 且/或 多次迭代
+20|md5($salt.$pass)|纯Hash，盐 且/或 多次迭代
+30|md5(unicode($pass).$salt)|纯Hash，盐 且/或 多次迭代
+40|md5($salt.unicode($pass))|纯Hash，盐 且/或 多次迭代
+3800|md5($salt.$pass.$salt)|纯Hash，盐 且/或 多次迭代
+3710|md5($salt.md5($pass))|纯Hash，盐 且/或 多次迭代
+4010|md5($salt.md5($salt.$pass))|纯Hash，盐 且/或 多次迭代
+4110|md5($salt.md5($pass.$salt))|纯Hash，盐 且/或 多次迭代
+2600|md5(md5($pass))|纯Hash，盐 且/或 多次迭代
+3910|md5(md5($pass).md5($salt))|纯Hash，盐 且/或 多次迭代
+4300|md5(strtoupper(md5($pass)))|纯Hash，盐 且/或 多次迭代
+4400|md5(sha1($pass))|纯Hash，盐 且/或 多次迭代
+110|sha1($pass.$salt)|纯Hash，盐 且/或 多次迭代
+120|sha1($salt.$pass)|纯Hash，盐 且/或 多次迭代
+130|sha1(unicode($pass).$salt)|纯Hash，盐 且/或 多次迭代
+140|sha1($salt.unicode($pass))|纯Hash，盐 且/或 多次迭代
+4500|sha1(sha1($pass))|纯Hash，盐 且/或 多次迭代
+4520|sha1($salt.sha1($pass))|纯Hash，盐 且/或 多次迭代
+4700|sha1(md5($pass))|纯Hash，盐 且/或 多次迭代
+4900|sha1($salt.$pass.$salt)|纯Hash，盐 且/或 多次迭代
+14400|sha1(CX)|纯Hash，盐 且/或 多次迭代
+1410|sha256($pass.$salt)|纯Hash，盐 且/或 多次迭代
+1420|sha256($salt.$pass)|纯Hash，盐 且/或 多次迭代
+1430|sha256(unicode($pass).$salt)|纯Hash，盐 且/或 多次迭代
+1440|sha256($salt.unicode($pass))|纯Hash，盐 且/或 多次迭代
+1710|sha512($pass.$salt)|纯Hash，盐 且/或 多次迭代
+1720|sha512($salt.$pass)|纯Hash，盐 且/或 多次迭代
+1730|sha512(unicode($pass).$salt)|纯Hash，盐 且/或 多次迭代
+1740|sha512($salt.unicode($pass))|纯Hash，盐 且/或 多次迭代
+50|HMAC-MD5 (key = $pass)|纯Hash，认证的
+60|HMAC-MD5 (key = $salt)|纯Hash，认证的
+150|HMAC-SHA1 (key = $pass)|纯Hash，认证的
+160|HMAC-SHA1 (key = $salt)|纯Hash，认证的
+1450|HMAC-SHA256 (key = $pass)|纯Hash，认证的
+1460|HMAC-SHA256 (key = $salt)|纯Hash，认证的
+1750|HMAC-SHA512 (key = $pass)|纯Hash，认证的
+1760|HMAC-SHA512 (key = $salt)|纯Hash，认证的
+14000|DES (PT = $salt, key = $pass)|纯加密，已知的明文攻击
+14100|3DES (PT = $salt, key = $pass)|纯加密，已知的明文攻击
+14900|Skip32 (PT = $salt, key = $pass)|纯加密，已知的明文攻击
+400|phpass|通用密钥导出函数(KDF)
+8900|scrypt|通用密钥导出函数(KDF)
+11900|PBKDF2-HMAC-MD5|通用密钥导出函数(KDF)
+12000|PBKDF2-HMAC-SHA1|通用密钥导出函数(KDF)
+10900|PBKDF2-HMAC-SHA256|通用密钥导出函数(KDF)
+12100|PBKDF2-HMAC-SHA512|通用密钥导出函数(KDF)
+23|Skype|网络协议
+2500|WPA/WPA2|网络协议
+4800|iSCSI CHAP authentication, MD5(CHAP)|网络协议
+5300|IKE-PSK MD5|网络协议
+5400|IKE-PSK SHA1|网络协议
+5500|NetNTLMv1|网络协议
+5500|NetNTLMv1+ESS|网络协议
+5600|NetNTLMv2|网络协议
+7300|IPMI2 RAKP HMAC-SHA1|网络协议
+7500|Kerberos 5 AS-REQ Pre-Auth etype 23|网络协议
+8300|DNSSEC (NSEC3)|网络协议
+10200|CRAM-MD5|网络协议
+11100|PostgreSQL CRAM (MD5)|网络协议
+11200|MySQL CRAM (SHA1)|网络协议
+11400|SIP digest authentication (MD5)|网络协议
+13100|Kerberos 5 TGS-REP etype 23|网络协议
+121|SMF (Simple Machines Forum) > v1.1|论坛，内容管理系统(CMS)，电子商务，框架
+400|phpBB3 (MD5)|论坛，内容管理系统(CMS)，电子商务，框架
+2611|vBulletin < v3.8.5|论坛，内容管理系统(CMS)，电子商务，框架
+2711|vBulletin >= v3.8.5|论坛，内容管理系统(CMS)，电子商务，框架
+2811|MyBB 1.2+|论坛，内容管理系统(CMS)，电子商务，框架
+2811|IPB2+ (Invision Power Board)|论坛，内容管理系统(CMS)，电子商务，框架
+8400|WBB3 (Woltlab Burning Board)|论坛，内容管理系统(CMS)，电子商务，框架
+11|Joomla < 2.5.18|论坛，内容管理系统(CMS)，电子商务，框架
+400|Joomla >= 2.5.18 (MD5)|论坛，内容管理系统(CMS)，电子商务，框架
+400|WordPress (MD5)|论坛，内容管理系统(CMS)，电子商务，框架
+2612|PHPS|论坛，内容管理系统(CMS)，电子商务，框架
+7900|Drupal7|论坛，内容管理系统(CMS)，电子商务，框架
+21|osCommerce|论坛，内容管理系统(CMS)，电子商务，框架
+21|xt:Commerce|论坛，内容管理系统(CMS)，电子商务，框架
+11000|PrestaShop|论坛，内容管理系统(CMS)，电子商务，框架
+124|Django (SHA-1)|论坛，内容管理系统(CMS)，电子商务，框架
+10000|Django (PBKDF2-SHA256)|论坛，内容管理系统(CMS)，电子商务，框架
+3711|MediaWiki B type|论坛，内容管理系统(CMS)，电子商务，框架
+13900|OpenCart|论坛，内容管理系统(CMS)，电子商务，框架
+4521|Redmine|论坛，内容管理系统(CMS)，电子商务，框架
+4522|PunBB|论坛，内容管理系统(CMS)，电子商务，框架
+12001|Atlassian (PBKDF2-HMAC-SHA1)|论坛，内容管理系统(CMS)，电子商务，框架
+12|PostgreSQL|数据库服务器
+131|MSSQL (2000)|数据库服务器
+132|MSSQL (2005)|数据库服务器
+1731|MSSQL (2012, 2014)|数据库服务器
+200|MySQL323|数据库服务器
+300|MySQL4.1/MySQL5|数据库服务器
+3100|Oracle H: Type (Oracle 7+)|数据库服务器
+112|Oracle S: Type (Oracle 11+)|数据库服务器
+12300|Oracle T: Type (Oracle 12+)|数据库服务器
+8000|Sybase ASE|数据库服务器
+141|Episerver 6.x < .NET 4|HTTP，SMTP，LDAP服务器
+1441|Episerver 6.x >= .NET 4|HTTP，SMTP，LDAP服务器
+1600|Apache $apr1$ MD5, md5apr1, MD5 (APR)|HTTP，SMTP，LDAP服务器
+12600|ColdFusion 10+|HTTP，SMTP，LDAP服务器
+1421|hMailServer|HTTP，SMTP，LDAP服务器
+101|nsldap, SHA-1(Base64), Netscape LDAP SHA|HTTP，SMTP，LDAP服务器
+111|nsldaps, SSHA-1(Base64), Netscape LDAP SSHA|HTTP，SMTP，LDAP服务器
+1411|SSHA-256(Base64), LDAP {SSHA256}|HTTP，SMTP，LDAP服务器
+1711|SSHA-512(Base64), LDAP {SSHA512}|HTTP，SMTP，LDAP服务器
+15000|FileZilla Server >= 0.9.55|FTP 服务器
+11500|CRC32|校验和
+3000|LM|操作系统
+1000|NTLM|操作系统
+1100|Domain Cached Credentials (DCC), MS Cache|操作系统
+2100|Domain Cached Credentials 2 (DCC2), MS Cache 2|操作系统
+12800|MS-AzureSync  PBKDF2-HMAC-SHA256|操作系统
+1500|descrypt, DES (Unix), Traditional DES|操作系统
+12400|BSDiCrypt, Extended DES|操作系统
+500|md5crypt, MD5 (Unix), Cisco-IOS $1$ (MD5)|操作系统
+3200|bcrypt $2*$, Blowfish (Unix)|操作系统
+7400|sha256crypt $5$, SHA256 (Unix)|操作系统
+1800|sha512crypt $6$, SHA512 (Unix)|操作系统
+122|OSX v10.4, OSX v10.5, OSX v10.6|操作系统
+1722|OSX v10.7|操作系统
+7100|OSX v10.8+ (PBKDF2-SHA512)|操作系统
+6300|AIX {smd5}|操作系统
+6700|AIX {ssha1}|操作系统
+6400|AIX {ssha256}|操作系统
+6500|AIX {ssha512}|操作系统
+2400|Cisco-PIX MD5|操作系统
+2410|Cisco-ASA MD5|操作系统
+500|Cisco-IOS $1$ (MD5)|操作系统
+5700|Cisco-IOS type 4 (SHA256)|操作系统
+9200|Cisco-IOS $8$ (PBKDF2-SHA256)|操作系统
+9300|Cisco-IOS $9$ (scrypt)|操作系统
+22|Juniper NetScreen/SSG (ScreenOS)|操作系统
+501|Juniper IVE|操作系统
+15100|Juniper/NetBSD sha1crypt|操作系统
+7000|FortiGate (FortiOS)|操作系统
+5800|Samsung Android Password/PIN|操作系统
+13800|Windows Phone 8+ PIN/password|操作系统
+8100|Citrix NetScaler|操作系统
+8500|RACF|操作系统
+7200|GRUB 2|操作系统
+9900|Radmin2|操作系统
+125|ArubaOS|操作系统
+7700|SAP CODVN B (BCODE)|企业应用软件（EAS）
+7800|SAP CODVN F/G (PASSCODE)|企业应用软件（EAS）
+10300|SAP CODVN H (PWDSALTEDHASH) iSSHA-1|企业应用软件（EAS）
+8600|Lotus Notes/Domino 5|企业应用软件（EAS）
+8700|Lotus Notes/Domino 6|企业应用软件（EAS）
+9100|Lotus Notes/Domino 8|企业应用软件（EAS）
+133|PeopleSoft|企业应用软件（EAS）
+13500|PeopleSoft PS_TOKEN|企业应用软件（EAS）
+11600|7-Zip|压缩/存档
+12500|RAR3-hp|压缩/存档
+13000|RAR5|压缩/存档
+13200|AxCrypt|压缩/存档
+13300|AxCrypt in-memory SHA1|压缩/存档
+13600|WinZip|压缩/存档
+14700|iTunes 备份 < 10.0|备份
+14800|iTunes 备份 >= 10.0|备份
+62XY|TrueCrypt|全盘加密（FDE）
+X|1 = PBKDF2-HMAC-RIPEMD160|全盘加密（FDE）
+X|2 = PBKDF2-HMAC-SHA512|全盘加密（FDE）
+X|3 = PBKDF2-HMAC-Whirlpool|全盘加密（FDE）
+X|4 = PBKDF2-HMAC-RIPEMD160 + boot-mode|全盘加密（FDE）
+Y|1 = XTS  512 bit pure AES|全盘加密（FDE）
+Y|1 = XTS  512 bit pure Serpent|全盘加密（FDE）
+Y|1 = XTS  512 bit pure Twofish|全盘加密（FDE）
+Y|2 = XTS 1024 bit pure AES|全盘加密（FDE）
+Y|2 = XTS 1024 bit pure Serpent|全盘加密（FDE）
+Y|2 = XTS 1024 bit pure Twofish|全盘加密（FDE）
+Y|2 = XTS 1024 bit cascaded AES-Twofish|全盘加密（FDE）
+Y|2 = XTS 1024 bit cascaded Serpent-AES|全盘加密（FDE）
+Y|2 = XTS 1024 bit cascaded Twofish-Serpent|全盘加密（FDE）
+Y|3 = XTS 1536 bit all|全盘加密（FDE）
+8800|Android FDE <= 4.3|全盘加密（FDE）
+12900|Android FDE (Samsung DEK)|全盘加密（FDE）
+12200|eCryptfs|全盘加密（FDE）
+137XY|VeraCrypt|全盘加密（FDE）
+X|1 = PBKDF2-HMAC-RIPEMD160|全盘加密（FDE）
+X|2 = PBKDF2-HMAC-SHA512|全盘加密（FDE）
+X|3 = PBKDF2-HMAC-Whirlpool|全盘加密（FDE）
+X|4 = PBKDF2-HMAC-RIPEMD160 + boot-mode|全盘加密（FDE）
+X|5 = PBKDF2-HMAC-SHA256|全盘加密（FDE）
+X|6 = PBKDF2-HMAC-SHA256 + boot-mode|全盘加密（FDE）
+Y|1 = XTS  512 bit pure AES|全盘加密（FDE）
+Y|1 = XTS  512 bit pure Serpent|全盘加密（FDE）
+Y|1 = XTS  512 bit pure Twofish|全盘加密（FDE）
+Y|2 = XTS 1024 bit pure AES|全盘加密（FDE）
+Y|2 = XTS 1024 bit pure Serpent|全盘加密（FDE）
+Y|2 = XTS 1024 bit pure Twofish|全盘加密（FDE）
+Y|2 = XTS 1024 bit cascaded AES-Twofish|全盘加密（FDE）
+Y|2 = XTS 1024 bit cascaded Serpent-AES|全盘加密（FDE）
+Y|2 = XTS 1024 bit cascaded Twofish-Serpent|全盘加密（FDE）
+Y|3 = XTS 1536 bit all|全盘加密（FDE）
+14600|LUKS|全盘加密（FDE）
+9700|MS Office <= 2003 $0/$1, MD5 + RC4|文档
+9710|MS Office <= 2003 $0/$1, MD5 + RC4, collider #1|文档
+9720|MS Office <= 2003 $0/$1, MD5 + RC4, collider #2|文档
+9800|MS Office <= 2003 $3/$4, SHA1 + RC4|文档
+9810|MS Office <= 2003 $3/$4, SHA1 + RC4, collider #1|文档
+9820|MS Office <= 2003 $3/$4, SHA1 + RC4, collider #2|文档
+9400|MS Office 2007|文档
+9500|MS Office 2010|文档
+9600|MS Office 2013|文档
+10400|PDF 1.1 - 1.3 (Acrobat 2 - 4)|文档
+10410|PDF 1.1 - 1.3 (Acrobat 2 - 4), collider #1|文档
+10420|PDF 1.1 - 1.3 (Acrobat 2 - 4), collider #2|文档
+10500|PDF 1.4 - 1.6 (Acrobat 5 - 8)|文档
+10600|PDF 1.7 Level 3 (Acrobat 9)|文档
+10700|PDF 1.7 Level 8 (Acrobat 10 - 11)|文档
+9000|Password Safe v2|密码管理软件
+5200|Password Safe v3|密码管理软件
+6800|LastPass + LastPass sniffed|密码管理软件
+6600|1Password, agilekeychain|密码管理软件
+8200|1Password, cloudkeychain|密码管理软件
+11300|Bitcoin/Litecoin wallet.dat|密码管理软件
+12700|Blockchain, My Wallet|密码管理软件
+13400|KeePass 1 (AES/Twofish) and KeePass 2 (AES)|密码管理软件
+99999|Plaintext|Blockchain明文，我的钱包
 
 ## 输出格式
 
-Num|Format
+编号|格式
 ---|-------
 1|hash[:salt]
 2|plain
@@ -350,12 +350,12 @@ Num|Format
 
 ## 调试模式规则
 
-Num|Format
+编号|格式
 ---|------
-1|Finding-Rule
-2|Original-Word
-3|Original-Word:Finding-Rule
-4|Original-Word:Finding-Rule:Processed-Word
+1|查找规则
+2|原始词
+3|原始词:查找规则
+4|原始词:查找规则:已处理词
 
 ## 攻击模式
 
@@ -369,7 +369,7 @@ Num|Format
 
 ## 内置字符集
 
-编号|字符集
+?|字符集
 -|-------
 l|abcdefghijklmnopqrstuvwxyz
 u|ABCDEFGHIJKLMNOPQRSTUVWXYZ
@@ -388,7 +388,7 @@ b|0x00 - 0xff
 2|GPU
 3|现场可编程门阵列(FPGA)，数字信号处理器(DSP)，协处理器(Co-Processor)
 
-## 工作量配置文件
+## 工作负载配置文件
 
 编号|性能|运行时间|能量消耗|桌面影响
 ---|-----------|-------|-----------------|--------------
