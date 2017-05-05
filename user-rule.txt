@@ -4,3 +4,4 @@
 ||uva.onlinejudge.org
 ||raw.githubusercontent.com
 ||github.io
+||amazonaws.com
