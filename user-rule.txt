@@ -5,3 +5,5 @@
 ||raw.githubusercontent.com
 ||github.io
 ||amazonaws.com
+||store.steampowered.com
+||steamcommunity.com
