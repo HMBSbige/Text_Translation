@@ -7,8 +7,8 @@
 
 # Steam Start
 116.224.87.43 telecom.dota2.wmsj.cn				# 完美电信CDN
-104.70.154.23  store.steampowered.com				# 商店
-104.70.154.23  steamcommunity.com				# 社区
+104.92.136.231  store.steampowered.com				# 商店
+104.92.136.231  steamcommunity.com				# 社区
 114.80.230.240 cdn.steamstatic.com.8686c.com			# 游戏图片/视频-中国地区
 114.80.230.240 cdn.mileweb.cs.steampowered.com.8686c.com	# 游戏下载-中国（不含香港）
 210.61.248.27 csgo-broadcast.akamai.steamstatic.com		# CSGO-GOTV
