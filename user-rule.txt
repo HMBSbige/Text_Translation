@@ -4,3 +4,5 @@
 ||uva.onlinejudge.org
 ||raw.githubusercontent.com
 ||github.io
+||store.steampowered.com
+||steamcommunity.com
