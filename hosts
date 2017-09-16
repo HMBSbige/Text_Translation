@@ -5,11 +5,6 @@
 ::1	ip6-loopback
 # Localhost (DO NOT REMOVE) End
 
-# Steam Start
-
-# Steam End
-
 # Resilio Sync Start
-54.230.143.112 config.getsync.com config.resilio.com
+# 47.91.138.13 config.getsync.com config.resilio.com config.usyncapp.com
 # Resilio Sync End
-192.168.119.1 windows10.microdone.cn
