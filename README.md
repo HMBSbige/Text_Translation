@@ -8,6 +8,14 @@
 
 文本使用UTF-8时软件会乱码，使用UTF-16 LE
 
+## 自用hosts
+
+https://raw.githubusercontent.com/HMBSbige/Text_Translation/master/hosts
+
+## 国内域名
+
+https://raw.githubusercontent.com/HMBSbige/Text_Translation/master/CNdomains.txt
+
 ## bilibili弹幕屏蔽XML
 
 [链接](https://raw.githubusercontent.com/HMBSbige/Text_Translation/master/tv.bilibili.player.xml)
