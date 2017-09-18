@@ -4,5 +4,7 @@
 ||uva.onlinejudge.org
 ||raw.githubusercontent.com
 ||github.io
-||store.steampowered.com
-||steamcommunity.com
+||humblebundle-a.akamaihd.net
+||humblebundle.com
+!||store.steampowered.com
+!||steamcommunity.com
