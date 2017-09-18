@@ -1,4 +1,15 @@
 *.cn
+*.bige0.com
+*.steampowered.com
+steamcommunity.com
+video.mileweb.steampowered.com.8686c.com
+broadcast.mileweb.steampowered.com.8686c.com
+steamuserimages-a.akamaihd.net
+cdn.akamai.steamstatic.com
+store.akamai.steamstatic.com
+cloud-3.steamusercontent.com
+cdn.steamstatic.com.8686c.com
+cdn.mileweb.cs.steampowered.com.8686c.com
 *.0-6.com
 *.0-gold.net
 *.00.net
@@ -1932,7 +1943,7 @@
 *.263y.com
 *.263zw.com
 *.264g.com
-*.#265.com
+*.265.com
 *.26595.com
 *.265dh.com
 *.265g.com
@@ -2052,7 +2063,7 @@
 *.2liangli.com
 *.2m2j.com
 *.2manhua.com
-*.#2mdn.net
+*.2mdn.net
 *.2mh.cc
 *.2mjob.com
 *.2mm.tv
@@ -11686,7 +11697,7 @@
 *.csgm168.com
 *.cshxdc.com
 *.cshzw.com
-*.#csi.gstatic.com
+*.csi.gstatic.com
 *.csk6.net
 *.cskaoyan.com
 *.cskxjk.com
@@ -12929,7 +12940,7 @@
 *.dl-mec.com
 *.dl-origin.ubnt.com
 *.dl.delivery.mp.microsoft.com
-*.#dl.google.com
+*.dl.google.com
 *.dl.ubnt.com
 *.dl1234.com
 *.dl321.net
@@ -13236,7 +13247,7 @@
 *.doubanz.com
 *.doubaojf.com
 *.doubean.com
-*.#doubleclick.net
+*.doubleclick.net
 *.doubleliu.com
 *.doudang.com
 *.doudier.com
@@ -15184,8 +15195,8 @@
 *.fongmong.com
 *.font5.com
 *.fontke.com
-*.#fonts.googleapis.com
-*.#fonts.gstatic.com
+*.fonts.googleapis.com
+*.fonts.gstatic.com
 *.foodgx.com
 *.foodjx.com
 *.foodmate.net
@@ -16265,15 +16276,15 @@
 *.goodwan.net
 *.goodwatch24.com
 *.googie.hk
-*.#google-analytics.com
+*.google-analytics.com
 *.google-update.net
-*.#googleadservices.com
-*.#googleanalytics.com
+*.googleadservices.com
+*.googleanalytics.com
 *.googlestatics1.com
-*.#googlesyndication.com
+*.googlesyndication.com
 *.googlesysndication.com
-*.#googletagmanager.com
-*.#googletagservices.com
+*.googletagmanager.com
+*.googletagservices.com
 *.googlo.me
 *.goojer.com
 *.goolink.org
@@ -24090,7 +24101,7 @@
 *.mediapower.mobi
 *.mediaqx.com
 *.mediav.com
-*.#mediavisor.doubleclick.com
+*.mediavisor.doubleclick.com
 *.mediaxinan.com
 *.meditic.com
 *.medky.net
@@ -24995,6 +25006,7 @@
 *.mtwine.com
 *.mtxgx.com
 *.mtxsnow.net
+*.mtyun.com
 *.mu8.cc
 *.mubansky.com
 *.mubanxiaowu.com
@@ -26928,6 +26940,7 @@
 *.postcha.com
 *.posterlabs.com
 *.postsc.com
+*.potatso.com
 *.potchinese.com
 *.powercdn.com
 *.powereasy.net
@@ -32805,6 +32818,7 @@
 *.vedeng.com
 *.veeqi.com
 *.veerchina.com
+*.veervr.tv
 *.veewo.com
 *.vehiclehi.com
 *.veikei.com
@@ -34500,7 +34514,7 @@
 *.www-ssl.intel.com
 *.www.agoda.com
 *.www.appinn.com
-*.#www.bing.com
+*.www.bing.com
 *.www.cg
 *.www.dell-brand.com
 *.www.dell.com
