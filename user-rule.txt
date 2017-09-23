@@ -8,4 +8,4 @@
 ||humblebundle.com
 !||store.steampowered.com
 !||steamcommunity.com
-@@*.pixiv.net/*
+@@||pixiv.net
