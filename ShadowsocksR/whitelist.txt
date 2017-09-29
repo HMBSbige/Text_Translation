@@ -1,5 +1,6 @@
-*.cn
 *.bige0.com
+*.xxskins.com
+cn.download.nvidia.com
 *.steampowered.com
 steamcommunity.com
 video.mileweb.steampowered.com.8686c.com
