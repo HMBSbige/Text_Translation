@@ -1,16 +1,17 @@
-﻿# A line which start with "#" is comment
+# A line which start with "#" is comment
 # The new one will overwrite the same item before
 # "a.com" means "a.com" only, "*.a.com" means all sub domains of "a.com" only, ".a.com" means "*.a.com" & "a.com"
 
 # remote proxy: transfer with server
 
-
 # local proxy: direct connect or go through local proxy
 
-.cn localproxy
 .bige0.com localproxy
+.xxskins.com localproxy
+cn.download.nvidia.com localproxy
 .steampowered.com localproxy
 steamcommunity.com localproxy
+.steamcontent.com localproxy
 video.mileweb.steampowered.com.8686c.com localproxy
 broadcast.mileweb.steampowered.com.8686c.com localproxy
 steamuserimages-a.akamaihd.net localproxy
@@ -19,6 +20,10 @@ store.akamai.steamstatic.com localproxy
 cloud-3.steamusercontent.com localproxy
 cdn.steamstatic.com.8686c.com localproxy
 cdn.mileweb.cs.steampowered.com.8686c.com localproxy
+steampipe.akamaized.net localproxy
+steamcdn-a.akamaihd.net localproxy
+steamstore-a.akamaihd.net localproxy
+steamcommunity-a.akamaihd.net localproxy
 .0-6.com localproxy
 .0-gold.net localproxy
 .00.net localproxy
@@ -196,6 +201,7 @@ cdn.mileweb.cs.steampowered.com.8686c.com localproxy
 .027dns.net localproxy
 .027eat.com localproxy
 .027hcss.com localproxy
+.027idc.com localproxy
 .027jx.com localproxy
 .027pifuyy.com localproxy
 .027pn.com localproxy
@@ -977,6 +983,7 @@ cdn.mileweb.cs.steampowered.com.8686c.com localproxy
 .123fj.com localproxy
 .123haitao.com localproxy
 .123hala.com localproxy
+.123hdp.com localproxy
 .123huodong.com localproxy
 .123juzi.net localproxy
 .123lvxing.com localproxy
@@ -1534,6 +1541,7 @@ cdn.mileweb.cs.steampowered.com.8686c.com localproxy
 .198wu.com localproxy
 .1990tu.com localproxy
 .1999wan.com localproxy
+.199cjcy.com localproxy
 .199dm.com localproxy
 .199it.com localproxy
 .199tl.com localproxy
@@ -2994,6 +3002,7 @@ cdn.mileweb.cs.steampowered.com.8686c.com localproxy
 .50de.com localproxy
 .50pk.com localproxy
 .50tu.com localproxy
+.50vm.com localproxy
 .50zera.com localproxy
 .51-cf.com localproxy
 .51.am localproxy
@@ -3621,6 +3630,7 @@ cdn.mileweb.cs.steampowered.com.8686c.com localproxy
 .52vrdy.com localproxy
 .52waha.com localproxy
 .52watch.net localproxy
+.52wlw.com localproxy
 .52wmb.com localproxy
 .52wubi.com localproxy
 .52wy.com localproxy
@@ -5342,6 +5352,7 @@ cdn.mileweb.cs.steampowered.com.8686c.com localproxy
 .91weigame.com localproxy
 .91weimi.com localproxy
 .91weiwang.com localproxy
+.91whcp.com localproxy
 .91wutong.com localproxy
 .91xcm.com localproxy
 .91xhg.com localproxy
@@ -5738,6 +5749,7 @@ cdn.mileweb.cs.steampowered.com.8686c.com localproxy
 .9droom.com localproxy
 .9duw.com localproxy
 .9dwx.net localproxy
+.9earth.com localproxy
 .9fangtv.cc localproxy
 .9fav.com localproxy
 .9fbank.com localproxy
@@ -5886,6 +5898,7 @@ cdn.mileweb.cs.steampowered.com.8686c.com localproxy
 .ab173.com localproxy
 .ab186.com localproxy
 .ab44.pw localproxy
+.ab84.pw localproxy
 .ab95569.com localproxy
 .abab.com localproxy
 .ababy1314.com localproxy
@@ -6024,6 +6037,7 @@ cdn.mileweb.cs.steampowered.com.8686c.com localproxy
 .adchitu.net localproxy
 .adconfer.com localproxy
 .adcoonfer.com localproxy
+.addgog.com localproxy
 .addons.cdn.mozilla.net localproxy
 .addpv.com localproxy
 .adeqo.com localproxy
@@ -6237,6 +6251,7 @@ cdn.mileweb.cs.steampowered.com.8686c.com localproxy
 .aichengxu.com localproxy
 .aicheren.com localproxy
 .aici.ren localproxy
+.aiclicash.com localproxy
 .aicu8.com localproxy
 .aicunfu.com localproxy
 .aidafen.com localproxy
@@ -6558,6 +6573,7 @@ cdn.mileweb.cs.steampowered.com.8686c.com localproxy
 .allfang.com localproxy
 .allfree.cc localproxy
 .allfreeresources.com localproxy
+.alllget.com localproxy
 .alllyun.com localproxy
 .allmax.cc localproxy
 .alloyteam.com localproxy
@@ -7094,6 +7110,7 @@ cdn.mileweb.cs.steampowered.com.8686c.com localproxy
 .aspx.cc localproxy
 .asqql.com localproxy
 .assets-ssl.xbox.com localproxy
+.assets.uxengine.net localproxy
 .assrt.net localproxy
 .astbbs.com localproxy
 .asthis.net localproxy
@@ -7769,6 +7786,7 @@ cdn.mileweb.cs.steampowered.com.8686c.com localproxy
 .bdgycx.com localproxy
 .bdh123.net localproxy
 .bdhds.com localproxy
+.bdicd.com localproxy
 .bdimg.com localproxy
 .bditong.com localproxy
 .bdkssc.com localproxy
@@ -8585,6 +8603,7 @@ cdn.mileweb.cs.steampowered.com.8686c.com localproxy
 .bsjx.org localproxy
 .bskk.com localproxy
 .bskk.net localproxy
+.bspeizi.com localproxy
 .bsrczpw.com localproxy
 .bssmm.com localproxy
 .bsteel.net localproxy
@@ -8593,6 +8612,7 @@ cdn.mileweb.cs.steampowered.com.8686c.com localproxy
 .bswxue.com localproxy
 .bsyjrb.com localproxy
 .bsyz.net localproxy
+.bt0.com localproxy
 .bt49.com localproxy
 .bt720.net localproxy
 .btants.com localproxy
@@ -9785,6 +9805,7 @@ cdn.mileweb.cs.steampowered.com.8686c.com localproxy
 .chenghai.cc localproxy
 .chengjing.com localproxy
 .chengkao365.com localproxy
+.chenglang.net localproxy
 .chenglin.name localproxy
 .chengliwang.com localproxy
 .chenglou.net localproxy
@@ -9955,6 +9976,7 @@ cdn.mileweb.cs.steampowered.com.8686c.com localproxy
 .china.mintel.com localproxy
 .china.msn.com localproxy
 .china.nba.com localproxy
+.china.uxengine.net localproxy
 .china001.com localproxy
 .china1040.com localproxy
 .china114net.com localproxy
@@ -10728,6 +10750,7 @@ cdn.mileweb.cs.steampowered.com.8686c.com localproxy
 .cloudglb.net localproxy
 .cloudgoing.com localproxy
 .cloudhvacr.com localproxy
+.cloudiplc.com localproxy
 .cloudleft.com localproxy
 .cloudminds.com localproxy
 .cloudnapps.com localproxy
@@ -12070,6 +12093,7 @@ cdn.mileweb.cs.steampowered.com.8686c.com localproxy
 .dabieshu.com localproxy
 .dabin69.com localproxy
 .dabingseo.com localproxy
+.dabiqu.com localproxy
 .dabo8.com localproxy
 .dabu.info localproxy
 .dabusi.com localproxy
@@ -12148,6 +12172,7 @@ cdn.mileweb.cs.steampowered.com.8686c.com localproxy
 .daimajia.com localproxy
 .daimasucai.com localproxy
 .daimg.com localproxy
+.daimiyun.com localproxy
 .daishangqian.com localproxy
 .daishu.com localproxy
 .daishujiankang.com localproxy
@@ -12644,6 +12669,7 @@ cdn.mileweb.cs.steampowered.com.8686c.com localproxy
 .dgzzm.com localproxy
 .dh0599.com localproxy
 .dh2libao.com localproxy
+.dh5idnf.com localproxy
 .dh818.com localproxy
 .dhchouse.com localproxy
 .dhenan.com localproxy
@@ -12717,6 +12743,7 @@ cdn.mileweb.cs.steampowered.com.8686c.com localproxy
 .dianwang123.com localproxy
 .dianwannan.com localproxy
 .dianwoba.com localproxy
+.dianwoda.com localproxy
 .dianxin.net localproxy
 .dianxinnews.com localproxy
 .dianxinos.com localproxy
@@ -13263,7 +13290,6 @@ cdn.mileweb.cs.steampowered.com.8686c.com localproxy
 .dou.bz localproxy
 .dou.li localproxy
 .douapp.com localproxy
-.doub.io localproxy
 .douban.com localproxy
 .douban.fm localproxy
 .doubanio.com localproxy
@@ -13448,6 +13474,7 @@ cdn.mileweb.cs.steampowered.com.8686c.com localproxy
 .dtcoalmine.com localproxy
 .dtdiefa.com localproxy
 .dtfcw.com localproxy
+.dth199.com localproxy
 .dthrb.com localproxy
 .dtjwjyzz.com localproxy
 .dtlsw.com localproxy
@@ -14791,6 +14818,7 @@ cdn.mileweb.cs.steampowered.com.8686c.com localproxy
 .fc811.com localproxy
 .fc999.com localproxy
 .fcaustralia.com localproxy
+.fcbox.com localproxy
 .fcchbj.com localproxy
 .fccs.com localproxy
 .fcctt.org localproxy
@@ -16260,6 +16288,7 @@ cdn.mileweb.cs.steampowered.com.8686c.com localproxy
 .gongchang.com localproxy
 .gongchou.com localproxy
 .gongheshengshi.com localproxy
+.gongjianglaile.com localproxy
 .gongjiao.com localproxy
 .gongjiaomi.com localproxy
 .gongkong.com localproxy
@@ -16549,6 +16578,7 @@ cdn.mileweb.cs.steampowered.com.8686c.com localproxy
 .gufengge.org localproxy
 .gufengmh.com localproxy
 .gugeanzhuangqi.com localproxy
+.gugeapps.com localproxy
 .gugelala.com localproxy
 .gugong.net localproxy
 .gugu5.com localproxy
@@ -18692,6 +18722,7 @@ cdn.mileweb.cs.steampowered.com.8686c.com localproxy
 .hyyf.net localproxy
 .hyyo.net localproxy
 .hyz86.com localproxy
+.hz-etest.com localproxy
 .hz-gn.com localproxy
 .hz-travel.com localproxy
 .hz-xin.com localproxy
@@ -19022,6 +19053,7 @@ cdn.mileweb.cs.steampowered.com.8686c.com localproxy
 .iduokan.net localproxy
 .idv.la localproxy
 .idv2.com localproxy
+.idy360.com localproxy
 .idytt.com localproxy
 .idzoom.com localproxy
 .ie18.com localproxy
@@ -19313,12 +19345,10 @@ cdn.mileweb.cs.steampowered.com.8686c.com localproxy
 .img-space.com localproxy
 .img.mediaplex.com localproxy
 .img.samsungapps.com localproxy
-.img1.appinn.com localproxy
 .img1.wsimg.com localproxy
 .img168.net localproxy
 .img16888.com localproxy
 .img2.wsimg.com localproxy
-.img3.appinn.com localproxy
 .img3.wsimg.com localproxy
 .img39.com localproxy
 .img4.wsimg.com localproxy
@@ -20455,6 +20485,7 @@ cdn.mileweb.cs.steampowered.com.8686c.com localproxy
 .jimuc.com localproxy
 .jimucake.com localproxy
 .jimufund.com localproxy
+.jimujiazx.com localproxy
 .jimulicai.com localproxy
 .jimustock.com localproxy
 .jin10.com localproxy
@@ -20569,6 +20600,7 @@ cdn.mileweb.cs.steampowered.com.8686c.com localproxy
 .jinti.com localproxy
 .jintianjihao.com localproxy
 .jintoutiao.com localproxy
+.jinwanhui88.com localproxy
 .jinwantang.com localproxy
 .jinxian.cc localproxy
 .jinxun.cc localproxy
@@ -21171,6 +21203,7 @@ cdn.mileweb.cs.steampowered.com.8686c.com localproxy
 .junma88.com localproxy
 .junmeng.com localproxy
 .junmidao.com localproxy
+.junmin.org localproxy
 .junmiquan.com localproxy
 .junph.com localproxy
 .junpin360.com localproxy
@@ -22296,6 +22329,7 @@ cdn.mileweb.cs.steampowered.com.8686c.com localproxy
 .lailaihui.com localproxy
 .lailook.com localproxy
 .laimaika.net localproxy
+.laiqi.net localproxy
 .laishuge.com localproxy
 .laishui.info localproxy
 .laiwang.com localproxy
@@ -22531,6 +22565,7 @@ cdn.mileweb.cs.steampowered.com.8686c.com localproxy
 .leadbbs.com localproxy
 .leadercf.com localproxy
 .leaderhero.com localproxy
+.leadjinrong.com localproxy
 .leador.org localproxy
 .leadpeixun.com localproxy
 .leafword.com localproxy
@@ -22823,6 +22858,7 @@ cdn.mileweb.cs.steampowered.com.8686c.com localproxy
 .liaohenmeng.com localproxy
 .liaohuqiu.net localproxy
 .liaoing.com localproxy
+.liaoliao.com localproxy
 .liaotuo.org localproxy
 .liaoxuefeng.com localproxy
 .liaoyouba.com localproxy
@@ -23397,7 +23433,6 @@ cdn.mileweb.cs.steampowered.com.8686c.com localproxy
 .loupan.com localproxy
 .lousw.com localproxy
 .louyue.com localproxy
-.love.appinn.com localproxy
 .love3721.com localproxy
 .love616.com localproxy
 .love84.com localproxy
@@ -23710,6 +23745,7 @@ cdn.mileweb.cs.steampowered.com.8686c.com localproxy
 .lzc369.com localproxy
 .lzcbnews.com localproxy
 .lzccb.com localproxy
+.lzcei.com localproxy
 .lzcqt.com localproxy
 .lzeweb.com localproxy
 .lzhaohao.info localproxy
@@ -24129,6 +24165,7 @@ cdn.mileweb.cs.steampowered.com.8686c.com localproxy
 .me2.tv localproxy
 .me4399.com localproxy
 .meadin.com localproxy
+.mebook.cc localproxy
 .mechr.com localproxy
 .mechrevo.com localproxy
 .meckodo.com localproxy
@@ -24393,6 +24430,7 @@ cdn.mileweb.cs.steampowered.com.8686c.com localproxy
 .mh160.com localproxy
 .mhacn.com localproxy
 .mhaoche.com localproxy
+.mhealth100.com localproxy
 .mhecy.com localproxy
 .mhghl.com localproxy
 .mhhf.net localproxy
@@ -25240,6 +25278,7 @@ cdn.mileweb.cs.steampowered.com.8686c.com localproxy
 .mymhotel.com localproxy
 .mynee.com localproxy
 .mynook.info localproxy
+.myonline-sexfinders.com localproxy
 .myonlystar.com localproxy
 .myoppo.com localproxy
 .myp2pch.net localproxy
@@ -25376,6 +25415,7 @@ cdn.mileweb.cs.steampowered.com.8686c.com localproxy
 .nanhutravel.com localproxy
 .naniannatu.com localproxy
 .nanjiaosuo.com localproxy
+.nanjinghuojia.net localproxy
 .nanjingtianqi114.com localproxy
 .nankaimba.org localproxy
 .nanlebbs.com localproxy
@@ -25565,6 +25605,7 @@ cdn.mileweb.cs.steampowered.com.8686c.com localproxy
 .newoo.com localproxy
 .neworiental-k12.org localproxy
 .neworiental.org localproxy
+.neworld.org localproxy
 .neworldedu.org localproxy
 .neworldjp.com localproxy
 .newperiod.net localproxy
@@ -25904,6 +25945,7 @@ cdn.mileweb.cs.steampowered.com.8686c.com localproxy
 .nuoder.com localproxy
 .nuofengzhuangshi.com localproxy
 .nuomi.com localproxy
+.nuowoo.com localproxy
 .nuoyanet.com localproxy
 .nuqk.com localproxy
 .nushai.com localproxy
@@ -26107,6 +26149,7 @@ cdn.mileweb.cs.steampowered.com.8686c.com localproxy
 .ol3vs.com localproxy
 .oladd.com localproxy
 .olcdn.com localproxy
+.oldcp.com localproxy
 .older99.com localproxy
 .oldsec.com localproxy
 .olinone.com localproxy
@@ -27245,6 +27288,7 @@ cdn.mileweb.cs.steampowered.com.8686c.com localproxy
 .qbview.com localproxy
 .qbxs8.com localproxy
 .qbxs8.net localproxy
+.qbxz.com localproxy
 .qc-dds.net localproxy
 .qc188.com localproxy
 .qc288.com localproxy
@@ -27290,6 +27334,7 @@ cdn.mileweb.cs.steampowered.com.8686c.com localproxy
 .qdmm.com localproxy
 .qdppc.com localproxy
 .qdqunxinjixie.com localproxy
+.qdscgj.com localproxy
 .qdsntsg.com localproxy
 .qdtongxinedu.net localproxy
 .qdvivi.com localproxy
@@ -27836,6 +27881,7 @@ cdn.mileweb.cs.steampowered.com.8686c.com localproxy
 .qqshuoshuo.com localproxy
 .qqski.com localproxy
 .qqson.com localproxy
+.qqsort.com localproxy
 .qqssw.com localproxy
 .qqstudent.com localproxy
 .qqsuji.com localproxy
@@ -28346,6 +28392,7 @@ cdn.mileweb.cs.steampowered.com.8686c.com localproxy
 .reyun.com localproxy
 .reyyu.com localproxy
 .rf-gsm.com localproxy
+.rfchost.com localproxy
 .rfcreader.com localproxy
 .rfidchina.org localproxy
 .rfq.so localproxy
@@ -28446,6 +28493,7 @@ cdn.mileweb.cs.steampowered.com.8686c.com localproxy
 .rong.io localproxy
 .rong24.com localproxy
 .rong360.com localproxy
+.rongba.com localproxy
 .rongbaike.com localproxy
 .rongbiz.com localproxy
 .rongbiz.net localproxy
@@ -28710,6 +28758,7 @@ cdn.mileweb.cs.steampowered.com.8686c.com localproxy
 .sanguozz.com localproxy
 .sangwu.net localproxy
 .sangwu.org localproxy
+.sanhao.com localproxy
 .sanhaofushi.com localproxy
 .sanhaostreet.com localproxy
 .sanhetengda.com localproxy
@@ -28967,6 +29016,7 @@ cdn.mileweb.cs.steampowered.com.8686c.com localproxy
 .senszx.com localproxy
 .sentsin.com localproxy
 .seocun.com localproxy
+.seocxw.com localproxy
 .seoercn.com localproxy
 .seofangfa.com localproxy
 .seosaiqi.com localproxy
@@ -29859,6 +29909,7 @@ cdn.mileweb.cs.steampowered.com.8686c.com localproxy
 .sjhl.cc localproxy
 .sjhzyy.net localproxy
 .sjmxx.com localproxy
+.sjnjcn.org localproxy
 .sjpcw.com localproxy
 .sjqkd.com localproxy
 .sjrjy.com localproxy
@@ -30319,6 +30370,7 @@ cdn.mileweb.cs.steampowered.com.8686c.com localproxy
 .srccom.com localproxy
 .srcdd.com localproxy
 .srdlc.com localproxy
+.srhuafeng.com localproxy
 .srichina.org localproxy
 .srosi.com localproxy
 .srssn.com localproxy
@@ -32115,6 +32167,7 @@ cdn.mileweb.cs.steampowered.com.8686c.com localproxy
 .tuili.com localproxy
 .tuili8.com localproxy
 .tuilisr.com localproxy
+.tuiliu.net localproxy
 .tuimz.com localproxy
 .tuishao.net localproxy
 .tuishiben.com localproxy
@@ -32766,6 +32819,7 @@ cdn.mileweb.cs.steampowered.com.8686c.com localproxy
 .uyess.com localproxy
 .uyou.com localproxy
 .uyuan.info localproxy
+.uyunbaby.com localproxy
 .uz73.com localproxy
 .uz73.net localproxy
 .uzai.com localproxy
@@ -33386,6 +33440,7 @@ cdn.mileweb.cs.steampowered.com.8686c.com localproxy
 .wanhunet.com localproxy
 .wanjiaoyu.com localproxy
 .wanjiashe.com localproxy
+.wanjidao.com localproxy
 .wanjiedu.com localproxy
 .wanjiquan.com localproxy
 .wankacn.com localproxy
@@ -33710,6 +33765,7 @@ cdn.mileweb.cs.steampowered.com.8686c.com localproxy
 .weimeiyuju.com localproxy
 .weimi.me localproxy
 .weimob.com localproxy
+.weimobqa.com localproxy
 .weinc66.com localproxy
 .weiosx.com localproxy
 .weiot.net localproxy
@@ -33899,6 +33955,7 @@ cdn.mileweb.cs.steampowered.com.8686c.com localproxy
 .wff168.com localproxy
 .wffc120.com localproxy
 .wfgqw.com localproxy
+.wfhxssg.com localproxy
 .wfjimg.com localproxy
 .wfjuxing.com localproxy
 .wfkouyaji.com localproxy
@@ -33934,6 +33991,7 @@ cdn.mileweb.cs.steampowered.com.8686c.com localproxy
 .whbjyy.com localproxy
 .whcbs.com localproxy
 .whccb.com localproxy
+.whcdc.org localproxy
 .whchihuo.com localproxy
 .whcst.com localproxy
 .whctv.com localproxy
@@ -34567,7 +34625,6 @@ cdn.mileweb.cs.steampowered.com.8686c.com localproxy
 .www-cdn.dell.com localproxy
 .www-ssl.intel.com localproxy
 .www.agoda.com localproxy
-.www.appinn.com localproxy
 .www.bing.com localproxy
 .www.cg localproxy
 .www.dell-brand.com localproxy
@@ -34686,6 +34743,7 @@ cdn.mileweb.cs.steampowered.com.8686c.com localproxy
 .wzits.com localproxy
 .wzjmr.com localproxy
 .wzksw.com localproxy
+.wzleou.com localproxy
 .wzlim.com localproxy
 .wzlry.com localproxy
 .wzms.com localproxy
@@ -35154,6 +35212,7 @@ cdn.mileweb.cs.steampowered.com.8686c.com localproxy
 .xiazaidc.com localproxy
 .xiazaijia.cc localproxy
 .xiazaijidi.com localproxy
+.xiazaiwo.net localproxy
 .xiazaiyuan.net localproxy
 .xiazaizhijia.com localproxy
 .xibao100.com localproxy
@@ -35587,6 +35646,7 @@ cdn.mileweb.cs.steampowered.com.8686c.com localproxy
 .xmcwh.com localproxy
 .xmcx.net localproxy
 .xmeise.com localproxy
+.xmf.com localproxy
 .xmfc.com localproxy
 .xmferry.com localproxy
 .xmfish.com localproxy
@@ -36095,6 +36155,7 @@ cdn.mileweb.cs.steampowered.com.8686c.com localproxy
 .yanqing888.me localproxy
 .yanqing888.net localproxy
 .yanqingmm.com localproxy
+.yanru.net localproxy
 .yansu.org localproxy
 .yantai-chuanpiao.com localproxy
 .yantaibank.net localproxy
@@ -36135,6 +36196,7 @@ cdn.mileweb.cs.steampowered.com.8686c.com localproxy
 .yaowan.com localproxy
 .yaoyouke.com localproxy
 .yaozh.com localproxy
+.yaozuo.name localproxy
 .yasi51.org localproxy
 .yasiyasi.com localproxy
 .yasn.com localproxy
@@ -36304,6 +36366,7 @@ cdn.mileweb.cs.steampowered.com.8686c.com localproxy
 .ygbizhi.com localproxy
 .ygdy8.net localproxy
 .yge.me localproxy
+.yghsh.com localproxy
 .ygjj.com localproxy
 .ygjoy.com localproxy
 .ygkmp.com localproxy
@@ -36333,6 +36396,8 @@ cdn.mileweb.cs.steampowered.com.8686c.com localproxy
 .yhurl.com localproxy
 .yhwsn.com localproxy
 .yhxx.com localproxy
+.yhy50.com localproxy
+.yhyshop.com localproxy
 .yhzx.cc localproxy
 .yi-jy.com localproxy
 .yi114.com localproxy
@@ -36948,6 +37013,7 @@ cdn.mileweb.cs.steampowered.com.8686c.com localproxy
 .youxiba.cc localproxy
 .youxibao.com localproxy
 .youxibaoku.com localproxy
+.youxicdn.com localproxy
 .youxichaguan.com localproxy
 .youxichou.com localproxy
 .youxicity.com localproxy
@@ -37041,6 +37107,7 @@ cdn.mileweb.cs.steampowered.com.8686c.com localproxy
 .ypank.com localproxy
 .yplady.com localproxy
 .ypmob.com localproxy
+.ypstate.com localproxy
 .ypzdw.com localproxy
 .yq027.com localproxy
 .yq169.net localproxy
@@ -37217,6 +37284,7 @@ cdn.mileweb.cs.steampowered.com.8686c.com localproxy
 .yueyoujsq.com localproxy
 .yueyu114.com localproxy
 .yueyuedai.com localproxy
+.yueyues.com localproxy
 .yueyuez.com localproxy
 .yueyutattoo.com localproxy
 .yueyuxuan.com localproxy
@@ -37771,6 +37839,7 @@ cdn.mileweb.cs.steampowered.com.8686c.com localproxy
 .zg5.cc localproxy
 .zgaxr.com localproxy
 .zgbigart.com localproxy
+.zgboke.com localproxy
 .zgbzad.com localproxy
 .zgc66.com localproxy
 .zgcae.net localproxy
@@ -38024,6 +38093,7 @@ cdn.mileweb.cs.steampowered.com.8686c.com localproxy
 .zhengshu5.com localproxy
 .zhengtu8.com localproxy
 .zhengtugps.com localproxy
+.zhenguo.com localproxy
 .zhengwutong.com localproxy
 .zhengyifeng.com localproxy
 .zhengzhoubus.com localproxy
@@ -38694,6 +38764,7 @@ cdn.mileweb.cs.steampowered.com.8686c.com localproxy
 .zrcaifu.com localproxy
 .zrcbank.com localproxy
 .zreading.net localproxy
+.zrfan.com localproxy
 .zrjinfu.com localproxy
 .zrmm.com localproxy
 .zrtcapital.com localproxy
@@ -38967,18 +39038,11 @@ cdn.mileweb.cs.steampowered.com.8686c.com localproxy
 
 # direct
 
-# localhost direct
-
-
 # reject: reject this host
 
-#.baidu.com reject
-
-
-# host list: only works in 'direct' or 'localproxy'
+# host list
 
 localhost 127.0.0.1
-
 # special rule
 
 # ip rules, run this rules if not match any host rule
@@ -40064,6 +40128,7 @@ localhost 127.0.0.1
 45.114.96.0 45.114.99.255 localproxy
 45.114.104.0 45.114.107.255 localproxy
 45.114.108.0 45.114.111.255 localproxy
+45.114.124.0 45.114.127.255 localproxy
 45.114.136.0 45.114.139.255 localproxy
 45.114.196.0 45.114.199.255 localproxy
 45.114.200.0 45.114.203.255 localproxy
@@ -42563,6 +42628,14 @@ localhost 127.0.0.1
 103.101.8.0 103.101.11.255 localproxy
 103.101.12.0 103.101.15.255 localproxy
 103.101.28.0 103.101.31.255 localproxy
+103.101.60.0 103.101.63.255 localproxy
+103.101.120.0 103.101.123.255 localproxy
+103.101.124.0 103.101.127.255 localproxy
+103.101.144.0 103.101.147.255 localproxy
+103.101.148.0 103.101.151.255 localproxy
+103.101.153.0 103.101.153.255 localproxy
+103.101.180.0 103.101.183.255 localproxy
+103.101.184.0 103.101.187.255 localproxy
 103.192.0.0 103.192.3.255 localproxy
 103.192.4.0 103.192.7.255 localproxy
 103.192.8.0 103.192.11.255 localproxy
@@ -44520,7 +44593,9 @@ localhost 127.0.0.1
 146.196.112.0 146.196.115.255 localproxy
 146.196.116.0 146.196.119.255 localproxy
 146.196.124.0 146.196.127.255 localproxy
+148.70.0.0 148.70.255.255 localproxy
 150.0.0.0 150.0.255.255 localproxy
+150.109.0.0 150.109.255.255 localproxy
 150.115.0.0 150.115.255.255 localproxy
 150.121.0.0 150.121.255.255 localproxy
 150.122.0.0 150.122.255.255 localproxy
@@ -44623,6 +44698,7 @@ localhost 127.0.0.1
 160.202.252.0 160.202.255.255 localproxy
 160.238.64.0 160.238.67.255 localproxy
 161.207.0.0 161.207.255.255 localproxy
+162.62.0.0 162.62.255.255 localproxy
 162.105.0.0 162.105.255.255 localproxy
 163.0.0.0 163.0.255.255 localproxy
 163.47.4.0 163.47.7.255 localproxy
@@ -44657,6 +44733,7 @@ localhost 127.0.0.1
 163.53.172.0 163.53.175.255 localproxy
 163.53.188.0 163.53.191.255 localproxy
 163.53.220.0 163.53.223.255 localproxy
+163.53.236.0 163.53.239.255 localproxy
 163.53.240.0 163.53.243.255 localproxy
 163.125.0.0 163.125.255.255 localproxy
 163.142.0.0 163.142.255.255 localproxy
@@ -44669,6 +44746,7 @@ localhost 127.0.0.1
 167.189.0.0 167.189.255.255 localproxy
 167.220.244.0 167.220.247.255 localproxy
 168.160.0.0 168.160.255.255 localproxy
+170.106.0.0 170.106.255.255 localproxy
 170.179.0.0 170.179.255.255 localproxy
 171.8.0.0 171.15.255.255 localproxy
 171.34.0.0 171.35.255.255 localproxy
@@ -45439,6 +45517,7 @@ localhost 127.0.0.1
 202.143.56.0 202.143.63.255 localproxy
 202.143.100.0 202.143.103.255 localproxy
 202.143.104.0 202.143.107.255 localproxy
+202.144.196.0 202.144.199.255 localproxy
 202.146.160.0 202.146.175.255 localproxy
 202.146.186.0 202.146.186.255 localproxy
 202.146.188.0 202.146.191.255 localproxy
@@ -45473,7 +45552,6 @@ localhost 127.0.0.1
 202.162.75.0 202.162.75.255 localproxy
 202.164.0.0 202.164.15.255 localproxy
 202.164.96.0 202.164.127.255 localproxy
-202.165.96.0 202.165.111.255 localproxy
 202.165.176.0 202.165.191.255 localproxy
 202.165.208.0 202.165.223.255 localproxy
 202.165.239.0 202.165.239.255 localproxy
