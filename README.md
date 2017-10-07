@@ -14,7 +14,7 @@ https://raw.githubusercontent.com/HMBSbige/Text_Translation/master/hosts
 
 ## 国内域名
 
-https://raw.githubusercontent.com/HMBSbige/Text_Translation/master/CNdomains.txt
+https://raw.githubusercontent.com/HMBSbige/Text_Translation/master/ShadowsocksR/CNdomains.txt
 
 ## bilibili弹幕屏蔽XML
 
