@@ -8,6 +8,7 @@
 
 .bige0.com localproxy
 .xxskins.com localproxy
+.gt798.com localproxy
 cn.download.nvidia.com localproxy
 .steampowered.com localproxy
 steamcommunity.com localproxy
@@ -17,7 +18,6 @@ broadcast.mileweb.steampowered.com.8686c.com localproxy
 steamuserimages-a.akamaihd.net localproxy
 cdn.akamai.steamstatic.com localproxy
 store.akamai.steamstatic.com localproxy
-cloud-3.steamusercontent.com localproxy
 cdn.steamstatic.com.8686c.com localproxy
 cdn.mileweb.cs.steampowered.com.8686c.com localproxy
 steampipe.akamaized.net localproxy
@@ -42234,7 +42234,6 @@ localhost 127.0.0.1
 103.72.132.0 103.72.135.255 localproxy
 103.72.144.0 103.72.147.255 localproxy
 103.72.148.0 103.72.151.255 localproxy
-103.72.164.0 103.72.167.255 localproxy
 103.72.172.0 103.72.175.255 localproxy
 103.72.180.0 103.72.183.255 localproxy
 103.72.224.0 103.72.227.255 localproxy
@@ -42713,6 +42712,8 @@ localhost 127.0.0.1
 103.101.184.0 103.101.187.255 localproxy
 103.102.76.0 103.102.79.255 localproxy
 103.102.80.0 103.102.83.255 localproxy
+103.102.168.0 103.102.171.255 localproxy
+103.102.172.0 103.102.175.255 localproxy
 103.192.0.0 103.192.3.255 localproxy
 103.192.4.0 103.192.7.255 localproxy
 103.192.8.0 103.192.11.255 localproxy
@@ -44754,7 +44755,6 @@ localhost 127.0.0.1
 157.156.0.0 157.156.255.255 localproxy
 157.255.0.0 157.255.255.255 localproxy
 159.226.0.0 159.226.255.255 localproxy
-160.19.48.0 160.19.51.255 localproxy
 160.19.208.0 160.19.211.255 localproxy
 160.19.212.0 160.19.215.255 localproxy
 160.19.216.0 160.19.219.255 localproxy
