@@ -16,6 +16,10 @@ https://raw.githubusercontent.com/HMBSbige/Text_Translation/master/hosts
 
 https://raw.githubusercontent.com/HMBSbige/Text_Translation/master/ShadowsocksR/CNdomains.txt
 
+## 白名单ACL
+
+https://raw.githubusercontent.com/HMBSbige/Text_Translation/master/ShadowsocksR/whitelist.acl
+
 ## bilibili弹幕屏蔽XML
 
 [链接](https://raw.githubusercontent.com/HMBSbige/Text_Translation/master/tv.bilibili.player.xml)
