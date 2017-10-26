@@ -33825,7 +33825,6 @@ var white_domains = {"ac":{
 "yaozuo":1,
 "yongche":1
 },"net":{
-"pixiv":1,
 "steamuserimages-a.akamaihd":1,
 "steampipe.akamaized":1,
 "steamcdn-a.akamaihd":1,
