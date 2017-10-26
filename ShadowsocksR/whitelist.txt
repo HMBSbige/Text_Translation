@@ -1,11 +1,11 @@
-*.bige0.com
-*.xxskins.com
-*.gt798.com
+bige0.com
+xxskins.com
+gt798.com
 cn.download.nvidia.com
-*.pixiv.net
-*.steampowered.com
+pixiv.net
+steampowered.com
 steamcommunity.com
-*.steamcontent.com
+steamcontent.com
 video.mileweb.steampowered.com.8686c.com
 broadcast.mileweb.steampowered.com.8686c.com
 steamuserimages-a.akamaihd.net
