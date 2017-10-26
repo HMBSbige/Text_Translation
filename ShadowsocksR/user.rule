@@ -12,12 +12,8 @@
 .cn.download.nvidia.com localproxy
 .steampowered.com localproxy
 .steamcommunity.com localproxy
-.steamcontent.com localproxy
 .video.mileweb.steampowered.com.8686c.com localproxy
 .broadcast.mileweb.steampowered.com.8686c.com localproxy
-.steamuserimages-a.akamaihd.net localproxy
-.cdn.akamai.steamstatic.com localproxy
-.store.akamai.steamstatic.com localproxy
 .cdn.steamstatic.com.8686c.com localproxy
 .cdn.mileweb.cs.steampowered.com.8686c.com localproxy
 .steampipe.akamaized.net localproxy

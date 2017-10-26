@@ -1235,11 +1235,8 @@ var white_domains = {"ac":{
 "cn.download.nvidia":1,
 "steampowered":1,
 "steamcommunity":1,
-"steamcontent":1,
 "video.mileweb.steampowered.com.8686c":1,
 "broadcast.mileweb.steampowered.com.8686c":1,
-"cdn.akamai.steamstatic":1,
-"store.akamai.steamstatic":1,
 "cdn.steamstatic.com.8686c":1,
 "cdn.mileweb.cs.steampowered.com.8686c":1,
 "0-6":1,
@@ -33825,7 +33822,6 @@ var white_domains = {"ac":{
 "yaozuo":1,
 "yongche":1
 },"net":{
-"steamuserimages-a.akamaihd":1,
 "steampipe.akamaized":1,
 "steamcdn-a.akamaihd":1,
 "steamstore-a.akamaihd":1,
