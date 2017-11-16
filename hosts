@@ -5,6 +5,10 @@
 ::1	ip6-loopback
 # Localhost (DO NOT REMOVE) End
 
+# Killing Floor 2 Server Time Check Start
+202.118.1.130 time.google.com
+# Killing Floor 2 Server Time Check End
+
 # DOOM Start
 172.247.39.11 dfw-stm.zionprod.systems
 172.247.39.11 fra-stm.zionprod.systems
