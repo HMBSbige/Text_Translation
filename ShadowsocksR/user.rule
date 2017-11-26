@@ -10,12 +10,6 @@
 .xxskins.com localproxy
 .gt798.com localproxy
 .cn.download.nvidia.com localproxy
-.steampowered.com localproxy
-.steamcommunity.com localproxy
-.video.mileweb.steampowered.com.8686c.com localproxy
-.broadcast.mileweb.steampowered.com.8686c.com localproxy
-.cdn.steamstatic.com.8686c.com localproxy
-.cdn.mileweb.cs.steampowered.com.8686c.com localproxy
 .0-6.com localproxy
 .0-gold.net localproxy
 .00.net localproxy
@@ -45,6 +39,7 @@
 .0033.com localproxy
 .003593.com localproxy
 .00394.net localproxy
+.003store.com localproxy
 .005.tv localproxy
 .00544.com localproxy
 .0056.cc localproxy
@@ -98,6 +93,7 @@
 .012logo.com localproxy
 .013hg.com localproxy
 .014.cc localproxy
+.014bjldc.com localproxy
 .0168.cc localproxy
 .0173.com localproxy
 .01bz.wang localproxy
@@ -105,6 +101,7 @@
 .01dai.com localproxy
 .01dianzi.com localproxy
 .01faxing.com localproxy
+.01fe.com localproxy
 .01hn.com localproxy
 .01home.com localproxy
 .01hr.com localproxy
@@ -306,6 +303,7 @@
 .0513.net localproxy
 .0513.org localproxy
 .0513011.com localproxy
+.051352.com localproxy
 .0514.com localproxy
 .0514rj.com localproxy
 .051591.com localproxy
@@ -949,6 +947,7 @@
 .12226.com localproxy
 .12227.com localproxy
 .122311.com localproxy
+.1229.io localproxy
 .122park.com localproxy
 .123.com localproxy
 .123.msn.com localproxy
@@ -969,6 +968,7 @@
 .1234wu.com localproxy
 .1234ye.com localproxy
 .12365auto.com localproxy
+.12365chia.com localproxy
 .12366cn.com localproxy
 .1238g.com localproxy
 .123baofeng.com localproxy
@@ -1871,6 +1871,7 @@
 .2345a.com localproxy
 .2345ff.com localproxy
 .2345xt.com localproxy
+.235youxi.com localproxy
 .2366.com localproxy
 .2366app.com localproxy
 .237.cc localproxy
@@ -2311,6 +2312,7 @@
 .35go.net localproxy
 .35inter.com localproxy
 .35inter.net localproxy
+.35kds.com localproxy
 .35kk.cc localproxy
 .35nic.com localproxy
 .35pic.com localproxy
@@ -2513,6 +2515,7 @@
 .369yizhi.com localproxy
 .36aw.com localproxy
 .36dsj.com localproxy
+.36fy.com localproxy
 .36hjob.com localproxy
 .36ic.com localproxy
 .36jr.com localproxy
@@ -2713,6 +2716,7 @@
 .3jrx.com localproxy
 .3jxs.com localproxy
 .3jy.com localproxy
+.3ke.cc localproxy
 .3kfw.com localproxy
 .3kid.com localproxy
 .3kjj.com localproxy
@@ -2910,6 +2914,7 @@
 .47jh.com localproxy
 .47yun.com localproxy
 .47zu.com localproxy
+.4832880.com localproxy
 .4846.com localproxy
 .488u.com localproxy
 .48905.com localproxy
@@ -3030,6 +3035,7 @@
 .512301.com localproxy
 .5123cn.com localproxy
 .51240.com localproxy
+.5125129.com localproxy
 .512514.com localproxy
 .512876.com localproxy
 .512play.com localproxy
@@ -3190,6 +3196,7 @@
 .51eyun.com localproxy
 .51f.com localproxy
 .51facai.com localproxy
+.51fankui.com localproxy
 .51fanli.com localproxy
 .51fanli.net localproxy
 .51fdc.com localproxy
@@ -3931,6 +3938,7 @@
 .5925car.com localproxy
 .592ht.com localproxy
 .592kx.com localproxy
+.592sf.com localproxy
 .592sifu.com localproxy
 .592wg.cc localproxy
 .592xyx.com localproxy
@@ -3990,6 +3998,8 @@
 .5ds.com localproxy
 .5duo.com localproxy
 .5dxc.com localproxy
+.5e49.com localproxy
+.5e4k.com localproxy
 .5ebo.com localproxy
 .5eplay.com localproxy
 .5er0.com localproxy
@@ -4638,8 +4648,10 @@
 .7759.com localproxy
 .7766.info localproxy
 .7766.org localproxy
+.77719767.com localproxy
 .77745.com localproxy
 .77758511.com localproxy
+.77773657.com localproxy
 .777edu.com localproxy
 .777moban.com localproxy
 .777wyx.com localproxy
@@ -4817,6 +4829,7 @@
 .7wa.cc localproxy
 .7weibo.com localproxy
 .7wenta.com localproxy
+.7wo8.com localproxy
 .7wsh.com localproxy
 .7x24s.com localproxy
 .7xdown.com localproxy
@@ -5418,6 +5431,7 @@
 .92hidc.net localproxy
 .92jn.com localproxy
 .92lm.com localproxy
+.92lucky.com localproxy
 .92np.com localproxy
 .92sucai.com localproxy
 .92to.com localproxy
@@ -5489,6 +5503,7 @@
 .94hd.com localproxy
 .94hnr.com localproxy
 .94i5.com localproxy
+.94php.com localproxy
 .94te.com localproxy
 .94uv.com localproxy
 .94yiren.com localproxy
@@ -7505,6 +7520,7 @@
 .baixiaosheng.net localproxy
 .baixing.com localproxy
 .baixing.net localproxy
+.baixingcdn.com localproxy
 .baixinger.com localproxy
 .baixingfanli.com localproxy
 .baixingjd.com localproxy
@@ -7530,6 +7546,7 @@
 .bajiuqier.com localproxy
 .bakuaikuai.com localproxy
 .balacha.com localproxy
+.baldc.com localproxy
 .balifiles.com localproxy
 .balijieji.com localproxy
 .ball114.com localproxy
@@ -7754,6 +7771,7 @@
 .bbsheji.com localproxy
 .bbsls.net localproxy
 .bbsmax.com localproxy
+.bbspro.net localproxy
 .bbstoday.com localproxy
 .bbstoday.net localproxy
 .bbstripe.me localproxy
@@ -7891,6 +7909,7 @@
 .beijuniao.com localproxy
 .beikeapp.com localproxy
 .beikeread.com localproxy
+.beilamusi.com localproxy
 .beileisy.com localproxy
 .beileiwang.com localproxy
 .beimai.com localproxy
@@ -7996,7 +8015,9 @@
 .bfw.cc localproxy
 .bfyx.com localproxy
 .bfyx.net localproxy
+.bg.v4.a.dl.ws.microsoft.com localproxy
 .bg397.com localproxy
+.bg4.v4.a.dl.ws.microsoft.com localproxy
 .bgbk.org localproxy
 .bgdeco.com localproxy
 .bgfans.net localproxy
@@ -8112,6 +8133,7 @@
 .bilin.net localproxy
 .bilinstar.com localproxy
 .biliplus.com localproxy
+.billionconnect.com localproxy
 .billwang.net localproxy
 .biluoting.com localproxy
 .bim99.org localproxy
@@ -8533,6 +8555,7 @@
 .bookben.com localproxy
 .bookbook.in localproxy
 .bookdao.com localproxy
+.bookgew.com localproxy
 .bookinlife.net localproxy
 .bookqi.com localproxy
 .bookqing.com localproxy
@@ -8563,6 +8586,7 @@
 .bosera.com localproxy
 .boshipai.com localproxy
 .boshuo.net localproxy
+.bosidata.com localproxy
 .bosigame.com localproxy
 .bosnn.com localproxy
 .bosondata.net localproxy
@@ -8744,6 +8768,7 @@
 .buffst.com localproxy
 .bufuzao.com localproxy
 .bughd.com localproxy
+.bugsevent.com localproxy
 .bugtags.com localproxy
 .buguangdeng.com localproxy
 .bugutang.com localproxy
@@ -8984,6 +9009,7 @@
 .cailele.com localproxy
 .cailianpress.com localproxy
 .cailiao.com localproxy
+.cailol.com localproxy
 .cailongwang.com localproxy
 .cailutong.com localproxy
 .caimai.cc localproxy
@@ -9361,6 +9387,7 @@
 .cdhtyc.com localproxy
 .cdili.com localproxy
 .cditv.tv localproxy
+.cdjgtfq.com localproxy
 .cdjsjx.com localproxy
 .cdjzx120.com localproxy
 .cdkf.com localproxy
@@ -9606,6 +9633,7 @@
 .cgylke.com localproxy
 .cgylw.com localproxy
 .cgyou.com localproxy
+.cgyouxi.com localproxy
 .cgzz8.com localproxy
 .ch-fans.com localproxy
 .ch-water.com localproxy
@@ -9695,6 +9723,7 @@
 .chaodikong.com localproxy
 .chaofan.wang localproxy
 .chaofan86.com localproxy
+.chaohutechan.com localproxy
 .chaoji.com localproxy
 .chaoji99.com localproxy
 .chaojibiaoge.com localproxy
@@ -10185,6 +10214,7 @@
 .chinahrt.com localproxy
 .chinahtml.com localproxy
 .chinahtz.com localproxy
+.chinahuanglian.com localproxy
 .chinahuben.com localproxy
 .chinahvacr.com localproxy
 .chinaidns.com localproxy
@@ -10590,6 +10620,7 @@
 .chuxinfood.com localproxy
 .chuyixuexi.com localproxy
 .chuyouke.com localproxy
+.chuyu.me localproxy
 .chvoice.com localproxy
 .chvv.com localproxy
 .chwlcn.net localproxy
@@ -12104,6 +12135,7 @@
 .d3cn.net localproxy
 .d3dweb.com localproxy
 .d3f.com localproxy
+.d3iz9md.com localproxy
 .d3skg.com localproxy
 .d3zone.com localproxy
 .d4000.com localproxy
@@ -12191,6 +12223,7 @@
 .dai361.com localproxy
 .dai911.com localproxy
 .daianju.com localproxy
+.daiba.com localproxy
 .daibi.com localproxy
 .daibini.com localproxy
 .daichuqu.com localproxy
@@ -12996,6 +13029,7 @@
 .djbh.net localproxy
 .djbstatic.com localproxy
 .djcb71.com localproxy
+.djcp099.com localproxy
 .djdkk.com localproxy
 .djfansub.com localproxy
 .djhuo.com localproxy
@@ -13041,6 +13075,7 @@
 .dlbtn.com localproxy
 .dlcaic.com localproxy
 .dlchanghai.com localproxy
+.dlcysj.com localproxy
 .dld.com localproxy
 .dldcdn.com localproxy
 .dldk8.com localproxy
@@ -13338,6 +13373,7 @@
 .doubean.com localproxy
 .doubleclick.net localproxy
 .doubleliu.com localproxy
+.doubozhibo.com localproxy
 .doudang.com localproxy
 .doudier.com localproxy
 .doudou.in localproxy
@@ -13538,6 +13574,7 @@
 .duantian.com localproxy
 .duanwenxue.com localproxy
 .duanxin321.com localproxy
+.duanxin520.com localproxy
 .duanxinghusini.com localproxy
 .duanxinhongzha.com localproxy
 .duanxinhongzha.net localproxy
@@ -14274,6 +14311,7 @@
 .emarbox.com localproxy
 .embedhq.org localproxy
 .embedu.org localproxy
+.emdl.ws.microsoft.com localproxy
 .eme2000.com localproxy
 .emindos.org localproxy
 .emiqu.com localproxy
@@ -14397,6 +14435,7 @@
 .erdosrcb.com localproxy
 .erdsrsrc.com localproxy
 .erer.in localproxy
+.ereuiib.com localproxy
 .erg2008.com localproxy
 .erhaojie.com localproxy
 .erichfund.com localproxy
@@ -14893,6 +14932,7 @@
 .fd7c.com localproxy
 .fdc0760.com localproxy
 .fdcdaohang.com localproxy
+.fdedai.com localproxy
 .fdgzw.com localproxy
 .fdjyw.com localproxy
 .fdjzu.com localproxy
@@ -15036,6 +15076,7 @@
 .fengxuan.co localproxy
 .fengyelace.com localproxy
 .fengyiyi.com localproxy
+.fengyunlive.com localproxy
 .fengyunzhibo.com localproxy
 .fengyushan.com localproxy
 .fengyx.com localproxy
@@ -15155,6 +15196,7 @@
 .fitoo.com localproxy
 .fivelives.net localproxy
 .fixdown.com localproxy
+.fixnone.com localproxy
 .fixsub.com localproxy
 .fixsub.net localproxy
 .fizz5.com localproxy
@@ -15208,6 +15250,7 @@
 .fjzol.com localproxy
 .fjzzled.com localproxy
 .fkcaijing.com localproxy
+.fkku194.com localproxy
 .fktong.com localproxy
 .fkw100.com localproxy
 .fkweber.com localproxy
@@ -15500,6 +15543,7 @@
 .fujianrc.com localproxy
 .fujunjie.com localproxy
 .fuk11.com localproxy
+.fuleu.net localproxy
 .fuli1024.com localproxy
 .fuliao.com localproxy
 .fuliba.mobi localproxy
@@ -15835,6 +15879,7 @@
 .gaode.com localproxy
 .gaodilicai.com localproxy
 .gaodun.com localproxy
+.gaofeie.com localproxy
 .gaofen.com localproxy
 .gaogulou.com localproxy
 .gaohr.com localproxy
@@ -16415,6 +16460,7 @@
 .gooqz.com localproxy
 .goosai.com localproxy
 .gooseeker.com localproxy
+.gooyo.com localproxy
 .gopedu.com localproxy
 .gopherchina.org localproxy
 .gopiaowu.com localproxy
@@ -16579,6 +16625,7 @@
 .guaiguaitoo.com localproxy
 .guaihaha.com localproxy
 .guailuo.com localproxy
+.guainiuwang.com localproxy
 .guaiwei.com localproxy
 .guaixun.com localproxy
 .guan5.com localproxy
@@ -16601,6 +16648,7 @@
 .guangmingjx.com localproxy
 .guangshuishi.com localproxy
 .guangxindai.com localproxy
+.guangxirx.net localproxy
 .guangyinglvxing.com localproxy
 .guangyv.com localproxy
 .guangzhoujob.com localproxy
@@ -16650,6 +16698,7 @@
 .guichuideng.org localproxy
 .guidaye.com localproxy
 .guidechem.com localproxy
+.guiderank.org localproxy
 .guigu.org localproxy
 .guiguzhongguo.com localproxy
 .guiji.com localproxy
@@ -16919,13 +16968,16 @@
 .h4.cc localproxy
 .h5-legend.com localproxy
 .h5-share.com localproxy
+.h5120.com localproxy
 .h515.net localproxy
+.h5151.com localproxy
 .h5abc.com localproxy
 .h5avu.com localproxy
 .h5data.com localproxy
 .h5dm.com localproxy
 .h5gal.net localproxy
 .h5jun.com localproxy
+.h5king.com localproxy
 .h5le.com localproxy
 .h5mc.com localproxy
 .h5ps.com localproxy
@@ -17016,6 +17068,7 @@
 .haima.me localproxy
 .haima001.com localproxy
 .haimawan.com localproxy
+.haimayisheng.com localproxy
 .haimazhuang.com localproxy
 .haimi.com localproxy
 .hainachuan.org localproxy
@@ -17186,6 +17239,7 @@
 .haodns123.cc localproxy
 .haodou.com localproxy
 .haoduoge.com localproxy
+.haoduorou.net localproxy
 .haody99.pw localproxy
 .haoest.com localproxy
 .haofanben.com localproxy
@@ -17511,6 +17565,7 @@
 .hedaotang.net localproxy
 .hedatou.com localproxy
 .hedengcheng.com localproxy
+.hedjd.com localproxy
 .heeroluo.net localproxy
 .hefei.cc localproxy
 .hegek7.com localproxy
@@ -17804,6 +17859,7 @@
 .hijoys.com localproxy
 .hijuu.com localproxy
 .hiknow.com localproxy
+.hikvision.com localproxy
 .hilava.com localproxy
 .hilistentome.com localproxy
 .hillwoodhome.net localproxy
@@ -18533,6 +18589,7 @@
 .huim.com localproxy
 .huimaiche.com localproxy
 .huimee.com localproxy
+.huimee.net localproxy
 .huing.net localproxy
 .huioo.net localproxy
 .huipinzhe.com localproxy
@@ -18905,6 +18962,7 @@
 .iask-media.com localproxy
 .iask.com localproxy
 .iaskgo.com localproxy
+.iaweg.com localproxy
 .iaxure.com localproxy
 .ibailve.com localproxy
 .ibaitai.com localproxy
@@ -20080,6 +20138,7 @@
 .izhaowo.com localproxy
 .izhenxin.com localproxy
 .izhequ.com localproxy
+.izhihuicheng.net localproxy
 .izhikang.com localproxy
 .izhiyiwang.com localproxy
 .izhuanfa.com localproxy
@@ -20217,6 +20276,7 @@
 .jdgod.com localproxy
 .jdhhmd.com localproxy
 .jdhs.cc localproxy
+.jdkic.com localproxy
 .jdlhg.com localproxy
 .jdlxzx.com localproxy
 .jdnettv.com localproxy
@@ -20308,6 +20368,7 @@
 .jhcb.net localproxy
 .jhdxwl.com localproxy
 .jhfgtyjh.com localproxy
+.jhgtgb.com localproxy
 .jhgy.cc localproxy
 .jhhunli.net localproxy
 .jhjcjj.com localproxy
@@ -20455,6 +20516,7 @@
 .jiaotongjie.com localproxy
 .jiaotss.com localproxy
 .jiaoyin.com localproxy
+.jiaoyitu.com localproxy
 .jiaoyoudns.com localproxy
 .jiaoyudao.com localproxy
 .jiaoyuwo.com localproxy
@@ -20502,6 +20564,7 @@
 .jiduan.cc localproxy
 .jidubook.com localproxy
 .jie0.com localproxy
+.jie518.com localproxy
 .jiecao.com localproxy
 .jiecao.fm localproxy
 .jiecaojingxuan.com localproxy
@@ -20818,6 +20881,7 @@
 .jjjoystudios.com localproxy
 .jjjtimes.com localproxy
 .jjkeq.com localproxy
+.jjklife.com localproxy
 .jjlwd.com localproxy
 .jjmc2015.com localproxy
 .jjmmw.com localproxy
@@ -22128,6 +22192,7 @@
 .ktunions.com localproxy
 .ktvc8.com localproxy
 .ktvk.net localproxy
+.ktvme.com localproxy
 .ktxuexi.com localproxy
 .ku-yu.com localproxy
 .ku25.com localproxy
@@ -22258,6 +22323,7 @@
 .kulianw.com localproxy
 .kuliqiang.com localproxy
 .kuman.com localproxy
+.kumanjujia.com localproxy
 .kumao5.com localproxy
 .kumaoyun.com localproxy
 .kumi5.com localproxy
@@ -22340,6 +22406,7 @@
 .kx9h.com localproxy
 .kxdao.com localproxy
 .kxfsw.com localproxy
+.kxly360.com localproxy
 .kxmav14.com localproxy
 .kxpay.net localproxy
 .kxt.com localproxy
@@ -22413,6 +22480,7 @@
 .laiqi.net localproxy
 .laishuge.com localproxy
 .laishui.info localproxy
+.laituia.com localproxy
 .laiwang.com localproxy
 .laiwantv.com localproxy
 .laiwu.net localproxy
@@ -22966,6 +23034,7 @@
 .licairen.net localproxy
 .licensepad.com localproxy
 .licess.org localproxy
+.lichenfan.com localproxy
 .lichengdai.com localproxy
 .licomsh.com localproxy
 .licqi.com localproxy
@@ -23077,6 +23146,7 @@
 .linghit.com localproxy
 .lingkaba.com localproxy
 .lingla.com localproxy
+.linglingkaimen.com localproxy
 .linglongart.com localproxy
 .lingmihaitao.com localproxy
 .lingmovie.com localproxy
@@ -23556,12 +23626,14 @@
 .lpcheng.com localproxy
 .lpdns.com localproxy
 .lpllol.com localproxy
+.lppz.com localproxy
 .lpswz.com localproxy
 .lptiyu.com localproxy
 .lpxt.com localproxy
 .lpydz.com localproxy
 .lq328.com localproxy
 .lq580.com localproxy
+.lqalm.com localproxy
 .lqart.com localproxy
 .lqbj.com localproxy
 .lqbj66.com localproxy
@@ -23610,6 +23682,7 @@
 .lsxs688.com localproxy
 .lsxz.org localproxy
 .lszj.com localproxy
+.lt.tn localproxy
 .lt600.com localproxy
 .ltaaa.com localproxy
 .ltaaa.net localproxy
@@ -23781,6 +23854,7 @@
 .lxdns.net localproxy
 .lxin007.com localproxy
 .lxjwlt.com localproxy
+.lxlggo.com localproxy
 .lxmiyu.com localproxy
 .lxms2004.com localproxy
 .lxmy.net localproxy
@@ -24197,6 +24271,7 @@
 .mcake.com localproxy
 .mcarding.com localproxy
 .mcbbq.cc localproxy
+.mcbbs.co localproxy
 .mcbbs.net localproxy
 .mcbrother.com localproxy
 .mcchina.com localproxy
@@ -24206,6 +24281,7 @@
 .mcdsusan.com localproxy
 .mcdusiv.com localproxy
 .mcdvisa.com localproxy
+.mcelf.com localproxy
 .mcfuzhu.net localproxy
 .mcgcn.com localproxy
 .mchifi.com localproxy
@@ -24227,6 +24303,7 @@
 .mcyhfl.com localproxy
 .mcyou.xyz localproxy
 .mcysw.net localproxy
+.mcyun.com localproxy
 .mczyz.com localproxy
 .md521.com localproxy
 .mdaxue.com localproxy
@@ -24482,6 +24559,7 @@
 .mfbuluo.com localproxy
 .mfcad.com localproxy
 .mfcteda.com localproxy
+.mfhb88.com localproxy
 .mfpad.com localproxy
 .mfqqx.com localproxy
 .mftp.info localproxy
@@ -24557,6 +24635,7 @@
 .miaopin8.com localproxy
 .miaosolu.com localproxy
 .miaov.com localproxy
+.miaowutech.com localproxy
 .miaoxiakuan.com localproxy
 .miaozhen.com localproxy
 .miaozhun.com localproxy
@@ -24989,6 +25068,7 @@
 .molizm.com localproxy
 .moloong.com localproxy
 .moltentec.com localproxy
+.molujie.com localproxy
 .momentcdn.net localproxy
 .momhui.com localproxy
 .momo.moda localproxy
@@ -25266,6 +25346,7 @@
 .mxw518.com localproxy
 .mxzhfad.win localproxy
 .mxzmz.com localproxy
+.mxzsjt.com localproxy
 .my-card.in localproxy
 .my.qoo10.com localproxy
 .my0538.com localproxy
@@ -25561,6 +25642,7 @@
 .nbcyl.com localproxy
 .nbdeli.com localproxy
 .nbdpx.com localproxy
+.nbegame.com localproxy
 .nbegame.net localproxy
 .nbfce.com localproxy
 .nbgdjt.com localproxy
@@ -25778,6 +25860,7 @@
 .nic.wang localproxy
 .nicaifu.com localproxy
 .nice-app.com localproxy
+.nice3c.com localproxy
 .nicecdn.com localproxy
 .niceimg.net localproxy
 .niceloo.com localproxy
@@ -25961,6 +26044,7 @@
 .normteam.com localproxy
 .normtm.com localproxy
 .north-plus.net localproxy
+.northgun.com localproxy
 .northidc.net localproxy
 .northpu.com localproxy
 .northtimes.com localproxy
@@ -26389,6 +26473,7 @@
 .orzjoy.com localproxy
 .os.com localproxy
 .os1010.com localproxy
+.os7blue.com localproxy
 .osbean.com localproxy
 .oscarzhoud.com localproxy
 .oschina.net localproxy
@@ -26719,6 +26804,7 @@
 .pdhero.com localproxy
 .pdim.gs localproxy
 .pdkp.org localproxy
+.pdomo.me localproxy
 .pdosgk.com localproxy
 .pdrcfw.com localproxy
 .pdryx.com localproxy
@@ -27557,6 +27643,7 @@
 .qianzhan.com localproxy
 .qianzhan123.com localproxy
 .qianzhengdaiban.com localproxy
+.qiao024.com localproxy
 .qiaobo.net localproxy
 .qiaobutang.com localproxy
 .qiaochucn.com localproxy
@@ -27704,6 +27791,7 @@
 .qiniuts.com localproxy
 .qinjiebang.com localproxy
 .qinjielan.com localproxy
+.qinkan.net localproxy
 .qinlake.com localproxy
 .qinliancf.com localproxy
 .qinlina.com localproxy
@@ -28227,6 +28315,7 @@
 .qxrisk.com localproxy
 .qxw.cc localproxy
 .qxwidc.com localproxy
+.qxwz.com localproxy
 .qxzc.net localproxy
 .qxzxp.com localproxy
 .qy01.com localproxy
@@ -28278,6 +28367,7 @@
 .r2g.net localproxy
 .r2yx.com localproxy
 .r4li.com localproxy
+.r5tao.com localproxy
 .r66r.net localproxy
 .r900.club localproxy
 .ra104.com localproxy
@@ -28647,6 +28737,7 @@
 .rpgsky.net localproxy
 .rpplusplus.me localproxy
 .rpwtcn.com localproxy
+.rqiao.net localproxy
 .rqyoo.com localproxy
 .rr-sc.com localproxy
 .rrbt.org localproxy
@@ -28817,6 +28908,7 @@
 .sae-china.org localproxy
 .saebbs.com localproxy
 .safehoo.com localproxy
+.safeionline.com localproxy
 .sagetrc.com localproxy
 .saharadiy.com localproxy
 .saibanbbs.net localproxy
@@ -29249,6 +29341,7 @@
 .shanbay.com localproxy
 .shandaz.com localproxy
 .shandian.biz localproxy
+.shandjj.com localproxy
 .shandongair.com localproxy
 .shandongsannong.com localproxy
 .shang360.com localproxy
@@ -29423,6 +29516,7 @@
 .shenyangoffice.com localproxy
 .shenyedm.net localproxy
 .shenyongxiang.com localproxy
+.shenyou.tv localproxy
 .shenzhenair.com localproxy
 .shenzhenshui.com localproxy
 .shenzhenu.com localproxy
@@ -29536,6 +29630,7 @@
 .shixiu.org localproxy
 .shixunwang.net localproxy
 .shiyan.cc localproxy
+.shiyanbar.com localproxy
 .shiyanlou.com localproxy
 .shiyanqiao.com localproxy
 .shiye.org localproxy
@@ -29615,6 +29710,7 @@
 .shoubanjiang.com localproxy
 .shoubus.com localproxy
 .shoucw.com localproxy
+.shoudian.com localproxy
 .shoudian.org localproxy
 .shoudujuchang.com localproxy
 .shoudurc.com localproxy
@@ -29751,6 +29847,7 @@
 .shuichan.cc localproxy
 .shuichan51.com localproxy
 .shuichanyangzhi.com localproxy
+.shuidichou.com localproxy
 .shuidihuzhu.com localproxy
 .shuidishuju.com localproxy
 .shuiguo.com localproxy
@@ -29926,8 +30023,10 @@
 .sinaimg.com localproxy
 .sinajs.com localproxy
 .sinanet.com localproxy
+.sinasinasinasina.com localproxy
 .sinastorage.com localproxy
 .sinauda.com localproxy
+.sinawap.com localproxy
 .sinayou.com localproxy
 .since1989.org localproxy
 .sincetimes.com localproxy
@@ -30144,6 +30243,7 @@
 .smejs.com localproxy
 .smemo.info localproxy
 .smeoa.com localproxy
+.smfyun.com localproxy
 .smggw.com localproxy
 .smgstar.com localproxy
 .smh5511.com localproxy
@@ -30610,6 +30710,7 @@
 .stoexpress.us localproxy
 .stogd.com localproxy
 .stonebuy.com localproxy
+.stoneios.com localproxy
 .stonepoll.net localproxy
 .stoneread.com localproxy
 .stonexp.com localproxy
@@ -30675,6 +30776,7 @@
 .sucaitianxia.com localproxy
 .sucaiw.com localproxy
 .sucop.com localproxy
+.sudaizhijia.com localproxy
 .sudasuta.com localproxy
 .sudidc.com localproxy
 .sudu-r8gh.com localproxy
@@ -30962,6 +31064,7 @@
 .syrcb.net localproxy
 .syrgjy.com localproxy
 .syrteam.com localproxy
+.sysh31.com localproxy
 .sysjdjy.com localproxy
 .sysuyz.com localproxy
 .sythealth.com localproxy
@@ -31310,6 +31413,7 @@
 .taoyigou.info localproxy
 .taoyuantravel.com localproxy
 .taozfu198.com localproxy
+.taozj.net localproxy
 .taozj.org localproxy
 .tapas.net localproxy
 .taptap.com localproxy
@@ -31781,6 +31885,7 @@
 .tjculture.com localproxy
 .tjdljy.net localproxy
 .tjdtdd.com localproxy
+.tjfer.com localproxy
 .tjfxb.com localproxy
 .tjgbzx.com localproxy
 .tjj.com localproxy
@@ -31898,6 +32003,7 @@
 .tongai99.com localproxy
 .tongbaigong.org localproxy
 .tongbanjie.com localproxy
+.tongbanjie.info localproxy
 .tongbj.com localproxy
 .tongbu.com localproxy
 .tongbulv.com localproxy
@@ -32128,6 +32234,7 @@
 .ts-juheng.com localproxy
 .ts100.com localproxy
 .ts13.com localproxy
+.ts133.com localproxy
 .ts168.net localproxy
 .ts1889.com localproxy
 .ts95.com localproxy
@@ -32278,6 +32385,7 @@
 .tuhu.com localproxy
 .tuhu.org localproxy
 .tuhusmart.com localproxy
+.tui-8.com localproxy
 .tui18.com localproxy
 .tui18edu.com localproxy
 .tui8.org localproxy
@@ -32296,6 +32404,7 @@
 .tuishao.net localproxy
 .tuishiben.com localproxy
 .tuisir.com localproxy
+.tuisnake.com localproxy
 .tuituifang.com localproxy
 .tuixiazai.com localproxy
 .tujia.com localproxy
@@ -32326,6 +32435,7 @@
 .tuohuangzu.com localproxy
 .tuolar.com localproxy
 .tuoniao.fm localproxy
+.tuopushe.com localproxy
 .tuoyi.win localproxy
 .tuozhe8.com localproxy
 .tupai.me localproxy
@@ -32472,6 +32582,7 @@
 .tyjiao.com localproxy
 .tyjinyun.com localproxy
 .tyjlwy.com localproxy
+.tyjmqz.com localproxy
 .tyjxpt.com localproxy
 .tykor.net localproxy
 .tyksl.com localproxy
@@ -32840,6 +32951,7 @@
 .utanbaby.com localproxy
 .utdandan.com localproxy
 .utkang.com localproxy
+.utkang.net localproxy
 .utogame.com localproxy
 .utopinga.com localproxy
 .utosee.com localproxy
@@ -33513,6 +33625,7 @@
 .wangjiu.com localproxy
 .wangjubao.com localproxy
 .wangkasj.com localproxy
+.wangkuai.net localproxy
 .wanglibank.com localproxy
 .wanglibao.com localproxy
 .wangll.wang localproxy
@@ -33605,6 +33718,7 @@
 .wantqb.ren localproxy
 .wantrack-nj.com localproxy
 .wantv.me localproxy
+.wanvv.com localproxy
 .wanwanol.com localproxy
 .wanweipc.com localproxy
 .wanwushuo.com localproxy
@@ -34140,6 +34254,7 @@
 .whicec.com localproxy
 .whichk.com localproxy
 .whitecat.com localproxy
+.whitegem.net localproxy
 .whjbh.com localproxy
 .whjcbus.com localproxy
 .whjddc.com localproxy
@@ -34250,6 +34365,7 @@
 .win9cn.com localproxy
 .winapp111.mobi localproxy
 .winasdaq.com localproxy
+.winbaoxian.com localproxy
 .winbbs.net localproxy
 .winbei.com localproxy
 .winbosmart.com localproxy
@@ -34394,6 +34510,7 @@
 .wmzhe.com localproxy
 .wn51.com localproxy
 .wn789.com localproxy
+.wnbfw.com localproxy
 .wndflb.com localproxy
 .wngeshi.com localproxy
 .wniecm.com localproxy
@@ -34574,6 +34691,7 @@
 .wpmee.com localproxy
 .wpsep.com localproxy
 .wpsmail.net localproxy
+.wpweixin.com localproxy
 .wpxap.com localproxy
 .wpxap.mobi localproxy
 .wpyou.com localproxy
@@ -34644,6 +34762,7 @@
 .wtszx.com localproxy
 .wtzw.com localproxy
 .wu369.com localproxy
+.wu37.com localproxy
 .wuaik.com localproxy
 .wuaiso.com localproxy
 .wubaiyi.com localproxy
@@ -35065,6 +35184,7 @@
 .xgdq.com localproxy
 .xgfz.net localproxy
 .xgimi.com localproxy
+.xgkwx.com localproxy
 .xglove.com localproxy
 .xgnwp.com localproxy
 .xgqq.com localproxy
@@ -35223,6 +35343,7 @@
 .xiaohb.com localproxy
 .xiaohei.com localproxy
 .xiaoheima.com localproxy
+.xiaohengji.com localproxy
 .xiaohongshu.com localproxy
 .xiaohua860.com localproxy
 .xiaohuangji.com localproxy
@@ -35894,6 +36015,7 @@
 .xs919.com localproxy
 .xs99.cc localproxy
 .xsa.me localproxy
+.xsb120.com localproxy
 .xsbnholiday.com localproxy
 .xscake.com localproxy
 .xscbs.com localproxy
@@ -36146,6 +36268,7 @@
 .xydfn.com localproxy
 .xydhl.com localproxy
 .xydjp.com localproxy
+.xydxcs.com localproxy
 .xydyrc.com localproxy
 .xydzb.com localproxy
 .xyfc.com localproxy
@@ -37612,6 +37735,7 @@
 .yuyi-school.com localproxy
 .yuyin.fm localproxy
 .yuyin.tv localproxy
+.yuyiya.com localproxy
 .yuyouge.com localproxy
 .yuyoutuan.com localproxy
 .yuyu.com localproxy
@@ -37653,6 +37777,7 @@
 .yx007.com localproxy
 .yx129.com localproxy
 .yxad.com localproxy
+.yxadv.com localproxy
 .yxage.com localproxy
 .yxarm.net localproxy
 .yxbao.com localproxy
@@ -37901,6 +38026,7 @@
 .zcccc.com localproxy
 .zccrs.com localproxy
 .zcdog.com localproxy
+.zcdsp.com localproxy
 .zcgfgh.com localproxy
 .zcifc.com localproxy
 .zciphone.com localproxy
@@ -37976,6 +38102,7 @@
 .zexiaoqiao.com localproxy
 .zexiu.net localproxy
 .zeze.com localproxy
+.zf313.com localproxy
 .zf3d.com localproxy
 .zf71.com localproxy
 .zfancy.net localproxy
@@ -38233,6 +38360,7 @@
 .zhen.com localproxy
 .zhenai.com localproxy
 .zhenbi.com localproxy
+.zhenbo.org localproxy
 .zhending-chicken.com localproxy
 .zhenfund.com localproxy
 .zheng-ji.info localproxy
@@ -38569,6 +38697,7 @@
 .zhuishushenqi.com localproxy
 .zhuixingwang.com localproxy
 .zhuixue.net localproxy
+.zhuiying.me localproxy
 .zhuizhuiimg.com localproxy
 .zhuizhuiyoyo.com localproxy
 .zhuji.com localproxy
@@ -38695,6 +38824,7 @@
 .zitanshan.com localproxy
 .zitichina.com localproxy
 .zitizhuanhuan.com localproxy
+.zius.asia localproxy
 .zivoo.com localproxy
 .ziweishuwu.com localproxy
 .ziwork.com localproxy
@@ -38827,6 +38957,7 @@
 .zmqlh.com localproxy
 .zmrgame.com localproxy
 .zmsc.cc localproxy
+.zmt.me localproxy
 .zmtiantang.com localproxy
 .zmumu.com localproxy
 .zmxiu.com localproxy
@@ -39443,7 +39574,8 @@ localhost 127.0.0.1
 42.156.64.0 42.156.127.255 localproxy
 42.156.128.0 42.156.255.255 localproxy
 42.157.0.0 42.157.255.255 localproxy
-42.158.0.0 42.159.255.255 localproxy
+42.158.0.0 42.158.255.255 localproxy
+42.159.0.0 42.159.255.255 localproxy
 42.160.0.0 42.175.255.255 localproxy
 42.176.0.0 42.183.255.255 localproxy
 42.184.0.0 42.185.255.255 localproxy
@@ -40164,6 +40296,7 @@ localhost 127.0.0.1
 43.251.8.0 43.251.11.255 localproxy
 43.251.12.0 43.251.15.255 localproxy
 43.251.36.0 43.251.39.255 localproxy
+43.251.100.0 43.251.103.255 localproxy
 43.251.116.0 43.251.119.255 localproxy
 43.251.192.0 43.251.195.255 localproxy
 43.251.232.0 43.251.235.255 localproxy
@@ -40838,8 +40971,7 @@ localhost 127.0.0.1
 49.239.0.0 49.239.63.255 localproxy
 49.239.192.0 49.239.255.255 localproxy
 49.246.224.0 49.246.255.255 localproxy
-52.80.0.0 52.80.255.255 localproxy
-52.81.0.0 52.81.255.255 localproxy
+52.80.0.0 52.81.255.255 localproxy
 52.82.0.0 52.83.255.255 localproxy
 54.222.0.0 54.223.255.255 localproxy
 58.14.0.0 58.15.255.255 localproxy
@@ -42276,6 +42408,7 @@ localhost 127.0.0.1
 103.69.212.0 103.69.215.255 localproxy
 103.70.8.0 103.70.11.255 localproxy
 103.70.148.0 103.70.151.255 localproxy
+103.70.184.0 103.70.187.255 localproxy
 103.70.220.0 103.70.223.255 localproxy
 103.70.224.0 103.70.227.255 localproxy
 103.70.236.0 103.70.239.255 localproxy
@@ -42804,6 +42937,24 @@ localhost 127.0.0.1
 103.103.12.0 103.103.15.255 localproxy
 103.103.16.0 103.103.19.255 localproxy
 103.103.36.0 103.103.39.255 localproxy
+103.103.68.0 103.103.71.255 localproxy
+103.103.72.0 103.103.75.255 localproxy
+103.103.176.0 103.103.179.255 localproxy
+103.103.188.0 103.103.191.255 localproxy
+103.103.200.0 103.103.203.255 localproxy
+103.103.204.0 103.103.207.255 localproxy
+103.103.220.0 103.103.223.255 localproxy
+103.103.224.0 103.103.227.255 localproxy
+103.103.228.0 103.103.231.255 localproxy
+103.103.232.0 103.103.235.255 localproxy
+103.103.248.0 103.103.251.255 localproxy
+103.103.252.0 103.103.255.255 localproxy
+103.104.0.0 103.104.3.255 localproxy
+103.104.4.0 103.104.7.255 localproxy
+103.104.36.0 103.104.39.255 localproxy
+103.104.40.0 103.104.43.255 localproxy
+103.104.64.0 103.104.67.255 localproxy
+103.104.104.0 103.104.107.255 localproxy
 103.192.0.0 103.192.3.255 localproxy
 103.192.4.0 103.192.7.255 localproxy
 103.192.8.0 103.192.11.255 localproxy
@@ -44236,7 +44387,12 @@ localhost 127.0.0.1
 117.124.0.0 117.127.255.255 localproxy
 117.128.0.0 117.191.255.255 localproxy
 118.24.0.0 118.25.255.255 localproxy
-118.26.0.0 118.26.255.255 localproxy
+118.26.0.0 118.26.31.255 localproxy
+118.26.32.0 118.26.47.255 localproxy
+118.26.48.0 118.26.55.255 localproxy
+118.26.56.0 118.26.63.255 localproxy
+118.26.64.0 118.26.127.255 localproxy
+118.26.128.0 118.26.255.255 localproxy
 118.28.0.0 118.29.255.255 localproxy
 118.30.0.0 118.30.255.255 localproxy
 118.31.0.0 118.31.255.255 localproxy
@@ -44688,6 +44844,8 @@ localhost 127.0.0.1
 125.254.192.0 125.254.255.255 localproxy
 128.108.0.0 128.108.255.255 localproxy
 129.28.0.0 129.28.255.255 localproxy
+132.232.0.0 132.232.255.255 localproxy
+134.175.0.0 134.175.255.255 localproxy
 137.59.59.0 137.59.59.255 localproxy
 137.59.88.0 137.59.91.255 localproxy
 139.5.56.0 139.5.59.255 localproxy
@@ -44753,6 +44911,7 @@ localhost 127.0.0.1
 144.52.0.0 144.52.255.255 localproxy
 144.123.0.0 144.123.255.255 localproxy
 144.255.0.0 144.255.255.255 localproxy
+146.56.192.0 146.56.255.255 localproxy
 146.196.56.0 146.196.59.255 localproxy
 146.196.68.0 146.196.71.255 localproxy
 146.196.72.0 146.196.75.255 localproxy
@@ -45041,6 +45200,7 @@ localhost 127.0.0.1
 182.239.0.0 182.239.31.255 localproxy
 182.240.0.0 182.247.255.255 localproxy
 182.254.0.0 182.254.255.255 localproxy
+182.255.36.0 182.255.39.255 localproxy
 182.255.60.0 182.255.63.255 localproxy
 183.0.0.0 183.63.255.255 localproxy
 183.64.0.0 183.71.255.255 localproxy
