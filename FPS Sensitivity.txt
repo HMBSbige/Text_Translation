@@ -173,7 +173,7 @@ alias smoke "use weapon_knife;use weapon_smokegrenade"
 bind "mwheeldown" "flash"//快速切闪光
 bind "mwheelup" "smoke"//快速切烟雾
 alias bhop bhop_off
-alias bhop_on "alias bhop bhop_off;bind "mwheeldown" "+jump";bind "mwheelup" "+jump""
+alias bhop_on "alias bhop bhop_off;bind "mwheeldown" "+jump";bind "mwheelup" "flash""
 alias bhop_off "alias bhop bhop_on;bind "mwheeldown" "flash";bind "mwheelup" "smoke""
 bhop_off
 bind "l" "bhop"//切换滚轮跳
@@ -215,7 +215,7 @@ bind "kp_slash" "buy vest"//小键盘/→半甲
 bind "kp_multiply" "buy vesthelm"//小键盘*→全甲
 //游戏设置
 mat_monitorgamma 1.6//最亮
-snd_headphone_pan_exponent 2
+snd_headphone_pan_exponent 2//穿墙击中敌人仍正常发出声音
 cl_disablefreezecam 1//禁用镜头跟踪
 mm_dedicated_search_maxping "100"//设置匹配时的最大延迟
 cl_use_opens_buy_menu 0//禁用按"使用"键打开购买菜单
@@ -224,8 +224,13 @@ cl_showloadout 1//总是显示物品栏
 cl_autowepswitch 0//关闭自动换枪
 closeonbuy 0//购买后关闭购买菜单
 //cl_mute_enemy_team 1//屏蔽对面说话
+//显示造成伤害
+con_filter_text "Damage given"
+con_filter_text_out "Player:"
+con_filter_enable 2
+developer 1
 //界面设置
-fps_max 1000
+fps_max 500
 fps_max_menu 144
 net_graph 1
 net_graphheight 0
@@ -242,7 +247,7 @@ con_enable 1
 bind "ESCAPE" "cancelselect"
 bind "`" "toggleconsole"
 //透视队友位置
-cl_teamid_overhead_always 1
+cl_teamid_overhead_always 2
 //设置持枪视角
 cl_viewmodel_shift_left_amt "1.5"
 cl_viewmodel_shift_right_amt "0.75"
