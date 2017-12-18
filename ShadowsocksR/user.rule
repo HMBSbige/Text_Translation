@@ -11,7 +11,6 @@
 .gt798.com localproxy
 .cn.download.nvidia.com localproxy
 .steampowered.com localproxy
-.steamcommunity.com localproxy
 .video.mileweb.steampowered.com.8686c.com localproxy
 .broadcast.mileweb.steampowered.com.8686c.com localproxy
 .cdn.steamstatic.com.8686c.com localproxy
@@ -43049,6 +43048,9 @@ localhost 127.0.0.1
 103.105.132.0 103.105.135.255 localproxy
 103.105.180.0 103.105.183.255 localproxy
 103.105.184.0 103.105.187.255 localproxy
+103.105.200.0 103.105.203.255 localproxy
+103.105.204.0 103.105.207.255 localproxy
+103.105.220.0 103.105.223.255 localproxy
 103.192.0.0 103.192.3.255 localproxy
 103.192.4.0 103.192.7.255 localproxy
 103.192.8.0 103.192.11.255 localproxy
