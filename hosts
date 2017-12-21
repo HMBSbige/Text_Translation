@@ -39,7 +39,53 @@
 172.247.39.11 dfw-gobbler.doom.amok.systems
 # DOOM End
 
+# Localhost (DO NOT REMOVE) Start
+127.0.0.1	localhost
+::1	localhost
+::1	ip6-localhost
+::1	ip6-loopback
+# Localhost (DO NOT REMOVE) End
+
+# Killing Floor 2 Server Time Check Start
+202.118.1.130 time.google.com
+# Killing Floor 2 Server Time Check End
+
+# DOOM Start
+172.247.39.11 dfw-stm.zionprod.systems
+172.247.39.11 fra-stm.zionprod.systems
+172.247.39.11 prod-grustm01-gateway1-cf.zionprod.systems
+172.247.39.11 dfw-ping-stm.doom.amok.systems
+172.247.39.11 fra-ping-stm.doom.amok.systems
+172.247.39.11 prod-iadstm01-gateway1-cf.zionprod.systems
+172.247.39.11 prod-sinstm01-gateway1-cf.zionprod.systems
+172.247.39.11 prod-pdxstm01-gateway1-cf.zionprod.systems
+172.247.39.11 prod-dubstm01-gateway1-cf.zionprod.systems
+172.247.39.11 prod-sydstm01-gateway1-cf.zionprod.systems
+172.247.39.11 prod-iadstm01-gateway2-cf.zionprod.systems
+172.247.39.11 prod-sydstm01-gateway2-cf.zionprod.systems
+172.247.39.11 prod-sinstm01-gateway2-cf.zionprod.systems
+172.247.39.11 prod-dubstm01-gateway2-cf.zionprod.systems
+172.247.39.11 prod-pdxstm01-gateway2-cf.zionprod.systems
+172.247.39.11 prod-iadstm01-gateway3-cf.zionprod.systems
+172.247.39.11 prod-sinstm01-gateway3-cf.zionprod.systems
+172.247.39.11 prod-grustm01-gateway3-cf.zionprod.systems
+172.247.39.11 prod-dubstm01-gateway3-cf.zionprod.systems
+172.247.39.11 prod-pdxstm01-gateway3-cf.zionprod.systems
+172.247.39.11 1us-west-1-prod-pdxstm01-httpping.zionprod.systems
+172.247.39.11 1eu-west-1-prod-dubstm01-httpping.zionprod.systems
+172.247.39.11 us-east-1-prod-iadstm01-httpping.zionprod.systems
+172.247.39.11 prod-iadglb01-starlord-cf.zionprod.systems
+172.247.39.11 dfw-gatekeeper-live-stm.doom.amok.systems
+172.247.39.11 services.bethesda.net
+172.247.39.11 dfw-gobbler.doom.amok.systems
+# DOOM End
+
 # Steam Start
-23.198.121.160 steamcommunity.com
-#23.52.74.146 steamcommunity.com
+223.119.217.234	steamcommunity.com
+223.119.217.234	store.steampowered.com
+223.119.217.234	help.steampowered.com
+223.119.50.137	steamcommunity-a.akamaihd.net
+223.119.248.8	steamuserimages-a.akamaihd.net
+223.119.50.139	steamcdn-a.akamaihd.net
+223.119.248.26	cdn.akamai.steamstatic.com
 # Steam End
