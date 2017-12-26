@@ -9,11 +9,16 @@ fov 112.5
 SetSensitivity 10.746980
 
 [h1]Tom Clancy's Rainbow Six Siege [/h1]
-FOV 60
+[u][b]FOV 60[/b][/u]
 MouseSensitivityMultiplierUnit 0.02
 Mouse Sensitivity 8
 ACOG:Aim Down Sights 52
 机瞄:Aim Down Sights 76
+[u][b]FOV 90[/b][/u]
+MouseSensitivityMultiplierUnit 0.02
+Mouse Sensitivity 11
+ACOG:Aim Down Sights 56
+机瞄:Aim Down Sights 79
 
 [h1]Borderlands 2[/h1]
 Mouse Sensitivity: 8
