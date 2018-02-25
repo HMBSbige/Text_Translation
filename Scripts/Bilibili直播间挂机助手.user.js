@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Bilibili直播间挂机助手
 // @namespace    SeaLoong
-// @version      1.3.1
+// @version      1.3.2
 // @description  Bilibili直播间自动签到，领瓜子，参加抽奖，完成任务，送礼等
 // @author       SeaLoong
 // @include      /https?:\/\/live\.bilibili\.com\/\d+/
@@ -23,8 +23,8 @@
         GIFT_CONFIG: { // 若启用自动送礼物，则需要设置以下项
             SHORT_ROOMID: 0, // 送礼物的直播间ID(即地址中live.bilibili.com/后面的数字), 设置为0则表示自动检查当前主播勋章
             CHANGE_MEDAL: true, // 当有当前主播勋章，且当前佩戴的勋章不是当前主播勋章时自动切换为当前主播勋章: true:自动切换，false:不切换
-            SEND_GIFT: [1], // 设置默认送的礼物类型编号(见下方列表)，多个请用英文逗号(,)隔开，为空则表示允许送出ALLOW_GIFT允许的礼物
-            ALLOW_GIFT: [1, 4, 6, 109, 110], // 设置允许送的礼物类型编号(见下方列表)(!!任何未在此列表的礼物一定不会被送出!!)，多个请用英文逗号(,)隔开，为空则表示允许送出所有类型的礼物
+            SEND_GIFT: ['1'], // 设置默认送的礼物类型编号(见下方列表/点击问号)，多个请用英文逗号(,)隔开，为空则表示默认不送出礼物
+            ALLOW_GIFT: ['1', '4', '6'], // 设置允许送的礼物类型编号(见下方列表/点击问号)(!!任何未在此列表的礼物一定不会被送出!!)，多个请用英文逗号(,)隔开，为空则表示允许送出所有类型的礼物
             SEND_TODAY: true // 送出包裹中今天到期的礼物(!会送出SEND_GIFT之外的礼物!若今日亲密度已满则不送): true:启用，false:不启用
         },
         SHOW_TOAST: true // 显示浮动提示: true:显示，false:不显示
@@ -58,8 +58,8 @@
         GIFT_CONFIG: {
             SHORT_ROOMID: 0,
             CHANGE_MEDAL: true,
-            SEND_GIFT: [1],
-            ALLOW_GIFT: [1, 4, 6, 109, 110],
+            SEND_GIFT: ['1'],
+            ALLOW_GIFT: ['1', '4', '6'],
             SEND_TODAY: true
         },
         SHOW_TOAST: true
@@ -85,10 +85,28 @@
             canvas: null
         },
         config: {
+            is_showed: false,
             div_button: null,
-            div_button_p: null,
-            div: null,
-            div_showed: false
+            div_button_span: null,
+            div_side_bar: null,
+            div_position: null,
+            div_style: null,
+            div_title: null,
+            div_title_span: null,
+            div_title_button: null,
+            div_button_reset: null,
+            div_context_position: null,
+            div_context: null
+        },
+        alertdialog: {
+            div_background: null,
+            div_position: null,
+            div_style: null,
+            div_title: null,
+            div_title_span: null,
+            div_content: null,
+            div_button: null,
+            button_ok: null
         }
     };
     var interval_treasure_timer;
@@ -96,6 +114,7 @@
     var lottery_list_last = [],
         lottery_check_time = 20;
     var gift_list;
+    var gift_list_str = '礼物编号及对应礼物、亲密度对照表<br>';
     var timediff = 0;
     var Info = {
         short_id: null,
@@ -146,7 +165,7 @@
                 };
             }
             $.extend(settings, {
-                url: (settings.url.substr(0, 2) == '//' ? '' : '//api.live.bilibili.com/') + settings.url,
+                url: (settings.url.substr(0, 2) === '//' ? '' : '//api.live.bilibili.com/') + settings.url,
                 type: settings.type || 'GET',
                 crossDomain: true,
                 dataType: settings.dataType || 'json'
@@ -164,7 +183,7 @@
                 url: 'ajax/msg',
                 data: {
                     roomid: roomid,
-                    csrf_token: typeof csrf_token == 'function' ? csrf_token() : csrf_token
+                    csrf_token: typeof csrf_token === 'function' ? csrf_token() : csrf_token
                 }
             });
         },
@@ -294,7 +313,7 @@
                     url: 'activity/v1/task/receive_award',
                     data: {
                         task_id: task_id,
-                        csrf_token: typeof csrf_token == 'function' ? csrf_token() : csrf_token
+                        csrf_token: typeof csrf_token === 'function' ? csrf_token() : csrf_token
                     }
                 });
             },
@@ -323,12 +342,12 @@
                     }
                 });
             },
-            GetUserFc: function(follow) { // follow: 主播uid==ruid
+            GetUserFc: function(follow) { // follow: 主播uid===ruid
                 return API.ajax({
                     url: 'feed/v1/Feed/GetUserFc?follow=' + follow
                 });
             },
-            IsUserFollow: function(follow) { // follow: 主播uid==ruid
+            IsUserFollow: function(follow) { // follow: 主播uid===ruid
                 return API.ajax({
                     url: 'feed/v1/Feed/IsUserFollow?follow=' + follow
                 });
@@ -340,7 +359,7 @@
                     type: 'POST',
                     url: 'feed_svr/v1/feed_svr/notice',
                     data: {
-                        csrf_token: typeof csrf_token == 'function' ? csrf_token() : csrf_token
+                        csrf_token: typeof csrf_token === 'function' ? csrf_token() : csrf_token
                     }
                 });
             },
@@ -353,7 +372,7 @@
                         type: type || 0,
                         page_size: page_size,
                         offset: offset || 0,
-                        csrf_token: typeof csrf_token == 'function' ? csrf_token() : csrf_token
+                        csrf_token: typeof csrf_token === 'function' ? csrf_token() : csrf_token
                     }
                 });
             }
@@ -406,7 +425,7 @@
                         rnd: rnd,
                         storm_beat_id: storm_beat_id || 0,
                         // metadata: metadata,
-                        csrf_token: typeof csrf_token == 'function' ? csrf_token() : csrf_token
+                        csrf_token: typeof csrf_token === 'function' ? csrf_token() : csrf_token
                     }
                 });
             },
@@ -426,7 +445,7 @@
                         rnd: rnd,
                         storm_beat_id: storm_beat_id || 0,
                         // metadata: metadata,
-                        csrf_token: typeof csrf_token == 'function' ? csrf_token() : csrf_token
+                        csrf_token: typeof csrf_token === 'function' ? csrf_token() : csrf_token
                     }
                 });
             },
@@ -606,7 +625,7 @@
                         source: source || 1,
                         uid: uid,
                         target_id: target_id, // roomid
-                        csrf_token: typeof csrf_token == 'function' ? csrf_token() : csrf_token
+                        csrf_token: typeof csrf_token === 'function' ? csrf_token() : csrf_token
                     }
                 });
             }
@@ -631,7 +650,7 @@
                         color: color, // HEX
                         captcha_token: captcha_token,
                         captcha_phrase: captcha_phrase,
-                        csrf_token: typeof csrf_token == 'function' ? csrf_token() : csrf_token
+                        csrf_token: typeof csrf_token === 'function' ? csrf_token() : csrf_token
                     }
                 });
             }
@@ -675,7 +694,7 @@
                     data: {
                         room_id: room_id,
                         platform: platform || 'pc',
-                        csrf_token: typeof csrf_token == 'function' ? csrf_token() : csrf_token
+                        csrf_token: typeof csrf_token === 'function' ? csrf_token() : csrf_token
                     }
                 });
             },
@@ -848,11 +867,11 @@
                 temp[n].last = line[i - 1];
             }
         }
-        if (n == 4) {
+        if (n === 4) {
             var result = 0;
             var a = getChar(temp[1]) * 10 - (-getChar(temp[2]));
             var b = getChar(temp[4]);
-            if (getChar(temp[3]) == '+') {
+            if (getChar(temp[3]) === '+') {
                 result = a - (-b);
             } else {
                 result = a - b;
@@ -873,36 +892,9 @@
     }
     */
 
-    var liveQuickLogin = function() {
-        if (!getCookie('DedeUserID') && !getCookie('LIVE_LOGIN_DATA')) {
-            try {
-                if (!window.biliQuickLogin) {
-                    $.getScript('https://static-s.bilibili.com/account/bili_quick_login.js', function(response, status) {
-                        if (status == 'success') login();
-                    });
-                } else {
-                    login();
-                }
-            } catch (tryErr) {
-                throw new Error(tryErr);
-            }
-        }
-
-        function login() {
-            if (window.biliQuickLogin) {
-                window.biliQuickLogin(function() {
-                    window.location.reload();
-                });
-                throw 'Bilibili Live: 您还未登陆.';
-            } else {
-                throw 'Bilibili Live: 快速登录脚本加载失败.';
-            }
-        }
-    };
-
     function giftIDtoFeed(gift_id) {
         for (var i = gift_list.length - 1; i >= 0; i--) {
-            if (gift_list[i].id === gift_id) {
+            if (gift_list[i].id == gift_id) {
                 return Math.floor(gift_list[i].price / 100);
             }
         }
@@ -912,7 +904,7 @@
     function toast(e, n, r) {
         var t = Toast.element;
         if (!CONFIG.SHOW_TOAST || !t) return;
-        if ('boolean' == typeof n) n = 'info';
+        if ('boolean' === typeof n) n = 'info';
         var o = document.createDocumentFragment(),
             a = document.createElement('div');
         if ('success' !== (n = n || 'info') && 'caution' !== n && 'error' !== n && 'info' !== n)
@@ -952,20 +944,42 @@
         Toast.list.push(a);
     }
 
-    function execUntilSucceed(callback) {
-        setTimeout(function() {
-            if (!callback()) {
-                execUntilSucceed(callback);
-            }
-        }, 200);
+    function alertDialog(title, content) {
+        DOM.alertdialog.div_title_span.html(title);
+        DOM.alertdialog.div_content.html(content);
+        DOM.alertdialog.button_ok.click(function() {
+            $('#' + NAME + '_alertdialog').remove();
+        });
+        $('body > .link-popup-ctnr').append(DOM.alertdialog.div_background);
     }
 
-    function toInt(v) {
-        return parseInt(v, 10);
+    function execUntilSucceed(callback) {
+        if (!callback()) {
+            setTimeout(function() {
+                execUntilSucceed(callback);
+            }, 200);
+        }
+    }
+
+    function tommorrowRun(callback) {
+        var t = new Date(ts_ms());
+        t.setDate(t.getDate() + 1);
+        t.setHours(0);
+        t.setMinutes(0);
+        t.setSeconds(1);
+        t.setMilliseconds(0);
+        setTimeout(callback, t.valueOf() - ts_ms());
     }
 
     function removeBlankChar(str) {
         return str.replace(/(\s|\u00A0)+/, '');
+    }
+
+    function addCSS(context) {
+        var style = document.createElement('style');
+        style.type = 'text/css';
+        style.innerHTML = context;
+        document.body.appendChild(style);
     }
 
     function recurLoadConfig(cfg) {
@@ -978,7 +992,7 @@
                         e.val(cfg[item]);
                         break;
                     case 'boolean':
-                        e.attr('checked', cfg[item]);
+                        e.prop('checked', cfg[item]);
                         break;
                     case 'object':
                         if (Array.isArray(cfg[item])) e.val(cfg[item].join(','));
@@ -990,8 +1004,8 @@
     }
 
     function recurSaveConfig(config) {
-        var cfg = config;
-        if (typeof cfg != 'object') return cfg;
+        var cfg = JSON.parse(JSON.stringify(config || CONFIG_DEFAULT));
+        if (typeof cfg !== 'object') return cfg;
         for (var item in cfg) {
             var e = $('#' + NAME + '_config_' + item);
             if (e[0]) {
@@ -1007,7 +1021,11 @@
                         break;
                     case 'object':
                         if (Array.isArray(cfg[item])) {
-                            cfg[item] = removeBlankChar(e.val()).split(',').map(toInt) || [];
+                            if (removeBlankChar(e.val()) === '') {
+                                cfg[item] = [];
+                            } else {
+                                cfg[item] = removeBlankChar(e.val()).split(',');
+                            }
                         } else {
                             cfg[item] = recurSaveConfig(cfg[item]);
                         }
@@ -1019,31 +1037,29 @@
     }
 
     function loadConfig() {
-        // CONFIG = JSON.parse(GM_getValue('CONFIG', JSON.stringify(CONFIG)));
         try {
-            CONFIG = JSON.parse(localStorage.getItem(NAME + '_CONFIG')) || CONFIG_DEFAULT;
-            if (typeof CONFIG != 'object') {
-                CONFIG = CONFIG_DEFAULT;
-                localStorage.setItem(NAME + '_CONFIG', JSON.stringify(CONFIG_DEFAULT));
+            CONFIG = JSON.parse(localStorage.getItem(NAME + '_CONFIG')) || JSON.parse(JSON.stringify(CONFIG_DEFAULT));
+            if (typeof CONFIG !== 'object') {
+                CONFIG = JSON.parse(JSON.stringify(CONFIG_DEFAULT));
+                localStorage.setItem(NAME + '_CONFIG', JSON.stringify(CONFIG));
             }
         } catch (e) {
             console.log('Bilibili直播间挂机助手读取配置失败');
             // localStorage.removeItem(NAME + '_CONFIG');
             // localStorage.removeItem('Bilibili-LiveRoom-HangHelper_CONFIG');
-            CONFIG = CONFIG_DEFAULT;
-            localStorage.setItem(NAME + '_CONFIG', JSON.stringify(CONFIG_DEFAULT));
+            CONFIG = JSON.parse(JSON.stringify(CONFIG_DEFAULT));
+            localStorage.setItem(NAME + '_CONFIG', JSON.stringify(CONFIG));
         }
         DEBUG('loadConfig: CONFIG', CONFIG);
-        if (DOM.config.div) {
+        if (DOM.config.div_context) {
             recurLoadConfig(CONFIG);
         }
     }
 
     function saveConfig() {
-        if (DOM.config.div) {
+        if (DOM.config.div_context) {
             CONFIG = recurSaveConfig(CONFIG_DEFAULT);
         }
-        // GM_setValue('CONFIG', CONFIG);
         localStorage.setItem(NAME + '_CONFIG', JSON.stringify(CONFIG));
         DEBUG('saveConfig: CONFIG', CONFIG);
     }
@@ -1061,12 +1077,13 @@
     */
 
     function Init() {
-        // liveQuickLogin();
+        InitAlertDialogGui();
         InitConfigGui();
         loadConfig();
+        saveConfig();
         DEBUG('CONFIG', CONFIG);
         execUntilSucceed(function() {
-            if (window.BilibiliLive) {
+            if (window.BilibiliLive && parseInt(window.BilibiliLive.ROOMID, 10) !== 0) {
                 timediff = window.BilibiliLive.INIT_TIME - Date.now();
                 DEBUG('Init: BilibiliLive', window.BilibiliLive);
                 if (parseInt(window.BilibiliLive.UID, 10) !== 0) {
@@ -1114,7 +1131,7 @@
                         document.body.appendChild(DOM.storm.div[0]);
                     }
                     */
-                    if (CONFIG.USE_GIFT && (CONFIG.GIFT_CONFIG.SHORT_ROOMID === 0 || CONFIG.GIFT_CONFIG.SHORT_ROOMID == Info.short_id)) {
+                    if (CONFIG.USE_GIFT && (CONFIG.GIFT_CONFIG.SHORT_ROOMID === 0 || CONFIG.GIFT_CONFIG.SHORT_ROOMID === Info.short_id)) {
                         API.live_user.get_weared_medal(Info.uid, Info.roomid, Info.csrf_token).done(function(response) {
                             DEBUG('Init: get_weared_medal', response);
                             if (response.code === 0) {
@@ -1125,10 +1142,14 @@
                                 Info.area_id = response.data.area_v2_id;
                                 Info.area_parent_id = response.data.area_v2_parent_id;
                                 API.gift.room_gift_list(Info.roomid, Info.area_id).done(function(response) {
-                                    // DEBUG('Init: room_gift_list', response);
+                                    DEBUG('Init: room_gift_list', response);
                                     if (response.code === 0) {
                                         gift_list = response.data;
+                                        gift_list.forEach(function(v) {
+                                            gift_list_str += v.id + '：' + v.name + '，亲密度+' + Math.floor(v.price / 100) + '<br>';
+                                        });
                                     }
+                                    DEBUG('gift_list_str', gift_list_str);
                                 });
                             }
                         });
@@ -1155,19 +1176,51 @@
                         if (str.length) str = str.join('，');
                         else str = '无';
                         toast('助手已启用功能：' + str, 'info');
+                        console.log('Bilibili直播间挂机助手: 助手已启用功能：' + str);
                         TaskStart();
                     }, 3e3);
                 } else {
                     // 未登录
                     toast('你还没有登录，助手无法使用！', 'caution');
+                    console.log('Bilibili直播间挂机助手: 你还没有登录，助手无法使用！');
                 }
                 return true;
             }
         });
     }
 
+    function InitAlertDialogGui() {
+        DOM.alertdialog.div_background = $('<div id="' + NAME + '_alertdialog"/>');
+        DOM.alertdialog.div_background[0].style = 'display: table;position: fixed;height: 100%;width: 100%;top: 0;left: 0;font-size: 12px;z-index: 10000;background-color: rgba(0,0,0,.5);';
+        DOM.alertdialog.div_position = $('<div/>');
+        DOM.alertdialog.div_position[0].style = 'display: table-cell;vertical-align: middle;';
+        DOM.alertdialog.div_style = $('<div/>');
+        DOM.alertdialog.div_style[0].style = 'position: relative;top: 50%;width: 40%;padding: 16px;border-radius: 5px;background-color: #fff;margin: 0 auto;';
+        DOM.alertdialog.div_position.append(DOM.alertdialog.div_style);
+        DOM.alertdialog.div_background.append(DOM.alertdialog.div_position);
+
+        DOM.alertdialog.div_title = $('<div/>');
+        DOM.alertdialog.div_title[0].style = 'position: relative;padding-bottom: 12px;';
+        DOM.alertdialog.div_title_span = $('<span>提示</span>');
+        DOM.alertdialog.div_title_span[0].style = 'margin: 0;color: #23ade5;font-size: 16px;';
+        DOM.alertdialog.div_title.append(DOM.alertdialog.div_title_span);
+        DOM.alertdialog.div_style.append(DOM.alertdialog.div_title);
+
+        DOM.alertdialog.div_content = $('<div/>');
+        DOM.alertdialog.div_content[0].style = 'display: inline-block;vertical-align: top;font-size: 14px;';
+        DOM.alertdialog.div_style.append(DOM.alertdialog.div_content);
+
+        DOM.alertdialog.div_button = $('<div/>');
+        DOM.alertdialog.div_button[0].style = 'position: relative;height: 32px;margin-top: 12px;';
+        DOM.alertdialog.div_style.append(DOM.alertdialog.div_button);
+
+        DOM.alertdialog.button_ok = $('<button><span>确定</span></button>');
+        DOM.alertdialog.button_ok[0].style = 'position: absolute;height: 100%;min-width: 68px;right: 0;background-color: #23ade5;color: #fff;border-radius: 4px;font-size: 14px;border: 0;cursor: pointer;';
+        DOM.alertdialog.div_button.append(DOM.alertdialog.button_ok);
+    }
+
     function InitConfigGui() {
-        var CONFIG_NAMELIST = {
+        var CONFIG_NAME_LIST = {
             USE_SIGN: '自动签到',
             USE_AWARD: '自动领取瓜子',
             USE_LOTTERY: '自动参加抽奖',
@@ -1175,43 +1228,80 @@
             USE_GIFT: '自动送礼物',
             GIFT_CONFIG: '送礼设置',
             SHORT_ROOMID: '房间号',
-            SHORT_ROOMID_placeholder: '为0则自动检测勋章',
             SEND_GIFT: '默认礼物类型',
-            SEND_GIFT_placeholder: "为空则取决于'允许礼物类型'",
             ALLOW_GIFT: '允许礼物类型',
-            ALLOW_GIFT_placeholder: '为空则允许所有',
             CHANGE_MEDAL: '允许切换勋章',
             SEND_TODAY: '送出包裹中今天到期的礼物',
             SHOW_TOAST: '显示浮动提示'
         };
+        var CONFIG_PLACEHOLDER_LIST = {
+            SHORT_ROOMID: '为0则自动检测勋章',
+            SEND_GIFT: "为空则默认不送",
+            ALLOW_GIFT: '为空则允许所有'
+        };
+        var CONFIG_HELP_LIST = {
+            SEND_GIFT: function() {
+                var s = '设置默认送的礼物类型编号，多个请用英文逗号(,)隔开，为空则表示默认不送出礼物';
+                return s + '<br><br>' + gift_list_str;
+            },
+            ALLOW_GIFT: function() {
+                var s = '设置允许送的礼物类型编号(任何未在此列表的礼物一定不会被送出!)，多个请用英文逗号(,)隔开，为空则表示允许送出所有类型的礼物';
+                return s + '<br><br>' + gift_list_str;
+            },
+            SEND_TODAY: '送出包裹中今天到期的礼物(会送出"默认礼物类型"之外的礼物，若今日亲密度已满则不送)'
+        };
+        var CONFIG_CONTROL_LIST = {
+            USE_GIFT: 'GIFT_CONFIG'
+        };
 
-        function itemToName(item) {
-            return CONFIG_NAMELIST[item];
+        function DOMtoItem(element) {
+            return element.attr('id').replace(NAME + '_config_', '');
+        }
+
+        function DOMhelptoItem(element) {
+            return element.attr('id').replace(NAME + '_config_help_', '');
         }
 
         function recur(cfg, element) {
             for (var item in cfg) {
-                var e;
+                var e, h, id = NAME + '_config_' + item;
+                if (CONFIG_HELP_LIST[item]) {
+                    h = $('<div id="' + NAME + '_config_help_' + item + '" style="display: inline;"><span class="BLRHH_clickable">?</span></div>');
+                    h.click(function() {
+                        alertDialog('说明', typeof CONFIG_HELP_LIST[DOMhelptoItem($(this))] === 'function' ? CONFIG_HELP_LIST[DOMhelptoItem($(this))]() : CONFIG_HELP_LIST[DOMhelptoItem($(this))]);
+                    });
+                }
                 switch (typeof cfg[item]) {
                     case 'string':
                     case 'number':
-                        e = $('<div title="' + itemToName(item) + '" style="padding: 2px 0;"></div>');
-                        e[0].innerHTML = '<label style="display: inline-block;max-width: 100%;" title="' + itemToName(item) + '">' + itemToName(item) + '<input id="' + NAME + '_config_' + item + '" type="text" style="line-height: normal;box-sizing: border-box;padding: 0;" placeholder="' + itemToName(item + '_placeholder') + '"></input></label>';
+                        e = $('<div class="BLRHH_setting_item"></div>');
+                        e.html('<label style="display: inline;" title="' + CONFIG_NAME_LIST[item] + '">' + CONFIG_NAME_LIST[item] + '<input id="' + id + '" type="text" class="BLRHH_input_text" placeholder="' + CONFIG_PLACEHOLDER_LIST[item] + '"></label>');
+                        if (h) e.append(h);
                         element.append(e);
                         break;
                     case 'boolean':
-                        e = $('<div title="' + itemToName(item) + '" style="padding: 2px 0;"></div>');
-                        e[0].innerHTML = '<label style="display: inline-block;max-width: 100%;" title="' + itemToName(item) + '"><input id="' + NAME + '_config_' + item + '" type="checkbox" style="line-height: normal;box-sizing: border-box;padding: 0;">' + itemToName(item) + '</input></label>';
+                        e = $('<div class="BLRHH_setting_item"></div>');
+                        e.html('<label style="display: inline;" title="' + CONFIG_NAME_LIST[item] + '"><input id="' + id + '" type="checkbox" class="BLRHH_input_checkbox">' + CONFIG_NAME_LIST[item] + '</label>');
+                        if (h) e.append(h);
                         element.append(e);
+                        if (CONFIG_CONTROL_LIST[item]) {
+                            $('#' + id).click(function() {
+                                if ($(this).is(':checked')) {
+                                    $('#' + NAME + '_config_' + CONFIG_CONTROL_LIST[DOMtoItem($(this))]).show();
+                                } else {
+                                    $('#' + NAME + '_config_' + CONFIG_CONTROL_LIST[DOMtoItem($(this))]).hide();
+                                }
+                            });
+                        }
                         break;
                     case 'object':
                         if (Array.isArray(cfg[item])) {
-                            e = $('<div title="' + itemToName(item) + '" style="padding: 2px 0;"></div>');
-                            e[0].innerHTML = '<label style="display: inline-block;max-width: 100%;" title="' + itemToName(item) + '">' + itemToName(item) + '<input id="' + NAME + '_config_' + item + '" type="text" style="line-height: normal;box-sizing: border-box;padding: 0;" placeholder="' + itemToName(item + '_placeholder') + '"></input></label>';
+                            e = $('<div class="BLRHH_setting_item"></div>');
+                            e.html('<label style="display: inline;" title="' + CONFIG_NAME_LIST[item] + '">' + CONFIG_NAME_LIST[item] + '<input id="' + id + '" type="text" class="BLRHH_input_text" placeholder="' + CONFIG_PLACEHOLDER_LIST[item] + '"></label>');
+                            if (h) e.append(h);
                             element.append(e);
                         } else {
-                            e = $('<div id="' + NAME + '_config_' + item + '" title="' + itemToName(item) + '" style="padding: 0 0 0 16px;"></div>');
-                            e[0].innerHTML = '<h3 style="margin: 0;">' + itemToName(item) + '</h3>';
+                            e = $('<div id="' + id + '" style="margin: 0px 0px 8px 12px;"/>');
                             element.append(e);
                             recur(cfg[item], e);
                         }
@@ -1222,36 +1312,64 @@
 
         execUntilSucceed(function() {
             if ($('#sidebar-vm div.side-bar-cntr')[0]) {
-                DOM.config.div = $('<div></div>');
-                DOM.config.div[0].style = 'display: none;position: fixed;height: 200px; width: 300px;-webkit-transform: translate3d(0,50%,0);transform: translate3d(0,50%,0);border-radius: 8px;-webkit-box-shadow: 0 6px 12px 0 rgba(106,115,133,.22);box-shadow: 0 6px 12px 0 rgba(106,115,133,.22);border: 1px solid #e9eaec;z-index: 10000;background-color: #fff;';
-                DOM.config.div.append('<div style="border-bottom: 1px solid #E6E6E6;color: #333;font: 700 14px/36px SimSun;height: 36px;line-height: 36px;margin: 0;padding: 0;overflow: hidden;background-color: #f8f8f8;"><span style="float: left;margin-left: 10px;">Bilibili直播间挂机助手 - 设置</span></div>');
-                var div_content = $('<div style="height: 100%;overflow-y: auto;margin: 0;padding: 0;"></div>');
-                DOM.config.div.append($('<div style="background: #FFF;padding: 12px;text-align: left;margin: 0;"></div>').append($('<div style="margin: 0;padding: 0;"></div>').append(div_content)));
-                recur(CONFIG_DEFAULT, div_content);
-                document.body.appendChild(DOM.config.div[0]);
-                DOM.config.div_button = $('<div id="' + NAME + '_config_div_button" role="button" class="side-bar-btn"></div>');
-                DOM.config.div_button_p = $('<p class="size-bar-text" style="margin: 4px 0 0;font-size: 12px;line-height: 16px;color: #0080c6;">挂机助手设置</p>');
-                DOM.config.div_button.append(DOM.config.div_button_p);
-                DOM.config.div_button[0].style = 'width: 56px;height: 32px;-webkit-box-sizing: border-box;box-sizing: border-box;margin: 4px 0;cursor: pointer;text-align: center;padding: 0 0;';
-                var div_side_bar = $('<div class="side-bar-cntr"></div>');
-                div_side_bar[0].style = 'height: 40px;overflow: hidden;position: fixed;right: 0;bottom: 10%;padding: 0px 4px;background-color: #fff;z-index: 10;border-radius: 12px 0 0 12px;-webkit-box-shadow: 0 0 20px 0 rgba(0,85,255,.1);box-shadow: 0 0 20px 0 rgba(0,85,255,.1);-webkit-transition: height .4s cubic-bezier(.22,.58,.12,.98);-o-transition: height cubic-bezier(.22,.58,.12,.98) .4s;transition: height .4s cubic-bezier(.22,.58,.12,.98);border: 1px solid #e9eaec;';
-                div_side_bar.append(DOM.config.div_button);
-                $('#sidebar-vm div.side-bar-cntr').after(div_side_bar);
-                DOM.config.div[0].style.left = div_side_bar[0].getBoundingClientRect().left - 300 + 'px';
-                DOM.config.div[0].style.top = div_side_bar[0].getBoundingClientRect().top - 300 + 'px';
+                // 加载css
+                addCSS('.BLRHH_clickable {font-size: 12px;color: #0080c6;cursor: pointer;text-decoration: underline;}' +
+                    '.BLRHH_setting_item {margin: 6px 0px;}' +
+                    '.BLRHH_input_checkbox {vertical-align: bottom;}' +
+                    '.BLRHH_input_text {margin: -2px 0 -2px 4px;padding: 0;}');
+                // 绘制右下角按钮
+                DOM.config.div_button_span = $('<span>挂机助手设置</span>');
+                DOM.config.div_button_span[0].style = 'font-size: 12px;line-height: 16px;color: #0080c6;';
+                DOM.config.div_button = $('<div role="button"/>');
+                DOM.config.div_button[0].style = 'cursor: pointer;text-align: center;padding: 0px;';
+                DOM.config.div_side_bar = $('<div/>');
+                DOM.config.div_side_bar[0].style = 'width: 56px;height: 32px;overflow: hidden;position: fixed;right: 0px;bottom: 10%;padding: 4px 4px;background-color: rgb(255, 255, 255);z-index: 10001;border-radius: 8px 0px 0px 8px;box-shadow: rgba(0, 85, 255, 0.0980392) 0px 0px 20px 0px;border: 1px solid rgb(233, 234, 236);';
+                DOM.config.div_button.append(DOM.config.div_button_span);
+                DOM.config.div_side_bar.append(DOM.config.div_button);
+                $('#sidebar-vm div.side-bar-cntr').after(DOM.config.div_side_bar);
+                // 绘制设置界面
+                DOM.config.div_position = $('<div/>');
+                DOM.config.div_position[0].style = 'display: none;position: fixed;height: 300px;width: 300px;bottom: 5%;right: 5%;z-index: 9999;';
+                DOM.config.div_style = $('<div/>');
+                DOM.config.div_style[0].style = 'display: block;overflow: hidden;height: 300px;width: 300px;border-radius: 8px;box-shadow: rgba(106, 115, 133, 0.219608) 0px 6px 12px 0px;border: 1px solid rgb(233, 234, 236);background-color: rgb(255, 255, 255);';
+                DOM.config.div_position.append(DOM.config.div_style);
+                document.body.appendChild(DOM.config.div_position[0]);
+                // 绘制标题栏及按钮
+                DOM.config.div_title = $('<div/>');
+                DOM.config.div_title[0].style = 'display: block;border-bottom: 1px solid #E6E6E6;height: 35px;line-height: 35px;margin: 0;padding: 0;overflow: hidden;';
+                DOM.config.div_title_span = $('<span style="float: left;display: inline;padding-left: 8px;font: 700 14px/35px SimSun;">Bilibili直播间挂机助手</span>');
+                DOM.config.div_title_button = $('<div/>');
+                DOM.config.div_title_button[0].style = 'float: right;display: inline;padding-right: 8px;';
+                DOM.config.div_button_reset = $('<div style="display: inline;"><span class="BLRHH_clickable">重置</span></div>');
+                DOM.config.div_title_button.append(DOM.config.div_button_reset);
+                DOM.config.div_title.append(DOM.config.div_title_span);
+                DOM.config.div_title.append(DOM.config.div_title_button);
+                DOM.config.div_style.append(DOM.config.div_title);
+                // 绘制设置项内容
+                DOM.config.div_context_position = $('<div/>');
+                DOM.config.div_context_position[0].style = 'display: block;position: absolute;top: 36px;width: 100%;height: calc(100% - 36px);';
+                DOM.config.div_context = $('<div/>');
+                DOM.config.div_context[0].style = 'height: 100%;overflow: auto;padding: 0 12px;margin: 0px;';
+                DOM.config.div_context_position.append(DOM.config.div_context);
+                DOM.config.div_style.append(DOM.config.div_context_position);
+                recur(CONFIG_DEFAULT, DOM.config.div_context);
+                // 设置事件
                 DOM.config.div_button.click(function() {
-                    if (!DOM.config.div_showed) {
+                    if (!DOM.config.is_showed) {
                         loadConfig();
-                        DOM.config.div.show();
-                        DOM.config.div_button_p.text('点击保存设置');
-                        DOM.config.div_button_p.css('color', '#ff8e29');
+                        DOM.config.div_position.show();
+                        DOM.config.div_button_span.text('点击保存设置');
+                        DOM.config.div_button_span.css('color', '#ff8e29');
                     } else {
                         saveConfig();
-                        DOM.config.div.hide();
-                        DOM.config.div_button_p.text('挂机助手设置');
-                        DOM.config.div_button_p.css('color', '#0080c6');
+                        DOM.config.div_position.hide();
+                        DOM.config.div_button_span.text('挂机助手设置');
+                        DOM.config.div_button_span.css('color', '#0080c6');
                     }
-                    DOM.config.div_showed = !DOM.config.div_showed;
+                    DOM.config.is_showed = !DOM.config.is_showed;
+                });
+                DOM.config.div_button_reset.click(function() {
+                    recurLoadConfig(CONFIG_DEFAULT);
                 });
                 return true;
             }
@@ -1341,7 +1459,7 @@
                 if (response.data.status === 1) {
                     // 非常抱歉，您错过了此次抽奖，下次记得早点来哦
                 } else if (response.data.status === 2) {
-                    if (response.data.gift_id == '-1' && !response.data.gift_name) {
+                    if (response.data.gift_id === '-1' && !response.data.gift_name) {
                         toast(response.msg, 'info');
                     } else {
                         toast('直播间【' + room_id + '】小电视抽奖结果：' + response.data.gift_name + '*' + response.data.gift_num, 'info');
@@ -1368,14 +1486,14 @@
         API.activity.notice(room_id, raffleId).done(function(response) {
             DEBUG('TaskLottery: activity.notice', response);
             if (response.code === 0) {
-                if (response.data.gift_id == '-1') {
+                if (response.data.gift_id === '-1') {
                     toast(response.msg, 'info');
                 } else {
                     toast('直播间【' + room_id + '】活动抽奖结果：' + response.data.gift_name + '*' + response.data.gift_num, 'info');
                 }
-            } else if (response.msg == '参数错误！') {
+            } else if (response.msg === '参数错误！') {
                 // 参数错误！
-            } else if (response.msg == '尚未开奖，请耐心等待！') {
+            } else if (response.msg === '尚未开奖，请耐心等待！') {
                 // 尚未开奖，请耐心等待！
                 setTimeout(function() {
                     RaffleNotice(room_id, raffleId, cnt);
@@ -1415,6 +1533,7 @@
     */
 
     function Award(callback, cnt) {
+        if (!CONFIG.USE_AWARD) return;
         if (cnt > 5) {
             callback();
             return;
@@ -1458,6 +1577,7 @@
     }
 
     function TaskAward_newTask() {
+        if (!CONFIG.USE_AWARD) return;
         API.FreeSilver.getCurrentTask().done(function(response) {
             DEBUG('TaskAward: getCurrentTask', response);
             if (response.code === 0) {
@@ -1495,6 +1615,10 @@
                         return true;
                     }
                 });
+                tommorrowRun(function() {
+                    TaskAward_Running = false;
+                    TaskAward();
+                });
             } else {
                 toast(response.msg, 'info');
             }
@@ -1502,11 +1626,13 @@
     }
 
     function TaskAward() {
+        if (!CONFIG.USE_AWARD) return;
         if (TaskAward_Running) Award(TaskAward_newTask, 0);
         else TaskAward_newTask();
     }
 
     function Lottery() {
+        if (!CONFIG.USE_LOTTERY) return;
         var lottery_list = [],
             lottery_list_temp = [],
             overlap_index = Infinity;
@@ -1516,7 +1642,7 @@
         });
         $.each(lottery_list_temp, function(i, v) {
             if (i === 0) {
-                var index = lottery_list_last.indexOf(v);
+                var index = $.inArray(v, lottery_list_last);
                 if (index > -1) {
                     overlap_index = lottery_list_last.length - index;
                 } else {
@@ -1532,7 +1658,7 @@
         lottery_list_temp = lottery_list;
         lottery_list = [];
         lottery_list_temp.forEach(function(v) {
-            if (lottery_list.indexOf(v) === -1) lottery_list.push(v);
+            if ($.inArray(v, lottery_list) === -1) lottery_list.push(v);
         });
         DEBUG('TaskLottery: Lottery: list', lottery_list.toString());
         // 根据可抽奖的房间数自动调整检测周期
@@ -1571,6 +1697,7 @@
     }
 
     function TaskSign() {
+        if (!CONFIG.USE_SIGN) return;
         API.sign.GetSignInfo().done(function(response) {
             DEBUG('TaskSign: GetSignInfo', response);
             if (response.code === 0) {
@@ -1581,6 +1708,7 @@
                         if (response.code === 0) {
                             // 签到成功
                             toast(response.data.text, 'success');
+                            tommorrowRun(TaskSign);
                         } else {
                             toast(response.data.text, 'error');
                         }
@@ -1588,16 +1716,19 @@
                 } else if (response.data.status === 1) {
                     // 已签到
                     toast('今日已签到：' + response.data.text, 'success');
+                    tommorrowRun(TaskSign);
                 }
             }
         });
     }
 
     function TaskLottery() {
+        if (!CONFIG.USE_LOTTERY) return;
         setTimeout(Lottery, 4e3);
     }
 
     function TaskReceiveAward(task_id) {
+        if (!CONFIG.USE_TASK) return;
         API.activity.receive_award(task_id, Info.csrf_token).done(function(response) {
             DEBUG('TaskTask: receive_award', response);
             if (response.code === 0) {
@@ -1608,6 +1739,7 @@
     }
 
     function Task() {
+        if (!CONFIG.USE_TASK) return;
         toast('检查任务完成情况', 'info');
         API.i.taskInfo().done(function(response) {
             DEBUG('TaskTask: taskInfo', response);
@@ -1646,10 +1778,12 @@
     }
 
     function TaskTask() {
+        if (!CONFIG.USE_TASK) return;
         setTimeout(Task, 6e3);
     }
 
     function Gift() {
+        if (!CONFIG.USE_GIFT) return;
         API.live_user.get_weared_medal(Info.uid, Info.roomid, Info.csrf_token).done(function(response) {
             if (response.code === 0) {
                 Info.medal_target_id = response.data.target_id;
@@ -1667,25 +1801,35 @@
                         if (response.code === 0) {
                             Info.bag_list = response.data.list;
                             $.each(Info.bag_list, function(i, v) {
-                                if ((CONFIG.GIFT_CONFIG.ALLOW_GIFT.indexOf(v.gift_id) > -1 || !CONFIG.GIFT_CONFIG.ALLOW_GIFT[0]) && // 检查ALLOW_GIFT
-                                    (((CONFIG.GIFT_CONFIG.SEND_GIFT.indexOf(v.gift_id) > -1 || !CONFIG.GIFT_CONFIG.SEND_GIFT[0]) && remain_feed > 0) || // 检查SEND_GIFT和今日亲密度
-                                        (CONFIG.GIFT_CONFIG.SEND_TODAY && v.expire_at > ts_s() && v.expire_at - ts_s() < 86400))) { // 检查SEND_TODAY和礼物到期时间
-                                    var feed_single = giftIDtoFeed(v.gift_id);
-                                    if (feed_single > 0) {
-                                        var feed_num = Math.floor(remain_feed / feed_single);
-                                        if (feed_num > v.gift_num) feed_num = v.gift_num;
-                                        if (feed_num > 0) {
-                                            API.gift.bag_send(Info.uid, v.gift_id, Info.ruid, feed_num, v.bag_id, Info.roomid, Info.rnd, Info.csrf_token).done(function(response) {
-                                                DEBUG('TaskGift: bag_send', response);
-                                                if (response.code === 0) {
-                                                    // 送礼成功
-                                                    Info.rnd = response.data.rnd;
-                                                    toast('包裹送礼成功，送出' + feed_num + '个' + v.gift_name, 'success');
-                                                } else {
-                                                    toast('包裹送礼异常，' + response.msg, 'error');
-                                                }
-                                            });
-                                            remain_feed -= feed_num * feed_single;
+                                v.gift_id += '';
+                                DEBUG('TaskGift: v.gift_id', v.gift_id);
+                                DEBUG('TaskGift: check: ALLOW_GIFT', ($.inArray(v.gift_id, CONFIG.GIFT_CONFIG.ALLOW_GIFT) > -1 || !CONFIG.GIFT_CONFIG.ALLOW_GIFT.length));
+                                DEBUG('TaskGift: check: SEND_GIFT', (CONFIG.GIFT_CONFIG.SEND_GIFT.length && $.inArray(v.gift_id, CONFIG.GIFT_CONFIG.SEND_GIFT) > -1));
+                                DEBUG('TaskGift: check: SEND_TODAY', (CONFIG.GIFT_CONFIG.SEND_TODAY && v.expire_at > ts_s() && v.expire_at - ts_s() < 86400));
+                                if (remain_feed > 0) { // 检查今日亲密度
+                                    if (($.inArray(v.gift_id, CONFIG.GIFT_CONFIG.ALLOW_GIFT) > -1 || !CONFIG.GIFT_CONFIG.ALLOW_GIFT.length) && // 检查ALLOW_GIFT
+                                        ((CONFIG.GIFT_CONFIG.SEND_GIFT.length && $.inArray(v.gift_id, CONFIG.GIFT_CONFIG.SEND_GIFT) > -1 && remain_feed > 0) || // 检查SEND_GIFT
+                                            (CONFIG.GIFT_CONFIG.SEND_TODAY && v.expire_at > ts_s() && v.expire_at - ts_s() < 86400))) { // 检查SEND_TODAY和礼物到期时间
+                                        var feed_single = giftIDtoFeed(v.gift_id);
+                                        DEBUG('TaskGift: v.gift_id', v.gift_id);
+                                        DEBUG('TaskGift: feed_single', feed_single);
+                                        if (feed_single > 0) {
+                                            var feed_num = Math.floor(remain_feed / feed_single);
+                                            if (feed_num > v.gift_num) feed_num = v.gift_num;
+                                            if (feed_num > 0) {
+                                                API.gift.bag_send(Info.uid, v.gift_id, Info.ruid, feed_num, v.bag_id, Info.roomid, Info.rnd, Info.csrf_token).done(function(response) {
+                                                    DEBUG('TaskGift: bag_send', response);
+                                                    if (response.code === 0) {
+                                                        // 送礼成功
+                                                        Info.rnd = response.data.rnd;
+                                                        toast('包裹送礼成功，送出' + feed_num + '个' + v.gift_name, 'success');
+                                                    } else {
+                                                        toast('包裹送礼异常，' + response.msg, 'error');
+                                                    }
+                                                });
+                                                remain_feed -= feed_num * feed_single;
+                                            }
+
                                         }
                                     }
                                 } else {
@@ -1697,6 +1841,7 @@
                                 setTimeout(Gift, 3600e3);
                             } else {
                                 toast('送礼结束，今日亲密度已满', 'success');
+                                tommorrowRun(TaskGift);
                             }
                         } else {
                             toast('获取包裹礼物异常，' + response.msg, 'error');
@@ -1710,7 +1855,8 @@
     }
 
     function TaskGift() {
-        if (!(CONFIG.GIFT_CONFIG.SHORT_ROOMID === 0 || CONFIG.GIFT_CONFIG.SHORT_ROOMID == Info.short_id)) return;
+        if (!CONFIG.USE_GIFT) return;
+        if (!(CONFIG.GIFT_CONFIG.SHORT_ROOMID === 0 || CONFIG.GIFT_CONFIG.SHORT_ROOMID === Info.short_id)) return;
         if (Info.medal_target_id !== Info.ruid) {
             if (!CONFIG.GIFT_CONFIG.CHANGE_MEDAL) {
                 toast('已佩戴的勋章不是当前主播勋章，送礼功能停止', 'caution');
@@ -1748,7 +1894,7 @@
     }
 
     $(document).ready(function() {
-        console.log('Bilibili直播间挂机助手已加载');
+        console.log('Bilibili直播间挂机助手: 已加载');
         Init();
     });
 
