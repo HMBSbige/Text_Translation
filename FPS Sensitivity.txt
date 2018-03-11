@@ -23,12 +23,31 @@ ACOG:Aim Down Sights 56
 [h1]Borderlands 2[/h1]
 Mouse Sensitivity: 8
 
-[h1]Doom (2016) && Wolfenstein II: The New Colossus[/h1]
+[h1]Doom (2016)[/h1]
+启动参数：
++com_skipIntroVideo 1//跳过开场动画
++com_skipKeyPressOnLoadScreens 1//加载完后不用按键自动继续
++menu_advanced_AllowAllSettings 1//解锁梦魇难度
+控制台：
+m_sensitivity 2.042755
+
+[h1]Wolfenstein II: The New Colossus[/h1]
+启动参数：
++com_skipBootSequence 1//跳过开场动画
+控制台：
+com_consoleTransparency 0.5//控制台背景透明度
+r_windowWidth 1918//屏幕宽度-2，为了使用Vulkan API时可以用OBS全屏录和Windows截屏键
+vid_restart//重载窗口
 m_sensitivity 2.042755
 
 [h1]Wolfenstein: The New Order && Wolfenstein: The Old Blood[/h1]
+配置文件目录：
 %USERPROFILE%\Saved Games\MachineGames\Wolfenstein The New Order\base\wolfConfig.cfg
 %USERPROFILE%\Saved Games\MachineGames\Wolfenstein The Old Blood\base\wolftobConfig.cfg
+Wolfenstein: The Old Blood 跳过开场动画：
+删除 <path-to-game>\base\bink\loadvideo_pc_xboxone.bik.
+启动参数：
++com_skipIntroVideo 1//Wolfenstein: The New Order 跳过开场动画
 m_sensitivity "2.219285"
 
 [h1]Battlefield 3[/h1]
