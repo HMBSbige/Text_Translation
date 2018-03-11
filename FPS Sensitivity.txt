@@ -27,6 +27,8 @@ Mouse Sensitivity: 8
 m_sensitivity 2.042755
 
 [h1]Wolfenstein: The New Order && Wolfenstein: The Old Blood[/h1]
+%USERPROFILE%\Saved Games\MachineGames\Wolfenstein The New Order\base\wolfConfig.cfg
+%USERPROFILE%\Saved Games\MachineGames\Wolfenstein The Old Blood\base\wolftobConfig.cfg
 m_sensitivity "2.219285"
 
 [h1]Battlefield 3[/h1]
