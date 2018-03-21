@@ -10,15 +10,21 @@
 # Killing Floor 2 Server Time Check End
 
 # Steam Start
-111.230.82.224 steamcommunity.com
+23.52.74.146 steamcommunity.com
+#111.230.82.224 steamcommunity.com
 # Steam End
 
 # DOOM Start
-103.86.70.254 dfw-stm.zionprod.systems
+103.86.70.254 services.bethesda.net
+103.86.70.254 dprgzy9nea5ev.cloudfront.net
 103.86.70.254 fra-stm.zionprod.systems
-103.86.70.254 prod-grustm01-gateway1-cf.zionprod.systems
-103.86.70.254 dfw-ping-stm.doom.amok.systems
 103.86.70.254 fra-ping-stm.doom.amok.systems
+103.86.70.254 dfw-stm.zionprod.systems
+103.86.70.254 dfw-gobbler.doom.amok.systems
+103.86.70.254 dfw-ping-stm.doom.amok.systems
+103.86.70.254 dfw-gatekeeper-pts-stm.doom.amok.systems
+103.86.70.254 dfw-gatekeeper-live-stm.doom.amok.systems
+103.86.70.254 prod-grustm01-gateway1-cf.zionprod.systems
 103.86.70.254 prod-iadstm01-gateway1-cf.zionprod.systems
 103.86.70.254 prod-sinstm01-gateway1-cf.zionprod.systems
 103.86.70.254 prod-pdxstm01-gateway1-cf.zionprod.systems
@@ -34,113 +40,24 @@
 103.86.70.254 prod-grustm01-gateway3-cf.zionprod.systems
 103.86.70.254 prod-dubstm01-gateway3-cf.zionprod.systems
 103.86.70.254 prod-pdxstm01-gateway3-cf.zionprod.systems
+103.86.70.254 prod-iadglb01-starlord-cf.zionprod.systems
+103.86.70.254 us-east-1-prod-iadstm01-httpping.zionprod.systems
+103.86.70.254 us-west-2-prod-pdxstm01-httpping.zionprod.systems
+103.86.70.254 eu-west-1-prod-dubstm01-httpping.zionprod.systems
+103.86.70.254 ap-southeast-2-prod-sydstm01-httpping.zionprod.systems
 103.86.70.254 1us-west-1-prod-pdxstm01-httpping.zionprod.systems
 103.86.70.254 1eu-west-1-prod-dubstm01-httpping.zionprod.systems
-103.86.70.254 us-east-1-prod-iadstm01-httpping.zionprod.systems
-103.86.70.254 prod-iadglb01-starlord-cf.zionprod.systems
-103.86.70.254 dfw-gatekeeper-live-stm.doom.amok.systems
-103.86.70.254 services.bethesda.net
-103.86.70.254 dfw-gobbler.doom.amok.systems
 # DOOM End
-
-# CSGO Demo Start
-223.119.248.16 replay99.valve.net
-223.119.248.16 replay100.valve.net
-223.119.248.16 replay101.valve.net
-223.119.248.16 replay102.valve.net
-223.119.248.16 replay111.valve.net
-223.119.248.16 replay112.valve.net
-223.119.248.16 replay113.valve.net
-223.119.248.16 replay114.valve.net
-223.119.248.16 replay115.valve.net
-223.119.248.16 replay121.valve.net
-223.119.248.16 replay122.valve.net
-223.119.248.16 replay123.valve.net
-223.119.248.16 replay124.valve.net
-223.119.248.16 replay125.valve.net
-223.119.248.16 replay126.valve.net
-223.119.248.16 replay127.valve.net
-223.119.248.16 replay128.valve.net
-223.119.248.16 replay131.valve.net
-223.119.248.16 replay132.valve.net
-223.119.248.16 replay133.valve.net
-223.119.248.16 replay134.valve.net
-223.119.248.16 replay135.valve.net
-223.119.248.16 replay136.valve.net
-223.119.248.16 replay137.valve.net
-223.119.248.16 replay138.valve.net
-223.119.248.16 replay139.valve.net
-223.119.248.16 replay141.valve.net
-223.119.248.16 replay142.valve.net
-223.119.248.16 replay143.valve.net
-223.119.248.16 replay144.valve.net
-223.119.248.16 replay145.valve.net
-223.119.248.16 replay151.valve.net
-223.119.248.16 replay152.valve.net
-223.119.248.16 replay153.valve.net
-223.119.248.16 replay154.valve.net
-223.119.248.16 replay155.valve.net
-223.119.248.16 replay156.valve.net
-223.119.248.16 replay161.valve.net
-223.119.248.16 replay163.valve.net
-223.119.248.16 replay164.valve.net
-223.119.248.16 replay165.valve.net
-223.119.248.16 replay171.valve.net
-223.119.248.16 replay172.valve.net
-223.119.248.16 replay181.valve.net
-223.119.248.16 replay182.valve.net
-223.119.248.16 replay183.valve.net
-223.119.248.16 replay184.valve.net
-223.119.248.16 replay185.valve.net
-223.119.248.16 replay186.valve.net
-223.119.248.16 replay187.valve.net
-223.119.248.16 replay188.valve.net
-223.119.248.16 replay189.valve.net
-223.119.248.16 replay190.valve.net
-223.119.248.16 replay191.valve.net
-223.119.248.16 replay192.valve.net
-223.119.248.16 replay193.valve.net
-223.119.248.16 replay195.valve.net
-223.119.248.16 replay200.valve.net
-223.119.248.16 replay201.valve.net
-223.119.248.16 replay202.valve.net
-223.119.248.16 replay203.valve.net
-223.119.248.16 replay204.valve.net
-223.119.248.16 replay211.valve.net
-223.119.248.16 replay212.valve.net
-223.119.248.16 replay213.valve.net
-223.119.248.16 replay214.valve.net
-223.119.248.16 replay221.valve.net
-223.119.248.16 replay222.valve.net
-223.119.248.16 replay223.valve.net
-223.119.248.16 replay224.valve.net
-223.119.248.16 replay225.valve.net
-223.119.248.16 replay227.valve.net
-223.119.248.16 replay228.valve.net
-223.119.248.16 replay231.valve.net
-223.119.248.16 replay232.valve.net
-223.119.248.16 replay233.valve.net
-223.119.248.16 replay234.valve.net
-223.119.248.16 replay241.valve.net
-223.119.248.16 replay242.valve.net
-223.119.248.16 replay251.valve.net
-223.119.248.16 replay261.valve.net
-223.119.248.16 replay900.valve.net
-# CSGO Demo End
 
 # R6S Start
 103.86.70.254 r6statuspc.azureedge.net
 103.86.70.254 r6pcaddons.azureedge.net
+103.86.70.254 msr-public-ubiservices.ubi.com
 103.86.70.254 api-discovery.live01.pc-live.r6.ubi.com
 103.86.70.254 api-configuration-live01.live01.pc-live.r6.ubi.com
 103.86.70.254 r6logstorage05.blob.core.windows.net
+103.86.70.254 public-ubiservices.ubi.com
+103.86.70.254 public-ws-ubiservices.ubi.com
 103.86.70.254 msr-public-ubiservices.ubi.com
 103.86.70.254 mercury.ubi.com
 # R6S End
-
-# The Division Start
-103.86.70.254 public-ubiservices.ubi.com
-103.86.70.254 public-ws-ubiservices.ubi.com
-103.86.70.254 public.aws-ubiservices.ubi.com
-103.86.70.254 public-ws.aws-ubiservices.ubi.com
-# The Division End
