@@ -1268,7 +1268,6 @@ var white_domains = {"ac":{
 "gt798":1,
 "cn.download.nvidia":1,
 "steampowered":1,
-"steamcommunity":1,
 "video.mileweb.steampowered.com.8686c":1,
 "broadcast.mileweb.steampowered.com.8686c":1,
 "cdn.steamstatic.com.8686c":1,
