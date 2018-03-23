@@ -10,8 +10,10 @@
 # Killing Floor 2 Server Time Check End
 
 # Steam Start
+# Steam启动参数:
+# -dev -community="https://steamcommunity.com"
 23.52.74.146 steamcommunity.com
-#111.230.82.224 steamcommunity.com
+# 111.230.82.224 steamcommunity.com
 # Steam End
 
 # DOOM Start
