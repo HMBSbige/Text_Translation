@@ -40867,6 +40867,9 @@ function isInDomains(domain_dict, host) {
 	}
 }
 function FindProxyForURL(url, host) {
+	if ( host.indexOf('steamcommunity.com') != -1 || host.indexOf('steamstatic.com/') != -1 || host.indexOf('steamcommunity-a.akamaihd.net') != -1 || host.indexOf('steamuserimages-a.akamaihd.net') != -1 || host.indexOf('steamstore-a.akamaihd.net') != -1) {
+		return "PROXY steam.xunyou.com:15000";
+	}
 	if ( isPlainHostName(host) === true ) {
 		return direct;
 	}
@@ -40889,6 +40892,9 @@ function FindProxyForURL(url, host) {
 }
 
 function FindProxyForURLEx(url, host) {
+	if ( host.indexOf('steamcommunity.com') != -1 || host.indexOf('steamstatic.com/') != -1 || host.indexOf('steamcommunity-a.akamaihd.net') != -1 || host.indexOf('steamuserimages-a.akamaihd.net') != -1 || host.indexOf('steamstore-a.akamaihd.net') != -1) {
+		return "PROXY steam.xunyou.com:15000";
+	}
 	if ( isPlainHostName(host) === true ) {
 		return direct;
 	}
