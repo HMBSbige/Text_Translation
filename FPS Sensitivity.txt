@@ -20,6 +20,11 @@ Mouse Sensitivity 11
 ACOG:Aim Down Sights 56
 机瞄:Aim Down Sights 79
 
+[h1]Warhammer: Vermintide 2[/h1]
+%APPDATA%\Fatshark\Vermintide 2\user_settings.config
+fov = 70
+mouse_look_sensitivity = 0.169773
+
 [h1]Borderlands 2[/h1]
 Mouse Sensitivity: 8
 
