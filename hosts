@@ -63,3 +63,7 @@
 103.86.70.254 msr-public-ubiservices.ubi.com
 103.86.70.254 mercury.ubi.com
 # R6S End
+
+# EAC Start
+45.77.129.32 download.eac-cdn.com
+# EAC End
