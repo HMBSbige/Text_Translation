@@ -25,6 +25,10 @@ ACOG:Aim Down Sights 56
 fov = 70
 mouse_look_sensitivity = 0.169773
 
+[h1]Dying Light[/h1]
+7 clicks
+fov = 60（+8）
+
 [h1]Borderlands 2[/h1]
 Mouse Sensitivity: 8
 
