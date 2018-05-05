@@ -8,11 +8,6 @@ var nowall_proxy = function(){ return direct; };
 var ip_proxy = function(){ return nowall_proxy(); };
 var ipv6_proxy = function(){ return nowall_proxy(); };
 
-/*
- * Copyright (C) 2014 breakwa11
- * https://github.com/breakwa11/gfw_whitelist
- */
-
 var rules = __RULES__;
 
 /*
