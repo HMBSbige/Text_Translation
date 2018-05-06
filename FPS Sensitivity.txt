@@ -15,10 +15,10 @@ Mouse Sensitivity 8
 ACOG:Aim Down Sights 52
 机瞄:Aim Down Sights 76
 [u][b]FOV 75[/b][/u]
-MouseSensitivityMultiplierUnit 0.02
-Mouse Sensitivity 10
-ACOG:Aim Down Sights 52
-机瞄:Aim Down Sights 74
+MouseYawSensitivity=10
+AimDownSightsMouse=52
+MouseSensitivityMultiplierUnit=0.019479
+XFactorAiming=0.020498 
 [u][b]FOV 90[/b][/u]
 MouseSensitivityMultiplierUnit 0.02
 Mouse Sensitivity 11
