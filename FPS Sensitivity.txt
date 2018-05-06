@@ -14,6 +14,11 @@ MouseSensitivityMultiplierUnit 0.02
 Mouse Sensitivity 8
 ACOG:Aim Down Sights 52
 机瞄:Aim Down Sights 76
+[u][b]FOV 75[/b][/u]
+MouseSensitivityMultiplierUnit 0.02
+Mouse Sensitivity 10
+ACOG:Aim Down Sights 52
+机瞄:Aim Down Sights 74
 [u][b]FOV 90[/b][/u]
 MouseSensitivityMultiplierUnit 0.02
 Mouse Sensitivity 11
@@ -22,12 +27,12 @@ ACOG:Aim Down Sights 56
 
 [h1]Warhammer: Vermintide 2[/h1]
 %APPDATA%\Fatshark\Vermintide 2\user_settings.config
-fov = 70
-mouse_look_sensitivity = 0.169773
+fov = 90
+mouse_look_sensitivity = -0.365930
 
 [h1]Dying Light[/h1]
-7 clicks
-fov = 60（+8）
+8 clicks
+fov = 90（+38）
 
 [h1]Borderlands 2[/h1]
 Mouse Sensitivity: 8
