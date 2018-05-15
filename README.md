@@ -4,7 +4,7 @@
 
 作者说下一版本更新中文然后到现在还没更新...
 
-* [PingInfoView 1.70](http://www.nirsoft.net/utils/multiple_ping_tool.html)
+* [PingInfoView 1.75](http://www.nirsoft.net/utils/multiple_ping_tool.html)
 
 文本使用UTF-16 LE或ASNI编码
 
