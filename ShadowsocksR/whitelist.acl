@@ -6,9 +6,6 @@
 # [proxy_list] 代理列表
 # [remote_dns] 远程 DNS 解析 -不加使用本地 DNS
 #**********************************************************************
-[proxy_list] 
-service.googleapis.cn
-
 [proxy_all]
 
 [bypass_list]
@@ -50204,3 +50201,6 @@ service.googleapis.cn
 223.255.0.0/17
 223.255.236.0/22
 223.255.252.0/23
+
+[proxy_list] 
+^(.*\.)?googleapis\.cn$
