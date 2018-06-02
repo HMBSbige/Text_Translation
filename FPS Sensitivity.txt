@@ -16,6 +16,7 @@ ACOG:Aim Down Sights 52
 机瞄:Aim Down Sights 76
 [u][b]FOV 75[/b][/u]
 MouseYawSensitivity=10
+MousePitchSensitivity=10
 AimDownSightsMouse=52
 MouseSensitivityMultiplierUnit=0.019479
 XFactorAiming=0.020498 
