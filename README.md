@@ -1,12 +1,26 @@
 # 简体中文翻译&&一些文本
 ## 软件列表
-* [TrayStatus 3.1.0.0](https://www.traystatus.com)
+* TrayStatus 3.1.0.0
 
-作者说下一版本更新中文然后到现在还没更新...
+    作者说下一版本更新中文然后到现在还没更新...
 
-* [PingInfoView 1.75](https://www.nirsoft.net/utils/multiple_ping_tool.html)
+    [简体中文翻译](TrayStatus/ZH-CN.lang)
 
-文本使用UTF-16 LE或ASNI编码
+    [官网](https://www.traystatus.com)
+
+* PingInfoView 1.75
+
+    文本使用 UTF-16 LE 或 GB2312 编码
+
+    [简体中文翻译](NirSoft/PingInfoView_lng.ini)
+
+    [官网](https://www.nirsoft.net/utils/multiple_ping_tool.html)
+
+* NetworkTrafficView 2.13
+
+    [简体中文翻译](NirSoft/NetworkTrafficView_lng.ini)
+
+    [官网](https://www.nirsoft.net/utils/network_traffic_view.html)
 
 ## 自用hosts
 
