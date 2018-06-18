@@ -103,11 +103,11 @@ MouseSensitivity = "1.85550"
 
 [h1]Call of Duty: Infinite Warfare[/h1]
 FOV Scale 80
-Mouse Horizontal Sensitivity 1.80 
+Horizontal Sensitivity 1.59
 
 [h1]Call of Duty: WWII[/h1]
-FOV: 65
-Sensitivity 1.80
+FOV: 90
+Sensitivity 1.59
 ADS Sensitivity 1.85
 
 [h1]L4D2 Config[/h1]

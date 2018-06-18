@@ -65,3 +65,11 @@
 # EAC Start
 209.50.53.79 download.eac-cdn.com
 # EAC End
+
+# COD Start
+54.230.86.62 mwr-cloudfront.prod.aws.demonware.net
+54.230.86.62 iw7-cloudfront.prod.aws.demonware.net
+54.230.86.62 ops3-cloudfront.prod.aws.demonware.net
+54.230.86.62 s2-beta-cloudfront.prod.aws.demonware.net
+54.230.86.62 s2-cloudfront.prod.aws.demonware.net
+# COD End
