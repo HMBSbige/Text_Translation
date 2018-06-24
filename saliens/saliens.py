@@ -49,26 +49,26 @@ class weblib:
 		'Referer': 'https://steamcommunity.com/saliengame/play/'
 	}
 	jar = requests.cookies.RequestsCookieJar()
-	def get(self, url):
+	def get(self, url, name=''):
 		try:
-			req = requests.get(url, headers = self.headers, cookies = self.jar, timeout=30)
+			req = requests.get(url, headers = self.headers, cookies = self.jar, timeout=90)
 			return req.text
 		except:
-			print("%s|Network|Error|Request: %s" % (getTime(), url))
+			print("%s|Bot: %s|NetworkError|Request: %s" % (getTime(), name, url))
 			return False
-	def post(self, url, postdata):
+	def post(self, url, postdata, name=''):
 		try:
-			req = requests.post(url, headers = self.headers, data = postdata, timeout=30)
+			req = requests.post(url, headers = self.headers, data = postdata, timeout=90)
 			return req.text
 		except:
-			print("%s|Network|Error|Request: %s" % (getTime(), url))
+			print("%s|Bot: %s|NetworkError|Request: %s" % (getTime(), name, url))
 			return False
-	def npost(self, url, postdata):
+	def npost(self, url, postdata, name=''):
 		try:
-			req = requests.post(url, headers = self.headers, data = postdata, timeout=30)
+			req = requests.post(url, headers = self.headers, data = postdata, timeout=90)
 			return [req.text, req.headers]
 		except:
-			print("%s|Network|Error|Request: %s" % (getTime(), url))
+			print("%s|Bot: %s|NetworkError|Request: %s" % (getTime(), name, url))
 			return False
 
 class saliens:
@@ -99,8 +99,8 @@ class saliens:
 		self.playerInfo = json.loads(weblib().post(self.apiStart+'/GetPlayerInfo/v0001/',
 			{
 				"access_token": self.token
-			}
-		))["response"]
+			},
+		self.name))["response"]
 		if "active_planet" in self.playerInfo:
 			self.myprint("%s|Bot: %s|PlanetId: %s|Level: %s|Exp: %s/%s" % (getTime(), self.name, self.playerInfo["active_planet"], self.playerInfo["level"], self.playerInfo["score"], self.playerInfo["next_level_score"]))
 		else:
@@ -108,7 +108,7 @@ class saliens:
 	def getPlanetInfo(self, planetId=None):
 		if planetId==None:
 			planetId = self.playerInfo["active_planet"]
-		self.planetInfo = json.loads(weblib().get(self.apiStart+'/GetPlanet/v0001/?id='+planetId+'&language='+self.language))["response"]["planets"][0]
+		self.planetInfo = json.loads(weblib().get(self.apiStart+'/GetPlanet/v0001/?id='+planetId+'&language='+self.language, self.name))["response"]["planets"][0]
 		self.myprint("%s|Bot: %s|Planet: %s|Progress: %s" % (getTime(), self.name, self.planetInfo["state"]["name"], self.planetInfo["state"]["capture_progress"]))
 	def joinPlanet(self, planetId):
 		self.myprint("%s|Bot: %s|JoinPlanet: %s" % (getTime(), self.name, planetId))
@@ -116,27 +116,41 @@ class saliens:
 			{
 				"id": int(planetId),
 				"access_token": self.token
-			}
-		)
-	def leavePlanet(self, gameid=None):
+			},
+		self.name)
+	def leavePlanet(self):
+		self.leaveGame(self.playerInfo["active_planet"])
+		errorTime = 0
+		while errorTime < 3:
+			self.getPlayerInfo()
+			if "active_planet" in self.playerInfo:
+				errorTime += 1
+				self.myprint("%s|Bot: %s|LeavePlanet|Failed|Retrying after 10s..." % (getTime(), self.name))
+				time.sleep(10)
+				self.leaveGame()
+			else:
+				break
+		self.getPlayerInfo()
+		if "active_planet" in self.playerInfo:
+			self.myprint("%s|Bot: %s|LeavePlanet|Failed|RestartInstance" % (getTime(), self.name))
+			return False
+	def leaveGame(self, gameid=None):
 		if gameid==None:
 			gameid=self.playerInfo["active_planet"]
-			self.myprint("%s|Bot: %s|LeaveGame: %s" % (getTime(), self.name, self.playerInfo["active_planet"]))
-		else:
-			self.myprint("%s|Bot: %s|ResetStatus" % (getTime(), self.name))
+		self.myprint("%s|Bot: %s|LeaveGame" % (getTime(), self.name))
 		result = weblib().post('https://community.steam-api.com/IMiniGameService/LeaveGame/v0001/',
 			{
 				"access_token": self.token,
 				"gameid": gameid
-			}
-		)
+			},
+		self.name)
 	def getJoinInfo(self):
 		req = weblib().npost(self.apiStart+'/JoinZone/v0001/', 
 			{
 				"zone_position": self.zone_position,
 				"access_token": self.token
-			}
-		)
+			},
+		self.name)
 		self.joinInfo = json.loads(req[0])["response"]
 		if "zone_info" in self.joinInfo:
 			self.joinInfo = self.joinInfo["zone_info"]
@@ -145,9 +159,9 @@ class saliens:
 		else:
 			try:
 				gameid = findstr('\d*', req[1]["X-error_message"])[0]
-				self.myprint("%s|Bot: %s|AlreadyInGame|ResetStatus after 30s..." % (getTime(), self.name))
+				self.myprint("%s|Bot: %s|AlreadyInGame|LeaveGame after 30s..." % (getTime(), self.name))
 				time.sleep(30)
-				self.leavePlanet(gameid)
+				self.leaveGame(gameid)
 				return False
 			except:
 				self.myprint("%s|Bot: %s|Error: %s|Retry after 30s..." % (getTime(), self.name, req[1]["X-error_message"]))
@@ -165,19 +179,19 @@ class saliens:
 				"access_token": self.token,
 				"score": score,
 				"language": self.language
-			}
-		))["response"]
+			},
+		self.name))["response"]
 		if "new_score" in self.scoreInfo:
 			self.myprint("%s|Bot: %s|UploadScore|Exp: %s/%s" % (getTime(), self.name, self.scoreInfo["new_score"], self.scoreInfo["next_level_score"]))
 		else:
 			if errorTime > 1:
-				self.myprint("%s|Bot: %s|UploadScore|Failed!" % (getTime(), self.name))
+				self.myprint("%s|Bot: %s|UploadScore|Failed" % (getTime(), self.name))
 			else:
-				self.myprint("%s|Bot: %s|UploadScore|Failed! Retrying..." % (getTime(), self.name))
+				self.myprint("%s|Bot: %s|UploadScore|Failed|Retrying..." % (getTime(), self.name))
 				time.sleep(5)
 				self.getScoreInfo(errorTime+1)
 	def getBestPlanet(self):
-		availPlanets = json.loads(weblib().get(self.apiStart+'/GetPlanets/v0001/?active_only=1&language='+self.language))["response"]["planets"]
+		availPlanets = json.loads(weblib().get(self.apiStart+'/GetPlanets/v0001/?active_only=1&language='+self.language, self.name))["response"]["planets"]
 		self.availPlanets = []
 		for planet in availPlanets:
 			self.availPlanets.append([planet["id"], self.getZoneInfo(planet["id"])]);
@@ -187,7 +201,7 @@ class saliens:
 				self.difficulty = planet[1]
 				self.bestPlanet = planet[0]
 	def getZoneInfo(self, planetId):
-		planetInfo = json.loads(weblib().get(self.apiStart+'/GetPlanet/v0001/?id='+planetId+'&language='+self.language))["response"]["planets"][0]
+		planetInfo = json.loads(weblib().get(self.apiStart+'/GetPlanet/v0001/?id='+planetId+'&language='+self.language, self.name))["response"]["planets"][0]
 		zones = planetInfo["zones"]
 		for zone in zones:
 			if zone["difficulty"] == 1 and zone["captured"] == False:

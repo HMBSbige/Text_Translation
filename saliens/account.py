@@ -21,6 +21,7 @@ def main():
 	filelib().mkdir('configs')
 	while name == "":
 		name = input('请输入Bot名：')
+	print("访问 https://steamcommunity.com/saliengame/gettoken 以获取token。")
 	while token == "":
 		token = input('请输入token：')
 	filelib().write('configs/'+name+'.json', json.dumps({"token": token}))
