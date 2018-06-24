@@ -1,10 +1,14 @@
+#!/bin/python3
 # -*- coding: UTF-8 -*-
-import os, re, sys, json, requests, time
+import os, re, sys, json, requests, time, datetime
 from multiprocessing.dummy import Pool as ThreadPool
 
 def findstr(rule, string):
 	find_str = re.compile(rule)
 	return find_str.findall(string)
+
+def getTime():
+	return datetime.datetime.now().strftime('%m/%d-%H:%M:%S')
 
 class filelib:
 	def open(self, path, mode='r', encoding="gbk"):
@@ -47,24 +51,24 @@ class weblib:
 	jar = requests.cookies.RequestsCookieJar()
 	def get(self, url):
 		try:
-			req = requests.get(url, headers = self.headers, cookies = self.jar)
+			req = requests.get(url, headers = self.headers, cookies = self.jar, timeout=30)
 			return req.text
 		except:
-			print("Network Error!")
+			print("%s|Network|Error|Request: %s" % (getTime(), url))
 			return False
 	def post(self, url, postdata):
 		try:
-			req = requests.post(url, headers = self.headers, data = postdata)
+			req = requests.post(url, headers = self.headers, data = postdata, timeout=30)
 			return req.text
 		except:
-			print("Network Error!")
+			print("%s|Network|Error|Request: %s" % (getTime(), url))
 			return False
 	def npost(self, url, postdata):
 		try:
-			req = requests.post(url, headers = self.headers, data = postdata)
+			req = requests.post(url, headers = self.headers, data = postdata, timeout=30)
 			return [req.text, req.headers]
 		except:
-			print("Network Error!")
+			print("%s|Network|Error|Request: %s" % (getTime(), url))
 			return False
 
 class saliens:
@@ -76,10 +80,17 @@ class saliens:
 		self.joinInfo = {}
 		self.scoreInfo = {}
 		self.bestPlanet = ''
-		self.zone_position = 0
+		self.zone_position = -1
 		self.name = ''
 		self.availPlanets = []
 		self.difficulty = 0
+		self.language = 'schinese'
+	def myprint(self, string):
+		try:
+			print(string)
+		except:
+			self.language = 'english'
+			print('%s|Bot: %s|PrintError|Switch to English')
 	def loadcfg(self, data):
 		self.name, path = data
 		conf = filelib().opencfg(path)
@@ -91,16 +102,16 @@ class saliens:
 			}
 		))["response"]
 		if "active_planet" in self.playerInfo:
-			print("Bot: %s Current PlanetId: %s Current Level: %s Exp: %s/%s" % (self.name, self.playerInfo["active_planet"], self.playerInfo["level"], self.playerInfo["score"], self.playerInfo["next_level_score"]))
+			self.myprint("%s|Bot: %s|PlanetId: %s|Level: %s|Exp: %s/%s" % (getTime(), self.name, self.playerInfo["active_planet"], self.playerInfo["level"], self.playerInfo["score"], self.playerInfo["next_level_score"]))
 		else:
-			print("Bot: %s Current Level: %s Exp: %s/%s" % (self.name, self.playerInfo["level"], self.playerInfo["score"], self.playerInfo["next_level_score"]))
+			self.myprint("%s|Bot: %s|Level: %s|Exp: %s/%s" % (getTime(), self.name, self.playerInfo["level"], self.playerInfo["score"], self.playerInfo["next_level_score"]))
 	def getPlanetInfo(self, planetId=None):
 		if planetId==None:
 			planetId = self.playerInfo["active_planet"]
-		self.planetInfo = json.loads(weblib().get(self.apiStart+'/GetPlanet/v0001/?id='+planetId+'&language=schinese'))["response"]["planets"][0]
-		print("Bot: %s Current Planet: %s Planet Progress: %s" % (self.name, self.planetInfo["state"]["name"], self.planetInfo["state"]["capture_progress"]))
+		self.planetInfo = json.loads(weblib().get(self.apiStart+'/GetPlanet/v0001/?id='+planetId+'&language='+self.language))["response"]["planets"][0]
+		self.myprint("%s|Bot: %s|Planet: %s|Progress: %s" % (getTime(), self.name, self.planetInfo["state"]["name"], self.planetInfo["state"]["capture_progress"]))
 	def joinPlanet(self, planetId):
-		print("Bot: %s joining planet %s" % (self.name, planetId))
+		self.myprint("%s|Bot: %s|JoinPlanet: %s" % (getTime(), self.name, planetId))
 		weblib().post(self.apiStart+'/JoinPlanet/v0001/',
 			{
 				"id": int(planetId),
@@ -110,9 +121,9 @@ class saliens:
 	def leavePlanet(self, gameid=None):
 		if gameid==None:
 			gameid=self.playerInfo["active_planet"]
-			print("Bot: %s leaving planet %s" % (self.name, self.playerInfo["active_planet"]))
+			self.myprint("%s|Bot: %s|LeaveGame: %s" % (getTime(), self.name, self.playerInfo["active_planet"]))
 		else:
-			print("Bot: %s resetting status" % self.name)
+			self.myprint("%s|Bot: %s|ResetStatus" % (getTime(), self.name))
 		result = weblib().post('https://community.steam-api.com/IMiniGameService/LeaveGame/v0001/',
 			{
 				"access_token": self.token,
@@ -129,48 +140,44 @@ class saliens:
 		self.joinInfo = json.loads(req[0])["response"]
 		if "zone_info" in self.joinInfo:
 			self.joinInfo = self.joinInfo["zone_info"]
-			print("Bot: %s joined zone %s" % (self.name, self.zone_position))
+			self.myprint("%s|Bot: %s|JoinZone: %s|Difficulty: %s" % (getTime(), self.name, self.zone_position, self.difficulty))
 			return True
 		else:
 			try:
 				gameid = findstr('\d*', req[1]["X-error_message"])[0]
-				print("Bot: %s Error: %s Will reset after 60s..." % (self.name, req[1]["X-error_message"]))
-				time.sleep(60)
+				self.myprint("%s|Bot: %s|AlreadyInGame|ResetStatus after 30s..." % (getTime(), self.name))
+				time.sleep(30)
 				self.leavePlanet(gameid)
 				return False
 			except:
-				print("Bot: %s Error: %s Wait 60s to retry..." % (self.name, req[1]["X-error_message"]))
-				time.sleep(60)
+				self.myprint("%s|Bot: %s|Error: %s|Retry after 30s..." % (getTime(), self.name, req[1]["X-error_message"]))
+				time.sleep(30)
 				return False
-	def getScoreInfo(self, errorTime=0, difficulty=None):
+	def getScoreInfo(self, errorTime=0):
 		if self.difficulty == 1:
 			score = 600
 		elif self.difficulty == 2:
 			score = 1200
 		elif self.difficulty == 3:
 			score = 2400
-		if not difficulty == None:
-			score = 0
 		self.scoreInfo = json.loads(weblib().post(self.apiStart+'/ReportScore/v0001/', 
 			{
 				"access_token": self.token,
 				"score": score,
-				"language": "schinese"
+				"language": self.language
 			}
 		))["response"]
 		if "new_score" in self.scoreInfo:
-			print("Bot: %s upload score success! Exp: %s/%s" % (self.name, self.scoreInfo["new_score"], self.scoreInfo["next_level_score"]))
+			self.myprint("%s|Bot: %s|UploadScore|Exp: %s/%s" % (getTime(), self.name, self.scoreInfo["new_score"], self.scoreInfo["next_level_score"]))
 		else:
-			if not difficulty == None:
-				print("Bot: %s needs to ")
-			if errorTime > 3:
-				print("Bot: %s upload score failed!" % self.name)
+			if errorTime > 1:
+				self.myprint("%s|Bot: %s|UploadScore|Failed!" % (getTime(), self.name))
 			else:
-				print("Bot: %s upload score failed! retrying..." % self.name)
-				time.sleep((errorTime+1) * 5)
+				self.myprint("%s|Bot: %s|UploadScore|Failed! Retrying..." % (getTime(), self.name))
+				time.sleep(5)
 				self.getScoreInfo(errorTime+1)
 	def getBestPlanet(self):
-		availPlanets = json.loads(weblib().get(self.apiStart+'/GetPlanets/v0001/?active_only=1&language=schinese'))["response"]["planets"]
+		availPlanets = json.loads(weblib().get(self.apiStart+'/GetPlanets/v0001/?active_only=1&language='+self.language))["response"]["planets"]
 		self.availPlanets = []
 		for planet in availPlanets:
 			self.availPlanets.append([planet["id"], self.getZoneInfo(planet["id"])]);
@@ -180,7 +187,7 @@ class saliens:
 				self.difficulty = planet[1]
 				self.bestPlanet = planet[0]
 	def getZoneInfo(self, planetId):
-		planetInfo = json.loads(weblib().get(self.apiStart+'/GetPlanet/v0001/?id='+planetId+'&language=schinese'))["response"]["planets"][0]
+		planetInfo = json.loads(weblib().get(self.apiStart+'/GetPlanet/v0001/?id='+planetId+'&language='+self.language))["response"]["planets"][0]
 		zones = planetInfo["zones"]
 		for zone in zones:
 			if zone["difficulty"] == 1 and zone["captured"] == False:
@@ -202,19 +209,20 @@ class saliens:
 		for zone in zones:
 			if zone["difficulty"] == self.difficulty and zone["captured"] == False:
 				self.zone_position = zone["zone_position"]
+				self.myprint("%s|Bot: %s|SelectZone: %s|Progress: %s" % (getTime(), self.name, self.zone_position, zone["capture_progress"]))
 				break
-		if self.zone_position == 0:
-			print("Bot: %s can't find zones! Getting all planets info." % self.name)
-			self.difficulty = 0
-			self.leavePlanet()
+		if self.zone_position == -1:
+			self.myprint("%s|Bot: %s|SwitchPlanet|Getting info..." % (getTime(), self.name))
 			self.getBestPlanet()
-			self.joinPlanet(self.bestPlanet)
-			self.getPlayerInfo()
-			if self.playerInfo["active_planet"] != self.bestPlanet:
-				print("Bot: %s switching planet failed!" % self.name)
-				sys.exit()
+			if "active_planet" in bot.playerInfo:
+				if bot.bestPlanet != bot.playerInfo["active_planet"]:
+					bot.leavePlanet()
+					bot.joinPlanet(bot.bestPlanet)
+					bot.getPlayerInfo()
 			else:
-				self.getPlanetInfo()
+				bot.joinPlanet(bot.bestPlanet)
+				bot.getPlayerInfo()
+			self.getPlanetInfo()
 			self.getHardZone()
 
 def handler(data):
@@ -223,16 +231,20 @@ def handler(data):
 	while True:
 		try:
 			bot.getPlayerInfo()
-			if "active_planet" in bot.playerInfo:
-				bot.leavePlanet()
 			bot.getBestPlanet()
-			bot.joinPlanet(bot.bestPlanet)
-			bot.getPlayerInfo()
+			if "active_planet" in bot.playerInfo:
+				if bot.bestPlanet != bot.playerInfo["active_planet"]:
+					bot.leavePlanet()
+					bot.joinPlanet(bot.bestPlanet)
+					bot.getPlayerInfo()
+			else:
+				bot.joinPlanet(bot.bestPlanet)
+				bot.getPlayerInfo()
 			bot.getPlanetInfo()
 			bot.getHardZone()
 			joined = bot.getJoinInfo()
 			if joined:
-				time.sleep(120)
+				time.sleep(115)
 				bot.getScoreInfo()
 			else:
 				pass
@@ -250,7 +262,7 @@ def main():
 	for root, dirs, files in list_dirs:
 		for f in files:
 			path = os.path.join(root, f)
-			filelists.append([f, path])
+			filelists.append([f.split('.')[0], path])
 	pool = ThreadPool(len(filelists)+1)
 	for i in range(0, len(filelists)):
 		pool.apply_async(handler, args=(filelists[i], ))
