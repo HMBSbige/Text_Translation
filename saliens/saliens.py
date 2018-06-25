@@ -125,7 +125,7 @@ class saliens:
 			self.getPlayerInfo()
 			if "active_planet" in self.playerInfo:
 				errorTime += 1
-				self.myprint("%s|Bot: %s|LeavePlanet|Failed|Retrying after 10s..." % (getTime(), self.name))
+				self.myprint("%s|Bot: %s|LeaveGame|Failed|Retrying after 10s..." % (getTime(), self.name))
 				time.sleep(10)
 				self.leaveGame()
 			else:
@@ -134,8 +134,8 @@ class saliens:
 		if "active_planet" in self.playerInfo:
 			self.myprint("%s|Bot: %s|LeavePlanet|Failed|RestartInstance" % (getTime(), self.name))
 			return False
-	def leaveGame(self, gameid=None):
-		if gameid==None:
+	def leaveGame(self, gameid=-1):
+		if gameid==-1:
 			gameid=self.playerInfo["active_planet"]
 		self.myprint("%s|Bot: %s|LeaveGame" % (getTime(), self.name))
 		result = weblib().post('https://community.steam-api.com/IMiniGameService/LeaveGame/v0001/',
@@ -158,9 +158,8 @@ class saliens:
 			return True
 		else:
 			try:
-				gameid = findstr('\d*', req[1]["X-error_message"])[0]
-				self.myprint("%s|Bot: %s|AlreadyInGame|LeaveGame after 30s..." % (getTime(), self.name))
-				time.sleep(30)
+				gameid = int(findstr('\d*$', req[1]["X-error_message"])[0])
+				self.myprint("%s|Bot: %s|AlreadyInGame|LeaveGame" % (getTime(), self.name))
 				self.leaveGame(gameid)
 				return False
 			except:
@@ -221,7 +220,7 @@ class saliens:
 			self.difficulty = 3
 		zones = self.planetInfo["zones"]
 		for zone in zones:
-			if zone["difficulty"] == self.difficulty and zone["captured"] == False:
+			if zone["difficulty"] == self.difficulty and zone["captured"] == False and zone["capture_progress"] < 0.95:
 				self.zone_position = zone["zone_position"]
 				self.myprint("%s|Bot: %s|SelectZone: %s|Progress: %s" % (getTime(), self.name, self.zone_position, zone["capture_progress"]))
 				break
@@ -258,7 +257,7 @@ def handler(data):
 			bot.getHardZone()
 			joined = bot.getJoinInfo()
 			if joined:
-				time.sleep(115)
+				time.sleep(120)
 				bot.getScoreInfo()
 			else:
 				pass
