@@ -137,7 +137,7 @@ class saliens:
 	def leaveGame(self, gameid=-1):
 		if gameid==-1:
 			gameid=self.playerInfo["active_planet"]
-		self.myprint("%s|Bot: %s|LeaveGame" % (getTime(), self.name))
+		self.myprint("%s|Bot: %s|LeaveGame: %s" % (getTime(), self.name, gameid))
 		result = weblib().post('https://community.steam-api.com/IMiniGameService/LeaveGame/v0001/',
 			{
 				"access_token": self.token,
@@ -187,7 +187,7 @@ class saliens:
 				self.myprint("%s|Bot: %s|UploadScore|Failed" % (getTime(), self.name))
 			else:
 				self.myprint("%s|Bot: %s|UploadScore|Failed|Retrying..." % (getTime(), self.name))
-				time.sleep(5)
+				time.sleep((errorTime+1)*5)
 				self.getScoreInfo(errorTime+1)
 	def getBestPlanet(self):
 		availPlanets = json.loads(weblib().get(self.apiStart+'/GetPlanets/v0001/?active_only=1&language='+self.language, self.name))["response"]["planets"]
@@ -220,10 +220,11 @@ class saliens:
 			self.difficulty = 3
 		zones = self.planetInfo["zones"]
 		for zone in zones:
-			if zone["difficulty"] == self.difficulty and zone["captured"] == False and zone["capture_progress"] < 0.95:
-				self.zone_position = zone["zone_position"]
-				self.myprint("%s|Bot: %s|SelectZone: %s|Progress: %s" % (getTime(), self.name, self.zone_position, zone["capture_progress"]))
-				break
+			if zone["difficulty"] == self.difficulty and zone["captured"] == False:
+				if (self.difficulty == 3 and zone["capture_progress"] < 0.99) or (self.difficulty < 3 and zone["capture_progress"] < 0.95):
+					self.zone_position = zone["zone_position"]
+					self.myprint("%s|Bot: %s|SelectZone: %s|Progress: %s" % (getTime(), self.name, self.zone_position, zone["capture_progress"]))
+					break
 		if self.zone_position == -1:
 			self.myprint("%s|Bot: %s|SwitchPlanet|Getting info..." % (getTime(), self.name))
 			self.getBestPlanet()
@@ -257,7 +258,7 @@ def handler(data):
 			bot.getHardZone()
 			joined = bot.getJoinInfo()
 			if joined:
-				time.sleep(120)
+				time.sleep(110)
 				bot.getScoreInfo()
 			else:
 				pass
