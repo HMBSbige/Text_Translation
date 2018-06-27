@@ -49,26 +49,31 @@ class weblib:
 		'Referer': 'https://steamcommunity.com/saliengame/play/'
 	}
 	jar = requests.cookies.RequestsCookieJar()
+	def myprint(self, string):
+		try:
+			print(string)
+		except:
+			print("Network Error!")
 	def get(self, url, name=''):
 		try:
 			req = requests.get(url, headers = self.headers, cookies = self.jar, timeout=90)
 			return req.text
 		except:
-			print("%s|Bot: %s|NetworkError|Request: %s" % (getTime(), name, url))
+			self.myprint("%s|Bot: %s|NetworkError|Request: %s" % (getTime(), name, url))
 			return False
 	def post(self, url, postdata, name=''):
 		try:
 			req = requests.post(url, headers = self.headers, data = postdata, timeout=90)
 			return req.text
 		except:
-			print("%s|Bot: %s|NetworkError|Request: %s" % (getTime(), name, url))
+			self.myprint("%s|Bot: %s|NetworkError|Request: %s" % (getTime(), name, url))
 			return False
 	def npost(self, url, postdata, name=''):
 		try:
 			req = requests.post(url, headers = self.headers, data = postdata, timeout=90)
 			return [req.text, req.headers]
 		except:
-			print("%s|Bot: %s|NetworkError|Request: %s" % (getTime(), name, url))
+			self.myprint("%s|Bot: %s|NetworkError|Request: %s" % (getTime(), name, url))
 			return False
 
 class saliens:
@@ -90,7 +95,7 @@ class saliens:
 			print(string)
 		except:
 			self.language = 'english'
-			print('%s|Bot: %s|PrintError|Switch to English')
+			print('%s|Bot: %s|PrintError|Switch to English' % (getTime(), self.name))
 	def loadcfg(self, data):
 		self.name, path = data
 		conf = filelib().opencfg(path)
@@ -101,10 +106,13 @@ class saliens:
 				"access_token": self.token
 			},
 		self.name))["response"]
+		team = ""
+		if "clan_info" in self.playerInfo:
+			team = "|Team: " + self.playerInfo["clan_info"]["name"]
 		if "active_planet" in self.playerInfo:
-			self.myprint("%s|Bot: %s|PlanetId: %s|Level: %s|Exp: %s/%s" % (getTime(), self.name, self.playerInfo["active_planet"], self.playerInfo["level"], self.playerInfo["score"], self.playerInfo["next_level_score"]))
+			self.myprint("%s|Bot: %s|PlanetId: %s|Level: %s|Exp: %s/%s%s" % (getTime(), self.name, self.playerInfo["active_planet"], self.playerInfo["level"], self.playerInfo["score"], self.playerInfo["next_level_score"], team))
 		else:
-			self.myprint("%s|Bot: %s|Level: %s|Exp: %s/%s" % (getTime(), self.name, self.playerInfo["level"], self.playerInfo["score"], self.playerInfo["next_level_score"]))
+			self.myprint("%s|Bot: %s|Level: %s|Exp: %s/%s%s" % (getTime(), self.name, self.playerInfo["level"], self.playerInfo["score"], self.playerInfo["next_level_score"], team))
 	def getPlanetInfo(self, planetId=None):
 		if planetId==None:
 			planetId = self.playerInfo["active_planet"]
