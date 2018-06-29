@@ -250,14 +250,14 @@ class saliens:
 		if self.zone_position == -1:
 			self.myprint("%s|Bot: %s|SwitchPlanet|Getting info..." % (getTime(), self.name))
 			self.getBestPlanet()
-			if "active_planet" in bot.playerInfo:
-				if bot.bestPlanet != bot.playerInfo["active_planet"]:
-					bot.leavePlanet()
-					bot.joinPlanet(bot.bestPlanet)
-					bot.getPlayerInfo()
+			if "active_planet" in self.playerInfo:
+				if self.bestPlanet != self.playerInfo["active_planet"]:
+					self.leavePlanet()
+					self.joinPlanet(self.bestPlanet)
+					self.getPlayerInfo()
 			else:
-				bot.joinPlanet(bot.bestPlanet)
-				bot.getPlayerInfo()
+				self.joinPlanet(self.bestPlanet)
+				self.getPlayerInfo()
 			self.getPlanetInfo()
 			self.getHardZone()
 
