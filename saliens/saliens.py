@@ -240,6 +240,7 @@ class saliens:
 	def getHardZone(self):
 		if not self.difficulty:
 			self.difficulty = 3
+		self.zone_position = -1
 		zones = self.planetInfo["zones"]
 		for zone in zones:
 			if zone["difficulty"] == self.difficulty and zone["captured"] == False:
@@ -265,7 +266,7 @@ def handler(data):
 	bot = saliens()
 	bot.loadcfg(data)
 	while True:
-		try:
+		# try:
 			bot.getPlayerInfo()
 			bot.getPlanetInfo()
 			bot.getHardZone()
@@ -275,8 +276,8 @@ def handler(data):
 				bot.getScoreInfo()
 			else:
 				pass
-		except:
-			pass
+		# except:
+			# pass
 
 def main():
 	try:
