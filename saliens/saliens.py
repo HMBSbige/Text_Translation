@@ -167,7 +167,6 @@ class saliens:
 		else:
 			try:
 				gameid = int(findstr('\d*$', req[1]["X-error_message"])[0])
-				self.myprint("%s|Bot: %s|AlreadyInGame|GameId: %s|BUG???" % (getTime(), self.name, str(gameid)))
 				self.bug(gameid)
 				return False
 			except:
@@ -175,6 +174,7 @@ class saliens:
 				time.sleep(30)
 				return False
 	def bug(self, gameid):
+		self.myprint("%s|Bot: %s|AlreadyInGame|GameId: %s|BUG???" % (getTime(), self.name, str(gameid)))
 		stillBug = True
 		while stillBug == True:
 			stillBug = self.getScoreInfo()
@@ -204,7 +204,6 @@ class saliens:
 				self.myprint("%s|Bot: %s|UploadScore|Failed" % (getTime(), self.name))
 				return False
 			else:
-				# self.myprint("%s|Bot: %s|UploadScore|Failed|Retrying..." % (getTime(), self.name))
 				time.sleep(1)
 				self.getScoreInfo(errorTime+1)
 	def getBestPlanet(self):
@@ -266,18 +265,30 @@ def handler(data):
 	bot = saliens()
 	bot.loadcfg(data)
 	while True:
-		# try:
+		try:
 			bot.getPlayerInfo()
+			bot.getBestPlanet()
+			if "active_planet" in bot.playerInfo:
+				if bot.bestPlanet != bot.playerInfo["active_planet"]:
+					bot.leavePlanet()
+					bot.joinPlanet(bot.bestPlanet)
+					bot.getPlayerInfo()
+			else:
+				bot.joinPlanet(bot.bestPlanet)
+				bot.getPlayerInfo()
 			bot.getPlanetInfo()
 			bot.getHardZone()
 			joined = bot.getJoinInfo()
 			if joined:
 				time.sleep(109)
 				bot.getScoreInfo()
+				bot.getPlayerInfo()
+				if "active_zone_game" in bot.playerInfo:
+					bot.bug(bot.playerInfo["active_zone_game"])
 			else:
 				pass
-		# except:
-			# pass
+		except:
+			pass
 
 def main():
 	try:
