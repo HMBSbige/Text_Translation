@@ -27,7 +27,7 @@ class filelib:
 	def mkdir(self, dirname):
 		try:
 			os.mkdir(dirname)
-		except WindowsError:
+		except:
 			pass
 		return True
 	def opencfg(self, path):
@@ -56,21 +56,21 @@ class weblib:
 			print("Network Error!")
 	def get(self, url, name=''):
 		try:
-			req = requests.get(url, headers = self.headers, cookies = self.jar, timeout=90)
+			req = requests.get(url, headers = self.headers, cookies = self.jar, timeout=60)
 			return req.text
 		except:
 			self.myprint("%s|Bot: %s|NetworkError|Request: %s" % (getTime(), name, url))
 			return False
 	def post(self, url, postdata, name=''):
 		try:
-			req = requests.post(url, headers = self.headers, data = postdata, timeout=90)
+			req = requests.post(url, headers = self.headers, data = postdata, timeout=60)
 			return req.text
 		except:
 			self.myprint("%s|Bot: %s|NetworkError|Request: %s" % (getTime(), name, url))
 			return False
 	def npost(self, url, postdata, name=''):
 		try:
-			req = requests.post(url, headers = self.headers, data = postdata, timeout=90)
+			req = requests.post(url, headers = self.headers, data = postdata, timeout=60)
 			return [req.text, req.headers]
 		except:
 			self.myprint("%s|Bot: %s|NetworkError|Request: %s" % (getTime(), name, url))
@@ -167,13 +167,19 @@ class saliens:
 		else:
 			try:
 				gameid = int(findstr('\d*$', req[1]["X-error_message"])[0])
-				self.myprint("%s|Bot: %s|AlreadyInGame|LeaveGame" % (getTime(), self.name))
-				self.leaveGame(gameid)
+				self.myprint("%s|Bot: %s|AlreadyInGame|GameId: %s|BUG???" % (getTime(), self.name, str(gameid)))
+				self.bug(gameid)
 				return False
 			except:
 				self.myprint("%s|Bot: %s|Error: %s|Retry after 30s..." % (getTime(), self.name, req[1]["X-error_message"]))
 				time.sleep(30)
 				return False
+	def bug(self, gameid):
+		stillBug = True
+		while stillBug == True:
+			stillBug = self.getScoreInfo()
+		self.myprint("%s|Bot: %s|AlreadyInGame|GameId: %s|LeaveGame" % (getTime(), self.name, str(gameid)))
+		self.leaveGame(gameid)
 	def getScoreInfo(self, errorTime=0):
 		if self.difficulty == 1:
 			score = 600
@@ -181,6 +187,8 @@ class saliens:
 			score = 1200
 		elif self.difficulty == 3:
 			score = 2400
+		elif self.difficulty == 4:
+			score = 4800
 		self.scoreInfo = json.loads(weblib().post(self.apiStart+'/ReportScore/v0001/', 
 			{
 				"access_token": self.token,
@@ -190,12 +198,14 @@ class saliens:
 		self.name))["response"]
 		if "new_score" in self.scoreInfo:
 			self.myprint("%s|Bot: %s|UploadScore|Exp: %s/%s" % (getTime(), self.name, self.scoreInfo["new_score"], self.scoreInfo["next_level_score"]))
+			return True
 		else:
 			if errorTime > 1:
 				self.myprint("%s|Bot: %s|UploadScore|Failed" % (getTime(), self.name))
+				return False
 			else:
-				self.myprint("%s|Bot: %s|UploadScore|Failed|Retrying..." % (getTime(), self.name))
-				time.sleep((errorTime+1)*5)
+				# self.myprint("%s|Bot: %s|UploadScore|Failed|Retrying..." % (getTime(), self.name))
+				time.sleep(1)
 				self.getScoreInfo(errorTime+1)
 	def getBestPlanet(self):
 		availPlanets = json.loads(weblib().get(self.apiStart+'/GetPlanets/v0001/?active_only=1&language='+self.language, self.name))["response"]["planets"]
@@ -221,6 +231,10 @@ class saliens:
 		for zone in zones:
 			if zone["difficulty"] == 3 and zone["captured"] == False:
 				difficulty = 3
+				break
+		for zone in zones:
+			if zone["type"] == 4 and zone["captured"] == False:
+				difficulty = 4
 				break
 		return difficulty
 	def getHardZone(self):
@@ -253,20 +267,11 @@ def handler(data):
 	while True:
 		try:
 			bot.getPlayerInfo()
-			bot.getBestPlanet()
-			if "active_planet" in bot.playerInfo:
-				if bot.bestPlanet != bot.playerInfo["active_planet"]:
-					bot.leavePlanet()
-					bot.joinPlanet(bot.bestPlanet)
-					bot.getPlayerInfo()
-			else:
-				bot.joinPlanet(bot.bestPlanet)
-				bot.getPlayerInfo()
 			bot.getPlanetInfo()
 			bot.getHardZone()
 			joined = bot.getJoinInfo()
 			if joined:
-				time.sleep(110)
+				time.sleep(109)
 				bot.getScoreInfo()
 			else:
 				pass

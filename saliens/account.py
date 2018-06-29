@@ -11,7 +11,7 @@ class filelib:
 	def mkdir(self, dirname):
 		try:
 			os.mkdir(dirname)
-		except WindowsError:
+		except:
 			pass
 		return True
 
