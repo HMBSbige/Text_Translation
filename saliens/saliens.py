@@ -10,6 +10,9 @@ def findstr(rule, string):
 def getTime():
 	return datetime.datetime.now().strftime('%m/%d-%H:%M:%S')
 
+def getTimestamp():
+	return int(time.time())
+
 class filelib:
 	def open(self, path, mode='r', encoding="gbk"):
 		try:
@@ -90,7 +93,7 @@ class saliens:
 		self.availPlanets = []
 		self.difficulty = 0
 		self.language = 'schinese'
-		self.skip = []
+		self.time = 0
 	def myprint(self, string):
 		try:
 			print(string)
@@ -163,19 +166,15 @@ class saliens:
 		self.joinInfo = json.loads(req[0])["response"]
 		if "zone_info" in self.joinInfo:
 			self.joinInfo = self.joinInfo["zone_info"]
+			self.time = int(getTimestamp() + 110)
 			self.myprint("%s|Bot: %s|JoinZone: %s|Difficulty: %s" % (getTime(), self.name, self.zone_position, self.difficulty))
 			return True
 		else:
 			try:
-				gameid = int(findstr('\d*$', req[1]["X-error_message"])[0])
+				gameid = int(findstr('\d+', req[1]["X-error_message"])[0])
 				self.bug(gameid)
 				return False
 			except:
-				if "boss zone" in req[1]["X-error_message"]:
-					self.skip.append(self.zone_position)
-					skipped = "|ZoneSkipped"
-				else:
-					skipped = ""
 				self.myprint("%s|Bot: %s%s|Msg: %s|Retry after 10s..." % (getTime(), self.name, skipped, req[1]["X-error_message"]))
 				time.sleep(10)
 				return False
@@ -183,10 +182,15 @@ class saliens:
 		self.myprint("%s|Bot: %s|AlreadyInGame|GameId: %s|BUG???" % (getTime(), self.name, str(gameid)))
 		stillBug = True
 		while stillBug == True:
-			stillBug = self.getScoreInfo()
+			stillBug = self.getScoreInfo(1)
 		self.myprint("%s|Bot: %s|AlreadyInGame|GameId: %s|LeaveGame" % (getTime(), self.name, str(gameid)))
 		self.leaveGame(gameid)
 	def getScoreInfo(self, errorTime=0):
+		if errorTime == 0:
+			self.getBestPlanet()
+		if self.time != 0:
+			time.sleep(self.time - getTimestamp())
+			self.time = 0
 		if self.difficulty == 1:
 			score = 600
 		elif self.difficulty == 2:
@@ -224,15 +228,15 @@ class saliens:
 		planetInfo = json.loads(weblib().get(self.apiStart+'/GetPlanet/v0001/?id='+planetId+'&language='+self.language, self.name))["response"]["planets"][0]
 		zones = planetInfo["zones"]
 		for zone in zones:
-			if zone["difficulty"] == 1 and zone["captured"] == False:
+			if zone["difficulty"] == 1 and zone["captured"] == False and "top_clans" in zone:
 				difficulty = 1
 				break
 		for zone in zones:
-			if zone["difficulty"] == 2 and zone["captured"] == False:
+			if zone["difficulty"] == 2 and zone["captured"] == False and "top_clans" in zone:
 				difficulty = 2
 				break
 		for zone in zones:
-			if zone["difficulty"] == 3 and zone["captured"] == False:
+			if zone["difficulty"] == 3 and zone["captured"] == False and "top_clans" in zone:
 				difficulty = 3
 				break
 		for zone in zones:
@@ -247,7 +251,7 @@ class saliens:
 		self.zone_position = -1
 		zones = self.planetInfo["zones"]
 		for zone in zones:
-			if zone["zone_position"] in self.skip:
+			if zone["zone_position"] == 0 and "capture_progress" in zone and zone["capture_progress"] == 0:
 				continue
 			if zone["difficulty"] == self.difficulty and zone["captured"] == False:
 				if (self.difficulty == 3 and zone["capture_progress"] < 0.99) or (self.difficulty < 3 and zone["capture_progress"] < 0.95):
@@ -275,9 +279,9 @@ def handler(data):
 	except:
 		print("%s|Bot: %s|LoadConfig|Error!" % (getTime(), data[0]))
 	bot.getPlayerInfo()
+	bot.getBestPlanet()
 	while True:
 		try:
-			bot.getBestPlanet()
 			if "active_planet" in bot.playerInfo:
 				if bot.bestPlanet != bot.playerInfo["active_planet"]:
 					bot.leavePlanet()
@@ -289,13 +293,14 @@ def handler(data):
 			bot.getPlanetInfo()
 			bot.getHardZone()
 			if bot.getJoinInfo():
-				time.sleep(109)
+				time.sleep(85)
 				bot.getScoreInfo()
 				bot.getPlayerInfo()
 				if "active_zone_game" in bot.playerInfo:
 					bot.bug(bot.playerInfo["active_zone_game"])
 			else:
 				bot.getPlayerInfo()
+				bot.getBestPlanet()
 		except:
 			pass
 
