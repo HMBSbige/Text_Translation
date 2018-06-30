@@ -56,21 +56,21 @@ class weblib:
 			print("Network Error!")
 	def get(self, url, name=''):
 		try:
-			req = requests.get(url, headers = self.headers, cookies = self.jar, timeout=60)
+			req = requests.get(url, headers = self.headers, cookies = self.jar, timeout=90)
 			return req.text
 		except:
 			self.myprint("%s|Bot: %s|NetworkError|Request: %s" % (getTime(), name, url))
 			return False
 	def post(self, url, postdata, name=''):
 		try:
-			req = requests.post(url, headers = self.headers, data = postdata, timeout=60)
+			req = requests.post(url, headers = self.headers, data = postdata, timeout=90)
 			return req.text
 		except:
 			self.myprint("%s|Bot: %s|NetworkError|Request: %s" % (getTime(), name, url))
 			return False
 	def npost(self, url, postdata, name=''):
 		try:
-			req = requests.post(url, headers = self.headers, data = postdata, timeout=60)
+			req = requests.post(url, headers = self.headers, data = postdata, timeout=90)
 			return [req.text, req.headers]
 		except:
 			self.myprint("%s|Bot: %s|NetworkError|Request: %s" % (getTime(), name, url))
@@ -90,6 +90,7 @@ class saliens:
 		self.availPlanets = []
 		self.difficulty = 0
 		self.language = 'schinese'
+		self.skip = []
 	def myprint(self, string):
 		try:
 			print(string)
@@ -133,7 +134,7 @@ class saliens:
 			self.getPlayerInfo()
 			if "active_planet" in self.playerInfo:
 				errorTime += 1
-				self.myprint("%s|Bot: %s|LeaveGame|Failed|Retrying after 10s..." % (getTime(), self.name))
+				self.myprint("%s|Bot: %s|LeaveGame|Failed|Retry after 10s..." % (getTime(), self.name))
 				time.sleep(10)
 				self.leaveGame()
 			else:
@@ -170,8 +171,13 @@ class saliens:
 				self.bug(gameid)
 				return False
 			except:
-				self.myprint("%s|Bot: %s|Error: %s|Retry after 30s..." % (getTime(), self.name, req[1]["X-error_message"]))
-				time.sleep(30)
+				if "boss zone" in req[1]["X-error_message"]:
+					self.skip.append(self.zone_position)
+					skipped = "|ZoneSkipped"
+				else:
+					skipped = ""
+				self.myprint("%s|Bot: %s%s|Msg: %s|Retry after 10s..." % (getTime(), self.name, skipped, req[1]["X-error_message"]))
+				time.sleep(10)
 				return False
 	def bug(self, gameid):
 		self.myprint("%s|Bot: %s|AlreadyInGame|GameId: %s|BUG???" % (getTime(), self.name, str(gameid)))
@@ -187,8 +193,6 @@ class saliens:
 			score = 1200
 		elif self.difficulty == 3:
 			score = 2400
-		elif self.difficulty == 4:
-			score = 4800
 		self.scoreInfo = json.loads(weblib().post(self.apiStart+'/ReportScore/v0001/', 
 			{
 				"access_token": self.token,
@@ -232,9 +236,10 @@ class saliens:
 				difficulty = 3
 				break
 		for zone in zones:
-			if zone["type"] == 4 and zone["captured"] == False:
-				difficulty = 4
-				break
+			if (zone["type"] == 4) and ("boss_active" in zone):
+				if zone["boss_active"] == True:
+					difficulty = 4
+					break
 		return difficulty
 	def getHardZone(self):
 		if not self.difficulty:
@@ -242,6 +247,8 @@ class saliens:
 		self.zone_position = -1
 		zones = self.planetInfo["zones"]
 		for zone in zones:
+			if zone["zone_position"] in self.skip:
+				continue
 			if zone["difficulty"] == self.difficulty and zone["captured"] == False:
 				if (self.difficulty == 3 and zone["capture_progress"] < 0.99) or (self.difficulty < 3 and zone["capture_progress"] < 0.95):
 					self.zone_position = zone["zone_position"]
@@ -263,10 +270,13 @@ class saliens:
 
 def handler(data):
 	bot = saliens()
-	bot.loadcfg(data)
+	try:
+		bot.loadcfg(data)
+	except:
+		print("%s|Bot: %s|LoadConfig|Error!" % (getTime(), data[0]))
+	bot.getPlayerInfo()
 	while True:
 		try:
-			bot.getPlayerInfo()
 			bot.getBestPlanet()
 			if "active_planet" in bot.playerInfo:
 				if bot.bestPlanet != bot.playerInfo["active_planet"]:
@@ -278,15 +288,14 @@ def handler(data):
 				bot.getPlayerInfo()
 			bot.getPlanetInfo()
 			bot.getHardZone()
-			joined = bot.getJoinInfo()
-			if joined:
+			if bot.getJoinInfo():
 				time.sleep(109)
 				bot.getScoreInfo()
 				bot.getPlayerInfo()
 				if "active_zone_game" in bot.playerInfo:
 					bot.bug(bot.playerInfo["active_zone_game"])
 			else:
-				pass
+				bot.getPlayerInfo()
 		except:
 			pass
 
