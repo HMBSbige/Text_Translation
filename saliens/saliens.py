@@ -1,6 +1,6 @@
 #!/bin/python3
 # -*- coding: UTF-8 -*-
-import os, re, sys, json, requests, time, datetime
+import os, re, sys, json, requests, time, datetime, random
 from multiprocessing.dummy import Pool as ThreadPool
 
 def findstr(rule, string):
@@ -83,6 +83,7 @@ class saliens:
 	def __init__(self):
 		self.apiStart = 'https://community.steam-api.com/ITerritoryControlMinigameService'
 		self.token = ''
+		self.accountid = ''
 		self.playerInfo = {}
 		self.planetInfo = {}
 		self.joinInfo = {}
@@ -104,6 +105,7 @@ class saliens:
 		self.name, path = data
 		conf = filelib().opencfg(path)
 		self.token = conf["token"]
+		self.accountid = int(conf["steamid"]) - 76561197960265728
 	def getPlayerInfo(self):
 		self.playerInfo = json.loads(weblib().post(self.apiStart+'/GetPlayerInfo/v0001/',
 			{
@@ -156,6 +158,65 @@ class saliens:
 				"gameid": gameid
 			},
 		self.name)
+	def joinBossZone(self):
+		req = weblib().npost(self.apiStart+'/JoinBossZone/v0001/',
+			{
+				"zone_position": self.zone_position,
+				"access_token": self.token
+			},
+		self.name)
+		eresult = int(findstr('\d+', req[1]["X-eresult"])[0])
+		if eresult != 1:
+			self.myprint("%s|Bot: %s|JoinBossZone: %s|Failed|RestartInstance" % (getTime(), self.name, self.zone_position))
+			return False
+		else:
+			return True
+	def fightBoss(self):
+		bossFailsAllowed = 10
+		nextHeal = getTimestamp() + random.randint(120, 180)
+		while True:
+			useHeal = 0
+			damageToBoss = 1
+			damageTaken = 0
+			if getTimestamp() >= nextHeal:
+				useHeal = 1
+				nextHeal = getTimestamp() + 120
+				self.myprint("%s|Bot: %s|FightingBoss|UsingHealAbility" % (getTime(), self.name))
+			req = weblib().npost(self.apiStart+'/ReportBossDamage/v0001/',
+				{
+					"access_token": self.token,
+					"use_heal_ability": useHeal,
+					"damage_to_boss": damageToBoss,
+					"damage_taken": damageTaken
+				},
+			self.name)
+			eresult = int(findstr('\d+', req[1]["X-eresult"])[0])
+			res = json.loads(req[0])["response"]
+			if eresult != 1:
+				bossFailsAllowed -= 1
+				if bossFailsAllowed < 1:
+					break
+			if "boss_status" in res:
+				if "boss_players" not in res["boss_status"]:
+					self.myprint("%s|Bot: %s|FightingBoss|Waiting..." % (getTime(), self.name))
+					continue
+			bossStatus = res["boss_status"]
+			bossPlayers = bossStatus["boss_players"]
+			for player in bossPlayers:
+				if player["accountid"] == self.accountid:
+					self.myprint("%s|Bot: %s|FightingBoss|HP: %s/%s|Score: %s" % (getTime(), self.name, player["hp"], player["max_hp"], player["xp_earned"]))
+					break
+			if "game_over" in res:
+				if res["game_over"] == True:
+					self.myprint("%s|Bot: %s|FightingBoss|GameOver" % (getTime(), self.name))
+					break
+			if "waiting_for_players" in res:
+				if res["waiting_for_players"] == True:
+					self.myprint("%s|Bot: %s|FightingBoss|WaitingForPlayers" % (getTime(), self.name))
+					continue
+			else:
+				self.myprint("%s|Bot: %s|FightingBoss|Boss HP: %s/%s|Lasers: %s|Team Heals: %s" % (getTime(), self.name, bossStatus["boss_hp"], bossStatus["boss_max_hp"], res["num_laser_uses"], res["num_team_heals"]))
+			time.sleep(5)
 	def getJoinInfo(self):
 		req = weblib().npost(self.apiStart+'/JoinZone/v0001/', 
 			{
@@ -175,6 +236,11 @@ class saliens:
 				self.bug(gameid)
 				return False
 			except:
+				if "boss zone" in req[1]["X-error_message"]:
+					self.skip.append(self.zone_position)
+					skipped = "|ZoneSkipped"
+				else:
+					skipped = ""
 				self.myprint("%s|Bot: %s%s|Msg: %s|Retry after 10s..." % (getTime(), self.name, skipped, req[1]["X-error_message"]))
 				time.sleep(10)
 				return False
@@ -253,6 +319,10 @@ class saliens:
 		for zone in zones:
 			if zone["zone_position"] == 0 and "capture_progress" in zone and zone["capture_progress"] == 0:
 				continue
+			if "boss_active" in zone and zone["boss_active"] == True:
+				self.zone_position = zone["zone_position"]
+				self.myprint("%s|Bot: %s|SelectBossZone: %s" % (getTime(), self.name, self.zone_position))
+				break
 			if zone["difficulty"] == self.difficulty and zone["captured"] == False:
 				if (self.difficulty == 3 and zone["capture_progress"] < 0.99) or (self.difficulty < 3 and zone["capture_progress"] < 0.95):
 					self.zone_position = zone["zone_position"]
@@ -292,6 +362,10 @@ def handler(data):
 				bot.getPlayerInfo()
 			bot.getPlanetInfo()
 			bot.getHardZone()
+			if bot.difficulty == 4:
+				if bot.joinBossZone():
+					bot.fightBoss()
+				continue
 			if bot.getJoinInfo():
 				time.sleep(85)
 				bot.getScoreInfo()

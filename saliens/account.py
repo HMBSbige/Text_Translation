@@ -30,13 +30,17 @@ def myprint(data):
 def main():
 	name = ''
 	token = ''
+	steamid = ''
 	filelib().mkdir('configs')
 	while name == "":
 		name = myinput(['请输入Bot名：', 'Please input bot name:'])
 	myprint(["访问 https://steamcommunity.com/saliengame/gettoken 以获取token。", "Open https://steamcommunity.com/saliengame/gettoken to get token."])
 	while token == "":
 		token = myinput(['请输入token：', 'Please input token:'])
-	filelib().write('configs/'+name+'.json', json.dumps({"token": token}))
+	myprint(["访问 https://steamcommunity.com/my/?xml=1 以获取Steam 64位ID：", "Open https://steamcommunity.com/my/?xml=1 to get your steam 64 id."])
+	while steamid == "":
+		steamid = myinput(["请输入Steam 64位ID：", "Please input Steam 64 ID:"])
+	filelib().write('configs/'+name+'.json', json.dumps({"token": token, "steamid": steamid}))
 
 if __name__ == '__main__':
 	main()
