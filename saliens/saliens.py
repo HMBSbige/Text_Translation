@@ -95,12 +95,17 @@ class saliens:
 		self.difficulty = 0
 		self.language = 'schinese'
 		self.time = 0
+		self.bossScore = 0
+		self.tmpScore = 0
+		self.help = 0
 	def myprint(self, string):
 		try:
 			print(string)
 		except:
-			self.language = 'english'
-			print('%s|Bot: %s|PrintError|Switch to English' % (getTime(), self.name))
+			if self.language != 'english':
+				self.language = 'english'
+			else:
+				pass
 	def loadcfg(self, data):
 		self.name, path = data
 		conf = filelib().opencfg(path)
@@ -170,10 +175,12 @@ class saliens:
 			self.myprint("%s|Bot: %s|JoinBossZone: %s|Failed|RestartInstance" % (getTime(), self.name, self.zone_position))
 			return False
 		else:
+			time.sleep(4)
 			return True
 	def fightBoss(self):
 		bossFailsAllowed = 10
 		nextHeal = getTimestamp() + random.randint(120, 180)
+		self.bossScore += self.tmpScore
 		while True:
 			useHeal = 0
 			damageToBoss = 1
@@ -181,7 +188,7 @@ class saliens:
 			if getTimestamp() >= nextHeal:
 				useHeal = 1
 				nextHeal = getTimestamp() + 120
-				self.myprint("%s|Bot: %s|FightingBoss|UsingHealAbility" % (getTime(), self.name))
+				self.myprint("%s|Bot: %s|BossFight|UsingHealAbility" % (getTime(), self.name))
 			req = weblib().npost(self.apiStart+'/ReportBossDamage/v0001/',
 				{
 					"access_token": self.token,
@@ -192,30 +199,38 @@ class saliens:
 			self.name)
 			eresult = int(findstr('\d+', req[1]["X-eresult"])[0])
 			res = json.loads(req[0])["response"]
+			if eresult == 11:
+				self.myprint("%s|Bot: %s|BossFight|InvalidState|RestartInstance" % (getTime(), self.name))
+				break
 			if eresult != 1:
 				bossFailsAllowed -= 1
 				if bossFailsAllowed < 1:
+					self.myprint("%s|Bot: %s|BossFight|ErrorTooMuch|RestartInstance" % (getTime(), self.name))
 					break
 			if "boss_status" in res:
 				if "boss_players" not in res["boss_status"]:
-					self.myprint("%s|Bot: %s|FightingBoss|Waiting..." % (getTime(), self.name))
+					self.myprint("%s|Bot: %s|BossFight|Waiting..." % (getTime(), self.name))
 					continue
 			bossStatus = res["boss_status"]
 			bossPlayers = bossStatus["boss_players"]
+			myPlayer = None
 			for player in bossPlayers:
 				if player["accountid"] == self.accountid:
-					self.myprint("%s|Bot: %s|FightingBoss|HP: %s/%s|Score: %s" % (getTime(), self.name, player["hp"], player["max_hp"], player["xp_earned"]))
+					myPlayer = player
+					self.tmpScore = int(player["xp_earned"])
+					self.myprint("%s|Bot: %s|BossFight|HP: %s/%s|Score: %s" % (getTime(), self.name, player["hp"], player["max_hp"], player["xp_earned"]))
 					break
 			if "game_over" in res:
 				if res["game_over"] == True:
-					self.myprint("%s|Bot: %s|FightingBoss|GameOver" % (getTime(), self.name))
+					self.myprint("%s|Bot: %s|BossFight|GameOver|TotalScore: %s" % (getTime(), self.name, str(self.bossScore)))
 					break
 			if "waiting_for_players" in res:
 				if res["waiting_for_players"] == True:
-					self.myprint("%s|Bot: %s|FightingBoss|WaitingForPlayers" % (getTime(), self.name))
+					self.myprint("%s|Bot: %s|BossFight|WaitingForPlayers" % (getTime(), self.name))
 					continue
-			else:
-				self.myprint("%s|Bot: %s|FightingBoss|Boss HP: %s/%s|Lasers: %s|Team Heals: %s" % (getTime(), self.name, bossStatus["boss_hp"], bossStatus["boss_max_hp"], res["num_laser_uses"], res["num_team_heals"]))
+			if myPlayer != None:
+				self.myprint("%s|Bot: %s|BossFight|Lv: %s => %s|Exp Earned: %s" % (getTime(), self.name, myPlayer["level_on_join"], myPlayer["new_level"], myPlayer["xp_earned"]))
+			self.myprint("%s|Bot: %s|BossFight|Boss HP: %s/%s|Lasers: %s|Team Heals: %s" % (getTime(), self.name, bossStatus["boss_hp"], bossStatus["boss_max_hp"], res["num_laser_uses"], res["num_team_heals"]))
 			time.sleep(5)
 	def getJoinInfo(self):
 		req = weblib().npost(self.apiStart+'/JoinZone/v0001/', 
@@ -281,15 +296,24 @@ class saliens:
 				time.sleep(1)
 				self.getScoreInfo(errorTime+1)
 	def getBestPlanet(self):
-		availPlanets = json.loads(weblib().get(self.apiStart+'/GetPlanets/v0001/?active_only=1&language='+self.language, self.name))["response"]["planets"]
-		self.availPlanets = []
-		for planet in availPlanets:
-			self.availPlanets.append([planet["id"], self.getZoneInfo(planet["id"])]);
-		self.difficulty = 0
-		for planet in self.availPlanets:
-			if planet[1]>self.difficulty:
-				self.difficulty = planet[1]
-				self.bestPlanet = planet[0]
+		if self.help == 1:
+			availPlanets = json.loads(weblib().get(self.apiStart+'/GetPlanets/v0001/?active_only=1&language='+self.language, self.name))["response"]["planets"]
+			bestProgress = 0
+			for planet in availPlanets:
+				if planet["state"]["capture_progress"] > bestProgress:
+					bestProgress = planet["state"]["capture_progress"]
+					self.difficulty = 1
+					self.bestPlanet = planet["id"]
+		else:
+			availPlanets = json.loads(weblib().get(self.apiStart+'/GetPlanets/v0001/?active_only=1&language='+self.language, self.name))["response"]["planets"]
+			self.availPlanets = []
+			for planet in availPlanets:
+				self.availPlanets.append([planet["id"], self.getZoneInfo(planet["id"])]);
+			self.difficulty = 0
+			for planet in self.availPlanets:
+				if planet[1]>self.difficulty:
+					self.difficulty = planet[1]
+					self.bestPlanet = planet[0]
 	def getZoneInfo(self, planetId):
 		planetInfo = json.loads(weblib().get(self.apiStart+'/GetPlanet/v0001/?id='+planetId+'&language='+self.language, self.name))["response"]["planets"][0]
 		zones = planetInfo["zones"]
@@ -341,6 +365,11 @@ class saliens:
 				self.getPlayerInfo()
 			self.getPlanetInfo()
 			self.getHardZone()
+	def helpOthers(self):
+		self.myprint("%s|Bot: %s|HelpOthers" % (getTime(), self.name))
+		self.difficulty = 1
+		self.help = 1
+		self.getBestPlanet()
 
 def handler(data):
 	bot = saliens()
@@ -351,6 +380,8 @@ def handler(data):
 	bot.getPlayerInfo()
 	bot.getBestPlanet()
 	while True:
+		if int(bot.playerInfo["level"]) >= 21:
+			bot.helpOthers()
 		try:
 			if "active_planet" in bot.playerInfo:
 				if bot.bestPlanet != bot.playerInfo["active_planet"]:
