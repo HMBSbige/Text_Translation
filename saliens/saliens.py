@@ -222,14 +222,17 @@ class saliens:
 					break
 			if "game_over" in res:
 				if res["game_over"] == True:
+					if myPlayer != None:
+						self.bossScore += myPlayer["xp_earned"]
 					self.myprint("%s|Bot: %s|BossFight|GameOver|TotalScore: %s" % (getTime(), self.name, str(self.bossScore)))
+					self.bossScore = 0
 					break
 			if "waiting_for_players" in res:
 				if res["waiting_for_players"] == True:
 					self.myprint("%s|Bot: %s|BossFight|WaitingForPlayers" % (getTime(), self.name))
 					continue
 			if myPlayer != None:
-				self.myprint("%s|Bot: %s|BossFight|Lv: %s => %s|Exp Earned: %s" % (getTime(), self.name, myPlayer["level_on_join"], myPlayer["new_level"], myPlayer["xp_earned"]))
+				self.myprint("%s|Bot: %s|BossFight|Lv: %s => %s|Exp Earned: %s" % (getTime(), self.name, myPlayer["level_on_join"], myPlayer["new_level"], str(int(myPlayer["xp_earned"])+self.bossScore)))
 			self.myprint("%s|Bot: %s|BossFight|Boss HP: %s/%s|Lasers: %s|Team Heals: %s" % (getTime(), self.name, bossStatus["boss_hp"], bossStatus["boss_max_hp"], res["num_laser_uses"], res["num_team_heals"]))
 			time.sleep(5)
 	def getJoinInfo(self):
