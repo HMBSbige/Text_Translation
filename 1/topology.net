@@ -1,0 +1,88 @@
+autostart = False
+[127.0.0.1:7200]
+    workingdir = C:\Users\ADMINI~1\AppData\Local\Temp
+    udp = 10000
+    [[2691]]
+        image = C:\Program Files\GNS3 VirtualBox Edition\IOS\C2691-AD.BIN
+        ram = 192
+        ghostios = True
+    [[ETHSW SW1]]
+        1 = access 1 R2 f0/1
+        2 = access 1 R3 f0/0
+        x = 13.5
+        y = -81.0
+    [[ROUTER R1]]
+        model = 2691
+        console = 2000
+        aux = 2105
+        f0/0 = nio_gen_eth:\device\npf_{5bb0da8a-1c60-49cb-82c6-d84db4075db9}
+        f0/1 = R2 f0/0
+        x = -293.0
+        y = -85.0
+    [[ROUTER R2]]
+        model = 2691
+        console = 2001
+        aux = 2106
+        f0/0 = R1 f0/1
+        f0/1 = SW1 1
+        x = -151.0
+        y = -93.0
+[127.0.0.1:7201]
+    workingdir = C:\Users\ADMINI~1\AppData\Local\Temp
+    udp = 10100
+    [[2691]]
+        image = C:\Program Files\GNS3 VirtualBox Edition\IOS\C2691-AD.BIN
+        ram = 192
+        ghostios = True
+    [[ROUTER R3]]
+        model = 2691
+        console = 2002
+        aux = 2107
+        f0/0 = SW1 2
+        x = 197.0
+        y = -70.0
+[GNS3-DATA]
+    [[NOTE 1]]
+        text = f0/0
+        x = -7.0
+        y = 22.0
+        interface = R3 f0/0
+    [[NOTE 2]]
+        text = f0/1
+        x = 72.6117590861
+        y = 27.5595451349
+        interface = R2 f0/1
+    [[NOTE 3]]
+        text = f0/0
+        x = -20.954725509
+        y = 32.0973940234
+        interface = R2 f0/0
+    [[NOTE 4]]
+        text = f0/1
+        x = 72.954725509
+        y = 23.9026059766
+        interface = R1 f0/1
+    [[NOTE 5]]
+        text = f0/0
+        x = 35.0712914909
+        y = 61.9463358965
+        interface = R1 f0/0
+    [[NOTE 6]]
+        text = 2
+        x = 75.5
+        y = 16.0
+        interface = SW1 2
+    [[NOTE 7]]
+        text = 1
+        x = -4.11175908607
+        y = 10.4404548651
+        interface = SW1 1
+    [[NOTE 8]]
+        text = nio_gen_eth:\device\npf_{5bb0da8a-1c60-49cb-82c6-d84db4075db9}
+        x = 130.428708509
+        y = -0.94633589654
+        interface = C1 nio_gen_eth:\device\npf_{5bb0da8a-1c60-49cb-82c6-d84db4075db9}
+    [[Cloud C1]]
+        x = -325.5
+        y = 71.0
+        connections = R1:f0/0:nio_gen_eth:\device\npf_{5bb0da8a-1c60-49cb-82c6-d84db4075db9}
