@@ -1,0 +1,29 @@
+"gameoverlay.styles"	
+{
+	"include"		"resource/styles/steam.styles"	
+	"colors"	
+	{
+		"mostly_black"		"41 41 41 240"	
+		"semi_black"		"20 20 20 128"	
+		"semi_gray"		"20 20 20 220"
+		"semi_kirino"     "233 173 101 240"
+		"semi_white"     "255 255 255 128"
+		"Notifications.PanelPosition"		"BottomRight"	
+	}
+	"styles"	
+	{
+		"detailsbox"	
+		{
+			"render_bg"	
+			{
+				"0"		"gradient( x0, y0, x1, y1, semi_kirino, semi_white )"	
+			}
+		}
+		"detailsboxtitle"	
+		{
+			"font-size"		"28"	
+			"font-style"		"uppercase"	
+			"textcolor"		"80 154 191 255"	
+		}
+	}
+}
