@@ -42876,6 +42876,9 @@ function FindProxyForURL(url, host) {
 	if ( isPlainHostName(host) === true ) {
 		return direct;
 	}
+	if (shExpMatch(url,"*.*google*.*")){
+		return wall_proxy();
+	}
 	if ( check_ipv4(host) === true ) {
 		return getProxyFromIP(host);
 	}
