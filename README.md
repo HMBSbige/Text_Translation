@@ -8,7 +8,7 @@
 
     [官网](https://www.traystatus.com)
 
-* PingInfoView 1.75
+* PingInfoView 1.80
 
     文本使用 UTF-16 LE 或 GB2312 编码
 
@@ -16,7 +16,7 @@
 
     [官网](https://www.nirsoft.net/utils/multiple_ping_tool.html)
 
-* NetworkTrafficView 2.13
+* NetworkTrafficView 2.15
 
     [简体中文翻译](NirSoft/NetworkTrafficView_lng.ini)
 
