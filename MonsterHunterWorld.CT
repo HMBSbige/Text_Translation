@@ -483,6 +483,15 @@ ebmp:
 unregistersymbol(ebmp)
 dealloc(newmem)
 </AssemblerScript>
+          <Hotkeys>
+            <Hotkey>
+              <Action>Toggle Activation</Action>
+              <Keys>
+                <Key>7</Key>
+              </Keys>
+              <ID>0</ID>
+            </Hotkey>
+          </Hotkeys>
         </CheatEntry>
         <CheatEntry>
           <ID>138</ID>
@@ -11984,7 +11993,7 @@ dealloc(newmem)
           <ID>2044</ID>
           <Description>"[seikur0's Scripts]"</Description>
           <Options moHideChildren="1"/>
-          <LastState Value="" Activated="1" RealAddress="00000000"/>
+          <LastState Value="" RealAddress="00000000"/>
           <Color>FF0000</Color>
           <GroupHeader>1</GroupHeader>
           <CheatEntries>
@@ -12463,7 +12472,7 @@ dealloc(newmem)
           <ID>4340</ID>
           <Description>"[Marcus101RR's Scripts]"</Description>
           <Options moHideChildren="1"/>
-          <LastState Value="" Activated="1" RealAddress="00000000"/>
+          <LastState Value="" RealAddress="00000000"/>
           <Color>FF0000</Color>
           <GroupHeader>1</GroupHeader>
           <CheatEntries>
