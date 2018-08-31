@@ -791,7 +791,7 @@ dealloc(newmem2)
         </CheatEntry>
         <CheatEntry>
           <ID>4406</ID>
-          <Description>"Maxed Set Bonus (Read Table Extras)"</Description>
+          <Description>"最大套装奖励"</Description>
           <LastState/>
           <VariableType>Auto Assembler Script</VariableType>
           <AssemblerScript>{ Game   : MonsterHunterWorld.exe
@@ -835,7 +835,7 @@ dealloc(newmem)
         </CheatEntry>
         <CheatEntry>
           <ID>4445</ID>
-          <Description>"最大化防具技能 (Read Table Extras)"</Description>
+          <Description>"最大化防具技能"</Description>
           <LastState/>
           <VariableType>Auto Assembler Script</VariableType>
           <AssemblerScript>{ Game   : MonsterHunterWorld.exe
@@ -881,7 +881,7 @@ dealloc(newmem)
         </CheatEntry>
         <CheatEntry>
           <ID>136</ID>
-          <Description>"Unlock Charms"</Description>
+          <Description>"解锁护石"</Description>
           <LastState/>
           <VariableType>Auto Assembler Script</VariableType>
           <AssemblerScript>{ Game   : MonsterHunterWorld.exe
@@ -923,7 +923,7 @@ dealloc(newmem)
         </CheatEntry>
         <CheatEntry>
           <ID>132</ID>
-          <Description>"Unlock Decorations (Smithy Menu Item)"</Description>
+          <Description>"解锁装饰品"</Description>
           <LastState/>
           <VariableType>Auto Assembler Script</VariableType>
           <AssemblerScript>{ Game   : MonsterHunterWorld.exe
@@ -1009,7 +1009,7 @@ dealloc(newmem)
         </CheatEntry>
         <CheatEntry>
           <ID>131</ID>
-          <Description>"Unlock Armor/Weapons For Current Tier Level (Read Table Extras)"</Description>
+          <Description>"Unlock Armor/Weapons For Current Tier Level"</Description>
           <LastState/>
           <VariableType>Auto Assembler Script</VariableType>
           <AssemblerScript>{ Game   : MonsterHunterWorld.exe
@@ -1052,7 +1052,7 @@ dealloc(newmem2)
         </CheatEntry>
         <CheatEntry>
           <ID>4193</ID>
-          <Description>"Inf Lucky Vouchers"</Description>
+          <Description>"无限激运票"</Description>
           <LastState/>
           <VariableType>Auto Assembler Script</VariableType>
           <AssemblerScript>{ Game   : MonsterHunterWorld.exe
@@ -3332,7 +3332,7 @@ dealloc(newmem)
         </CheatEntry>
         <CheatEntry>
           <ID>4140</ID>
-          <Description>"Palico Gadget Exp Multiplier"</Description>
+          <Description>"猫的装备的经验倍率"</Description>
           <Options moHideChildren="1"/>
           <LastState/>
           <VariableType>Auto Assembler Script</VariableType>
@@ -4110,14 +4110,14 @@ dealloc(newmem)
         </CheatEntry>
         <CheatEntry>
           <ID>33</ID>
-          <Description>"Weapon Buffs"</Description>
+          <Description>"武器 Buff"</Description>
           <Options moHideChildren="1"/>
-          <LastState Value="" RealAddress="00000000"/>
+          <LastState Value="" Activated="1" RealAddress="00000000"/>
           <GroupHeader>1</GroupHeader>
           <CheatEntries>
             <CheatEntry>
               <ID>4186</ID>
-              <Description>"Instantly Charged GS"</Description>
+              <Description>"大剑立刻充能"</Description>
               <LastState/>
               <VariableType>Auto Assembler Script</VariableType>
               <AssemblerScript>{ Game   : MonsterHunterWorld.exe
@@ -4201,7 +4201,7 @@ dealloc(newmem)
             </CheatEntry>
             <CheatEntry>
               <ID>32</ID>
-              <Description>"Inf Demon Mode"</Description>
+              <Description>"无限鬼人模式"</Description>
               <LastState/>
               <VariableType>Auto Assembler Script</VariableType>
               <AssemblerScript>{ Game   : MonsterHunterWorld.exe
@@ -4245,7 +4245,7 @@ dealloc(newmem)
             </CheatEntry>
             <CheatEntry>
               <ID>44</ID>
-              <Description>"Instant Level 3 Hammer Charge"</Description>
+              <Description>"大锤立刻三级充能"</Description>
               <LastState/>
               <VariableType>Auto Assembler Script</VariableType>
               <AssemblerScript>{ Game   : MonsterHunterWorld.exe
@@ -4287,7 +4287,7 @@ dealloc(newmem)
             </CheatEntry>
             <CheatEntry>
               <ID>4263</ID>
-              <Description>"Hammer Power Charge Always Active (Needs Initial Charge)"</Description>
+              <Description>"大锤力量充能总是激活 (需要初始化充能)"</Description>
               <LastState/>
               <VariableType>Auto Assembler Script</VariableType>
               <AssemblerScript>{ Game   : MonsterHunterWorld.exe
@@ -4352,7 +4352,7 @@ unregistersymbol(infglwsnte)
             </CheatEntry>
             <CheatEntry>
               <ID>48</ID>
-              <Description>"No GL Cooldown"</Description>
+              <Description>"铳枪无冷却"</Description>
               <LastState/>
               <VariableType>Auto Assembler Script</VariableType>
               <AssemblerScript>{ Game   : MonsterHunterWorld.exe
@@ -4393,7 +4393,7 @@ dealloc(newmem)
             </CheatEntry>
             <CheatEntry>
               <ID>57</ID>
-              <Description>"Fully Charged Switch Axe"</Description>
+              <Description>"无限充能的斩击斧"</Description>
               <LastState/>
               <VariableType>Auto Assembler Script</VariableType>
               <AssemblerScript>{ Game   : MonsterHunterWorld.exe
@@ -4438,7 +4438,7 @@ dealloc(newmem)
             </CheatEntry>
             <CheatEntry>
               <ID>60</ID>
-              <Description>"Inf Charge Blade Phials + Always White"</Description>
+              <Description>"Inf Charge Blade Phials + 总是白斩"</Description>
               <LastState/>
               <VariableType>Auto Assembler Script</VariableType>
               <AssemblerScript>{ Game   : MonsterHunterWorld.exe
@@ -4481,7 +4481,7 @@ dealloc(newmem)
             </CheatEntry>
             <CheatEntry>
               <ID>4323</ID>
-              <Description>"Inf Charge Blade Shield Charge"</Description>
+              <Description>"盾斧盾牌充能无限"</Description>
               <LastState/>
               <VariableType>Auto Assembler Script</VariableType>
               <AssemblerScript>{ Game   : MonsterHunterWorld.exe
@@ -4554,7 +4554,7 @@ dealloc(newmem)
             </CheatEntry>
             <CheatEntry>
               <ID>106</ID>
-              <Description>"Inf Hunting Horn Buff Duration"</Description>
+              <Description>"狩猎笛Buff持续时间无限"</Description>
               <LastState/>
               <VariableType>Auto Assembler Script</VariableType>
               <AssemblerScript>{ Game   : MonsterHunterWorld.exe
@@ -4640,7 +4640,7 @@ dealloc(newmem)
             </CheatEntry>
             <CheatEntry>
               <ID>4242</ID>
-              <Description>"Inf Insect Glaive Stamina"</Description>
+              <Description>"无限操虫棍耐力"</Description>
               <LastState/>
               <VariableType>Auto Assembler Script</VariableType>
               <AssemblerScript>{ Game   : MonsterHunterWorld.exe
@@ -4684,7 +4684,7 @@ dealloc(newmem)
             </CheatEntry>
             <CheatEntry>
               <ID>4175</ID>
-              <Description>"Bowgun Supports All Ammo/No Reload"</Description>
+              <Description>"弩支持所有弹药/无需填装"</Description>
               <LastState/>
               <VariableType>Auto Assembler Script</VariableType>
               <AssemblerScript>{ Game   : MonsterHunterWorld.exe
@@ -4796,7 +4796,7 @@ dealloc(newmem)
             </CheatEntry>
             <CheatEntry>
               <ID>440</ID>
-              <Description>"Inf Heavy Bowgun Special Ammo"</Description>
+              <Description>"重弩无限特殊子弹"</Description>
               <LastState/>
               <VariableType>Auto Assembler Script</VariableType>
               <AssemblerScript>{ Game   : MonsterHunterWorld.exe
@@ -4894,7 +4894,7 @@ dealloc(newmem)
             </CheatEntry>
             <CheatEntry>
               <ID>67</ID>
-              <Description>"Max Bow Charge"</Description>
+              <Description>"弓最大蓄力"</Description>
               <LastState/>
               <VariableType>Auto Assembler Script</VariableType>
               <AssemblerScript>{ Game   : MonsterHunterWorld.exe
@@ -6114,7 +6114,7 @@ A3:Lunastra Favor
           <CheatEntries>
             <CheatEntry>
               <ID>28</ID>
-              <Description>"Ignore Crafting Requirements"</Description>
+              <Description>"忽略制作要求"</Description>
               <LastState/>
               <VariableType>Auto Assembler Script</VariableType>
               <AssemblerScript>{ Game   : MonsterHunterWorld.exe
@@ -8871,7 +8871,7 @@ dealloc(newmem)
               <CheatEntries>
                 <CheatEntry>
                   <ID>4249</ID>
-                  <Description>"All Items"</Description>
+                  <Description>"所有道具"</Description>
                   <Options moHideChildren="1"/>
                   <LastState Value="" RealAddress="00000000"/>
                   <Color>008000</Color>
@@ -9071,7 +9071,7 @@ dealloc(newmem)
                 </CheatEntry>
                 <CheatEntry>
                   <ID>4366</ID>
-                  <Description>"All Ammo"</Description>
+                  <Description>"所有弹药"</Description>
                   <Options moHideChildren="1"/>
                   <LastState Value="" RealAddress="00000000"/>
                   <Color>008000</Color>
@@ -9271,7 +9271,7 @@ dealloc(newmem)
                 </CheatEntry>
                 <CheatEntry>
                   <ID>4261</ID>
-                  <Description>"All Materials"</Description>
+                  <Description>"所有素材"</Description>
                   <Options moHideChildren="1"/>
                   <LastState Value="" RealAddress="00000000"/>
                   <Color>008000</Color>
@@ -9471,7 +9471,7 @@ dealloc(newmem)
                 </CheatEntry>
                 <CheatEntry>
                   <ID>4267</ID>
-                  <Description>"All Event Materials"</Description>
+                  <Description>"所有事件素材"</Description>
                   <Options moHideChildren="1"/>
                   <LastState Value="" RealAddress="00000000"/>
                   <Color>008000</Color>
@@ -9671,7 +9671,7 @@ dealloc(newmem)
                 </CheatEntry>
                 <CheatEntry>
                   <ID>4273</ID>
-                  <Description>"All Decorations [MUST HAVE DECORATIONS UNLOCKED]"</Description>
+                  <Description>"所有装饰品 [必须解锁所有装饰品]"</Description>
                   <Options moHideChildren="1"/>
                   <LastState Value="" RealAddress="00000000"/>
                   <Color>008000</Color>
@@ -12478,7 +12478,7 @@ dealloc(newmem)
           <CheatEntries>
             <CheatEntry>
               <ID>4227</ID>
-              <Description>"Charm Editor"</Description>
+              <Description>"护石编辑器"</Description>
               <Options moHideChildren="1"/>
               <LastState/>
               <VariableType>Auto Assembler Script</VariableType>
@@ -13101,7 +13101,7 @@ A3:Lunastra Favor
             </CheatEntry>
             <CheatEntry>
               <ID>2</ID>
-              <Description>"Set Item Quantity"</Description>
+              <Description>"设置道具数量"</Description>
               <LastState/>
               <VariableType>Auto Assembler Script</VariableType>
               <AssemblerScript>{ Game   : MonsterHunterWorld.exe
@@ -13179,7 +13179,7 @@ dealloc(newmem)
             </CheatEntry>
             <CheatEntry>
               <ID>4448</ID>
-              <Description>"Change Max Carry"</Description>
+              <Description>"改变最大携带"</Description>
               <LastState/>
               <VariableType>Auto Assembler Script</VariableType>
               <AssemblerScript>{ Game   : MonsterHunterWorld.exe
@@ -13259,7 +13259,7 @@ unregistersymbol(curCap)
             </CheatEntry>
             <CheatEntry>
               <ID>4449</ID>
-              <Description>"Pointers"</Description>
+              <Description>"指针"</Description>
               <Options moHideChildren="1"/>
               <LastState Value="" RealAddress="00000000"/>
               <GroupHeader>1</GroupHeader>
