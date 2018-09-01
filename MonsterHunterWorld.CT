@@ -4157,7 +4157,7 @@ dealloc(newmem)
             </CheatEntry>
             <CheatEntry>
               <ID>40</ID>
-              <Description>"Inf Spirit Gauge"</Description>
+              <Description>"太刀无限满红刃"</Description>
               <LastState/>
               <VariableType>Auto Assembler Script</VariableType>
               <AssemblerScript>{ Game   : MonsterHunterWorld.exe
