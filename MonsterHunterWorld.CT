@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<CheatTable CheatEngineTableVersion="27">
+<CheatTable CheatEngineTableVersion="26">
   <CheatEntries>
     <CheatEntry>
       <ID>103</ID>
-      <Description>"启用 (Update 33)"</Description>
+      <Description>"启用 (Update 36)"</Description>
       <Options moHideChildren="1"/>
-      <LastState Activated="1"/>
+      <LastState/>
       <VariableType>Auto Assembler Script</VariableType>
       <AssemblerScript>{$lua}
 local function hex(input)
@@ -200,8 +200,38 @@ newmem:
 code:
   cmp r13,0
   jne @f
+  cmp [rax+08],69
+  je wff
+  cmp [rax+08],AF
+  je pcw
+  cmp [rax+08],B0
+  je ocw
+  cmp [rax+08],B1
+  je ocw
+  cmp [rax+08],B2
+  je ocw
+  cmp [rax+08],B4
+  je ocw
   inc [rax+0C]
 @@:
+  mov r12d,[rax+0C]
+  cmp edi,r12d
+  jmp return
+
+wff:
+  mov [rax+0C],5
+  mov r12d,[rax+0C]
+  cmp edi,r12d
+  jmp return
+
+pcw:
+  mov [rax+0C],33
+  mov r12d,[rax+0C]
+  cmp edi,r12d
+  jmp return
+
+ocw:
+  mov [rax+0C],15
   mov r12d,[rax+0C]
   cmp edi,r12d
   jmp return
@@ -483,15 +513,6 @@ ebmp:
 unregistersymbol(ebmp)
 dealloc(newmem)
 </AssemblerScript>
-          <Hotkeys>
-            <Hotkey>
-              <Action>Toggle Activation</Action>
-              <Keys>
-                <Key>7</Key>
-              </Keys>
-              <ID>0</ID>
-            </Hotkey>
-          </Hotkeys>
         </CheatEntry>
         <CheatEntry>
           <ID>138</ID>
@@ -1009,7 +1030,7 @@ dealloc(newmem)
         </CheatEntry>
         <CheatEntry>
           <ID>131</ID>
-          <Description>"Unlock Armor/Weapons For Current Tier Level"</Description>
+          <Description>"Unlock Armor/Weapons For Current Tier Level (Read Table Extras)"</Description>
           <LastState/>
           <VariableType>Auto Assembler Script</VariableType>
           <AssemblerScript>{ Game   : MonsterHunterWorld.exe
@@ -3390,7 +3411,7 @@ dealloc(newmem)
         </CheatEntry>
         <CheatEntry>
           <ID>4246</ID>
-          <Description>"Monster Research Multiplier"</Description>
+          <Description>"怪物研究点数倍率"</Description>
           <Options moHideChildren="1"/>
           <LastState/>
           <VariableType>Auto Assembler Script</VariableType>
@@ -4109,10 +4130,79 @@ dealloc(newmem)
           </CheatEntries>
         </CheatEntry>
         <CheatEntry>
+          <ID>5108</ID>
+          <Description>"Cannons Always Loaded"</Description>
+          <LastState/>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>{ Game   : MonsterHunterWorld.exe
+  Version: 
+  Date   : 2018-08-31
+  Author : Squall8
+}
+
+[ENABLE]
+
+aobscanmodule(cannonsal,MonsterHunterWorld.exe,8B 87 E8 0F 00 00)
+alloc(newmem,$1000,cannonsal)
+
+label(code)
+label(return)
+
+registersymbol(cannonsal)
+
+newmem:
+  mov [rdi+00000FE8],5
+
+code:
+  mov eax,[rdi+00000FE8]
+  jmp return
+
+cannonsal:
+  jmp newmem
+  nop
+return:
+
+[DISABLE]
+
+cannonsal:
+  db 8B 87 E8 0F 00 00
+
+unregistersymbol(cannonsal)
+dealloc(newmem)
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>5109</ID>
+          <Description>"Inf Cannon Fire"</Description>
+          <LastState/>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>{ Game   : MonsterHunterWorld.exe
+  Version: 
+  Date   : 2018-08-31
+  Author : Squall8
+}
+
+[ENABLE]
+
+aobscanmodule(cannonsnsf,MonsterHunterWorld.exe,83 AB E8 0F 00 00 01)
+registersymbol(cannonsnsf)
+
+cannonsnsf+06:
+  db 00
+
+[DISABLE]
+
+cannonsnsf+06:
+  db 01
+
+unregistersymbol(cannonsnsf)
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
           <ID>33</ID>
           <Description>"武器 Buff"</Description>
           <Options moHideChildren="1"/>
-          <LastState Value="" Activated="1" RealAddress="00000000"/>
+          <LastState Value="" RealAddress="00000000"/>
           <GroupHeader>1</GroupHeader>
           <CheatEntries>
             <CheatEntry>
@@ -4178,6 +4268,8 @@ registersymbol(infspirit)
 
 newmem:
   mov [rcx+00001FB8],(float)1
+  mov [rcx+00001FC0],3
+  mov [rcx+00001FC4],(float)1
 
 code:
   movss xmm0,[rcx+00001FB8]
@@ -4286,30 +4378,46 @@ dealloc(newmem)
 </AssemblerScript>
             </CheatEntry>
             <CheatEntry>
-              <ID>4263</ID>
+              <ID>5106</ID>
               <Description>"大锤力量充能总是激活 (需要初始化充能)"</Description>
               <LastState/>
               <VariableType>Auto Assembler Script</VariableType>
               <AssemblerScript>{ Game   : MonsterHunterWorld.exe
   Version: 
-  Date   : 2018-08-20
+  Date   : 2018-08-30
   Author : Squall8
 }
 
 [ENABLE]
 
-aobscanmodule(hampc,MonsterHunterWorld.exe,C6 83 94 1F 00 00 01)
-registersymbol(hampc)
+aobscanmodule(hpcaa,MonsterHunterWorld.exe,80 BB 94 1F 00 00 00 74 78)
+alloc(newmem,$1000,hpcaa)
 
-hampc+06:
-  db 00
+label(code)
+label(return)
+
+registersymbol(hpcaa)
+
+newmem:
+  mov byte ptr [rbx+00001F94],1
+
+code:
+  cmp byte ptr [rbx+00001F94],00
+  jmp return
+
+hpcaa:
+  jmp newmem
+  nop
+  nop
+return:
 
 [DISABLE]
 
-hampc+06:
-  db 01
+hpcaa:
+  db 80 BB 94 1F 00 00 00
 
-unregistersymbol(hampc)
+unregistersymbol(hpcaa)
+dealloc(newmem)
 </AssemblerScript>
             </CheatEntry>
             <CheatEntry>
@@ -4438,7 +4546,7 @@ dealloc(newmem)
             </CheatEntry>
             <CheatEntry>
               <ID>60</ID>
-              <Description>"Inf Charge Blade Phials + 总是白斩"</Description>
+              <Description>"盾斧瓶子无限 + 总是白斩"</Description>
               <LastState/>
               <VariableType>Auto Assembler Script</VariableType>
               <AssemblerScript>{ Game   : MonsterHunterWorld.exe
@@ -4476,6 +4584,50 @@ cbiphaw:
   db 8B 87 C4 1F 00 00
 
 unregistersymbol(cbiphaw)
+dealloc(newmem)
+</AssemblerScript>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>5105</ID>
+              <Description>"Inf Charge Blade Sword Charge"</Description>
+              <LastState/>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>{ Game   : MonsterHunterWorld.exe
+  Version: 
+  Date   : 2018-08-28
+  Author : Squall8
+}
+
+[ENABLE]
+
+aobscanmodule(cbacsw,MonsterHunterWorld.exe,F3 0F 10 83 CC 1F 00 00 0F)
+alloc(newmem,$1000,cbacsw)
+
+label(code)
+label(return)
+
+registersymbol(cbacsw)
+
+newmem:
+  mov [rbx+00001FCC],(float)50
+
+code:
+  movss xmm0,[rbx+00001FCC]
+  jmp return
+
+cbacsw:
+  jmp newmem
+  nop
+  nop
+  nop
+return:
+
+[DISABLE]
+
+cbacsw:
+  db F3 0F 10 83 CC 1F 00 00
+
+unregistersymbol(cbacsw)
 dealloc(newmem)
 </AssemblerScript>
             </CheatEntry>
@@ -4754,7 +4906,7 @@ dealloc(newmem2)
             </CheatEntry>
             <CheatEntry>
               <ID>63</ID>
-              <Description>"Inf Wyvernblast"</Description>
+              <Description>"无限起爆龙弹"</Description>
               <LastState/>
               <VariableType>Auto Assembler Script</VariableType>
               <AssemblerScript>{ Game   : MonsterHunterWorld.exe
@@ -13494,7 +13646,7 @@ unregistersymbol(curCap)
             </CheatEntry>
             <CheatEntry>
               <ID>4328</ID>
-              <Description>"静态数据 (AOB)"</Description>
+              <Description>"静态数据 (字节数组)"</Description>
               <Options moHideChildren="1"/>
               <LastState/>
               <VariableType>Auto Assembler Script</VariableType>
