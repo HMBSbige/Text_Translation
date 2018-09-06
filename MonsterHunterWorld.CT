@@ -3,9 +3,9 @@
   <CheatEntries>
     <CheatEntry>
       <ID>103</ID>
-      <Description>"启用 (Update 36)"</Description>
+      <Description>"启用 (Update 39.5)"</Description>
       <Options moHideChildren="1"/>
-      <LastState/>
+      <LastState Activated="1"/>
       <VariableType>Auto Assembler Script</VariableType>
       <AssemblerScript>{$lua}
 local function hex(input)
@@ -88,8 +88,8 @@ label(return)
 
 registersymbol(infhealth)
 
-assert(MonsterHunterWorld.exe+C3125F5,F3 0F 11 41 64)
-alloc(newmem2,$1000,MonsterHunterWorld.exe+C3125F5)
+assert(MonsterHunterWorld.exe+C7F0455,F3 0F 11 41 64)
+alloc(newmem2,$1000,MonsterHunterWorld.exe+C7F0455)
 
 label(code2)
 label(return2)
@@ -120,7 +120,7 @@ infhealth:
   nop
 return:
 
-MonsterHunterWorld.exe+C3125F5:
+MonsterHunterWorld.exe+C7F0455:
   jmp newmem2
 return2:
 
@@ -132,7 +132,7 @@ infhealth:
 unregistersymbol(infhealth)
 dealloc(newmem)
 
-MonsterHunterWorld.exe+C3125F5:
+MonsterHunterWorld.exe+C7F0455:
   db F3 0F 11 41 64
 
 dealloc(newmem2)
@@ -198,8 +198,10 @@ registersymbol(infitemuse2)
 newmem:
 
 code:
-  cmp r13,0
-  jne @f
+  cmp r13,6
+  je @f
+  cmp r13,8
+  je @f
   cmp [rax+08],69
   je wff
   cmp [rax+08],AF
@@ -237,15 +239,17 @@ ocw:
   jmp return
 
 newmem2:
-  cmp r13,0
-  jne code2
+  cmp r13,6
+  je code2
+  cmp r13,8
+  je code2
   cmp r8l,00
-  jne MonsterHunterWorld.exe+C190780
+  jne MonsterHunterWorld.exe+C523DD0
   jmp return2
 
 code2:
   cmp r8l,01
-  jne MonsterHunterWorld.exe+C190780
+  jne MonsterHunterWorld.exe+C523DD0
   jmp return2
 
 infitemuse1:
@@ -454,11 +458,11 @@ registersymbol(nopgcd)
 nopgcd:
   db 90 90 90 90 90 90 90 90 90
 
-aobscanmodule(nopgcd2,MonsterHunterWorld.exe,F3 0F 11 B6 94 93 00 00 0F 28 74 24 20 48 83 C4 30 5E C3 90 63)
+{aobscanmodule(nopgcd2,MonsterHunterWorld.exe,F3 0F 11 B6 94 93 00 00 0F 28 74 24 20 48 83 C4 30 5E C3 90 63)
 registersymbol(nopgcd2)
 
 nopgcd2:
-  db 90 90 90 90 90 90 90 90
+  db 90 90 90 90 90 90 90 90}
 
 [DISABLE]
 
@@ -467,10 +471,10 @@ nopgcd:
 
 unregistersymbol(nopgcd)
 
-nopgcd2:
+{nopgcd2:
   db F3 0F 11 B6 94 93 00 00
 
-unregistersymbol(nopgcd2)
+unregistersymbol(nopgcd2)}
 </AssemblerScript>
         </CheatEntry>
         <CheatEntry>
@@ -4876,7 +4880,7 @@ newmem2:
 code2:
   mov edx,[rdi]
   cmp edx,ebp
-  jle MonsterHunterWorld.Ordinal292+1C94063
+  jle MonsterHunterWorld.Ordinal292+1C94883
   jmp return2
 
 allammo:
@@ -5045,46 +5049,813 @@ dealloc(newmem)
 </AssemblerScript>
             </CheatEntry>
             <CheatEntry>
-              <ID>67</ID>
+              <ID>5360</ID>
               <Description>"弓最大蓄力"</Description>
               <LastState/>
               <VariableType>Auto Assembler Script</VariableType>
               <AssemblerScript>{ Game   : MonsterHunterWorld.exe
   Version: 
-  Date   : 2018-08-09
+  Date   : 2018-09-05
   Author : Squall8
 }
 
 [ENABLE]
 
-aobscanmodule(maxbowcharge,MonsterHunterWorld.exe,39 8B 14 20 00 00)
-alloc(newmem,$1000,maxbowcharge)
+aobscanmodule(mbc1,MonsterHunterWorld.exe,89 BB 14 20 00 00)
+alloc(newmem,$1000,mbc1)
 
 label(code)
 label(return)
+
+registersymbol(mbc1)
+
+aobscanmodule(mbc2,MonsterHunterWorld.exe,8B 93 14 20 00 00 48 8B CB)
+alloc(newmem2,$1000,mbc2)
+
+label(code2)
+label(return2)
+
+registersymbol(mbc2)
 
 newmem:
   push [rbx+00002018]
   pop [rbx+00002014]
 
 code:
-  cmp [rbx+00002014],ecx
+  //mov [rbx+00002014],edi
   jmp return
 
-maxbowcharge:
+newmem2:
+  push [rbx+00002018]
+  pop [rbx+00002014]
+
+code2:
+  mov edx,[rbx+00002014]
+  jmp return2
+
+mbc1:
   jmp newmem
   nop
 return:
-registersymbol(maxbowcharge)
+
+mbc2:
+  jmp newmem2
+  nop
+return2:
 
 [DISABLE]
 
-maxbowcharge:
-  db 39 8B 14 20 00 00
+mbc1:
+  db 89 BB 14 20 00 00
 
-unregistersymbol(maxbowcharge)
+unregistersymbol(mbc1)
+dealloc(newmem)
+
+mbc2:
+  db 8B 93 14 20 00 00
+
+unregistersymbol(mbc2)
+dealloc(newmem2)
+</AssemblerScript>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>5329</ID>
+          <Description>"Meal Editor"</Description>
+          <Options moHideChildren="1"/>
+          <LastState/>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>{ Game   : MonsterHunterWorld.exe
+  Version: 
+  Date   : 2018-09-04
+  Author : Squall8
+}
+
+[ENABLE]
+
+aobscanmodule(mealeditor,MonsterHunterWorld.exe,41 8B 8E A0 00 00 00 F3)
+alloc(newmem,$1000,mealeditor)
+
+label(code)
+label(return)
+label(mealp)
+
+registersymbol(mealeditor)
+registersymbol(mealp)
+
+newmem:
+  mov [mealp],r14
+
+code:
+  mov ecx,[r14+000000A0]
+  jmp return
+
+mealp:
+  dq 0
+
+mealeditor:
+  jmp newmem
+  nop
+  nop
+return:
+
+[DISABLE]
+
+mealeditor:
+  db 41 8B 8E A0 00 00 00
+
+unregistersymbol(mealeditor)
+unregistersymbol(mealp)
 dealloc(newmem)
 </AssemblerScript>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>5330</ID>
+              <Description>"Base"</Description>
+              <VariableType>4 Bytes</VariableType>
+              <Address>mealp</Address>
+              <Offsets>
+                <Offset>0</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>5341</ID>
+              <Description>"Skill 1"</Description>
+              <Options moHideChildren="1" moRecursiveSetValue="1"/>
+              <DropDownList DisplayValueAsItem="1">0:Felyne Polisher
+1:Felyne Rider
+2:Felyne Heroics
+3:Felyne Carver (Hi)
+4:Felyne Carver (Lo)
+5:Felyne Medic
+6:Felyne Black Belt
+7:Felyne Pyro
+8:Felyne Specialist
+9:Felyne Defender (Hi)
+10:Felyne Defender (Lo)
+11:Felyne Harvester
+12:Felyne Sharpshooter
+13:Lucky Cat
+14:Felyne Deflector
+15:Felyne Escape Artist
+16:Felyne Sprinter
+17:Felynebacker
+18:Felyne Weakener
+19:Felyne Exchanger
+20:Felyne Riser (Hi)
+21:Felyne Riser (Lo)
+22:Felyne Temper
+23:Felyne Cliffhanger
+24:Felyne Gripper
+25:Felyne Iron Carver
+26:Felyne Lander
+27:Felyne Bulldozer
+28:Felyne Foodie
+29:Felyne Slugger
+30:Felyne Fat Cat
+31:Felyne Bombardier
+32:Felyne Moxie
+33:Felyne Dungmaster
+34:Felyne Groomer
+35:Felyne Fur Coating
+36:Felyne Acrobat
+37:Felyne Gamechanger
+38:Felyne Trainer
+39:Felyne Booster
+40:Felyne Feet
+41:Felyne Fisher
+42:Cool Cat
+43:Felyne Insurance
+44:Felyne Provoker
+45:Felyne Parting Gift
+46:Felyne Researcher
+47:Felyne Weathercat
+</DropDownList>
+              <Color>000080</Color>
+              <VariableType>4 Bytes</VariableType>
+              <Address>mealp</Address>
+              <Offsets>
+                <Offset>50</Offset>
+              </Offsets>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>5346</ID>
+                  <Description>"Skill 1 (Writes In Quest)"</Description>
+                  <DropDownList DisplayValueAsItem="1">0:Felyne Polisher
+1:Felyne Rider
+2:Felyne Heroics
+3:Felyne Carver (Hi)
+4:Felyne Carver (Lo)
+5:Felyne Medic
+6:Felyne Black Belt
+7:Felyne Pyro
+8:Felyne Specialist
+9:Felyne Defender (Hi)
+10:Felyne Defender (Lo)
+11:Felyne Harvester
+12:Felyne Sharpshooter
+13:Lucky Cat
+14:Felyne Deflector
+15:Felyne Escape Artist
+16:Felyne Sprinter
+17:Felynebacker
+18:Felyne Weakener
+19:Felyne Exchanger
+20:Felyne Riser (Hi)
+21:Felyne Riser (Lo)
+22:Felyne Temper
+23:Felyne Cliffhanger
+24:Felyne Gripper
+25:Felyne Iron Carver
+26:Felyne Lander
+27:Felyne Bulldozer
+28:Felyne Foodie
+29:Felyne Slugger
+30:Felyne Fat Cat
+31:Felyne Bombardier
+32:Felyne Moxie
+33:Felyne Dungmaster
+34:Felyne Groomer
+35:Felyne Fur Coating
+36:Felyne Acrobat
+37:Felyne Gamechanger
+38:Felyne Trainer
+39:Felyne Booster
+40:Felyne Feet
+41:Felyne Fisher
+42:Cool Cat
+43:Felyne Insurance
+44:Felyne Provoker
+45:Felyne Parting Gift
+46:Felyne Researcher
+47:Felyne Weathercat
+</DropDownList>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>mealp</Address>
+                  <Offsets>
+                    <Offset>C4</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>5349</ID>
+                  <Description>"Skill 1 Color (Writes In Quest)"</Description>
+                  <DropDownList DisplayValueAsItem="1">0:Felyne Polisher
+1:Felyne Rider
+2:Felyne Heroics
+3:Felyne Carver (Hi)
+4:Felyne Carver (Lo)
+5:Felyne Medic
+6:Felyne Black Belt
+7:Felyne Pyro
+8:Felyne Specialist
+9:Felyne Defender (Hi)
+10:Felyne Defender (Lo)
+11:Felyne Harvester
+12:Felyne Sharpshooter
+13:Lucky Cat
+14:Felyne Deflector
+15:Felyne Escape Artist
+16:Felyne Sprinter
+17:Felynebacker
+18:Felyne Weakener
+19:Felyne Exchanger
+20:Felyne Riser (Hi)
+21:Felyne Riser (Lo)
+22:Felyne Temper
+23:Felyne Cliffhanger
+24:Felyne Gripper
+25:Felyne Iron Carver
+26:Felyne Lander
+27:Felyne Bulldozer
+28:Felyne Foodie
+29:Felyne Slugger
+30:Felyne Fat Cat
+31:Felyne Bombardier
+32:Felyne Moxie
+33:Felyne Dungmaster
+34:Felyne Groomer
+35:Felyne Fur Coating
+36:Felyne Acrobat
+37:Felyne Gamechanger
+38:Felyne Trainer
+39:Felyne Booster
+40:Felyne Feet
+41:Felyne Fisher
+42:Cool Cat
+43:Felyne Insurance
+44:Felyne Provoker
+45:Felyne Parting Gift
+46:Felyne Researcher
+47:Felyne Weathercat
+</DropDownList>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>mealp</Address>
+                  <Offsets>
+                    <Offset>E8</Offset>
+                  </Offsets>
+                </CheatEntry>
+              </CheatEntries>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>5343</ID>
+              <Description>"Skill 2"</Description>
+              <Options moHideChildren="1" moRecursiveSetValue="1"/>
+              <DropDownList DisplayValueAsItem="1">0:Felyne Polisher
+1:Felyne Rider
+2:Felyne Heroics
+3:Felyne Carver (Hi)
+4:Felyne Carver (Lo)
+5:Felyne Medic
+6:Felyne Black Belt
+7:Felyne Pyro
+8:Felyne Specialist
+9:Felyne Defender (Hi)
+10:Felyne Defender (Lo)
+11:Felyne Harvester
+12:Felyne Sharpshooter
+13:Lucky Cat
+14:Felyne Deflector
+15:Felyne Escape Artist
+16:Felyne Sprinter
+17:Felynebacker
+18:Felyne Weakener
+19:Felyne Exchanger
+20:Felyne Riser (Hi)
+21:Felyne Riser (Lo)
+22:Felyne Temper
+23:Felyne Cliffhanger
+24:Felyne Gripper
+25:Felyne Iron Carver
+26:Felyne Lander
+27:Felyne Bulldozer
+28:Felyne Foodie
+29:Felyne Slugger
+30:Felyne Fat Cat
+31:Felyne Bombardier
+32:Felyne Moxie
+33:Felyne Dungmaster
+34:Felyne Groomer
+35:Felyne Fur Coating
+36:Felyne Acrobat
+37:Felyne Gamechanger
+38:Felyne Trainer
+39:Felyne Booster
+40:Felyne Feet
+41:Felyne Fisher
+42:Cool Cat
+43:Felyne Insurance
+44:Felyne Provoker
+45:Felyne Parting Gift
+46:Felyne Researcher
+47:Felyne Weathercat
+</DropDownList>
+              <Color>000080</Color>
+              <VariableType>4 Bytes</VariableType>
+              <Address>mealp</Address>
+              <Offsets>
+                <Offset>5C</Offset>
+              </Offsets>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>5347</ID>
+                  <Description>"Skill 2 (Writes In Quest)"</Description>
+                  <DropDownList DisplayValueAsItem="1">0:Felyne Polisher
+1:Felyne Rider
+2:Felyne Heroics
+3:Felyne Carver (Hi)
+4:Felyne Carver (Lo)
+5:Felyne Medic
+6:Felyne Black Belt
+7:Felyne Pyro
+8:Felyne Specialist
+9:Felyne Defender (Hi)
+10:Felyne Defender (Lo)
+11:Felyne Harvester
+12:Felyne Sharpshooter
+13:Lucky Cat
+14:Felyne Deflector
+15:Felyne Escape Artist
+16:Felyne Sprinter
+17:Felynebacker
+18:Felyne Weakener
+19:Felyne Exchanger
+20:Felyne Riser (Hi)
+21:Felyne Riser (Lo)
+22:Felyne Temper
+23:Felyne Cliffhanger
+24:Felyne Gripper
+25:Felyne Iron Carver
+26:Felyne Lander
+27:Felyne Bulldozer
+28:Felyne Foodie
+29:Felyne Slugger
+30:Felyne Fat Cat
+31:Felyne Bombardier
+32:Felyne Moxie
+33:Felyne Dungmaster
+34:Felyne Groomer
+35:Felyne Fur Coating
+36:Felyne Acrobat
+37:Felyne Gamechanger
+38:Felyne Trainer
+39:Felyne Booster
+40:Felyne Feet
+41:Felyne Fisher
+42:Cool Cat
+43:Felyne Insurance
+44:Felyne Provoker
+45:Felyne Parting Gift
+46:Felyne Researcher
+47:Felyne Weathercat
+</DropDownList>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>mealp</Address>
+                  <Offsets>
+                    <Offset>C8</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>5350</ID>
+                  <Description>"Skill 2 Color (Writes In Quest)"</Description>
+                  <DropDownList DisplayValueAsItem="1">0:Felyne Polisher
+1:Felyne Rider
+2:Felyne Heroics
+3:Felyne Carver (Hi)
+4:Felyne Carver (Lo)
+5:Felyne Medic
+6:Felyne Black Belt
+7:Felyne Pyro
+8:Felyne Specialist
+9:Felyne Defender (Hi)
+10:Felyne Defender (Lo)
+11:Felyne Harvester
+12:Felyne Sharpshooter
+13:Lucky Cat
+14:Felyne Deflector
+15:Felyne Escape Artist
+16:Felyne Sprinter
+17:Felynebacker
+18:Felyne Weakener
+19:Felyne Exchanger
+20:Felyne Riser (Hi)
+21:Felyne Riser (Lo)
+22:Felyne Temper
+23:Felyne Cliffhanger
+24:Felyne Gripper
+25:Felyne Iron Carver
+26:Felyne Lander
+27:Felyne Bulldozer
+28:Felyne Foodie
+29:Felyne Slugger
+30:Felyne Fat Cat
+31:Felyne Bombardier
+32:Felyne Moxie
+33:Felyne Dungmaster
+34:Felyne Groomer
+35:Felyne Fur Coating
+36:Felyne Acrobat
+37:Felyne Gamechanger
+38:Felyne Trainer
+39:Felyne Booster
+40:Felyne Feet
+41:Felyne Fisher
+42:Cool Cat
+43:Felyne Insurance
+44:Felyne Provoker
+45:Felyne Parting Gift
+46:Felyne Researcher
+47:Felyne Weathercat
+</DropDownList>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>mealp</Address>
+                  <Offsets>
+                    <Offset>EC</Offset>
+                  </Offsets>
+                </CheatEntry>
+              </CheatEntries>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>5344</ID>
+              <Description>"Skill 3"</Description>
+              <Options moHideChildren="1" moRecursiveSetValue="1"/>
+              <DropDownList DisplayValueAsItem="1">0:Felyne Polisher
+1:Felyne Rider
+2:Felyne Heroics
+3:Felyne Carver (Hi)
+4:Felyne Carver (Lo)
+5:Felyne Medic
+6:Felyne Black Belt
+7:Felyne Pyro
+8:Felyne Specialist
+9:Felyne Defender (Hi)
+10:Felyne Defender (Lo)
+11:Felyne Harvester
+12:Felyne Sharpshooter
+13:Lucky Cat
+14:Felyne Deflector
+15:Felyne Escape Artist
+16:Felyne Sprinter
+17:Felynebacker
+18:Felyne Weakener
+19:Felyne Exchanger
+20:Felyne Riser (Hi)
+21:Felyne Riser (Lo)
+22:Felyne Temper
+23:Felyne Cliffhanger
+24:Felyne Gripper
+25:Felyne Iron Carver
+26:Felyne Lander
+27:Felyne Bulldozer
+28:Felyne Foodie
+29:Felyne Slugger
+30:Felyne Fat Cat
+31:Felyne Bombardier
+32:Felyne Moxie
+33:Felyne Dungmaster
+34:Felyne Groomer
+35:Felyne Fur Coating
+36:Felyne Acrobat
+37:Felyne Gamechanger
+38:Felyne Trainer
+39:Felyne Booster
+40:Felyne Feet
+41:Felyne Fisher
+42:Cool Cat
+43:Felyne Insurance
+44:Felyne Provoker
+45:Felyne Parting Gift
+46:Felyne Researcher
+47:Felyne Weathercat
+</DropDownList>
+              <Color>000080</Color>
+              <VariableType>4 Bytes</VariableType>
+              <Address>mealp</Address>
+              <Offsets>
+                <Offset>68</Offset>
+              </Offsets>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>5348</ID>
+                  <Description>"Skill 3 (Writes In Quest)"</Description>
+                  <DropDownList DisplayValueAsItem="1">0:Felyne Polisher
+1:Felyne Rider
+2:Felyne Heroics
+3:Felyne Carver (Hi)
+4:Felyne Carver (Lo)
+5:Felyne Medic
+6:Felyne Black Belt
+7:Felyne Pyro
+8:Felyne Specialist
+9:Felyne Defender (Hi)
+10:Felyne Defender (Lo)
+11:Felyne Harvester
+12:Felyne Sharpshooter
+13:Lucky Cat
+14:Felyne Deflector
+15:Felyne Escape Artist
+16:Felyne Sprinter
+17:Felynebacker
+18:Felyne Weakener
+19:Felyne Exchanger
+20:Felyne Riser (Hi)
+21:Felyne Riser (Lo)
+22:Felyne Temper
+23:Felyne Cliffhanger
+24:Felyne Gripper
+25:Felyne Iron Carver
+26:Felyne Lander
+27:Felyne Bulldozer
+28:Felyne Foodie
+29:Felyne Slugger
+30:Felyne Fat Cat
+31:Felyne Bombardier
+32:Felyne Moxie
+33:Felyne Dungmaster
+34:Felyne Groomer
+35:Felyne Fur Coating
+36:Felyne Acrobat
+37:Felyne Gamechanger
+38:Felyne Trainer
+39:Felyne Booster
+40:Felyne Feet
+41:Felyne Fisher
+42:Cool Cat
+43:Felyne Insurance
+44:Felyne Provoker
+45:Felyne Parting Gift
+46:Felyne Researcher
+47:Felyne Weathercat
+</DropDownList>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>mealp</Address>
+                  <Offsets>
+                    <Offset>CC</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>5351</ID>
+                  <Description>"Skill 3 Color (Writes In Quest)"</Description>
+                  <DropDownList DisplayValueAsItem="1">0:Felyne Polisher
+1:Felyne Rider
+2:Felyne Heroics
+3:Felyne Carver (Hi)
+4:Felyne Carver (Lo)
+5:Felyne Medic
+6:Felyne Black Belt
+7:Felyne Pyro
+8:Felyne Specialist
+9:Felyne Defender (Hi)
+10:Felyne Defender (Lo)
+11:Felyne Harvester
+12:Felyne Sharpshooter
+13:Lucky Cat
+14:Felyne Deflector
+15:Felyne Escape Artist
+16:Felyne Sprinter
+17:Felynebacker
+18:Felyne Weakener
+19:Felyne Exchanger
+20:Felyne Riser (Hi)
+21:Felyne Riser (Lo)
+22:Felyne Temper
+23:Felyne Cliffhanger
+24:Felyne Gripper
+25:Felyne Iron Carver
+26:Felyne Lander
+27:Felyne Bulldozer
+28:Felyne Foodie
+29:Felyne Slugger
+30:Felyne Fat Cat
+31:Felyne Bombardier
+32:Felyne Moxie
+33:Felyne Dungmaster
+34:Felyne Groomer
+35:Felyne Fur Coating
+36:Felyne Acrobat
+37:Felyne Gamechanger
+38:Felyne Trainer
+39:Felyne Booster
+40:Felyne Feet
+41:Felyne Fisher
+42:Cool Cat
+43:Felyne Insurance
+44:Felyne Provoker
+45:Felyne Parting Gift
+46:Felyne Researcher
+47:Felyne Weathercat
+</DropDownList>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>mealp</Address>
+                  <Offsets>
+                    <Offset>F0</Offset>
+                  </Offsets>
+                </CheatEntry>
+              </CheatEntries>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>5333</ID>
+              <Description>"Attack Up Level"</Description>
+              <VariableType>4 Bytes</VariableType>
+              <Address>mealp</Address>
+              <Offsets>
+                <Offset>B8</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>5354</ID>
+              <Description>"Defense Up Level"</Description>
+              <VariableType>4 Bytes</VariableType>
+              <Address>mealp</Address>
+              <Offsets>
+                <Offset>BC</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>5355</ID>
+              <Description>"Elemental Res Up Level"</Description>
+              <VariableType>4 Bytes</VariableType>
+              <Address>mealp</Address>
+              <Offsets>
+                <Offset>C0</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>5353</ID>
+              <Description>"Health Mod"</Description>
+              <VariableType>4 Bytes</VariableType>
+              <Address>mealp</Address>
+              <Offsets>
+                <Offset>B0</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>5334</ID>
+              <Description>"Stamina Mod"</Description>
+              <VariableType>4 Bytes</VariableType>
+              <Address>mealp</Address>
+              <Offsets>
+                <Offset>B4</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>5332</ID>
+              <Description>"Palico Health Mod"</Description>
+              <VariableType>4 Bytes</VariableType>
+              <Address>mealp</Address>
+              <Offsets>
+                <Offset>D8</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>5342</ID>
+              <Description>"Skill 1 Category (Doesnt Matter)"</Description>
+              <DropDownList DescriptionOnly="1" DisplayValueAsItem="1">0:Courage
+1:Resilience
+2:Vigor
+3:Acumen
+4:Artillery
+5:Perception
+6:Fortune
+</DropDownList>
+              <VariableType>4 Bytes</VariableType>
+              <Address>mealp</Address>
+              <Offsets>
+                <Offset>54</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>5331</ID>
+              <Description>"Fresh Ingredients/Activation Chance (Visual Only)"</Description>
+              <VariableType>4 Bytes</VariableType>
+              <Address>mealp</Address>
+              <Offsets>
+                <Offset>A0</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>5352</ID>
+              <Description>"[Ingredients (Reference)]"</Description>
+              <Options moHideChildren="1"/>
+              <LastState Value="" RealAddress="00000000"/>
+              <Color>000080</Color>
+              <GroupHeader>1</GroupHeader>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>5335</ID>
+                  <Description>"Ingredient Slot 1"</Description>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>mealp</Address>
+                  <Offsets>
+                    <Offset>8</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>5336</ID>
+                  <Description>"Ingredient Slot 2"</Description>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>mealp</Address>
+                  <Offsets>
+                    <Offset>C</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>5337</ID>
+                  <Description>"Ingredient Slot 3"</Description>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>mealp</Address>
+                  <Offsets>
+                    <Offset>10</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>5338</ID>
+                  <Description>"Ingredient Slot 4"</Description>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>mealp</Address>
+                  <Offsets>
+                    <Offset>14</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>5339</ID>
+                  <Description>"Ingredient Slot 5"</Description>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>mealp</Address>
+                  <Offsets>
+                    <Offset>18</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>5340</ID>
+                  <Description>"Ingredient Slot 6"</Description>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>mealp</Address>
+                  <Offsets>
+                    <Offset>1C</Offset>
+                  </Offsets>
+                </CheatEntry>
+              </CheatEntries>
             </CheatEntry>
           </CheatEntries>
         </CheatEntry>
@@ -5139,6 +5910,50 @@ unregistersymbol(buffy)
 dealloc(newmem)
 </AssemblerScript>
           <CheatEntries>
+            <CheatEntry>
+              <ID>5120</ID>
+              <Description>"Super Buffed"</Description>
+              <LastState/>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>{ Game   : MonsterHunterWorld.exe
+  Version: 
+  Date   : 2018-09-03
+  Author : Squall8
+}
+
+[ENABLE]
+
+aobscanmodule(superbuff,MonsterHunterWorld.exe,F3 0F 10 03 0F 2F C6 76 7B)
+alloc(newmem,$1000,superbuff)
+
+label(code)
+label(return)
+
+registersymbol(superbuff)
+
+newmem:
+  mov [rbx],(float)10
+
+code:
+  movss xmm0,[rbx]
+  comiss xmm0,xmm6
+  jmp return
+
+superbuff:
+  jmp newmem
+  nop
+  nop
+return:
+
+[DISABLE]
+
+superbuff:
+  db F3 0F 10 03 0F 2F C6
+
+unregistersymbol(superbuff)
+dealloc(newmem)
+</AssemblerScript>
+            </CheatEntry>
             <CheatEntry>
               <ID>4170</ID>
               <Description>"Peak Performance Always Active (Need Skill)"</Description>
@@ -5233,7 +6048,841 @@ unregistersymbol(rsaa)
 </AssemblerScript>
             </CheatEntry>
             <CheatEntry>
-              <ID>80</ID>
+              <ID>5121</ID>
+              <Description>"Latent Power Always Active (Needs Skill)"</Description>
+              <LastState/>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>{ Game   : MonsterHunterWorld.exe
+  Version: 
+  Date   : 2018-09-03
+  Author : Squall8
+}
+
+[ENABLE]
+
+aobscanmodule(lpactt,MonsterHunterWorld.exe,F3 0F 11 87 1C 06 00 00 45)
+alloc(newmem,$1000,lpactt)
+
+label(code)
+label(return)
+
+registersymbol(lpactt)
+
+newmem:
+  xorps xmm0,xmm0
+
+code:
+  movss [rdi+0000061C],xmm0
+  jmp return
+
+lpactt:
+  jmp newmem
+  nop
+  nop
+  nop
+return:
+
+aobscanmodule(lptdec,MonsterHunterWorld.exe,33 F3 41 0F 5C C0)
+registersymbol(lptdec)
+
+lptdec+01:
+  db 90 90 90 90 90
+
+[DISABLE]
+
+lpactt:
+  db F3 0F 11 87 1C 06 00 00
+
+unregistersymbol(lpactt)
+dealloc(newmem)
+
+lptdec+01:
+  db F3 41 0F 5C C0
+
+unregistersymbol(lptdec)
+</AssemblerScript>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>5192</ID>
+              <Description>"[Hunting Horn Buffs]"</Description>
+              <Options moHideChildren="1"/>
+              <LastState Value="" RealAddress="00000000"/>
+              <Color>000080</Color>
+              <GroupHeader>1</GroupHeader>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>80</ID>
+                  <Description>"Self-Improvement"</Description>
+                  <VariableType>Float</VariableType>
+                  <Address>buffy</Address>
+                  <Offsets>
+                    <Offset>38</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>5124</ID>
+                  <Description>"Atk Up (S)"</Description>
+                  <VariableType>Float</VariableType>
+                  <Address>buffy</Address>
+                  <Offsets>
+                    <Offset>3C</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>5125</ID>
+                  <Description>"Atk Up (L)"</Description>
+                  <VariableType>Float</VariableType>
+                  <Address>buffy</Address>
+                  <Offsets>
+                    <Offset>40</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>5169</ID>
+                  <Description>"Affinity Up"</Description>
+                  <VariableType>Float</VariableType>
+                  <Address>buffy</Address>
+                  <Offsets>
+                    <Offset>F0</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>5162</ID>
+                  <Description>"Elemental Atk Up"</Description>
+                  <VariableType>Float</VariableType>
+                  <Address>buffy</Address>
+                  <Offsets>
+                    <Offset>D4</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>5172</ID>
+                  <Description>"Abnormal Status Atk Up"</Description>
+                  <VariableType>Float</VariableType>
+                  <Address>buffy</Address>
+                  <Offsets>
+                    <Offset>FC</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>5132</ID>
+                  <Description>"Def Up (S)"</Description>
+                  <VariableType>Float</VariableType>
+                  <Address>buffy</Address>
+                  <Offsets>
+                    <Offset>5C</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>5133</ID>
+                  <Description>"Def Up (L)"</Description>
+                  <VariableType>Float</VariableType>
+                  <Address>buffy</Address>
+                  <Offsets>
+                    <Offset>60</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>5126</ID>
+                  <Description>"Health Increase (S)"</Description>
+                  <VariableType>Float</VariableType>
+                  <Address>buffy</Address>
+                  <Offsets>
+                    <Offset>44</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>5127</ID>
+                  <Description>"Health Increase (L)"</Description>
+                  <VariableType>Float</VariableType>
+                  <Address>buffy</Address>
+                  <Offsets>
+                    <Offset>48</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>5128</ID>
+                  <Description>"Stamina Use Reduced (S)"</Description>
+                  <VariableType>Float</VariableType>
+                  <Address>buffy</Address>
+                  <Offsets>
+                    <Offset>4C</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>5129</ID>
+                  <Description>"Stamina Use Reduced (L)"</Description>
+                  <VariableType>Float</VariableType>
+                  <Address>buffy</Address>
+                  <Offsets>
+                    <Offset>50</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>5130</ID>
+                  <Description>"Wind Pressure Negated"</Description>
+                  <VariableType>Float</VariableType>
+                  <Address>buffy</Address>
+                  <Offsets>
+                    <Offset>54</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>5131</ID>
+                  <Description>"Wind Pressure Nullified"</Description>
+                  <VariableType>Float</VariableType>
+                  <Address>buffy</Address>
+                  <Offsets>
+                    <Offset>58</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>5134</ID>
+                  <Description>"Tool Use Drain Reduced (S)"</Description>
+                  <VariableType>Float</VariableType>
+                  <Address>buffy</Address>
+                  <Offsets>
+                    <Offset>64</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>5135</ID>
+                  <Description>"Tool Use Drain Reduced (L)"</Description>
+                  <VariableType>Float</VariableType>
+                  <Address>buffy</Address>
+                  <Offsets>
+                    <Offset>68</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>5141</ID>
+                  <Description>"Recovery Up (S)"</Description>
+                  <VariableType>Float</VariableType>
+                  <Address>buffy</Address>
+                  <Offsets>
+                    <Offset>80</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>5142</ID>
+                  <Description>"Recovery Up (L)"</Description>
+                  <VariableType>Float</VariableType>
+                  <Address>buffy</Address>
+                  <Offsets>
+                    <Offset>84</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>5143</ID>
+                  <Description>"Earplugs (S)"</Description>
+                  <VariableType>Float</VariableType>
+                  <Address>buffy</Address>
+                  <Offsets>
+                    <Offset>88</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>5144</ID>
+                  <Description>"Earplugs (L)"</Description>
+                  <VariableType>Float</VariableType>
+                  <Address>buffy</Address>
+                  <Offsets>
+                    <Offset>8C</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>5145</ID>
+                  <Description>"Divine Protection"</Description>
+                  <VariableType>Float</VariableType>
+                  <Address>buffy</Address>
+                  <Offsets>
+                    <Offset>90</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>5147</ID>
+                  <Description>"Enviormental Damage Negated"</Description>
+                  <VariableType>Float</VariableType>
+                  <Address>buffy</Address>
+                  <Offsets>
+                    <Offset>98</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>5163</ID>
+                  <Description>"Blight Negated"</Description>
+                  <VariableType>Float</VariableType>
+                  <Address>buffy</Address>
+                  <Offsets>
+                    <Offset>D8</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>5166</ID>
+                  <Description>"Knockbacks Negated"</Description>
+                  <VariableType>Float</VariableType>
+                  <Address>buffy</Address>
+                  <Offsets>
+                    <Offset>E4</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>5148</ID>
+                  <Description>"Stun Negated"</Description>
+                  <VariableType>Float</VariableType>
+                  <Address>buffy</Address>
+                  <Offsets>
+                    <Offset>9C</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>5149</ID>
+                  <Description>"Paralysis Negated"</Description>
+                  <VariableType>Float</VariableType>
+                  <Address>buffy</Address>
+                  <Offsets>
+                    <Offset>A0</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>5150</ID>
+                  <Description>"Tremors Negated"</Description>
+                  <VariableType>Float</VariableType>
+                  <Address>buffy</Address>
+                  <Offsets>
+                    <Offset>A4</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>5151</ID>
+                  <Description>"Muck Res"</Description>
+                  <VariableType>Float</VariableType>
+                  <Address>buffy</Address>
+                  <Offsets>
+                    <Offset>A8</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>5170</ID>
+                  <Description>"All Ailments Negated"</Description>
+                  <VariableType>Float</VariableType>
+                  <Address>buffy</Address>
+                  <Offsets>
+                    <Offset>F4</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>5168</ID>
+                  <Description>"Elemental Res Up"</Description>
+                  <VariableType>Float</VariableType>
+                  <Address>buffy</Address>
+                  <Offsets>
+                    <Offset>EC</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>5152</ID>
+                  <Description>"Fire Res Up (S)"</Description>
+                  <VariableType>Float</VariableType>
+                  <Address>buffy</Address>
+                  <Offsets>
+                    <Offset>AC</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>5153</ID>
+                  <Description>"Fire Res Up (L)"</Description>
+                  <VariableType>Float</VariableType>
+                  <Address>buffy</Address>
+                  <Offsets>
+                    <Offset>B0</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>5154</ID>
+                  <Description>"Water Res Up (S)"</Description>
+                  <VariableType>Float</VariableType>
+                  <Address>buffy</Address>
+                  <Offsets>
+                    <Offset>B4</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>5155</ID>
+                  <Description>"Water Res Up (L)"</Description>
+                  <VariableType>Float</VariableType>
+                  <Address>buffy</Address>
+                  <Offsets>
+                    <Offset>B8</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>5156</ID>
+                  <Description>"Thunder Res Up (S)"</Description>
+                  <VariableType>Float</VariableType>
+                  <Address>buffy</Address>
+                  <Offsets>
+                    <Offset>BC</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>5157</ID>
+                  <Description>"Thunder Res Up (L)"</Description>
+                  <VariableType>Float</VariableType>
+                  <Address>buffy</Address>
+                  <Offsets>
+                    <Offset>C0</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>5158</ID>
+                  <Description>"Ice Res Up (S)"</Description>
+                  <VariableType>Float</VariableType>
+                  <Address>buffy</Address>
+                  <Offsets>
+                    <Offset>C4</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>5159</ID>
+                  <Description>"Ice Res Up (L)"</Description>
+                  <VariableType>Float</VariableType>
+                  <Address>buffy</Address>
+                  <Offsets>
+                    <Offset>C8</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>5160</ID>
+                  <Description>"Dragon Res Up (S)"</Description>
+                  <VariableType>Float</VariableType>
+                  <Address>buffy</Address>
+                  <Offsets>
+                    <Offset>CC</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>5161</ID>
+                  <Description>"Dragon Res Up (L)"</Description>
+                  <VariableType>Float</VariableType>
+                  <Address>buffy</Address>
+                  <Offsets>
+                    <Offset>D0</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>5171</ID>
+                  <Description>"Wind+Ear (S)"</Description>
+                  <VariableType>Float</VariableType>
+                  <Address>buffy</Address>
+                  <Offsets>
+                    <Offset>F8</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>5206</ID>
+                  <Description>"[Unknown Effects]"</Description>
+                  <Options moHideChildren="1"/>
+                  <LastState Value="" RealAddress="00000000"/>
+                  <Color>000080</Color>
+                  <GroupHeader>1</GroupHeader>
+                  <CheatEntries>
+                    <CheatEntry>
+                      <ID>5136</ID>
+                      <Description>"???"</Description>
+                      <VariableType>Float</VariableType>
+                      <Address>buffy</Address>
+                      <Offsets>
+                        <Offset>6C</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>5137</ID>
+                      <Description>"???"</Description>
+                      <VariableType>Float</VariableType>
+                      <Address>buffy</Address>
+                      <Offsets>
+                        <Offset>70</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>5138</ID>
+                      <Description>"???"</Description>
+                      <VariableType>Float</VariableType>
+                      <Address>buffy</Address>
+                      <Offsets>
+                        <Offset>74</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>5139</ID>
+                      <Description>"???"</Description>
+                      <VariableType>Float</VariableType>
+                      <Address>buffy</Address>
+                      <Offsets>
+                        <Offset>78</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>5140</ID>
+                      <Description>"???"</Description>
+                      <VariableType>Float</VariableType>
+                      <Address>buffy</Address>
+                      <Offsets>
+                        <Offset>7C</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>5146</ID>
+                      <Description>"???"</Description>
+                      <VariableType>Float</VariableType>
+                      <Address>buffy</Address>
+                      <Offsets>
+                        <Offset>94</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>5164</ID>
+                      <Description>"???"</Description>
+                      <VariableType>Float</VariableType>
+                      <Address>buffy</Address>
+                      <Offsets>
+                        <Offset>DC</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>5165</ID>
+                      <Description>"???"</Description>
+                      <VariableType>Float</VariableType>
+                      <Address>buffy</Address>
+                      <Offsets>
+                        <Offset>E0</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>5167</ID>
+                      <Description>"???"</Description>
+                      <VariableType>Float</VariableType>
+                      <Address>buffy</Address>
+                      <Offsets>
+                        <Offset>E8</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>5173</ID>
+                      <Description>"???"</Description>
+                      <VariableType>Float</VariableType>
+                      <Address>buffy</Address>
+                      <Offsets>
+                        <Offset>100</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                  </CheatEntries>
+                </CheatEntry>
+              </CheatEntries>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>5193</ID>
+              <Description>"[Orchestra Buffs]"</Description>
+              <Options moHideChildren="1"/>
+              <LastState Value="" RealAddress="00000000"/>
+              <Color>000080</Color>
+              <GroupHeader>1</GroupHeader>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>5174</ID>
+                  <Description>"Atk Up (S)"</Description>
+                  <VariableType>Float</VariableType>
+                  <Address>buffy</Address>
+                  <Offsets>
+                    <Offset>104</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>5175</ID>
+                  <Description>"Atk Up (L)"</Description>
+                  <VariableType>Float</VariableType>
+                  <Address>buffy</Address>
+                  <Offsets>
+                    <Offset>108</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>5176</ID>
+                  <Description>"Def Up (S)"</Description>
+                  <VariableType>Float</VariableType>
+                  <Address>buffy</Address>
+                  <Offsets>
+                    <Offset>10C</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>5177</ID>
+                  <Description>"Def Up (L)"</Description>
+                  <VariableType>Float</VariableType>
+                  <Address>buffy</Address>
+                  <Offsets>
+                    <Offset>110</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>5178</ID>
+                  <Description>"Affinity Up"</Description>
+                  <VariableType>Float</VariableType>
+                  <Address>buffy</Address>
+                  <Offsets>
+                    <Offset>114</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>5179</ID>
+                  <Description>"Recovery Up"</Description>
+                  <VariableType>Float</VariableType>
+                  <Address>buffy</Address>
+                  <Offsets>
+                    <Offset>118</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>5180</ID>
+                  <Description>"Health Increase"</Description>
+                  <VariableType>Float</VariableType>
+                  <Address>buffy</Address>
+                  <Offsets>
+                    <Offset>11C</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>5181</ID>
+                  <Description>"Stamina Use Reduced"</Description>
+                  <VariableType>Float</VariableType>
+                  <Address>buffy</Address>
+                  <Offsets>
+                    <Offset>120</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>5183</ID>
+                  <Description>"Divine Protection"</Description>
+                  <VariableType>Float</VariableType>
+                  <Address>buffy</Address>
+                  <Offsets>
+                    <Offset>128</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>5185</ID>
+                  <Description>"Stun Negated"</Description>
+                  <VariableType>Float</VariableType>
+                  <Address>buffy</Address>
+                  <Offsets>
+                    <Offset>130</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>5186</ID>
+                  <Description>"Paralysis Negated"</Description>
+                  <VariableType>Float</VariableType>
+                  <Address>buffy</Address>
+                  <Offsets>
+                    <Offset>134</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>5187</ID>
+                  <Description>"Tremors Negated"</Description>
+                  <VariableType>Float</VariableType>
+                  <Address>buffy</Address>
+                  <Offsets>
+                    <Offset>138</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>5188</ID>
+                  <Description>"Earplugs (S)"</Description>
+                  <VariableType>Float</VariableType>
+                  <Address>buffy</Address>
+                  <Offsets>
+                    <Offset>13C</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>5189</ID>
+                  <Description>"Wind Pressure Negated"</Description>
+                  <VariableType>Float</VariableType>
+                  <Address>buffy</Address>
+                  <Offsets>
+                    <Offset>140</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>5190</ID>
+                  <Description>"Enviormental Damage Negated"</Description>
+                  <VariableType>Float</VariableType>
+                  <Address>buffy</Address>
+                  <Offsets>
+                    <Offset>144</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>5207</ID>
+                  <Description>"[Unknown Effects]"</Description>
+                  <Options moHideChildren="1"/>
+                  <LastState Value="" RealAddress="00000000"/>
+                  <Color>000080</Color>
+                  <GroupHeader>1</GroupHeader>
+                  <CheatEntries>
+                    <CheatEntry>
+                      <ID>5182</ID>
+                      <Description>"???"</Description>
+                      <VariableType>Float</VariableType>
+                      <Address>buffy</Address>
+                      <Offsets>
+                        <Offset>124</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>5184</ID>
+                      <Description>"???"</Description>
+                      <VariableType>Float</VariableType>
+                      <Address>buffy</Address>
+                      <Offsets>
+                        <Offset>12C</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                  </CheatEntries>
+                </CheatEntry>
+              </CheatEntries>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>5122</ID>
+              <Description>"[Negative Status Effects]"</Description>
+              <Options moHideChildren="1"/>
+              <LastState Value="" RealAddress="00000000"/>
+              <Color>000080</Color>
+              <GroupHeader>1</GroupHeader>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>5194</ID>
+                  <Description>"Fireblight"</Description>
+                  <VariableType>Float</VariableType>
+                  <Address>buffy</Address>
+                  <Offsets>
+                    <Offset>55C</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>5195</ID>
+                  <Description>"Thunderblight"</Description>
+                  <VariableType>Float</VariableType>
+                  <Address>buffy</Address>
+                  <Offsets>
+                    <Offset>560</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>5196</ID>
+                  <Description>"Waterblight"</Description>
+                  <VariableType>Float</VariableType>
+                  <Address>buffy</Address>
+                  <Offsets>
+                    <Offset>564</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>5197</ID>
+                  <Description>"Iceblight"</Description>
+                  <VariableType>Float</VariableType>
+                  <Address>buffy</Address>
+                  <Offsets>
+                    <Offset>568</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>5198</ID>
+                  <Description>"Dragonblight"</Description>
+                  <VariableType>Float</VariableType>
+                  <Address>buffy</Address>
+                  <Offsets>
+                    <Offset>56C</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>5205</ID>
+                  <Description>"Blastblight"</Description>
+                  <VariableType>Float</VariableType>
+                  <Address>buffy</Address>
+                  <Offsets>
+                    <Offset>590</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>5191</ID>
+                  <Description>"Poisoned"</Description>
+                  <VariableType>Float</VariableType>
+                  <Address>buffy</Address>
+                  <Offsets>
+                    <Offset>554</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>5199</ID>
+                  <Description>"Bleeding"</Description>
+                  <VariableType>Float</VariableType>
+                  <Address>buffy</Address>
+                  <Offsets>
+                    <Offset>570</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>5200</ID>
+                  <Description>"Health Recovery From Bleeding (Positive Effect)"</Description>
+                  <VariableType>Float</VariableType>
+                  <Address>buffy</Address>
+                  <Offsets>
+                    <Offset>574</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>5201</ID>
+                  <Description>"Effluvia"</Description>
+                  <VariableType>Float</VariableType>
+                  <Address>buffy</Address>
+                  <Offsets>
+                    <Offset>578</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>5202</ID>
+                  <Description>"Defense Down"</Description>
+                  <VariableType>Float</VariableType>
+                  <Address>buffy</Address>
+                  <Offsets>
+                    <Offset>57C</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>5203</ID>
+                  <Description>"Elemental Res Down"</Description>
+                  <VariableType>Float</VariableType>
+                  <Address>buffy</Address>
+                  <Offsets>
+                    <Offset>584</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>5204</ID>
+                  <Description>"Cant Use Items"</Description>
+                  <VariableType>Float</VariableType>
+                  <Address>buffy</Address>
+                  <Offsets>
+                    <Offset>58C</Offset>
+                  </Offsets>
+                </CheatEntry>
+              </CheatEntries>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>5328</ID>
               <Description>"Defense"</Description>
               <VariableType>Float</VariableType>
               <Address>buffy</Address>
@@ -5419,7 +7068,7 @@ unregistersymbol(rsaa)
 
 [ENABLE]
 
-aobscanmodule(equipmenteditor,MonsterHunterWorld.exe,1E FA 44 0F BE 46 2C)
+aobscanmodule(equipmenteditor,MonsterHunterWorld.exe,48 8D 95 ** ** ** ** E8 ** ** ** ** 44 0F BE 46 2C)
 alloc(newmem,$1000,equipmenteditor)
 
 label(code)
@@ -5439,13 +7088,13 @@ code:
 equipmentp:
   dq 0
 
-equipmenteditor+02:
+equipmenteditor+0C:
   jmp newmem
 return:
 
 [DISABLE]
 
-equipmenteditor+02:
+equipmenteditor+0C:
   db 44 0F BE 46 2C
 
 unregistersymbol(equipmenteditor)
@@ -8520,6 +10169,67 @@ dealloc(newmem)
           </CheatEntries>
         </CheatEntry>
         <CheatEntry>
+          <ID>5325</ID>
+          <Description>"Set Max Map Zoom Amount"</Description>
+          <Options moHideChildren="1"/>
+          <LastState/>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>{ Game   : MonsterHunterWorld.exe
+  Version: 
+  Date   : 2018-09-04
+  Author : Squall8
+}
+
+[ENABLE]
+
+aobscanmodule(setmapzoom,MonsterHunterWorld.exe,40 32 F6 0F 29 74 24 40)
+alloc(newmem,$1000,setmapzoom)
+
+label(code)
+label(return)
+label(zoomzoom)
+
+registersymbol(setmapzoom)
+registersymbol(zoomzoom)
+
+newmem:
+
+code:
+  xor sil,sil
+  movaps [rsp+40],xmm6
+  movss xmm6,[zoomzoom]
+  movss [rcx+00028A84],xmm6
+  jmp return
+
+zoomzoom:
+  dq (float)0.43
+
+setmapzoom:
+  jmp newmem
+  nop
+  nop
+  nop
+return:
+
+[DISABLE]
+
+setmapzoom:
+  db 40 32 F6 0F 29 74 24 40
+
+unregistersymbol(setmapzoom)
+unregistersymbol(zoomzoom)
+dealloc(newmem)
+</AssemblerScript>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>5326</ID>
+              <Description>"Max Zoom Amount"</Description>
+              <VariableType>Float</VariableType>
+              <Address>zoomzoom</Address>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
           <ID>4408</ID>
           <Description>"传送"</Description>
           <Options moHideChildren="1"/>
@@ -8858,86 +10568,6 @@ dealloc(newmem3)
           </CheatEntries>
         </CheatEntry>
         <CheatEntry>
-          <ID>4182</ID>
-          <Description>"[Experimental/WIP]"</Description>
-          <Options moHideChildren="1"/>
-          <LastState Value="" RealAddress="00000000"/>
-          <GroupHeader>1</GroupHeader>
-          <CheatEntries>
-            <CheatEntry>
-              <ID>4178</ID>
-              <Description>"Maxed Skills"</Description>
-              <LastState/>
-              <VariableType>Auto Assembler Script</VariableType>
-              <AssemblerScript>{ Game   : MonsterHunterWorld.exe
-  Version: 
-  Date   : 2018-08-17
-  Author : Squall8
-}
-
-[ENABLE]
-
-aobscanmodule(maxskills,MonsterHunterWorld.exe,0F B6 44 08 31)
-alloc(newmem,$1000,maxskills)
-
-label(code)
-label(return)
-
-registersymbol(maxskills)
-
-aobscanmodule(maxskills2,MonsterHunterWorld.exe,0F B6 40 33 48 01 C9)
-alloc(newmem2,$1000,maxskills2)
-
-label(code2)
-label(return2)
-
-registersymbol(maxskills2)
-
-newmem:
-  mov byte ptr [rax+rcx+31],7
-
-code:
-  movzx eax,byte ptr [rax+rcx+31]
-  jmp return
-
-newmem2:
-  mov byte ptr [rax+33],7
-  mov byte ptr [rax+34],7
-  mov byte ptr [rax+35],7
-
-code2:
-  movzx eax,byte ptr [rax+33]
-  add rcx,rcx
-  jmp return2
-
-maxskills:
-  jmp newmem
-return:
-
-maxskills2:
-  jmp newmem2
-  nop
-  nop
-return2:
-
-[DISABLE]
-
-maxskills:
-  db 0F B6 44 08 31
-
-unregistersymbol(maxskills)
-dealloc(newmem)
-
-maxskills2:
-  db 0F B6 40 33 48 01 C9
-
-unregistersymbol(maxskills2)
-dealloc(newmem2)
-</AssemblerScript>
-            </CheatEntry>
-          </CheatEntries>
-        </CheatEntry>
-        <CheatEntry>
           <ID>200</ID>
           <Description>"[pox911's Scripts]"</Description>
           <Options moHideChildren="1"/>
@@ -9044,7 +10674,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,50 00 00 00 00 00 00 00 38 90 C6 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,50 00 00 00 00 00 00 00 F0 90 C6 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -9082,7 +10712,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,50 00 00 00 00 00 00 00 38 90 C6 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,50 00 00 00 00 00 00 00 F0 90 C6 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -9120,7 +10750,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,50 00 00 00 00 00 00 00 38 90 C6 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,50 00 00 00 00 00 00 00 F0 90 C6 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -9158,7 +10788,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,50 00 00 00 00 00 00 00 38 90 C6 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,50 00 00 00 00 00 00 00 F0 90 C6 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -9196,7 +10826,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,50 00 00 00 00 00 00 00 38 90 C6 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,50 00 00 00 00 00 00 00 F0 90 C6 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -9244,7 +10874,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Ammo,50 00 00 00 00 00 00 00 38 90 C6 42 01 00 00 00) // should be unique
+aobscan(INJECT_Ammo,50 00 00 00 00 00 00 00 F0 90 C6 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -9282,7 +10912,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Ammo,50 00 00 00 00 00 00 00 38 90 C6 42 01 00 00 00) // should be unique
+aobscan(INJECT_Ammo,50 00 00 00 00 00 00 00 F0 90 C6 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -9320,7 +10950,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Ammo,50 00 00 00 00 00 00 00 38 90 C6 42 01 00 00 00) // should be unique
+aobscan(INJECT_Ammo,50 00 00 00 00 00 00 00 F0 90 C6 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -9358,7 +10988,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Ammo,50 00 00 00 00 00 00 00 38 90 C6 42 01 00 00 00) // should be unique
+aobscan(INJECT_Ammo,50 00 00 00 00 00 00 00 F0 90 C6 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -9396,7 +11026,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Ammo,50 00 00 00 00 00 00 00 38 90 C6 42 01 00 00 00) // should be unique
+aobscan(INJECT_Ammo,50 00 00 00 00 00 00 00 F0 90 C6 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -9444,7 +11074,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,50 00 00 00 00 00 00 00 38 90 C6 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,50 00 00 00 00 00 00 00 F0 90 C6 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -9482,7 +11112,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,50 00 00 00 00 00 00 00 38 90 C6 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,50 00 00 00 00 00 00 00 F0 90 C6 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -9520,7 +11150,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,50 00 00 00 00 00 00 00 38 90 C6 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,50 00 00 00 00 00 00 00 F0 90 C6 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -9558,7 +11188,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,50 00 00 00 00 00 00 00 38 90 C6 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,50 00 00 00 00 00 00 00 F0 90 C6 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -9596,7 +11226,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,50 00 00 00 00 00 00 00 38 90 C6 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,50 00 00 00 00 00 00 00 F0 90 C6 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -9644,7 +11274,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,50 00 00 00 00 00 00 00 38 90 C6 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,50 00 00 00 00 00 00 00 F0 90 C6 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -9682,7 +11312,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,50 00 00 00 00 00 00 00 38 90 C6 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,50 00 00 00 00 00 00 00 F0 90 C6 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -9720,7 +11350,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,50 00 00 00 00 00 00 00 38 90 C6 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,50 00 00 00 00 00 00 00 F0 90 C6 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -9758,7 +11388,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,50 00 00 00 00 00 00 00 38 90 C6 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,50 00 00 00 00 00 00 00 F0 90 C6 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -9796,7 +11426,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,50 00 00 00 00 00 00 00 38 90 C6 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,50 00 00 00 00 00 00 00 F0 90 C6 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -9823,7 +11453,7 @@ dealloc(newmem)
                 </CheatEntry>
                 <CheatEntry>
                   <ID>4273</ID>
-                  <Description>"所有装饰品 [必须解锁所有装饰品]"</Description>
+                  <Description>"All Decorations [MUST HAVE DECORATIONS UNLOCKED]"</Description>
                   <Options moHideChildren="1"/>
                   <LastState Value="" RealAddress="00000000"/>
                   <Color>008000</Color>
@@ -9844,7 +11474,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,50 00 00 00 00 00 00 00 38 90 C6 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,50 00 00 00 00 00 00 00 F0 90 C6 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -9882,7 +11512,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,50 00 00 00 00 00 00 00 38 90 C6 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,50 00 00 00 00 00 00 00 F0 90 C6 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -9920,7 +11550,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,50 00 00 00 00 00 00 00 38 90 C6 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,50 00 00 00 00 00 00 00 F0 90 C6 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -9958,7 +11588,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,50 00 00 00 00 00 00 00 38 90 C6 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,50 00 00 00 00 00 00 00 F0 90 C6 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -9996,7 +11626,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,50 00 00 00 00 00 00 00 38 90 C6 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,50 00 00 00 00 00 00 00 F0 90 C6 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -10054,7 +11684,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,00 00 00 00 00 00 00 00 38 90 C6 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,00 00 00 00 00 00 00 00 F0 90 C6 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -10092,7 +11722,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,00 00 00 00 00 00 00 00 38 90 C6 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,00 00 00 00 00 00 00 00 F0 90 C6 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -10130,7 +11760,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,00 00 00 00 00 00 00 00 38 90 C6 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,00 00 00 00 00 00 00 00 F0 90 C6 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -10168,7 +11798,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,00 00 00 00 00 00 00 00 38 90 C6 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,00 00 00 00 00 00 00 00 F0 90 C6 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -10206,7 +11836,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,00 00 00 00 00 00 00 00 38 90 C6 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,00 00 00 00 00 00 00 00 F0 90 C6 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -10254,7 +11884,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Ammo,00 00 00 00 00 00 00 00 38 90 C6 42 01 00 00 00) // should be unique
+aobscan(INJECT_Ammo,00 00 00 00 00 00 00 00 F0 90 C6 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -10292,7 +11922,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Ammo,00 00 00 00 00 00 00 00 38 90 C6 42 01 00 00 00) // should be unique
+aobscan(INJECT_Ammo,00 00 00 00 00 00 00 00 F0 90 C6 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -10330,7 +11960,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Ammo,00 00 00 00 00 00 00 00 38 90 C6 42 01 00 00 00) // should be unique
+aobscan(INJECT_Ammo,00 00 00 00 00 00 00 00 F0 90 C6 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -10368,7 +11998,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Ammo,00 00 00 00 00 00 00 00 38 90 C6 42 01 00 00 00) // should be unique
+aobscan(INJECT_Ammo,00 00 00 00 00 00 00 00 F0 90 C6 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -10406,7 +12036,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Ammo,00 00 00 00 00 00 00 00 38 90 C6 42 01 00 00 00) // should be unique
+aobscan(INJECT_Ammo,00 00 00 00 00 00 00 00 F0 90 C6 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -10454,7 +12084,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,00 00 00 00 00 00 00 00 38 90 C6 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,00 00 00 00 00 00 00 00 F0 90 C6 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -10492,7 +12122,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,00 00 00 00 00 00 00 00 38 90 C6 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,00 00 00 00 00 00 00 00 F0 90 C6 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -10530,7 +12160,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,00 00 00 00 00 00 00 00 38 90 C6 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,00 00 00 00 00 00 00 00 F0 90 C6 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -10568,7 +12198,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,00 00 00 00 00 00 00 00 38 90 C6 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,00 00 00 00 00 00 00 00 F0 90 C6 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -10606,7 +12236,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,00 00 00 00 00 00 00 00 38 90 C6 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,00 00 00 00 00 00 00 00 F0 90 C6 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -10654,7 +12284,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,00 00 00 00 00 00 00 00 38 90 C6 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,00 00 00 00 00 00 00 00 F0 90 C6 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -10692,7 +12322,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,00 00 00 00 00 00 00 00 38 90 C6 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,00 00 00 00 00 00 00 00 F0 90 C6 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -10730,7 +12360,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,00 00 00 00 00 00 00 00 38 90 C6 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,00 00 00 00 00 00 00 00 F0 90 C6 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -10768,7 +12398,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,00 00 00 00 00 00 00 00 38 90 C6 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,00 00 00 00 00 00 00 00 F0 90 C6 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -10806,7 +12436,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,00 00 00 00 00 00 00 00 38 90 C6 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,00 00 00 00 00 00 00 00 F0 90 C6 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -10854,7 +12484,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,00 00 00 00 00 00 00 00 38 90 C6 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,00 00 00 00 00 00 00 00 F0 90 C6 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -10892,7 +12522,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,00 00 00 00 00 00 00 00 38 90 C6 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,00 00 00 00 00 00 00 00 F0 90 C6 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -10930,7 +12560,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,00 00 00 00 00 00 00 00 38 90 C6 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,00 00 00 00 00 00 00 00 F0 90 C6 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -10968,7 +12598,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,00 00 00 00 00 00 00 00 38 90 C6 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,00 00 00 00 00 00 00 00 F0 90 C6 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -11006,7 +12636,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,00 00 00 00 00 00 00 00 38 90 C6 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,00 00 00 00 00 00 00 00 F0 90 C6 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -11064,7 +12694,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,00 00 00 00 00 00 00 00 38 90 C6 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,00 00 00 00 00 00 00 00 F0 90 C6 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -11102,7 +12732,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,00 00 00 00 00 00 00 00 38 90 C6 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,00 00 00 00 00 00 00 00 F0 90 C6 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -11140,7 +12770,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,00 00 00 00 00 00 00 00 38 90 C6 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,00 00 00 00 00 00 00 00 F0 90 C6 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -11178,7 +12808,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,00 00 00 00 00 00 00 00 38 90 C6 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,00 00 00 00 00 00 00 00 F0 90 C6 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -11216,7 +12846,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,00 00 00 00 00 00 00 00 38 90 C6 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,00 00 00 00 00 00 00 00 F0 90 C6 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -11264,7 +12894,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Ammo,00 00 00 00 00 00 00 00 38 90 C6 42 01 00 00 00) // should be unique
+aobscan(INJECT_Ammo,00 00 00 00 00 00 00 00 F0 90 C6 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -11302,7 +12932,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Ammo,00 00 00 00 00 00 00 00 38 90 C6 42 01 00 00 00) // should be unique
+aobscan(INJECT_Ammo,00 00 00 00 00 00 00 00 F0 90 C6 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -11340,7 +12970,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Ammo,00 00 00 00 00 00 00 00 38 90 C6 42 01 00 00 00) // should be unique
+aobscan(INJECT_Ammo,00 00 00 00 00 00 00 00 F0 90 C6 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -11378,7 +13008,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Ammo,00 00 00 00 00 00 00 00 38 90 C6 42 01 00 00 00) // should be unique
+aobscan(INJECT_Ammo,00 00 00 00 00 00 00 00 F0 90 C6 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -11416,7 +13046,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Ammo,00 00 00 00 00 00 00 00 38 90 C6 42 01 00 00 00) // should be unique
+aobscan(INJECT_Ammo,00 00 00 00 00 00 00 00 F0 90 C6 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -11464,7 +13094,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,00 00 00 00 00 00 00 00 38 90 C6 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,00 00 00 00 00 00 00 00 F0 90 C6 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -11502,7 +13132,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,00 00 00 00 00 00 00 00 38 90 C6 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,00 00 00 00 00 00 00 00 F0 90 C6 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -11540,7 +13170,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,00 00 00 00 00 00 00 00 38 90 C6 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,00 00 00 00 00 00 00 00 F0 90 C6 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -11578,7 +13208,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,00 00 00 00 00 00 00 00 38 90 C6 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,00 00 00 00 00 00 00 00 F0 90 C6 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -11616,7 +13246,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,00 00 00 00 00 00 00 00 38 90 C6 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,00 00 00 00 00 00 00 00 F0 90 C6 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -11664,7 +13294,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,00 00 00 00 00 00 00 00 38 90 C6 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,00 00 00 00 00 00 00 00 F0 90 C6 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -11702,7 +13332,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,00 00 00 00 00 00 00 00 38 90 C6 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,00 00 00 00 00 00 00 00 F0 90 C6 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -11740,7 +13370,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,00 00 00 00 00 00 00 00 38 90 C6 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,00 00 00 00 00 00 00 00 F0 90 C6 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -11778,7 +13408,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,00 00 00 00 00 00 00 00 38 90 C6 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,00 00 00 00 00 00 00 00 F0 90 C6 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -11816,7 +13446,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,00 00 00 00 00 00 00 00 38 90 C6 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,00 00 00 00 00 00 00 00 F0 90 C6 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -11864,7 +13494,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,00 00 00 00 00 00 00 00 38 90 C6 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,00 00 00 00 00 00 00 00 F0 90 C6 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -11902,7 +13532,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,00 00 00 00 00 00 00 00 38 90 C6 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,00 00 00 00 00 00 00 00 F0 90 C6 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -11940,7 +13570,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,00 00 00 00 00 00 00 00 38 90 C6 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,00 00 00 00 00 00 00 00 F0 90 C6 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -11978,7 +13608,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,00 00 00 00 00 00 00 00 38 90 C6 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,00 00 00 00 00 00 00 00 F0 90 C6 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -12016,7 +13646,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,00 00 00 00 00 00 00 00 38 90 C6 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,00 00 00 00 00 00 00 00 F0 90 C6 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -13426,6 +15056,7 @@ unregistersymbol(curCap)
                     <CheatEntry>
                       <ID>4451</ID>
                       <Description>"Hunter Rank"</Description>
+                      <LastState Value="1080229705" RealAddress="140A411B8"/>
                       <VariableType>4 Bytes</VariableType>
                       <Address>"MonsterHunterWorld.exe"+03A83EA0</Address>
                       <Offsets>
@@ -13436,6 +15067,7 @@ unregistersymbol(curCap)
                     <CheatEntry>
                       <ID>4452</ID>
                       <Description>"Hunter Experience"</Description>
+                      <LastState Value="3435973836" RealAddress="140A411C4"/>
                       <VariableType>4 Bytes</VariableType>
                       <Address>"MonsterHunterWorld.exe"+03A83EA0</Address>
                       <Offsets>
@@ -13517,6 +15149,7 @@ unregistersymbol(curCap)
                     <CheatEntry>
                       <ID>4215</ID>
                       <Description>"Adamant Pill Duration"</Description>
+                      <LastState Value="17128" RealAddress="14481369A"/>
                       <VariableType>2 Bytes</VariableType>
                       <Address>MonsterHunterWorld.exe+3B1F720</Address>
                       <Offsets>
@@ -13526,6 +15159,7 @@ unregistersymbol(curCap)
                     <CheatEntry>
                       <ID>4213</ID>
                       <Description>"Adamant Seed Duration"</Description>
+                      <LastState Value="9773" RealAddress="144813696"/>
                       <VariableType>2 Bytes</VariableType>
                       <Address>MonsterHunterWorld.exe+3B1F720</Address>
                       <Offsets>
@@ -13535,6 +15169,7 @@ unregistersymbol(curCap)
                     <CheatEntry>
                       <ID>4214</ID>
                       <Description>"Adamant Seed Power"</Description>
+                      <LastState Value="51968" RealAddress="144813698"/>
                       <VariableType>2 Bytes</VariableType>
                       <Address>MonsterHunterWorld.exe+3B1F720</Address>
                       <Offsets>
@@ -13544,6 +15179,7 @@ unregistersymbol(curCap)
                     <CheatEntry>
                       <ID>4211</ID>
                       <Description>"Demon Powder Duration"</Description>
+                      <LastState Value="0" RealAddress="1448136B0"/>
                       <VariableType>2 Bytes</VariableType>
                       <Address>MonsterHunterWorld.exe+3B1F720</Address>
                       <Offsets>
@@ -13553,6 +15189,7 @@ unregistersymbol(curCap)
                     <CheatEntry>
                       <ID>4209</ID>
                       <Description>"Demon Powder Power"</Description>
+                      <LastState Value="0" RealAddress="1448136B2"/>
                       <VariableType>2 Bytes</VariableType>
                       <Address>MonsterHunterWorld.exe+3B1F720</Address>
                       <Offsets>
@@ -13562,6 +15199,7 @@ unregistersymbol(curCap)
                     <CheatEntry>
                       <ID>2048</ID>
                       <Description>"Hardshell Powder Duration"</Description>
+                      <LastState Value="1" RealAddress="1448136AC"/>
                       <VariableType>2 Bytes</VariableType>
                       <Address>MonsterHunterWorld.exe+3B1F720</Address>
                       <Offsets>
@@ -13571,6 +15209,7 @@ unregistersymbol(curCap)
                     <CheatEntry>
                       <ID>4212</ID>
                       <Description>"Hardshell Powder Power"</Description>
+                      <LastState Value="0" RealAddress="1448136AE"/>
                       <VariableType>2 Bytes</VariableType>
                       <Address>MonsterHunterWorld.exe+3B1F720</Address>
                       <Offsets>
@@ -13580,6 +15219,7 @@ unregistersymbol(curCap)
                     <CheatEntry>
                       <ID>4208</ID>
                       <Description>"Might Pill Duration"</Description>
+                      <LastState Value="2304" RealAddress="144813692"/>
                       <VariableType>2 Bytes</VariableType>
                       <Address>MonsterHunterWorld.exe+3B1F720</Address>
                       <Offsets>
@@ -13589,6 +15229,7 @@ unregistersymbol(curCap)
                     <CheatEntry>
                       <ID>4205</ID>
                       <Description>"Might Pill Power"</Description>
+                      <LastState Value="33207" RealAddress="144813694"/>
                       <VariableType>2 Bytes</VariableType>
                       <Address>MonsterHunterWorld.exe+3B1F720</Address>
                       <Offsets>
@@ -13598,6 +15239,7 @@ unregistersymbol(curCap)
                     <CheatEntry>
                       <ID>4206</ID>
                       <Description>"Might Seed Duration"</Description>
+                      <LastState Value="0" RealAddress="14481368E"/>
                       <VariableType>2 Bytes</VariableType>
                       <Address>MonsterHunterWorld.exe+3B1F720</Address>
                       <Offsets>
@@ -13607,6 +15249,7 @@ unregistersymbol(curCap)
                     <CheatEntry>
                       <ID>4210</ID>
                       <Description>"Might Seed Power"</Description>
+                      <LastState Value="46" RealAddress="144813690"/>
                       <VariableType>2 Bytes</VariableType>
                       <Address>MonsterHunterWorld.exe+3B1F720</Address>
                       <Offsets>
@@ -13625,6 +15268,7 @@ unregistersymbol(curCap)
                     <CheatEntry>
                       <ID>4459</ID>
                       <Description>"Max Base Health"</Description>
+                      <LastState Value="6.985749318E31" RealAddress="142DBE70C"/>
                       <VariableType>Float</VariableType>
                       <Address>MonsterHunterWorld.exe+3B1F718</Address>
                       <Offsets>
@@ -13634,6 +15278,7 @@ unregistersymbol(curCap)
                     <CheatEntry>
                       <ID>4460</ID>
                       <Description>"Max Base Stamina"</Description>
+                      <LastState Value="2.901382866E29" RealAddress="142DBE724"/>
                       <VariableType>Float</VariableType>
                       <Address>MonsterHunterWorld.exe+3B1F718</Address>
                       <Offsets>
@@ -13886,6 +15531,37 @@ dealloc(newmem)
         <Byte>48</Byte>
         <Byte>44</Byte>
         <Byte>89</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Change of movss [rbx+rdi*4+00009390],xmm0</Description>
+      <Address>141BBD97C</Address>
+      <ModuleName>MonsterHunterWorld.exe</ModuleName>
+      <ModuleNameOffset>1BBD97C</ModuleNameOffset>
+      <Before>
+        <Byte>BB</Byte>
+        <Byte>98</Byte>
+        <Byte>93</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Before>
+      <Actual>
+        <Byte>F3</Byte>
+        <Byte>0F</Byte>
+        <Byte>11</Byte>
+        <Byte>84</Byte>
+        <Byte>BB</Byte>
+        <Byte>90</Byte>
+        <Byte>93</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Actual>
+      <After>
+        <Byte>48</Byte>
+        <Byte>8B</Byte>
+        <Byte>5C</Byte>
+        <Byte>24</Byte>
+        <Byte>30</Byte>
       </After>
     </CodeEntry>
   </CheatCodes>
