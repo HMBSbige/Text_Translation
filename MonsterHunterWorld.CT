@@ -3,7 +3,7 @@
   <CheatEntries>
     <CheatEntry>
       <ID>103</ID>
-      <Description>"启用 (Update 39.5)"</Description>
+      <Description>"启用 (Update 40)"</Description>
       <Options moHideChildren="1"/>
       <LastState Activated="1"/>
       <VariableType>Auto Assembler Script</VariableType>
@@ -2534,6 +2534,26 @@ dealloc(newmem)
                 </CheatEntry>
                 <CheatEntry>
                   <ID>4997</ID>
+                  <Description>"Deviljho (Kills)"</Description>
+                  <Color>000080</Color>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>weaponusep</Address>
+                  <Offsets>
+                    <Offset>-30880</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>5024</ID>
+                  <Description>"Deviljho (Captures)"</Description>
+                  <Color>A00000</Color>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>weaponusep</Address>
+                  <Offsets>
+                    <Offset>-30A80</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>5363</ID>
                   <Description>"Lavasioth (Kills)"</Description>
                   <Color>000080</Color>
                   <VariableType>4 Bytes</VariableType>
@@ -2543,7 +2563,7 @@ dealloc(newmem)
                   </Offsets>
                 </CheatEntry>
                 <CheatEntry>
-                  <ID>5024</ID>
+                  <ID>5364</ID>
                   <Description>"Lavasioth (Captures)"</Description>
                   <Color>A00000</Color>
                   <VariableType>4 Bytes</VariableType>
@@ -2808,6 +2828,15 @@ dealloc(newmem)
                           <Address>weaponusep</Address>
                           <Offsets>
                             <Offset>-30484</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>5365</ID>
+                          <Description>"Deviljho"</Description>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>weaponusep</Address>
+                          <Offsets>
+                            <Offset>-30480</Offset>
                           </Offsets>
                         </CheatEntry>
                         <CheatEntry>
@@ -3078,6 +3107,15 @@ dealloc(newmem)
                           <Address>weaponusep</Address>
                           <Offsets>
                             <Offset>-30284</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>5366</ID>
+                          <Description>"Deviljho"</Description>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>weaponusep</Address>
+                          <Offsets>
+                            <Offset>-30280</Offset>
                           </Offsets>
                         </CheatEntry>
                         <CheatEntry>
@@ -4032,6 +4070,26 @@ dealloc(newmem)
               </CheatEntries>
             </CheatEntry>
             <CheatEntry>
+              <ID>5361</ID>
+              <Description>"Deviljho Level"</Description>
+              <VariableType>4 Bytes</VariableType>
+              <Address>resp</Address>
+              <Offsets>
+                <Offset>1E8</Offset>
+              </Offsets>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>5362</ID>
+                  <Description>"Deviljho Exp"</Description>
+                  <VariableType>Float</VariableType>
+                  <Address>resp</Address>
+                  <Offsets>
+                    <Offset>-18</Offset>
+                  </Offsets>
+                </CheatEntry>
+              </CheatEntries>
+            </CheatEntry>
+            <CheatEntry>
               <ID>4489</ID>
               <Description>"Nergigante Level"</Description>
               <VariableType>4 Bytes</VariableType>
@@ -4206,7 +4264,7 @@ unregistersymbol(cannonsnsf)
           <ID>33</ID>
           <Description>"武器 Buff"</Description>
           <Options moHideChildren="1"/>
-          <LastState Value="" RealAddress="00000000"/>
+          <LastState Value="" Activated="1" RealAddress="00000000"/>
           <GroupHeader>1</GroupHeader>
           <CheatEntries>
             <CheatEntry>
@@ -6973,7 +7031,7 @@ unregistersymbol(lptdec)
             </CheatEntry>
             <CheatEntry>
               <ID>88</ID>
-              <Description>"Some Other Adamant Seed Modifier"</Description>
+              <Description>"Adamant Seed/Pill Defense+"</Description>
               <VariableType>Float</VariableType>
               <Address>buffy</Address>
               <Offsets>
@@ -7051,6 +7109,88 @@ unregistersymbol(lptdec)
               <Offsets>
                 <Offset>648</Offset>
               </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>5367</ID>
+              <Description>"[Pointer Found By @Berserk Knight]"</Description>
+              <Options moHideChildren="1"/>
+              <LastState Value="" RealAddress="00000000"/>
+              <Color>000080</Color>
+              <GroupHeader>1</GroupHeader>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>5368</ID>
+                  <Description>"Wiggly Litchi Timer"</Description>
+                  <VariableType>Float</VariableType>
+                  <Address>buffy</Address>
+                  <Offsets>
+                    <Offset>5BC</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>5369</ID>
+                  <Description>"Might Seed/Pill Attack+"</Description>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>buffy</Address>
+                  <Offsets>
+                    <Offset>5CC</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>5370</ID>
+                  <Description>"Demondrug Power (1 for regular, 2 for Mega)"</Description>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>buffy</Address>
+                  <Offsets>
+                    <Offset>5FC</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>5371</ID>
+                  <Description>"Armorskin Power (1 for regular, 2 for Mega)"</Description>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>buffy</Address>
+                  <Offsets>
+                    <Offset>600</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>5372</ID>
+                  <Description>"Demondrug Is Active Flag"</Description>
+                  <VariableType>Float</VariableType>
+                  <Address>buffy</Address>
+                  <Offsets>
+                    <Offset>604</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>5373</ID>
+                  <Description>"Armorskin Is Active Flag"</Description>
+                  <VariableType>Float</VariableType>
+                  <Address>buffy</Address>
+                  <Offsets>
+                    <Offset>608</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>5374</ID>
+                  <Description>"Atk Up"</Description>
+                  <VariableType>Float</VariableType>
+                  <Address>buffy</Address>
+                  <Offsets>
+                    <Offset>5F4</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>5375</ID>
+                  <Description>"Def Up"</Description>
+                  <VariableType>Float</VariableType>
+                  <Address>buffy</Address>
+                  <Offsets>
+                    <Offset>5F8</Offset>
+                  </Offsets>
+                </CheatEntry>
+              </CheatEntries>
             </CheatEntry>
           </CheatEntries>
         </CheatEntry>
@@ -10081,7 +10221,7 @@ dealloc(newmem4)
           <ID>102</ID>
           <Description>"[大型怪物血量 (一次只能启用一个)]"</Description>
           <Options moHideChildren="1"/>
-          <LastState Value="" RealAddress="00000000"/>
+          <LastState Value="" Activated="1" RealAddress="00000000"/>
           <GroupHeader>1</GroupHeader>
           <CheatEntries>
             <CheatEntry>
@@ -13679,7 +13819,7 @@ dealloc(newmem)
           <ID>2032</ID>
           <Description>"[dec1337's Scripts]"</Description>
           <Options moHideChildren="1"/>
-          <LastState Value="" RealAddress="00000000"/>
+          <LastState Value="" Activated="1" RealAddress="00000000"/>
           <Color>FF0000</Color>
           <GroupHeader>1</GroupHeader>
           <CheatEntries>
@@ -13775,7 +13915,7 @@ dealloc(newmem)
           <ID>2044</ID>
           <Description>"[seikur0's Scripts]"</Description>
           <Options moHideChildren="1"/>
-          <LastState Value="" RealAddress="00000000"/>
+          <LastState Value="" Activated="1" RealAddress="00000000"/>
           <Color>FF0000</Color>
           <GroupHeader>1</GroupHeader>
           <CheatEntries>
@@ -14894,13 +15034,13 @@ A3:Lunastra Favor
   This script does blah blah blah
 }
 
-define(address,"MonsterHunterWorld.exe"+144AC3C)
+define(address,"MonsterHunterWorld.exe"+144B20C)
 define(bytes,8B 48 0C 89 0A)
 
 [ENABLE]
 
 assert(address,bytes)
-alloc(newmem,$1000,"MonsterHunterWorld.exe"+144AC3C)
+alloc(newmem,$1000,"MonsterHunterWorld.exe"+144B20C)
 
 label(code)
 label(return)
@@ -15038,256 +15178,6 @@ unregistersymbol(curCap)
 "MonsterHunterWorld.exe"+144AD99: 85 C0                 -  test eax,eax
 }
 </AssemblerScript>
-            </CheatEntry>
-            <CheatEntry>
-              <ID>4449</ID>
-              <Description>"指针"</Description>
-              <Options moHideChildren="1"/>
-              <LastState Value="" RealAddress="00000000"/>
-              <GroupHeader>1</GroupHeader>
-              <CheatEntries>
-                <CheatEntry>
-                  <ID>4450</ID>
-                  <Description>"Player Data"</Description>
-                  <Options moHideChildren="1"/>
-                  <LastState Value="" RealAddress="00000000"/>
-                  <GroupHeader>1</GroupHeader>
-                  <CheatEntries>
-                    <CheatEntry>
-                      <ID>4451</ID>
-                      <Description>"Hunter Rank"</Description>
-                      <LastState Value="1080229705" RealAddress="140A411B8"/>
-                      <VariableType>4 Bytes</VariableType>
-                      <Address>"MonsterHunterWorld.exe"+03A83EA0</Address>
-                      <Offsets>
-                        <Offset>68</Offset>
-                        <Offset>140</Offset>
-                      </Offsets>
-                    </CheatEntry>
-                    <CheatEntry>
-                      <ID>4452</ID>
-                      <Description>"Hunter Experience"</Description>
-                      <LastState Value="3435973836" RealAddress="140A411C4"/>
-                      <VariableType>4 Bytes</VariableType>
-                      <Address>"MonsterHunterWorld.exe"+03A83EA0</Address>
-                      <Offsets>
-                        <Offset>74</Offset>
-                        <Offset>140</Offset>
-                      </Offsets>
-                    </CheatEntry>
-                    <CheatEntry>
-                      <ID>4453</ID>
-                      <Description>"Health"</Description>
-                      <VariableType>Float</VariableType>
-                      <Address>"MonsterHunterWorld.exe"+03B208F8</Address>
-                      <Offsets>
-                        <Offset>64</Offset>
-                        <Offset>8</Offset>
-                        <Offset>8E0</Offset>
-                        <Offset>70</Offset>
-                      </Offsets>
-                      <CheatEntries>
-                        <CheatEntry>
-                          <ID>4454</ID>
-                          <Description>"Max"</Description>
-                          <VariableType>Float</VariableType>
-                          <Address>"MonsterHunterWorld.exe"+03B208F8</Address>
-                          <Offsets>
-                            <Offset>60</Offset>
-                            <Offset>8</Offset>
-                            <Offset>8E0</Offset>
-                            <Offset>70</Offset>
-                          </Offsets>
-                        </CheatEntry>
-                        <CheatEntry>
-                          <ID>4455</ID>
-                          <Description>"Max Base"</Description>
-                          <VariableType>Float</VariableType>
-                          <Address>MonsterHunterWorld.exe+3B1DA70</Address>
-                          <Offsets>
-                            <Offset>7204</Offset>
-                            <Offset>A0C8</Offset>
-                          </Offsets>
-                        </CheatEntry>
-                      </CheatEntries>
-                    </CheatEntry>
-                    <CheatEntry>
-                      <ID>4456</ID>
-                      <Description>"Stamina"</Description>
-                      <VariableType>Float</VariableType>
-                      <Address>"MonsterHunterWorld.exe"+03B1D8F8</Address>
-                      <Offsets>
-                        <Offset>13C</Offset>
-                        <Offset>348</Offset>
-                        <Offset>48</Offset>
-                        <Offset>270</Offset>
-                      </Offsets>
-                      <CheatEntries>
-                        <CheatEntry>
-                          <ID>4457</ID>
-                          <Description>"Max"</Description>
-                          <VariableType>Float</VariableType>
-                          <Address>"MonsterHunterWorld.exe"+03B1D8F8</Address>
-                          <Offsets>
-                            <Offset>144</Offset>
-                            <Offset>348</Offset>
-                            <Offset>48</Offset>
-                            <Offset>270</Offset>
-                          </Offsets>
-                        </CheatEntry>
-                      </CheatEntries>
-                    </CheatEntry>
-                  </CheatEntries>
-                </CheatEntry>
-                <CheatEntry>
-                  <ID>2047</ID>
-                  <Description>"Static Data"</Description>
-                  <Options moHideChildren="1"/>
-                  <LastState Value="" RealAddress="00000000"/>
-                  <GroupHeader>1</GroupHeader>
-                  <CheatEntries>
-                    <CheatEntry>
-                      <ID>4215</ID>
-                      <Description>"Adamant Pill Duration"</Description>
-                      <LastState Value="17128" RealAddress="14481369A"/>
-                      <VariableType>2 Bytes</VariableType>
-                      <Address>MonsterHunterWorld.exe+3B1F720</Address>
-                      <Offsets>
-                        <Offset>11A</Offset>
-                      </Offsets>
-                    </CheatEntry>
-                    <CheatEntry>
-                      <ID>4213</ID>
-                      <Description>"Adamant Seed Duration"</Description>
-                      <LastState Value="9773" RealAddress="144813696"/>
-                      <VariableType>2 Bytes</VariableType>
-                      <Address>MonsterHunterWorld.exe+3B1F720</Address>
-                      <Offsets>
-                        <Offset>116</Offset>
-                      </Offsets>
-                    </CheatEntry>
-                    <CheatEntry>
-                      <ID>4214</ID>
-                      <Description>"Adamant Seed Power"</Description>
-                      <LastState Value="51968" RealAddress="144813698"/>
-                      <VariableType>2 Bytes</VariableType>
-                      <Address>MonsterHunterWorld.exe+3B1F720</Address>
-                      <Offsets>
-                        <Offset>118</Offset>
-                      </Offsets>
-                    </CheatEntry>
-                    <CheatEntry>
-                      <ID>4211</ID>
-                      <Description>"Demon Powder Duration"</Description>
-                      <LastState Value="0" RealAddress="1448136B0"/>
-                      <VariableType>2 Bytes</VariableType>
-                      <Address>MonsterHunterWorld.exe+3B1F720</Address>
-                      <Offsets>
-                        <Offset>130</Offset>
-                      </Offsets>
-                    </CheatEntry>
-                    <CheatEntry>
-                      <ID>4209</ID>
-                      <Description>"Demon Powder Power"</Description>
-                      <LastState Value="0" RealAddress="1448136B2"/>
-                      <VariableType>2 Bytes</VariableType>
-                      <Address>MonsterHunterWorld.exe+3B1F720</Address>
-                      <Offsets>
-                        <Offset>132</Offset>
-                      </Offsets>
-                    </CheatEntry>
-                    <CheatEntry>
-                      <ID>2048</ID>
-                      <Description>"Hardshell Powder Duration"</Description>
-                      <LastState Value="1" RealAddress="1448136AC"/>
-                      <VariableType>2 Bytes</VariableType>
-                      <Address>MonsterHunterWorld.exe+3B1F720</Address>
-                      <Offsets>
-                        <Offset>12C</Offset>
-                      </Offsets>
-                    </CheatEntry>
-                    <CheatEntry>
-                      <ID>4212</ID>
-                      <Description>"Hardshell Powder Power"</Description>
-                      <LastState Value="0" RealAddress="1448136AE"/>
-                      <VariableType>2 Bytes</VariableType>
-                      <Address>MonsterHunterWorld.exe+3B1F720</Address>
-                      <Offsets>
-                        <Offset>12E</Offset>
-                      </Offsets>
-                    </CheatEntry>
-                    <CheatEntry>
-                      <ID>4208</ID>
-                      <Description>"Might Pill Duration"</Description>
-                      <LastState Value="2304" RealAddress="144813692"/>
-                      <VariableType>2 Bytes</VariableType>
-                      <Address>MonsterHunterWorld.exe+3B1F720</Address>
-                      <Offsets>
-                        <Offset>112</Offset>
-                      </Offsets>
-                    </CheatEntry>
-                    <CheatEntry>
-                      <ID>4205</ID>
-                      <Description>"Might Pill Power"</Description>
-                      <LastState Value="33207" RealAddress="144813694"/>
-                      <VariableType>2 Bytes</VariableType>
-                      <Address>MonsterHunterWorld.exe+3B1F720</Address>
-                      <Offsets>
-                        <Offset>114</Offset>
-                      </Offsets>
-                    </CheatEntry>
-                    <CheatEntry>
-                      <ID>4206</ID>
-                      <Description>"Might Seed Duration"</Description>
-                      <LastState Value="0" RealAddress="14481368E"/>
-                      <VariableType>2 Bytes</VariableType>
-                      <Address>MonsterHunterWorld.exe+3B1F720</Address>
-                      <Offsets>
-                        <Offset>10E</Offset>
-                      </Offsets>
-                    </CheatEntry>
-                    <CheatEntry>
-                      <ID>4210</ID>
-                      <Description>"Might Seed Power"</Description>
-                      <LastState Value="46" RealAddress="144813690"/>
-                      <VariableType>2 Bytes</VariableType>
-                      <Address>MonsterHunterWorld.exe+3B1F720</Address>
-                      <Offsets>
-                        <Offset>110</Offset>
-                      </Offsets>
-                    </CheatEntry>
-                  </CheatEntries>
-                </CheatEntry>
-                <CheatEntry>
-                  <ID>4458</ID>
-                  <Description>"Game Data"</Description>
-                  <Options moHideChildren="1"/>
-                  <LastState Value="" RealAddress="00000000"/>
-                  <GroupHeader>1</GroupHeader>
-                  <CheatEntries>
-                    <CheatEntry>
-                      <ID>4459</ID>
-                      <Description>"Max Base Health"</Description>
-                      <LastState Value="6.985749318E31" RealAddress="142DBE70C"/>
-                      <VariableType>Float</VariableType>
-                      <Address>MonsterHunterWorld.exe+3B1F718</Address>
-                      <Offsets>
-                        <Offset>2EC</Offset>
-                      </Offsets>
-                    </CheatEntry>
-                    <CheatEntry>
-                      <ID>4460</ID>
-                      <Description>"Max Base Stamina"</Description>
-                      <LastState Value="2.901382866E29" RealAddress="142DBE724"/>
-                      <VariableType>Float</VariableType>
-                      <Address>MonsterHunterWorld.exe+3B1F718</Address>
-                      <Offsets>
-                        <Offset>304</Offset>
-                      </Offsets>
-                    </CheatEntry>
-                  </CheatEntries>
-                </CheatEntry>
-              </CheatEntries>
             </CheatEntry>
             <CheatEntry>
               <ID>4328</ID>
@@ -15446,125 +15336,6 @@ dealloc(newmem)
       </CheatEntries>
     </CheatEntry>
   </CheatEntries>
-  <CheatCodes>
-    <CodeEntry>
-      <Description>Code :mov [rbx+000079E8],eax - Ret Z</Description>
-      <Address>141BDCA51</Address>
-      <ModuleName>MonsterHunterWorld.exe</ModuleName>
-      <ModuleNameOffset>1BDCA51</ModuleNameOffset>
-      <Before>
-        <Byte>83</Byte>
-        <Byte>E8</Byte>
-        <Byte>E8</Byte>
-        <Byte>00</Byte>
-        <Byte>00</Byte>
-      </Before>
-      <Actual>
-        <Byte>CC</Byte>
-        <Byte>83</Byte>
-        <Byte>E8</Byte>
-        <Byte>79</Byte>
-        <Byte>00</Byte>
-        <Byte>00</Byte>
-      </Actual>
-      <After>
-        <Byte>44</Byte>
-        <Byte>89</Byte>
-        <Byte>AB</Byte>
-        <Byte>EC</Byte>
-        <Byte>79</Byte>
-      </After>
-    </CodeEntry>
-    <CodeEntry>
-      <Description>Code :movss xmm1,[rbx+000079E8] - Ret Z</Description>
-      <Address>141BDCB2C</Address>
-      <ModuleName>MonsterHunterWorld.exe</ModuleName>
-      <ModuleNameOffset>1BDCB2C</ModuleNameOffset>
-      <Before>
-        <Byte>F3</Byte>
-        <Byte>0F</Byte>
-        <Byte>11</Byte>
-        <Byte>4D</Byte>
-        <Byte>C7</Byte>
-      </Before>
-      <Actual>
-        <Byte>CC</Byte>
-        <Byte>0F</Byte>
-        <Byte>10</Byte>
-        <Byte>8B</Byte>
-        <Byte>E8</Byte>
-        <Byte>79</Byte>
-        <Byte>00</Byte>
-        <Byte>00</Byte>
-      </Actual>
-      <After>
-        <Byte>F3</Byte>
-        <Byte>0F</Byte>
-        <Byte>11</Byte>
-        <Byte>45</Byte>
-        <Byte>CB</Byte>
-      </After>
-    </CodeEntry>
-    <CodeEntry>
-      <Description>Code :mov ecx,[rbx+000079E8] - Ret Z</Description>
-      <Address>141BDCC0B</Address>
-      <ModuleName>MonsterHunterWorld.exe</ModuleName>
-      <ModuleNameOffset>1BDCC0B</ModuleNameOffset>
-      <Before>
-        <Byte>00</Byte>
-        <Byte>00</Byte>
-        <Byte>89</Byte>
-        <Byte>48</Byte>
-        <Byte>44</Byte>
-      </Before>
-      <Actual>
-        <Byte>CC</Byte>
-        <Byte>8B</Byte>
-        <Byte>E8</Byte>
-        <Byte>79</Byte>
-        <Byte>00</Byte>
-        <Byte>00</Byte>
-      </Actual>
-      <After>
-        <Byte>89</Byte>
-        <Byte>48</Byte>
-        <Byte>48</Byte>
-        <Byte>44</Byte>
-        <Byte>89</Byte>
-      </After>
-    </CodeEntry>
-    <CodeEntry>
-      <Description>Change of movss [rbx+rdi*4+00009390],xmm0</Description>
-      <Address>141BBD97C</Address>
-      <ModuleName>MonsterHunterWorld.exe</ModuleName>
-      <ModuleNameOffset>1BBD97C</ModuleNameOffset>
-      <Before>
-        <Byte>BB</Byte>
-        <Byte>98</Byte>
-        <Byte>93</Byte>
-        <Byte>00</Byte>
-        <Byte>00</Byte>
-      </Before>
-      <Actual>
-        <Byte>F3</Byte>
-        <Byte>0F</Byte>
-        <Byte>11</Byte>
-        <Byte>84</Byte>
-        <Byte>BB</Byte>
-        <Byte>90</Byte>
-        <Byte>93</Byte>
-        <Byte>00</Byte>
-        <Byte>00</Byte>
-      </Actual>
-      <After>
-        <Byte>48</Byte>
-        <Byte>8B</Byte>
-        <Byte>5C</Byte>
-        <Byte>24</Byte>
-        <Byte>30</Byte>
-      </After>
-    </CodeEntry>
-  </CheatCodes>
   <UserdefinedSymbols/>
   <Comments>Unlock Armor/Weapons For Current Tier Level - This will unlock most weapons and armor depending on how far you have gotten in the story. This DOES NOT overwrite any flag values making this relatively safe to use. However, I would still only activate this when talking to the Smithy, and disable it immediately after.
                                                                                     
