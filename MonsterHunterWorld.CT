@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <CheatTable CheatEngineTableVersion="26">
+  <Forms>
+    <OverlayForm Class="TCEForm" Encoding="Ascii85">ol-$@)=Ag1NVZn8LQ$l60572UK{r%fPL/0tkst;S*L0%^TVC(*-LZo;P/aLK/O!?}C(nCdKo]xlW=Q{8@TlVZoQ;Y]G8;Mx+}IxCjfAGHdlOue_8NnEQLJk6Ui,oq]oCEJPAsVQA9]]B%;vC$rIn4?u]8(N$b-3@YK1)5EeWjxe(oH)q)DWFjPap.B/yEeYQuRYQwi1ja-/c#(1x[O5]Q@PrXPl%CSS90a$5_]xcho!]W/!M6gC*yBk;(/wy{c[n,d9F(X=N]K5%}AffUp?@xJy[OFB$.)(J!hQ!N*PYCSmI:GD;]jU^v}G]Vs%404rJB:$ha!+:jS3F5hO[o;z:By?/ue{]ru6rGSDS4FMwPr!=_y-[9Dbqa:umJ*dnjpd))6=2IZ3te0jn4@qR:Tld8X=ag!UA19)7ssrA[M$_JmD+tYV{i]R)S+s4bRm9V[;?yL*o*5LE2L8vceNl4CeY_zdsrS0$1@al:%(KBG?$IZLqgWcn{I@/JN=fJyY;bt=osADN9nd@-*[zMl3blF$,dSB+01C)F3wbhCCu{72R)LjXfQG@,rKPg:StZBTlBmq%sqbq</OverlayForm>
+  </Forms>
   <CheatEntries>
     <CheatEntry>
-      <ID>103</ID>
-      <Description>"启用 (Update 40)"</Description>
+      <ID>5447</ID>
+      <Description>"启用 (Update 42)"</Description>
       <Options moHideChildren="1"/>
-      <LastState Activated="1"/>
+      <LastState/>
       <VariableType>Auto Assembler Script</VariableType>
       <AssemblerScript>{$lua}
 local function hex(input)
@@ -1473,7 +1476,7 @@ dealloc(newmem)
                         </CheatEntry>
                         <CheatEntry>
                           <ID>169</ID>
-                          <Description>"Set To 1"</Description>
+                          <Description>"Set To 0"</Description>
                           <VariableType>Binary</VariableType>
                           <BitStart>1</BitStart>
                           <BitLength>1</BitLength>
@@ -4264,7 +4267,7 @@ unregistersymbol(cannonsnsf)
           <ID>33</ID>
           <Description>"武器 Buff"</Description>
           <Options moHideChildren="1"/>
-          <LastState Value="" Activated="1" RealAddress="00000000"/>
+          <LastState Value="" RealAddress="00000000"/>
           <GroupHeader>1</GroupHeader>
           <CheatEntries>
             <CheatEntry>
@@ -4894,6 +4897,33 @@ infigstam:
 
 unregistersymbol(infigstam)
 dealloc(newmem)
+</AssemblerScript>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>5689</ID>
+              <Description>"Inf Insect Glaive Jumping Attack"</Description>
+              <LastState/>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>{ Game   : MonsterHunterWorld.exe
+  Version: 
+  Date   : 2018-09-15
+  Author : Squall8
+}
+
+[ENABLE]
+
+aobscanmodule(infigja,MonsterHunterWorld.exe,FF 81 70 20 00 00)
+registersymbol(infigja)
+
+infigja:
+  db 90 90 90 90 90 90
+
+[DISABLE]
+
+infigja:
+  db FF 81 70 20 00 00
+
+unregistersymbol(infigja)
 </AssemblerScript>
             </CheatEntry>
             <CheatEntry>
@@ -5926,7 +5956,7 @@ dealloc(newmem)
           <AssemblerScript>{ Game   : MonsterHunterWorld.exe
   Version: 
   Date   : 2018-08-10
-  Author : Squall8
+  Author : Squall8 / Berserk Knight
 }
 
 [ENABLE]
@@ -7119,6 +7149,1035 @@ unregistersymbol(lptdec)
               <GroupHeader>1</GroupHeader>
               <CheatEntries>
                 <CheatEntry>
+                  <ID>5430</ID>
+                  <Description>"[Hunting Horn Buffs]"</Description>
+                  <Options moHideChildren="1"/>
+                  <LastState Value="" RealAddress="00000000"/>
+                  <Color>000080</Color>
+                  <GroupHeader>1</GroupHeader>
+                  <CheatEntries>
+                    <CheatEntry>
+                      <ID>5874</ID>
+                      <Description>"Self-Improvement"</Description>
+                      <VariableType>Float</VariableType>
+                      <Address>buffy</Address>
+                      <Offsets>
+                        <Offset>38</Offset>
+                      </Offsets>
+                      <CheatEntries>
+                        <CheatEntry>
+                          <ID>5701</ID>
+                          <Description>"Self-Improvement+"</Description>
+                          <VariableType>Byte</VariableType>
+                          <Address>buffy</Address>
+                          <Offsets>
+                            <Offset>148</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                      </CheatEntries>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>5356</ID>
+                      <Description>"Atk Up (S)"</Description>
+                      <VariableType>Float</VariableType>
+                      <Address>buffy</Address>
+                      <Offsets>
+                        <Offset>3C</Offset>
+                      </Offsets>
+                      <CheatEntries>
+                        <CheatEntry>
+                          <ID>5702</ID>
+                          <Description>"Atk Up (S)+"</Description>
+                          <VariableType>Byte</VariableType>
+                          <Address>buffy</Address>
+                          <Offsets>
+                            <Offset>149</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                      </CheatEntries>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>5357</ID>
+                      <Description>"Atk Up (L)"</Description>
+                      <VariableType>Float</VariableType>
+                      <Address>buffy</Address>
+                      <Offsets>
+                        <Offset>40</Offset>
+                      </Offsets>
+                      <CheatEntries>
+                        <CheatEntry>
+                          <ID>5718</ID>
+                          <Description>"Atk Up (L)+"</Description>
+                          <VariableType>Byte</VariableType>
+                          <Address>buffy</Address>
+                          <Offsets>
+                            <Offset>14A</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                      </CheatEntries>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>5358</ID>
+                      <Description>"Affinity Up"</Description>
+                      <VariableType>Float</VariableType>
+                      <Address>buffy</Address>
+                      <Offsets>
+                        <Offset>F0</Offset>
+                      </Offsets>
+                      <CheatEntries>
+                        <CheatEntry>
+                          <ID>5721</ID>
+                          <Description>"Affinity Up+"</Description>
+                          <VariableType>Byte</VariableType>
+                          <Address>buffy</Address>
+                          <Offsets>
+                            <Offset>176</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                      </CheatEntries>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>5875</ID>
+                      <Description>"Elemental Atk Up"</Description>
+                      <VariableType>Float</VariableType>
+                      <Address>buffy</Address>
+                      <Offsets>
+                        <Offset>D4</Offset>
+                      </Offsets>
+                      <CheatEntries>
+                        <CheatEntry>
+                          <ID>5742</ID>
+                          <Description>"Elemental Atk Up+"</Description>
+                          <VariableType>Byte</VariableType>
+                          <Address>buffy</Address>
+                          <Offsets>
+                            <Offset>16F</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                      </CheatEntries>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>5359</ID>
+                      <Description>"Abnormal Status Atk Up"</Description>
+                      <VariableType>Float</VariableType>
+                      <Address>buffy</Address>
+                      <Offsets>
+                        <Offset>FC</Offset>
+                      </Offsets>
+                      <CheatEntries>
+                        <CheatEntry>
+                          <ID>5749</ID>
+                          <Description>"Status Atk Up+"</Description>
+                          <VariableType>Byte</VariableType>
+                          <Address>buffy</Address>
+                          <Offsets>
+                            <Offset>179</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                      </CheatEntries>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>5876</ID>
+                      <Description>"Def Up (S)"</Description>
+                      <VariableType>Float</VariableType>
+                      <Address>buffy</Address>
+                      <Offsets>
+                        <Offset>5C</Offset>
+                      </Offsets>
+                      <CheatEntries>
+                        <CheatEntry>
+                          <ID>5705</ID>
+                          <Description>"Def Up (S)+"</Description>
+                          <VariableType>Byte</VariableType>
+                          <Address>buffy</Address>
+                          <Offsets>
+                            <Offset>151</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                      </CheatEntries>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>5431</ID>
+                      <Description>"Def Up (L)"</Description>
+                      <VariableType>Float</VariableType>
+                      <Address>buffy</Address>
+                      <Offsets>
+                        <Offset>60</Offset>
+                      </Offsets>
+                      <CheatEntries>
+                        <CheatEntry>
+                          <ID>5720</ID>
+                          <Description>"Def Up (L)+"</Description>
+                          <VariableType>Byte</VariableType>
+                          <Address>buffy</Address>
+                          <Offsets>
+                            <Offset>152</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                      </CheatEntries>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>5432</ID>
+                      <Description>"Health Increase (S)"</Description>
+                      <VariableType>Float</VariableType>
+                      <Address>buffy</Address>
+                      <Offsets>
+                        <Offset>44</Offset>
+                      </Offsets>
+                      <CheatEntries>
+                        <CheatEntry>
+                          <ID>5703</ID>
+                          <Description>"Health Increase (S)+ (Extend Only)"</Description>
+                          <VariableType>Byte</VariableType>
+                          <Address>buffy</Address>
+                          <Offsets>
+                            <Offset>14B</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                      </CheatEntries>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>5877</ID>
+                      <Description>"Health Increase (L)"</Description>
+                      <VariableType>Float</VariableType>
+                      <Address>buffy</Address>
+                      <Offsets>
+                        <Offset>48</Offset>
+                      </Offsets>
+                      <CheatEntries>
+                        <CheatEntry>
+                          <ID>5719</ID>
+                          <Description>"Health Increase (L)+ (Extend Only)"</Description>
+                          <VariableType>Byte</VariableType>
+                          <Address>buffy</Address>
+                          <Offsets>
+                            <Offset>14C</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                      </CheatEntries>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>5878</ID>
+                      <Description>"Stamina Use Reduced (S)"</Description>
+                      <VariableType>Float</VariableType>
+                      <Address>buffy</Address>
+                      <Offsets>
+                        <Offset>4C</Offset>
+                      </Offsets>
+                      <CheatEntries>
+                        <CheatEntry>
+                          <ID>5726</ID>
+                          <Description>"Stamina Use (S)+ (Extend Only)"</Description>
+                          <VariableType>Byte</VariableType>
+                          <Address>buffy</Address>
+                          <Offsets>
+                            <Offset>14D</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                      </CheatEntries>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>5879</ID>
+                      <Description>"Stamina Use Reduced (L)"</Description>
+                      <VariableType>Float</VariableType>
+                      <Address>buffy</Address>
+                      <Offsets>
+                        <Offset>50</Offset>
+                      </Offsets>
+                      <CheatEntries>
+                        <CheatEntry>
+                          <ID>5727</ID>
+                          <Description>"Stamina Use (L)+ (Extend Only)"</Description>
+                          <VariableType>Byte</VariableType>
+                          <Address>buffy</Address>
+                          <Offsets>
+                            <Offset>14E</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                      </CheatEntries>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>5880</ID>
+                      <Description>"Wind Negated"</Description>
+                      <VariableType>Float</VariableType>
+                      <Address>buffy</Address>
+                      <Offsets>
+                        <Offset>54</Offset>
+                      </Offsets>
+                      <CheatEntries>
+                        <CheatEntry>
+                          <ID>5704</ID>
+                          <Description>"Wind Negated+ (Extend Only)"</Description>
+                          <VariableType>Byte</VariableType>
+                          <Address>buffy</Address>
+                          <Offsets>
+                            <Offset>14F</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                      </CheatEntries>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>5881</ID>
+                      <Description>"Wind Nullified"</Description>
+                      <VariableType>Float</VariableType>
+                      <Address>buffy</Address>
+                      <Offsets>
+                        <Offset>58</Offset>
+                      </Offsets>
+                      <CheatEntries>
+                        <CheatEntry>
+                          <ID>5731</ID>
+                          <Description>"Wind Nullified+ (Extend Only)"</Description>
+                          <VariableType>Byte</VariableType>
+                          <Address>buffy</Address>
+                          <Offsets>
+                            <Offset>150</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                      </CheatEntries>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>5882</ID>
+                      <Description>"Tool Use Drain Reduced (S)"</Description>
+                      <VariableType>Float</VariableType>
+                      <Address>buffy</Address>
+                      <Offsets>
+                        <Offset>64</Offset>
+                      </Offsets>
+                      <CheatEntries>
+                        <CheatEntry>
+                          <ID>5725</ID>
+                          <Description>"Tool Use (S)+ (Extend Only)"</Description>
+                          <VariableType>Byte</VariableType>
+                          <Address>buffy</Address>
+                          <Offsets>
+                            <Offset>153</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                      </CheatEntries>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>5883</ID>
+                      <Description>"Tool Use Drain Reduced (L)"</Description>
+                      <VariableType>Float</VariableType>
+                      <Address>buffy</Address>
+                      <Offsets>
+                        <Offset>68</Offset>
+                      </Offsets>
+                      <CheatEntries>
+                        <CheatEntry>
+                          <ID>5728</ID>
+                          <Description>"Tool Use (L)+ (Extend Only)"</Description>
+                          <VariableType>Byte</VariableType>
+                          <Address>buffy</Address>
+                          <Offsets>
+                            <Offset>154</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                      </CheatEntries>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>5884</ID>
+                      <Description>"Recovery Up (S)"</Description>
+                      <VariableType>Float</VariableType>
+                      <Address>buffy</Address>
+                      <Offsets>
+                        <Offset>80</Offset>
+                      </Offsets>
+                      <CheatEntries>
+                        <CheatEntry>
+                          <ID>5745</ID>
+                          <Description>"Recovery Up (S)+ (Extend Only)"</Description>
+                          <VariableType>Byte</VariableType>
+                          <Address>buffy</Address>
+                          <Offsets>
+                            <Offset>15A</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                      </CheatEntries>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>5885</ID>
+                      <Description>"Recovery Up (L)"</Description>
+                      <VariableType>Float</VariableType>
+                      <Address>buffy</Address>
+                      <Offsets>
+                        <Offset>84</Offset>
+                      </Offsets>
+                      <CheatEntries>
+                        <CheatEntry>
+                          <ID>5735</ID>
+                          <Description>"Recovery Up (L)+ (Extend Only)"</Description>
+                          <VariableType>Byte</VariableType>
+                          <Address>buffy</Address>
+                          <Offsets>
+                            <Offset>15B</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                      </CheatEntries>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>5886</ID>
+                      <Description>"Earplugs (S)"</Description>
+                      <VariableType>Float</VariableType>
+                      <Address>buffy</Address>
+                      <Offsets>
+                        <Offset>88</Offset>
+                      </Offsets>
+                      <CheatEntries>
+                        <CheatEntry>
+                          <ID>5724</ID>
+                          <Description>"Earplugs (S)+ (Extend Only)"</Description>
+                          <VariableType>Byte</VariableType>
+                          <Address>buffy</Address>
+                          <Offsets>
+                            <Offset>15C</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                      </CheatEntries>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>5887</ID>
+                      <Description>"Earplugs (L)"</Description>
+                      <VariableType>Float</VariableType>
+                      <Address>buffy</Address>
+                      <Offsets>
+                        <Offset>8C</Offset>
+                      </Offsets>
+                      <CheatEntries>
+                        <CheatEntry>
+                          <ID>5722</ID>
+                          <Description>"Earplugs (L)+ (Extend Only)"</Description>
+                          <VariableType>Byte</VariableType>
+                          <Address>buffy</Address>
+                          <Offsets>
+                            <Offset>15D</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                      </CheatEntries>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>5888</ID>
+                      <Description>"Divine Protection"</Description>
+                      <VariableType>Float</VariableType>
+                      <Address>buffy</Address>
+                      <Offsets>
+                        <Offset>90</Offset>
+                      </Offsets>
+                      <CheatEntries>
+                        <CheatEntry>
+                          <ID>5748</ID>
+                          <Description>"Divine Protection+ (Extend Only)"</Description>
+                          <VariableType>Byte</VariableType>
+                          <Address>buffy</Address>
+                          <Offsets>
+                            <Offset>15E</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                      </CheatEntries>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>5889</ID>
+                      <Description>"Enviormental Damage Negated"</Description>
+                      <VariableType>Float</VariableType>
+                      <Address>buffy</Address>
+                      <Offsets>
+                        <Offset>98</Offset>
+                      </Offsets>
+                      <CheatEntries>
+                        <CheatEntry>
+                          <ID>5734</ID>
+                          <Description>"Env. Damage Negated+ (Extend Only)"</Description>
+                          <VariableType>Byte</VariableType>
+                          <Address>buffy</Address>
+                          <Offsets>
+                            <Offset>160</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                      </CheatEntries>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>5890</ID>
+                      <Description>"Blight Negated"</Description>
+                      <VariableType>Float</VariableType>
+                      <Address>buffy</Address>
+                      <Offsets>
+                        <Offset>D8</Offset>
+                      </Offsets>
+                      <CheatEntries>
+                        <CheatEntry>
+                          <ID>5752</ID>
+                          <Description>"Blight Negated+ (Extend Only)"</Description>
+                          <VariableType>Byte</VariableType>
+                          <Address>buffy</Address>
+                          <Offsets>
+                            <Offset>170</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                      </CheatEntries>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>5891</ID>
+                      <Description>"Knockbacks Negated"</Description>
+                      <VariableType>Float</VariableType>
+                      <Address>buffy</Address>
+                      <Offsets>
+                        <Offset>E4</Offset>
+                      </Offsets>
+                      <CheatEntries>
+                        <CheatEntry>
+                          <ID>5753</ID>
+                          <Description>"Knockbacks Negated+ (Extend Only)"</Description>
+                          <VariableType>Byte</VariableType>
+                          <Address>buffy</Address>
+                          <Offsets>
+                            <Offset>173</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                      </CheatEntries>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>5892</ID>
+                      <Description>"Stun Negated"</Description>
+                      <VariableType>Float</VariableType>
+                      <Address>buffy</Address>
+                      <Offsets>
+                        <Offset>9C</Offset>
+                      </Offsets>
+                      <CheatEntries>
+                        <CheatEntry>
+                          <ID>5729</ID>
+                          <Description>"Stun Negated+ (Extend Only)"</Description>
+                          <VariableType>Byte</VariableType>
+                          <Address>buffy</Address>
+                          <Offsets>
+                            <Offset>161</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                      </CheatEntries>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>5893</ID>
+                      <Description>"Paralysis Negated"</Description>
+                      <VariableType>Float</VariableType>
+                      <Address>buffy</Address>
+                      <Offsets>
+                        <Offset>A0</Offset>
+                      </Offsets>
+                      <CheatEntries>
+                        <CheatEntry>
+                          <ID>5738</ID>
+                          <Description>"Paralysis Negated+ (Extend Only)"</Description>
+                          <VariableType>Byte</VariableType>
+                          <Address>buffy</Address>
+                          <Offsets>
+                            <Offset>162</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                      </CheatEntries>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>5894</ID>
+                      <Description>"Tremors Negated"</Description>
+                      <VariableType>Float</VariableType>
+                      <Address>buffy</Address>
+                      <Offsets>
+                        <Offset>A4</Offset>
+                      </Offsets>
+                      <CheatEntries>
+                        <CheatEntry>
+                          <ID>5739</ID>
+                          <Description>"Tremors Negated+ (Extend Only)"</Description>
+                          <VariableType>Byte</VariableType>
+                          <Address>buffy</Address>
+                          <Offsets>
+                            <Offset>163</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                      </CheatEntries>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>5895</ID>
+                      <Description>"Muck Res"</Description>
+                      <VariableType>Float</VariableType>
+                      <Address>buffy</Address>
+                      <Offsets>
+                        <Offset>A8</Offset>
+                      </Offsets>
+                      <CheatEntries>
+                        <CheatEntry>
+                          <ID>5733</ID>
+                          <Description>"Muck Res+ (Extend Only)"</Description>
+                          <VariableType>Byte</VariableType>
+                          <Address>buffy</Address>
+                          <Offsets>
+                            <Offset>164</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                      </CheatEntries>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>5896</ID>
+                      <Description>"All Ailments Negated"</Description>
+                      <VariableType>Float</VariableType>
+                      <Address>buffy</Address>
+                      <Offsets>
+                        <Offset>F4</Offset>
+                      </Offsets>
+                      <CheatEntries>
+                        <CheatEntry>
+                          <ID>5750</ID>
+                          <Description>"All Ailments Negated+ (Extend Only)"</Description>
+                          <VariableType>Byte</VariableType>
+                          <Address>buffy</Address>
+                          <Offsets>
+                            <Offset>177</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                      </CheatEntries>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>5897</ID>
+                      <Description>"Elemental Res Up"</Description>
+                      <VariableType>Float</VariableType>
+                      <Address>buffy</Address>
+                      <Offsets>
+                        <Offset>EC</Offset>
+                      </Offsets>
+                      <CheatEntries>
+                        <CheatEntry>
+                          <ID>5751</ID>
+                          <Description>"Elemental Res Up+"</Description>
+                          <VariableType>Byte</VariableType>
+                          <Address>buffy</Address>
+                          <Offsets>
+                            <Offset>175</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                      </CheatEntries>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>5898</ID>
+                      <Description>"Fire Res Up (S)"</Description>
+                      <VariableType>Float</VariableType>
+                      <Address>buffy</Address>
+                      <Offsets>
+                        <Offset>AC</Offset>
+                      </Offsets>
+                      <CheatEntries>
+                        <CheatEntry>
+                          <ID>5736</ID>
+                          <Description>"Fire Res Up (S)+"</Description>
+                          <VariableType>Byte</VariableType>
+                          <Address>buffy</Address>
+                          <Offsets>
+                            <Offset>165</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                      </CheatEntries>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>5899</ID>
+                      <Description>"Fire Res Up (L)"</Description>
+                      <VariableType>Float</VariableType>
+                      <Address>buffy</Address>
+                      <Offsets>
+                        <Offset>B0</Offset>
+                      </Offsets>
+                      <CheatEntries>
+                        <CheatEntry>
+                          <ID>5737</ID>
+                          <Description>"Fire Res Up (L)+"</Description>
+                          <VariableType>Byte</VariableType>
+                          <Address>buffy</Address>
+                          <Offsets>
+                            <Offset>166</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                      </CheatEntries>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>5900</ID>
+                      <Description>"Water Res Up (S)"</Description>
+                      <VariableType>Float</VariableType>
+                      <Address>buffy</Address>
+                      <Offsets>
+                        <Offset>B4</Offset>
+                      </Offsets>
+                      <CheatEntries>
+                        <CheatEntry>
+                          <ID>5740</ID>
+                          <Description>"Water Res Up (S)+"</Description>
+                          <VariableType>Byte</VariableType>
+                          <Address>buffy</Address>
+                          <Offsets>
+                            <Offset>167</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                      </CheatEntries>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>5901</ID>
+                      <Description>"Water Res Up (L)"</Description>
+                      <VariableType>Float</VariableType>
+                      <Address>buffy</Address>
+                      <Offsets>
+                        <Offset>B8</Offset>
+                      </Offsets>
+                      <CheatEntries>
+                        <CheatEntry>
+                          <ID>5743</ID>
+                          <Description>"Water Res Up (L)+"</Description>
+                          <VariableType>Byte</VariableType>
+                          <Address>buffy</Address>
+                          <Offsets>
+                            <Offset>168</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                      </CheatEntries>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>5902</ID>
+                      <Description>"Thunder Res Up (S)"</Description>
+                      <VariableType>Float</VariableType>
+                      <Address>buffy</Address>
+                      <Offsets>
+                        <Offset>BC</Offset>
+                      </Offsets>
+                      <CheatEntries>
+                        <CheatEntry>
+                          <ID>5746</ID>
+                          <Description>"Thunder Res Up (S)+"</Description>
+                          <VariableType>Byte</VariableType>
+                          <Address>buffy</Address>
+                          <Offsets>
+                            <Offset>169</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                      </CheatEntries>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>5903</ID>
+                      <Description>"Thunder Res Up (L)"</Description>
+                      <VariableType>Float</VariableType>
+                      <Address>buffy</Address>
+                      <Offsets>
+                        <Offset>C0</Offset>
+                      </Offsets>
+                      <CheatEntries>
+                        <CheatEntry>
+                          <ID>5747</ID>
+                          <Description>"Thunder Res Up (L)+"</Description>
+                          <VariableType>Byte</VariableType>
+                          <Address>buffy</Address>
+                          <Offsets>
+                            <Offset>16A</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                      </CheatEntries>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>5904</ID>
+                      <Description>"Ice Res Up (S)"</Description>
+                      <VariableType>Float</VariableType>
+                      <Address>buffy</Address>
+                      <Offsets>
+                        <Offset>C4</Offset>
+                      </Offsets>
+                      <CheatEntries>
+                        <CheatEntry>
+                          <ID>5730</ID>
+                          <Description>"Ice Res Up (S)+"</Description>
+                          <VariableType>Byte</VariableType>
+                          <Address>buffy</Address>
+                          <Offsets>
+                            <Offset>16B</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                      </CheatEntries>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>5905</ID>
+                      <Description>"Ice Res Up (L)"</Description>
+                      <VariableType>Float</VariableType>
+                      <Address>buffy</Address>
+                      <Offsets>
+                        <Offset>C8</Offset>
+                      </Offsets>
+                      <CheatEntries>
+                        <CheatEntry>
+                          <ID>5732</ID>
+                          <Description>"Ice Res Up (L)+"</Description>
+                          <VariableType>Byte</VariableType>
+                          <Address>buffy</Address>
+                          <Offsets>
+                            <Offset>16C</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                      </CheatEntries>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>5906</ID>
+                      <Description>"Dragon Res Up (S)"</Description>
+                      <VariableType>Float</VariableType>
+                      <Address>buffy</Address>
+                      <Offsets>
+                        <Offset>CC</Offset>
+                      </Offsets>
+                      <CheatEntries>
+                        <CheatEntry>
+                          <ID>5741</ID>
+                          <Description>"Dragon Res Up (S)+"</Description>
+                          <VariableType>Byte</VariableType>
+                          <Address>buffy</Address>
+                          <Offsets>
+                            <Offset>16D</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                      </CheatEntries>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>5907</ID>
+                      <Description>"Dragon Res Up (L)"</Description>
+                      <VariableType>Float</VariableType>
+                      <Address>buffy</Address>
+                      <Offsets>
+                        <Offset>D0</Offset>
+                      </Offsets>
+                      <CheatEntries>
+                        <CheatEntry>
+                          <ID>5744</ID>
+                          <Description>"Dragon Res Up (L)+"</Description>
+                          <VariableType>Byte</VariableType>
+                          <Address>buffy</Address>
+                          <Offsets>
+                            <Offset>16E</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                      </CheatEntries>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>5908</ID>
+                      <Description>"Wind+Ear (S)"</Description>
+                      <VariableType>Float</VariableType>
+                      <Address>buffy</Address>
+                      <Offsets>
+                        <Offset>F8</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>5909</ID>
+                      <Description>"Scoutfly Level Up"</Description>
+                      <VariableType>Float</VariableType>
+                      <Address>buffy</Address>
+                      <Offsets>
+                        <Offset>94</Offset>
+                      </Offsets>
+                      <CheatEntries>
+                        <CheatEntry>
+                          <ID>5723</ID>
+                          <Description>"Scoutfly Level Up+ (Extend Only)"</Description>
+                          <VariableType>Byte</VariableType>
+                          <Address>buffy</Address>
+                          <Offsets>
+                            <Offset>15F</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                      </CheatEntries>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>5910</ID>
+                      <Description>"[Unknown Effects]"</Description>
+                      <Options moHideChildren="1"/>
+                      <LastState Value="" RealAddress="00000000"/>
+                      <Color>000080</Color>
+                      <GroupHeader>1</GroupHeader>
+                      <CheatEntries>
+                        <CheatEntry>
+                          <ID>5911</ID>
+                          <Description>"???"</Description>
+                          <VariableType>Float</VariableType>
+                          <Address>buffy</Address>
+                          <Offsets>
+                            <Offset>6C</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>5912</ID>
+                          <Description>"???"</Description>
+                          <VariableType>Float</VariableType>
+                          <Address>buffy</Address>
+                          <Offsets>
+                            <Offset>70</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>5913</ID>
+                          <Description>"???"</Description>
+                          <VariableType>Float</VariableType>
+                          <Address>buffy</Address>
+                          <Offsets>
+                            <Offset>74</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>5914</ID>
+                          <Description>"???"</Description>
+                          <VariableType>Float</VariableType>
+                          <Address>buffy</Address>
+                          <Offsets>
+                            <Offset>78</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>5915</ID>
+                          <Description>"???"</Description>
+                          <VariableType>Float</VariableType>
+                          <Address>buffy</Address>
+                          <Offsets>
+                            <Offset>7C</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>5916</ID>
+                          <Description>"???"</Description>
+                          <VariableType>Float</VariableType>
+                          <Address>buffy</Address>
+                          <Offsets>
+                            <Offset>DC</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>5917</ID>
+                          <Description>"???"</Description>
+                          <VariableType>Float</VariableType>
+                          <Address>buffy</Address>
+                          <Offsets>
+                            <Offset>E0</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>5918</ID>
+                          <Description>"???"</Description>
+                          <VariableType>Float</VariableType>
+                          <Address>buffy</Address>
+                          <Offsets>
+                            <Offset>E8</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>5919</ID>
+                          <Description>"???"</Description>
+                          <VariableType>Float</VariableType>
+                          <Address>buffy</Address>
+                          <Offsets>
+                            <Offset>100</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                      </CheatEntries>
+                    </CheatEntry>
+                  </CheatEntries>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>5698</ID>
+                  <Description>"[Buffs]"</Description>
+                  <Options moHideChildren="1"/>
+                  <LastState Value="" RealAddress="00000000"/>
+                  <GroupHeader>1</GroupHeader>
+                  <CheatEntries>
+                    <CheatEntry>
+                      <ID>5920</ID>
+                      <Description>"Might Seed/Pill Timer"</Description>
+                      <VariableType>Float</VariableType>
+                      <Address>buffy</Address>
+                      <Offsets>
+                        <Offset>5C8</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>4896</ID>
+                      <Description>"Might Seed/Pill Attack+"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>buffy</Address>
+                      <Offsets>
+                        <Offset>5CC</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>4897</ID>
+                      <Description>"Might Pill Active"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>buffy</Address>
+                      <Offsets>
+                        <Offset>5D0</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>5921</ID>
+                      <Description>"Might Seed/Pill Active"</Description>
+                      <VariableType>Float</VariableType>
+                      <Address>buffy</Address>
+                      <Offsets>
+                        <Offset>5D4</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>5922</ID>
+                      <Description>"Adamant Seed/Pill Timer"</Description>
+                      <VariableType>Float</VariableType>
+                      <Address>buffy</Address>
+                      <Offsets>
+                        <Offset>5D8</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>5923</ID>
+                      <Description>"Adamant Seed Def+"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>buffy</Address>
+                      <Offsets>
+                        <Offset>5DC</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>4898</ID>
+                      <Description>"Adamant Pill Def Mult"</Description>
+                      <VariableType>Float</VariableType>
+                      <Address>buffy</Address>
+                      <Offsets>
+                        <Offset>5E0</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>4899</ID>
+                      <Description>"Adamant Pill Active"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>buffy</Address>
+                      <Offsets>
+                        <Offset>5E4</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>5924</ID>
+                      <Description>"Adamant Seed/Pill Active"</Description>
+                      <VariableType>Float</VariableType>
+                      <Address>buffy</Address>
+                      <Offsets>
+                        <Offset>5E8</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>4913</ID>
+                      <Description>"Protective Polish Timer"</Description>
+                      <VariableType>Float</VariableType>
+                      <Address>buffy</Address>
+                      <Offsets>
+                        <Offset>644</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                  </CheatEntries>
+                </CheatEntry>
+                <CheatEntry>
                   <ID>5368</ID>
                   <Description>"Wiggly Litchi Timer"</Description>
                   <VariableType>Float</VariableType>
@@ -7191,6 +8250,231 @@ unregistersymbol(lptdec)
                   </Offsets>
                 </CheatEntry>
               </CheatEntries>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>5690</ID>
+          <Description>"Abnormal Status Buildup Multiplier"</Description>
+          <Options moHideChildren="1"/>
+          <LastState/>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>{ Game   : MonsterHunterWorld.exe
+  Version: 
+  Date   : 2018-09-15
+  Author : Squall8
+}
+
+[ENABLE]
+
+aobscanmodule(abstam,MonsterHunterWorld.exe,F3 0F 58 89 78 01 00 00 45)
+alloc(newmem,$1000,abstam)
+
+label(code)
+label(return)
+label(specify)
+label(stID)
+label(abstammulval)
+
+registersymbol(abstam)
+registersymbol(specify)
+registersymbol(stID)
+registersymbol(abstammulval)
+
+newmem:
+  cmp [specify],1
+  jne @f
+  cmp r13,[stID]
+  jne code
+@@:
+  mulss xmm1,[abstammulval]
+
+code:
+  addss xmm1,[rcx+00000178]
+  jmp return
+
+specify:
+  dq 0
+
+stID:
+  dq 0
+
+abstammulval:
+  dq (float)2
+
+abstam:
+  jmp newmem
+  nop
+  nop
+  nop
+return:
+
+[DISABLE]
+
+abstam:
+  db F3 0F 58 89 78 01 00 00
+
+unregistersymbol(abstam)
+unregistersymbol(specify)
+unregistersymbol(stID)
+unregistersymbol(abstammulval)
+dealloc(newmem)
+</AssemblerScript>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>5692</ID>
+              <Description>"Enable Status Specifier"</Description>
+              <DropDownList ReadOnly="1" DescriptionOnly="1" DisplayValueAsItem="1">0:No
+1:Yes
+</DropDownList>
+              <VariableType>4 Bytes</VariableType>
+              <Address>specify</Address>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>5693</ID>
+                  <Description>"Status ID"</Description>
+                  <DropDownList ReadOnly="1" DescriptionOnly="1" DisplayValueAsItem="1">0:Choose One
+1:Poison
+2:Paralysis
+3:Sleep
+4:Blast
+5:Mounting
+6:Attacks That Cause Exhaustion/Stagger (Hits To The Body)
+7:Attacks That Cause Stun (Impact Mantle) (Hits To The Head)
+9:Stun (Flash)
+10:Fall From Mount
+11:Dung Pod
+</DropDownList>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>stID</Address>
+                </CheatEntry>
+              </CheatEntries>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>5691</ID>
+              <Description>"Multiplier"</Description>
+              <VariableType>Float</VariableType>
+              <Address>abstammulval</Address>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>5687</ID>
+          <Description>"Large Monster Size Modifier"</Description>
+          <Options moHideChildren="1"/>
+          <LastState/>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>{ Game   : MonsterHunterWorld.exe
+  Version: 
+  Date   : 2018-09-15
+  Author : Squall8 / Berserk Knight
+}
+
+[ENABLE]
+
+aobscanmodule(monstersize,MonsterHunterWorld.exe,F3 41 0F 10 A1 70 01 00 00)
+alloc(newmem,$1000,monstersize)
+
+label(code)
+label(return)
+label(monstersizev)
+
+registersymbol(monstersize)
+registersymbol(monstersizev)
+
+aobscanmodule(sizemul,MonsterHunterWorld.exe,41 8B 8E F0 72 00 00)
+alloc(newmem2,$1000,sizemul)
+
+label(code2)
+label(return2)
+label(gcmod)
+label(monstersizen)
+
+registersymbol(sizemul)
+registersymbol(gcmod)
+registersymbol(monstersizen)
+
+newmem:
+  movss xmm4,[monstersizev]
+  movss [r9+00000170],xmm4
+  movss [r9+00000174],xmm4
+  movss [r9+00000178],xmm4
+
+code:
+  movss xmm4,[r9+00000170]
+  jmp return
+
+monstersizev:
+  dq (float)1
+
+newmem2:
+
+code2:
+  cmp [gcmod],1
+  jne @f
+  mov ecx,[monstersizen]
+  cvtsi2ss xmm0,ecx
+  mulss xmm0,[monstersizev]
+  cvtss2si ecx,xmm0
+  mov [r14+000072F0],ecx
+  jmp return2
+
+@@:
+  mov ecx,[r14+000072F0]
+  jmp return2
+
+gcmod:
+  dq 0
+
+monstersizen:
+  dq 64
+
+monstersize:
+  jmp newmem
+  nop
+  nop
+  nop
+  nop
+return:
+
+sizemul:
+  jmp newmem2
+  nop
+  nop
+return2:
+
+[DISABLE]
+
+monstersize:
+  db F3 41 0F 10 A1 70 01 00 00
+
+unregistersymbol(monstersize)
+unregistersymbol(monstersizev)
+dealloc(newmem)
+
+sizemul:
+  db 41 8B 8E F0 72 00 00
+
+unregistersymbol(sizemul)
+unregistersymbol(gcmod)
+unregistersymbol(monstersizen)
+dealloc(newmem2)
+</AssemblerScript>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>5873</ID>
+              <Description>"Apply Size To GC"</Description>
+              <DropDownList ReadOnly="1" DescriptionOnly="1" DisplayValueAsItem="1">0:No
+1:Yes
+</DropDownList>
+              <VariableType>4 Bytes</VariableType>
+              <Address>gcmod</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>5686</ID>
+              <Description>"Size"</Description>
+              <VariableType>Float</VariableType>
+              <Address>monstersizev</Address>
             </CheatEntry>
           </CheatEntries>
         </CheatEntry>
@@ -10221,7 +11505,7 @@ dealloc(newmem4)
           <ID>102</ID>
           <Description>"[大型怪物血量 (一次只能启用一个)]"</Description>
           <Options moHideChildren="1"/>
-          <LastState Value="" Activated="1" RealAddress="00000000"/>
+          <LastState Value="" RealAddress="00000000"/>
           <GroupHeader>1</GroupHeader>
           <CheatEntries>
             <CheatEntry>
@@ -13819,7 +15103,7 @@ dealloc(newmem)
           <ID>2032</ID>
           <Description>"[dec1337's Scripts]"</Description>
           <Options moHideChildren="1"/>
-          <LastState Value="" Activated="1" RealAddress="00000000"/>
+          <LastState Value="" RealAddress="00000000"/>
           <Color>FF0000</Color>
           <GroupHeader>1</GroupHeader>
           <CheatEntries>
@@ -13915,7 +15199,7 @@ dealloc(newmem)
           <ID>2044</ID>
           <Description>"[seikur0's Scripts]"</Description>
           <Options moHideChildren="1"/>
-          <LastState Value="" Activated="1" RealAddress="00000000"/>
+          <LastState Value="" RealAddress="00000000"/>
           <Color>FF0000</Color>
           <GroupHeader>1</GroupHeader>
           <CheatEntries>
@@ -15333,15 +16617,289 @@ dealloc(newmem)
             </CheatEntry>
           </CheatEntries>
         </CheatEntry>
+        <CheatEntry>
+          <ID>5925</ID>
+          <Description>"[Berserk Knight's Scripts]"</Description>
+          <Options moHideChildren="1"/>
+          <LastState Value="" RealAddress="00000000"/>
+          <Color>FF0000</Color>
+          <GroupHeader>1</GroupHeader>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>5441</ID>
+              <Description>"Target Health"</Description>
+              <Options moHideChildren="1" moDeactivateChildrenAsWell="1"/>
+              <LastState/>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>{ Game   : MonsterHunterWorld.exe
+  Version: 
+  Date   : 2018-09-11
+  Author : Berserk Knight, RE'd from Fling
+}
+
+[ENABLE]
+
+aobscanmodule(targethealthaob,MonsterHunterWorld.exe,48 89 C3 48 85 C0 74 06 F6 40 0C 0E 75 03 4C 89 F3)
+alloc(newmem,$1000,targethealthaob)
+
+label(code1)
+label(code2)
+label(flag)
+label(pointer)
+label(targethealth)
+label(return)
+
+newmem:
+  test rax,rax
+  je code2
+  cmp dword ptr [flag],01
+  jne code2
+  mov rbx,[pointer]
+  test rbx,rbx
+  je code2
+  push rcx
+  mov rcx,[rax+00007260]
+  test rcx,rcx
+  je code1
+  lea rcx,[rcx+64]
+  fld dword ptr [rcx]
+  fstp dword ptr [rbx]
+  fld dword ptr [rcx-04]
+  fstp dword ptr [rbx+04]
+  inc [rbx+08]
+code1:
+  pop rcx
+code2:
+  mov rbx,rax
+  test rax,rax
+  jmp return
+
+  db 00 00 00
+flag:
+  dd 00000001
+targethealth:
+  dd 00000000 00000000 00000000
+pointer:
+  dq targethealth
+
+registersymbol(targethealth)
+
+targethealthaob:
+  jmp newmem
+  nop
+return:
+
+registersymbol(targethealthaob)
+
+[DISABLE]
+
+targethealthaob:
+  db 48 89 C3 48 85 C0
+
+dealloc(newmem)
+unregistersymbol(targethealth)
+unregistersymbol(targethealthaob)
+
+{
+MonsterHunterWorld.exe+CAE3B92 - 78 16                 - js MonsterHunterWorld.exe+CAE3BAA
+MonsterHunterWorld.exe+CAE3B94 - 48 89 F9              - mov rcx,rdi
+MonsterHunterWorld.exe+CAE3B97 - E8 64A107F4           - call MonsterHunterWorld.Ordinal292+B5DD00
+//Inject start
+MonsterHunterWorld.exe+CAE3B9C - 48 89 C3              - mov rbx,rax
+MonsterHunterWorld.exe+CAE3B9F - 48 85 C0              - test rax,rax
+//Inject end
+MonsterHunterWorld.exe+CAE3BA2 - 74 06                 - je MonsterHunterWorld.exe+CAE3BAA
+MonsterHunterWorld.exe+CAE3BA4 - F6 40 0C 0E           - test byte ptr [rax+0C],0E
+MonsterHunterWorld.exe+CAE3BA8 - 75 03                 - jne MonsterHunterWorld.exe+CAE3BAD
+MonsterHunterWorld.exe+CAE3BAA - 4C 89 F3              - mov rbx,r14
+MonsterHunterWorld.exe+CAE3BAD - 8B 87 340B0000        - mov eax,[rdi+00000B34]
+}
+
+</AssemblerScript>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>5444</ID>
+                  <Description>"Current Health"</Description>
+                  <VariableType>Float</VariableType>
+                  <Address>targethealth</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>5445</ID>
+                  <Description>"Max Health"</Description>
+                  <VariableType>Float</VariableType>
+                  <Address>targethealth+4</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>5446</ID>
+                  <Description>"Tick Count"</Description>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>targethealth+8</Address>
+                </CheatEntry>
+              </CheatEntries>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
       </CheatEntries>
     </CheatEntry>
   </CheatEntries>
-  <UserdefinedSymbols/>
+  <UserdefinedSymbols>
+    <SymbolEntry>
+      <Name>targethealthaob</Name>
+      <Address>14CAE3B9C</Address>
+    </SymbolEntry>
+    <SymbolEntry>
+      <Name>targethealth</Name>
+      <Address>151D90064</Address>
+    </SymbolEntry>
+  </UserdefinedSymbols>
   <Comments>Unlock Armor/Weapons For Current Tier Level - This will unlock most weapons and armor depending on how far you have gotten in the story. This DOES NOT overwrite any flag values making this relatively safe to use. However, I would still only activate this when talking to the Smithy, and disable it immediately after.
                                                                                     
 Flag Section - There is A LOT of data I still have to dig through on this, especially to fix the missing NPCs. In this section you can find 2 progression flags to unlock higher tier weapons and armor. IF YOU MODIFY THESE VALUES, BE SURE TO CHANGE THEM BACK TO THEIR ORIGINAL.
 ====================================================================================
 Maxed Skills/Set Bonus - These will trigger when you hover over a piece of equipment, when you view the 'Change Equipment' menu, and when you press 'ESC'. I find that pressing 'ESC' is the easiest method to use, since you can just equip an armor set, enable the script and press 'ESC' for everything to take effect. You can then disable the script as to not screw with anything else.
+====================================================================================
+Target Health + Overlay - 3 things are required for the overlay to work.
+ 1. Cheat Table Lua Script is running. This can be done by doing either...
+ 1-1. ...let CE run the lua script when loading the table, or...
+ 1-2. ...go to "Table - Show Cheat Table Lua Script" in the menu, and then click  Execute Script.
+ 2. Overlay window is up and registered in the script.
+ 2-1. If the Overlay window doesn't show up on your taskbar, "Table - OverlayForm -  Restore and show" in the menu.
+ 2-2. If the Overlay window was up before the script was running, you need to focus (switch over to) it for it to register.
+ 3. Target Health table entry is activated.
                                                                                     
+Target an enemy in the game (default F on keyboard) and the health bar will show up.
+                                                                                    
+To adjust the bar size and location, "Table - Show Cheat Table Lua Script", set "previewMode" in the script to true, and edit lines 2-8 to your preference.
+Click Execute Script and the overlay will update.
+(Bar height and font size is fixed right now, so it might be a little hard to read on 4k or above.)
+                                                                                    
+Set "previewMode" in the script to false when you're done adjusting.
+                                                                                   
+Save the table afterwards so you don't need to do all that all over again.
+                                                                                    
+-Limitations-
+Only works on windowed / borderless fullscreen mode since it's an overlay.
+Also lacks the ability to "latch on" to a target window, so it doesn't follow the game window around if you move it. Thus, borderless fullscreen is highly recommended.
 </Comments>
+  <LuaScript>-- Made by @Berserk Knight
+local screenWidth = 1920
+local overlayOffsetX = -1   -- -1 = Centered
+local overlayOffsetY = 150
+local barWidthUseFixed = false
+local barWidthFixed = 1152
+local barWidthRatio = 0.6
+local barWidthActual = 1152
+local previewMode = false
+
+local prevOffsetX = -1
+local prevOffsetY = -1
+local prevBarWidth = 0
+local prevBarHeight = 0
+
+
+function HideOverlay()
+  objOverlay.setWidth(0)
+  objOverlay.setHeight(0)
+  prevBarWidth = 0
+  prevBarHeight = 0
+end
+
+function Update()
+  if objOverlay == nil then
+    return
+  end
+
+  local objBar
+  local objFrontLabel
+  local objBackLabel
+  for i=0, objOverlay.getComponentCount()-1 do
+    local name = objOverlay.getComponent(i).getName()
+    if name == "Bar" then
+      objBar = objOverlay.getComponent(i)
+    elseif name == "FrontLabel" then
+      objFrontLabel = objOverlay.getComponent(i)
+    elseif name == "BackLabel" then
+      objBackLabel = objOverlay.getComponent(i)
+    end
+  end
+  if objBar == nil or objFrontLabel == nil or objBackLabel == nil then
+    return
+  end
+
+  local pBase = getAddress("targethealth")
+  local fHealth = readFloat(pBase)
+  if fHealth == nil and not previewMode then
+    HideOverlay()
+    return
+  end
+  local fMaxHealth = readFloat(pBase+0x4)
+  local nNewTick = readInteger(pBase+0x8)
+  local nOldTick = objOverlay.getTag()
+
+  if previewMode or nNewTick ~= nOldTick then
+    if previewMode or fHealth &gt; 0 then
+
+      if barWidthUseFixed then
+        barWidthActual = barWidthFixed
+      else
+        barWidthActual = screenWidth * barWidthRatio
+      end
+      if barWidthActual &lt; 200 then
+          barWidthActual = 200
+      end
+      if prevBarWidth ~= barWidthActual then
+        objOverlay.setWidth(barWidthActual)
+        objFrontLabel.setWidth(barWidthActual-2)
+        objBackLabel.setWidth(barWidthActual-2)
+        prevBarWidth = barWidthActual
+      end
+      if prevBarHeight ~= 20 then
+        objOverlay.setHeight(20)
+        prevBarHeight = 20
+      end
+      if overlayOffsetX == -1 then --Centered
+        local newOffset = (screenWidth - barWidthActual) / 2
+        if prevOffsetX ~= newOffset then
+          objOverlay.setLeft(newOffset)
+          prevOffsetX = newOffset
+        end
+      elseif prevOffsetX ~= overlayOffsetX then
+        objOverlay.setLeft(overlayOffsetX)
+        prevOffsetX = overlayOffsetX
+      end
+      if prevOffsetY ~= overlayOffsetY then
+        objOverlay.setTop(overlayOffsetY)
+        prevOffsetY = overlayOffsetY
+      end
+
+      if fHealth ~= nil and fHealth &gt; 0 then
+        objOverlay.setTag(nNewTick)
+        objBar.setWidth(fHealth/fMaxHealth * (barWidthActual-2))
+        local caption = string.format("%.0f / %.0f", fHealth, fMaxHealth)
+        objFrontLabel.setCaption(caption)
+        objBackLabel.setCaption(caption)
+        return
+      else
+        objBar.setWidth(barWidthActual / 2 - 1)
+        objFrontLabel.setCaption("No Target")
+        objBackLabel.setCaption("No Target")
+        return
+      end
+    end
+  end
+  HideOverlay()
+end
+
+function FormInit(sender)
+  objOverlay = sender
+end
+
+if timer == nil then
+  timer = createTimer(getMainForm())
+  timer.Interval = 100
+  timer.OnTimer = function(timer)
+    Update()
+  end
+end
+</LuaScript>
 </CheatTable>
