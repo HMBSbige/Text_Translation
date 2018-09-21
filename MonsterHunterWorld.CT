@@ -6,9 +6,9 @@
   <CheatEntries>
     <CheatEntry>
       <ID>5447</ID>
-      <Description>"启用 (Update 42)"</Description>
+      <Description>"启用 (Update 43.5)"</Description>
       <Options moHideChildren="1"/>
-      <LastState/>
+      <LastState Activated="1"/>
       <VariableType>Auto Assembler Script</VariableType>
       <AssemblerScript>{$lua}
 local function hex(input)
@@ -73,7 +73,7 @@ aa_tamper(false)
         <CheatEntry>
           <ID>25</ID>
           <Description>"无限生命"</Description>
-          <LastState/>
+          <LastState Activated="1"/>
           <VariableType>Auto Assembler Script</VariableType>
           <AssemblerScript>{ Game   : MonsterHunterWorld.exe
   Version: 
@@ -91,8 +91,8 @@ label(return)
 
 registersymbol(infhealth)
 
-assert(MonsterHunterWorld.exe+C7F0455,F3 0F 11 41 64)
-alloc(newmem2,$1000,MonsterHunterWorld.exe+C7F0455)
+assert(MonsterHunterWorld.exe+EA90D15,F3 0F 11 41 64)
+alloc(newmem2,$1000,MonsterHunterWorld.exe+EA90D15)
 
 label(code2)
 label(return2)
@@ -123,7 +123,7 @@ infhealth:
   nop
 return:
 
-MonsterHunterWorld.exe+C7F0455:
+MonsterHunterWorld.exe+EA90D15:
   jmp newmem2
 return2:
 
@@ -135,7 +135,7 @@ infhealth:
 unregistersymbol(infhealth)
 dealloc(newmem)
 
-MonsterHunterWorld.exe+C7F0455:
+MonsterHunterWorld.exe+EA90D15:
   db F3 0F 11 41 64
 
 dealloc(newmem2)
@@ -145,7 +145,7 @@ dealloc(newmem2)
         <CheatEntry>
           <ID>3</ID>
           <Description>"无限耐力"</Description>
-          <LastState/>
+          <LastState Activated="1"/>
           <VariableType>Auto Assembler Script</VariableType>
           <AssemblerScript>{ Game   : MonsterHunterWorld.exe
   Version: 
@@ -172,7 +172,7 @@ unregistersymbol(infstam)
         <CheatEntry>
           <ID>5104</ID>
           <Description>"无限物品使用"</Description>
-          <LastState/>
+          <LastState Activated="1"/>
           <VariableType>Auto Assembler Script</VariableType>
           <AssemblerScript>{ Game   : MonsterHunterWorld.exe
   Version: 
@@ -247,12 +247,12 @@ newmem2:
   cmp r13,8
   je code2
   cmp r8l,00
-  jne MonsterHunterWorld.exe+C523DD0
+  jne MonsterHunterWorld.exe+E8DCBF0
   jmp return2
 
 code2:
   cmp r8l,01
-  jne MonsterHunterWorld.exe+C523DD0
+  jne MonsterHunterWorld.exe+E8DCBF0
   jmp return2
 
 infitemuse1:
@@ -284,7 +284,7 @@ dealloc(newmem2)
         <CheatEntry>
           <ID>2049</ID>
           <Description>"无限投射器子弹"</Description>
-          <LastState/>
+          <LastState Activated="1"/>
           <VariableType>Auto Assembler Script</VariableType>
           <AssemblerScript>{ Game   : MonsterHunterWorld.exe
   Version: 
@@ -311,7 +311,7 @@ unregistersymbol(infsla)
         <CheatEntry>
           <ID>15</ID>
           <Description>"最大锐利度"</Description>
-          <LastState/>
+          <LastState Activated="1"/>
           <VariableType>Auto Assembler Script</VariableType>
           <AssemblerScript>{ Game   : MonsterHunterWorld.exe
   Version: 
@@ -352,7 +352,7 @@ dealloc(newmem)
         <CheatEntry>
           <ID>98</ID>
           <Description>"无限斗篷时间"</Description>
-          <LastState/>
+          <LastState Activated="1"/>
           <VariableType>Auto Assembler Script</VariableType>
           <AssemblerScript>{ Game   : MonsterHunterWorld.exe
   Version: 
@@ -401,7 +401,7 @@ unregistersymbol(infmantleuse3)
         <CheatEntry>
           <ID>99</ID>
           <Description>"无斗篷CD"</Description>
-          <LastState/>
+          <LastState Activated="1"/>
           <VariableType>Auto Assembler Script</VariableType>
           <AssemblerScript>{ Game   : MonsterHunterWorld.exe
   Version: 
@@ -445,7 +445,7 @@ dealloc(newmem)
         <CheatEntry>
           <ID>4145</ID>
           <Description>"无口哨CD"</Description>
-          <LastState/>
+          <LastState Activated="1"/>
           <VariableType>Auto Assembler Script</VariableType>
           <AssemblerScript>{ Game   : MonsterHunterWorld.exe
   Version: 
@@ -483,7 +483,7 @@ unregistersymbol(nopgcd2)}
         <CheatEntry>
           <ID>4150</ID>
           <Description>"轻松破坏部位"</Description>
-          <LastState/>
+          <LastState Activated="1"/>
           <VariableType>Auto Assembler Script</VariableType>
           <AssemblerScript>{ Game   : MonsterHunterWorld.exe
   Version: 
@@ -524,7 +524,7 @@ dealloc(newmem)
         <CheatEntry>
           <ID>138</ID>
           <Description>"所有龙都显示在地图上"</Description>
-          <LastState/>
+          <LastState Activated="1"/>
           <VariableType>Auto Assembler Script</VariableType>
           <AssemblerScript>{ Game   : MonsterHunterWorld.exe
   Version: 
@@ -962,7 +962,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscanmodule(unlockdec,MonsterHunterWorld.exe,9F C8 FF 0F B6 80 6B 6A 06 00)
+aobscanmodule(unlockdec,MonsterHunterWorld.exe,9D C8 FF 0F B6 80 6B 6A 06 00)
 alloc(newmem,$1000,unlockdec)
 
 label(code)
@@ -4968,7 +4968,7 @@ newmem2:
 code2:
   mov edx,[rdi]
   cmp edx,ebp
-  jle MonsterHunterWorld.Ordinal292+1C94883
+  jle MonsterHunterWorld.Ordinal292+1C95743
   jmp return2
 
 allammo:
@@ -12098,7 +12098,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,50 00 00 00 00 00 00 00 F0 90 C6 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,50 00 00 00 00 00 00 00 70 A1 C6 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -12136,7 +12136,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,50 00 00 00 00 00 00 00 F0 90 C6 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,50 00 00 00 00 00 00 00 70 A1 C6 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -12174,7 +12174,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,50 00 00 00 00 00 00 00 F0 90 C6 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,50 00 00 00 00 00 00 00 70 A1 C6 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -12212,7 +12212,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,50 00 00 00 00 00 00 00 F0 90 C6 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,50 00 00 00 00 00 00 00 70 A1 C6 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -12250,7 +12250,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,50 00 00 00 00 00 00 00 F0 90 C6 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,50 00 00 00 00 00 00 00 70 A1 C6 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -12298,7 +12298,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Ammo,50 00 00 00 00 00 00 00 F0 90 C6 42 01 00 00 00) // should be unique
+aobscan(INJECT_Ammo,50 00 00 00 00 00 00 00 70 A1 C6 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -12336,7 +12336,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Ammo,50 00 00 00 00 00 00 00 F0 90 C6 42 01 00 00 00) // should be unique
+aobscan(INJECT_Ammo,50 00 00 00 00 00 00 00 70 A1 C6 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -12374,7 +12374,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Ammo,50 00 00 00 00 00 00 00 F0 90 C6 42 01 00 00 00) // should be unique
+aobscan(INJECT_Ammo,50 00 00 00 00 00 00 00 70 A1 C6 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -12412,7 +12412,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Ammo,50 00 00 00 00 00 00 00 F0 90 C6 42 01 00 00 00) // should be unique
+aobscan(INJECT_Ammo,50 00 00 00 00 00 00 00 70 A1 C6 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -12450,7 +12450,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Ammo,50 00 00 00 00 00 00 00 F0 90 C6 42 01 00 00 00) // should be unique
+aobscan(INJECT_Ammo,50 00 00 00 00 00 00 00 70 A1 C6 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -12498,7 +12498,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,50 00 00 00 00 00 00 00 F0 90 C6 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,50 00 00 00 00 00 00 00 70 A1 C6 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -12536,7 +12536,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,50 00 00 00 00 00 00 00 F0 90 C6 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,50 00 00 00 00 00 00 00 70 A1 C6 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -12574,7 +12574,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,50 00 00 00 00 00 00 00 F0 90 C6 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,50 00 00 00 00 00 00 00 70 A1 C6 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -12612,7 +12612,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,50 00 00 00 00 00 00 00 F0 90 C6 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,50 00 00 00 00 00 00 00 70 A1 C6 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -12650,7 +12650,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,50 00 00 00 00 00 00 00 F0 90 C6 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,50 00 00 00 00 00 00 00 70 A1 C6 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -12698,7 +12698,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,50 00 00 00 00 00 00 00 F0 90 C6 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,50 00 00 00 00 00 00 00 70 A1 C6 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -12736,7 +12736,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,50 00 00 00 00 00 00 00 F0 90 C6 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,50 00 00 00 00 00 00 00 70 A1 C6 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -12774,7 +12774,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,50 00 00 00 00 00 00 00 F0 90 C6 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,50 00 00 00 00 00 00 00 70 A1 C6 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -12812,7 +12812,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,50 00 00 00 00 00 00 00 F0 90 C6 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,50 00 00 00 00 00 00 00 70 A1 C6 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -12850,7 +12850,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,50 00 00 00 00 00 00 00 F0 90 C6 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,50 00 00 00 00 00 00 00 70 A1 C6 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -12898,7 +12898,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,50 00 00 00 00 00 00 00 F0 90 C6 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,50 00 00 00 00 00 00 00 70 A1 C6 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -12936,7 +12936,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,50 00 00 00 00 00 00 00 F0 90 C6 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,50 00 00 00 00 00 00 00 70 A1 C6 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -12974,7 +12974,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,50 00 00 00 00 00 00 00 F0 90 C6 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,50 00 00 00 00 00 00 00 70 A1 C6 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -13012,7 +13012,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,50 00 00 00 00 00 00 00 F0 90 C6 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,50 00 00 00 00 00 00 00 70 A1 C6 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -13050,7 +13050,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,50 00 00 00 00 00 00 00 F0 90 C6 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,50 00 00 00 00 00 00 00 70 A1 C6 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -13108,7 +13108,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,00 00 00 00 00 00 00 00 F0 90 C6 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,00 00 00 00 00 00 00 00 70 A1 C6 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -13146,7 +13146,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,00 00 00 00 00 00 00 00 F0 90 C6 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,00 00 00 00 00 00 00 00 70 A1 C6 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -13184,7 +13184,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,00 00 00 00 00 00 00 00 F0 90 C6 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,00 00 00 00 00 00 00 00 70 A1 C6 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -13222,7 +13222,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,00 00 00 00 00 00 00 00 F0 90 C6 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,00 00 00 00 00 00 00 00 70 A1 C6 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -13260,7 +13260,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,00 00 00 00 00 00 00 00 F0 90 C6 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,00 00 00 00 00 00 00 00 70 A1 C6 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -13308,7 +13308,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Ammo,00 00 00 00 00 00 00 00 F0 90 C6 42 01 00 00 00) // should be unique
+aobscan(INJECT_Ammo,00 00 00 00 00 00 00 00 70 A1 C6 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -13346,7 +13346,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Ammo,00 00 00 00 00 00 00 00 F0 90 C6 42 01 00 00 00) // should be unique
+aobscan(INJECT_Ammo,00 00 00 00 00 00 00 00 70 A1 C6 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -13384,7 +13384,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Ammo,00 00 00 00 00 00 00 00 F0 90 C6 42 01 00 00 00) // should be unique
+aobscan(INJECT_Ammo,00 00 00 00 00 00 00 00 70 A1 C6 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -13422,7 +13422,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Ammo,00 00 00 00 00 00 00 00 F0 90 C6 42 01 00 00 00) // should be unique
+aobscan(INJECT_Ammo,00 00 00 00 00 00 00 00 70 A1 C6 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -13460,7 +13460,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Ammo,00 00 00 00 00 00 00 00 F0 90 C6 42 01 00 00 00) // should be unique
+aobscan(INJECT_Ammo,00 00 00 00 00 00 00 00 70 A1 C6 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -13508,7 +13508,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,00 00 00 00 00 00 00 00 F0 90 C6 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,00 00 00 00 00 00 00 00 70 A1 C6 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -13546,7 +13546,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,00 00 00 00 00 00 00 00 F0 90 C6 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,00 00 00 00 00 00 00 00 70 A1 C6 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -13584,7 +13584,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,00 00 00 00 00 00 00 00 F0 90 C6 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,00 00 00 00 00 00 00 00 70 A1 C6 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -13622,7 +13622,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,00 00 00 00 00 00 00 00 F0 90 C6 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,00 00 00 00 00 00 00 00 70 A1 C6 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -13660,7 +13660,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,00 00 00 00 00 00 00 00 F0 90 C6 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,00 00 00 00 00 00 00 00 70 A1 C6 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -13708,7 +13708,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,00 00 00 00 00 00 00 00 F0 90 C6 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,00 00 00 00 00 00 00 00 70 A1 C6 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -13746,7 +13746,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,00 00 00 00 00 00 00 00 F0 90 C6 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,00 00 00 00 00 00 00 00 70 A1 C6 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -13784,7 +13784,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,00 00 00 00 00 00 00 00 F0 90 C6 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,00 00 00 00 00 00 00 00 70 A1 C6 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -13822,7 +13822,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,00 00 00 00 00 00 00 00 F0 90 C6 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,00 00 00 00 00 00 00 00 70 A1 C6 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -13860,7 +13860,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,00 00 00 00 00 00 00 00 F0 90 C6 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,00 00 00 00 00 00 00 00 70 A1 C6 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -13908,7 +13908,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,00 00 00 00 00 00 00 00 F0 90 C6 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,00 00 00 00 00 00 00 00 70 A1 C6 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -13946,7 +13946,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,00 00 00 00 00 00 00 00 F0 90 C6 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,00 00 00 00 00 00 00 00 70 A1 C6 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -13984,7 +13984,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,00 00 00 00 00 00 00 00 F0 90 C6 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,00 00 00 00 00 00 00 00 70 A1 C6 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -14022,7 +14022,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,00 00 00 00 00 00 00 00 F0 90 C6 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,00 00 00 00 00 00 00 00 70 A1 C6 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -14060,7 +14060,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,00 00 00 00 00 00 00 00 F0 90 C6 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,00 00 00 00 00 00 00 00 70 A1 C6 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -14118,7 +14118,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,00 00 00 00 00 00 00 00 F0 90 C6 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,00 00 00 00 00 00 00 00 70 A1 C6 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -14156,7 +14156,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,00 00 00 00 00 00 00 00 F0 90 C6 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,00 00 00 00 00 00 00 00 70 A1 C6 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -14194,7 +14194,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,00 00 00 00 00 00 00 00 F0 90 C6 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,00 00 00 00 00 00 00 00 70 A1 C6 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -14232,7 +14232,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,00 00 00 00 00 00 00 00 F0 90 C6 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,00 00 00 00 00 00 00 00 70 A1 C6 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -14270,7 +14270,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,00 00 00 00 00 00 00 00 F0 90 C6 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,00 00 00 00 00 00 00 00 70 A1 C6 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -14318,7 +14318,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Ammo,00 00 00 00 00 00 00 00 F0 90 C6 42 01 00 00 00) // should be unique
+aobscan(INJECT_Ammo,00 00 00 00 00 00 00 00 70 A1 C6 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -14356,7 +14356,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Ammo,00 00 00 00 00 00 00 00 F0 90 C6 42 01 00 00 00) // should be unique
+aobscan(INJECT_Ammo,00 00 00 00 00 00 00 00 70 A1 C6 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -14394,7 +14394,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Ammo,00 00 00 00 00 00 00 00 F0 90 C6 42 01 00 00 00) // should be unique
+aobscan(INJECT_Ammo,00 00 00 00 00 00 00 00 70 A1 C6 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -14432,7 +14432,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Ammo,00 00 00 00 00 00 00 00 F0 90 C6 42 01 00 00 00) // should be unique
+aobscan(INJECT_Ammo,00 00 00 00 00 00 00 00 70 A1 C6 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -14470,7 +14470,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Ammo,00 00 00 00 00 00 00 00 F0 90 C6 42 01 00 00 00) // should be unique
+aobscan(INJECT_Ammo,00 00 00 00 00 00 00 00 70 A1 C6 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -14518,7 +14518,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,00 00 00 00 00 00 00 00 F0 90 C6 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,00 00 00 00 00 00 00 00 70 A1 C6 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -14556,7 +14556,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,00 00 00 00 00 00 00 00 F0 90 C6 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,00 00 00 00 00 00 00 00 70 A1 C6 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -14594,7 +14594,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,00 00 00 00 00 00 00 00 F0 90 C6 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,00 00 00 00 00 00 00 00 70 A1 C6 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -14632,7 +14632,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,00 00 00 00 00 00 00 00 F0 90 C6 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,00 00 00 00 00 00 00 00 70 A1 C6 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -14670,7 +14670,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,00 00 00 00 00 00 00 00 F0 90 C6 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,00 00 00 00 00 00 00 00 70 A1 C6 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -14718,7 +14718,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,00 00 00 00 00 00 00 00 F0 90 C6 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,00 00 00 00 00 00 00 00 70 A1 C6 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -14756,7 +14756,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,00 00 00 00 00 00 00 00 F0 90 C6 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,00 00 00 00 00 00 00 00 70 A1 C6 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -14794,7 +14794,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,00 00 00 00 00 00 00 00 F0 90 C6 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,00 00 00 00 00 00 00 00 70 A1 C6 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -14832,7 +14832,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,00 00 00 00 00 00 00 00 F0 90 C6 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,00 00 00 00 00 00 00 00 70 A1 C6 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -14870,7 +14870,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,00 00 00 00 00 00 00 00 F0 90 C6 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,00 00 00 00 00 00 00 00 70 A1 C6 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -14918,7 +14918,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,00 00 00 00 00 00 00 00 F0 90 C6 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,00 00 00 00 00 00 00 00 70 A1 C6 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -14956,7 +14956,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,00 00 00 00 00 00 00 00 F0 90 C6 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,00 00 00 00 00 00 00 00 70 A1 C6 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -14994,7 +14994,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,00 00 00 00 00 00 00 00 F0 90 C6 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,00 00 00 00 00 00 00 00 70 A1 C6 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -15032,7 +15032,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,00 00 00 00 00 00 00 00 F0 90 C6 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,00 00 00 00 00 00 00 00 70 A1 C6 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -15070,7 +15070,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,00 00 00 00 00 00 00 00 F0 90 C6 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,00 00 00 00 00 00 00 00 70 A1 C6 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -16720,18 +16720,21 @@ MonsterHunterWorld.exe+CAE3BAD - 8B 87 340B0000        - mov eax,[rdi+00000B34]
                 <CheatEntry>
                   <ID>5444</ID>
                   <Description>"Current Health"</Description>
+                  <LastState Value="-2.12417708E12" RealAddress="151D90064"/>
                   <VariableType>Float</VariableType>
                   <Address>targethealth</Address>
                 </CheatEntry>
                 <CheatEntry>
                   <ID>5445</ID>
                   <Description>"Max Health"</Description>
+                  <LastState Value="3.382990034E-17" RealAddress="151D90068"/>
                   <VariableType>Float</VariableType>
                   <Address>targethealth+4</Address>
                 </CheatEntry>
                 <CheatEntry>
                   <ID>5446</ID>
                   <Description>"Tick Count"</Description>
+                  <LastState Value="3186000200" RealAddress="151D9006C"/>
                   <VariableType>4 Bytes</VariableType>
                   <Address>targethealth+8</Address>
                 </CheatEntry>
