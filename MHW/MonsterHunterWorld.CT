@@ -7,7 +7,7 @@
   <CheatEntries>
     <CheatEntry>
       <ID>5447</ID>
-      <Description>"启用 (Update 44.5)"</Description>
+      <Description>"启用 (Update 45)"</Description>
       <Options moHideChildren="1"/>
       <LastState/>
       <VariableType>Auto Assembler Script</VariableType>
@@ -72,116 +72,58 @@ aa_tamper(false)
 </AssemblerScript>
       <CheatEntries>
         <CheatEntry>
-          <ID>5926</ID>
+          <ID>5934</ID>
           <Description>"无限生命"</Description>
           <LastState/>
           <VariableType>Auto Assembler Script</VariableType>
           <AssemblerScript>{ Game   : MonsterHunterWorld.exe
-  Version:
-  Date   : 2018-08-09
-  Author : Squall8 / Berserk Knight (Lua Script)
+  Version: 
+  Date   : 2018-10-03
+  Author : Squall8
 }
-
-{$lua}
-local function FindAOB2()
-  local aobs = AOBScan("0F 2F 0D ?? ?? ?? ?? 73 12 F3 0F 10 41 60 0F 57 C9 F3 0F 5D C1 F3 0F 11 41 64", "", 0)
-  if aobs ~= nil then
-    local index = {}
-    local hitCount = 0
-    for ind=0, aobs.count-1 do
-      index[ind] = true
-      hitCount = hitCount + 1
-      local pAddress = getAddress(aobs[ind])
-      if readBytes(pAddress-5,1) == 0xF3 then
-        if readBytes(pAddress-4,1) == 0x0F then
-          if readBytes(pAddress-3,1) == 0x58 then
-            if readBytes(pAddress-2,1) == 0x49 then
-              if readBytes(pAddress-1,1) == 0x64 then
-                index[ind] = false
-                hitCount = hitCount - 1
-              end
-            end
-          end
-        end
-      end
-    end
-    if hitCount == 1 then
-      for ind=0, aobs.count-1 do
-        if index[ind] == true then
-          local pAddress = getAddress(aobs[ind])+21
-          unregisterSymbol("infhealth2")
-          registerSymbol("infhealth2",pAddress)
-        end
-      end
-    end
-    aobs.destroy()
-  end
-end
 
 [ENABLE]
 
-FindAOB2()
-{$asm}
-
-aobscanmodule(infhealth,MonsterHunterWorld.exe,0F 2F 49 64 F3 0F 11 49 60 73 2C)
-alloc(newmem,$1000,infhealth)
+aobscanmodule(infhp1,MonsterHunterWorld.exe,F3 0F 11 41 64 48 8B 41) // should be unique
+alloc(newmem,$1000,infhp1)
 
 label(code)
 label(return)
 
-registersymbol(infhealth)
-
-assert(infhealth2,F3 0F 11 41 64)
-alloc(newmem2,$1000,infhealth2)
-
-label(code2)
-label(return2)
+registersymbol(infhp1)
 
 newmem:
+  cmp rsi,14
+  je code
+  cmp r10,23
+  je code
+  {cmp r12,4
+  je code
+  cmp r13,5
+  je code
+  cmp r14,8
+  je code
+  cmp r15,0
+  jne code}
   fld [rcx+60]
   fstp [rcx+64]
-
-code:
-  comiss xmm1,[rcx+64]
-  movss [rcx+60],xmm1
   jmp return
 
-newmem2:
-  cmp rsi,14
-  je code2
-  jmp return2
-
-code2:
+code:
   movss [rcx+64],xmm0
-  jmp return2
+  jmp return
 
-infhealth:
+infhp1:
   jmp newmem
-  nop
-  nop
-  nop
-  nop
 return:
 
-infhealth2:
-  jmp newmem2
-return2:
-
-{$lua}
 [DISABLE]
 
-{$asm}
-infhealth:
-  db 0F 2F 49 64 F3 0F 11 49 60
-
-unregistersymbol(infhealth)
-dealloc(newmem)
-
-infhealth2:
+infhp1:
   db F3 0F 11 41 64
 
-unregistersymbol(infhealth2)
-dealloc(newmem2)
+unregistersymbol(infhp1)
+dealloc(newmem)
 </AssemblerScript>
         </CheatEntry>
         <CheatEntry>
@@ -1004,7 +946,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscanmodule(unlockdec,MonsterHunterWorld.exe,9D C8 FF 0F B6 80 6B 6A 06 00)
+aobscanmodule(unlockdec,MonsterHunterWorld.exe,34 C8 FF 0F B6 80 6B 6A 06 00)
 alloc(newmem,$1000,unlockdec)
 
 label(code)
@@ -4898,47 +4840,30 @@ dealloc(newmem)
 </AssemblerScript>
             </CheatEntry>
             <CheatEntry>
-              <ID>4242</ID>
+              <ID>5937</ID>
               <Description>"无限操虫棍耐力"</Description>
               <LastState/>
               <VariableType>Auto Assembler Script</VariableType>
               <AssemblerScript>{ Game   : MonsterHunterWorld.exe
   Version: 
-  Date   : 2018-08-19
+  Date   : 2018-10-04
   Author : Squall8
 }
 
 [ENABLE]
 
-aobscanmodule(infigstam,MonsterHunterWorld.exe,F3 0F 10 87 7C 09 00 00 0F 2F C7 73)
-alloc(newmem,$1000,infigstam)
-
-label(code)
-label(return)
-
+aobscanmodule(infigstam,MonsterHunterWorld.exe,F3 0F 5C C6 EB 14)
 registersymbol(infigstam)
 
-newmem:
-  mov [rdi+0000097C],(float)100
-
-code:
-  movss xmm0,[rdi+0000097C]
-  jmp return
-
 infigstam:
-  jmp newmem
-  nop
-  nop
-  nop
-return:
+  db 90 90 90 90
 
 [DISABLE]
 
 infigstam:
-  db F3 0F 10 87 7C 09 00 00
+  db F3 0F 5C C6
 
 unregistersymbol(infigstam)
-dealloc(newmem)
 </AssemblerScript>
             </CheatEntry>
             <CheatEntry>
@@ -12140,7 +12065,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,50 00 00 00 00 00 00 00 70 A1 C6 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,50 00 00 00 00 00 00 00 70 59 CB 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -12178,7 +12103,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,50 00 00 00 00 00 00 00 70 A1 C6 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,50 00 00 00 00 00 00 00 70 59 CB 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -12216,7 +12141,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,50 00 00 00 00 00 00 00 70 A1 C6 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,50 00 00 00 00 00 00 00 70 59 CB 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -12254,7 +12179,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,50 00 00 00 00 00 00 00 70 A1 C6 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,50 00 00 00 00 00 00 00 70 59 CB 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -12292,7 +12217,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,50 00 00 00 00 00 00 00 70 A1 C6 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,50 00 00 00 00 00 00 00 70 59 CB 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -12340,7 +12265,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Ammo,50 00 00 00 00 00 00 00 70 A1 C6 42 01 00 00 00) // should be unique
+aobscan(INJECT_Ammo,50 00 00 00 00 00 00 00 70 59 CB 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -12378,7 +12303,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Ammo,50 00 00 00 00 00 00 00 70 A1 C6 42 01 00 00 00) // should be unique
+aobscan(INJECT_Ammo,50 00 00 00 00 00 00 00 70 59 CB 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -12416,7 +12341,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Ammo,50 00 00 00 00 00 00 00 70 A1 C6 42 01 00 00 00) // should be unique
+aobscan(INJECT_Ammo,50 00 00 00 00 00 00 00 70 59 CB 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -12454,7 +12379,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Ammo,50 00 00 00 00 00 00 00 70 A1 C6 42 01 00 00 00) // should be unique
+aobscan(INJECT_Ammo,50 00 00 00 00 00 00 00 70 59 CB 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -12492,7 +12417,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Ammo,50 00 00 00 00 00 00 00 70 A1 C6 42 01 00 00 00) // should be unique
+aobscan(INJECT_Ammo,50 00 00 00 00 00 00 00 70 59 CB 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -12540,7 +12465,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,50 00 00 00 00 00 00 00 70 A1 C6 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,50 00 00 00 00 00 00 00 70 59 CB 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -12578,7 +12503,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,50 00 00 00 00 00 00 00 70 A1 C6 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,50 00 00 00 00 00 00 00 70 59 CB 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -12616,7 +12541,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,50 00 00 00 00 00 00 00 70 A1 C6 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,50 00 00 00 00 00 00 00 70 59 CB 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -12654,7 +12579,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,50 00 00 00 00 00 00 00 70 A1 C6 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,50 00 00 00 00 00 00 00 70 59 CB 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -12692,7 +12617,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,50 00 00 00 00 00 00 00 70 A1 C6 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,50 00 00 00 00 00 00 00 70 59 CB 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -12740,7 +12665,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,50 00 00 00 00 00 00 00 70 A1 C6 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,50 00 00 00 00 00 00 00 70 59 CB 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -12778,7 +12703,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,50 00 00 00 00 00 00 00 70 A1 C6 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,50 00 00 00 00 00 00 00 70 59 CB 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -12816,7 +12741,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,50 00 00 00 00 00 00 00 70 A1 C6 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,50 00 00 00 00 00 00 00 70 59 CB 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -12854,7 +12779,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,50 00 00 00 00 00 00 00 70 A1 C6 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,50 00 00 00 00 00 00 00 70 59 CB 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -12892,7 +12817,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,50 00 00 00 00 00 00 00 70 A1 C6 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,50 00 00 00 00 00 00 00 70 59 CB 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -12940,7 +12865,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,50 00 00 00 00 00 00 00 70 A1 C6 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,50 00 00 00 00 00 00 00 70 59 CB 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -12978,7 +12903,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,50 00 00 00 00 00 00 00 70 A1 C6 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,50 00 00 00 00 00 00 00 70 59 CB 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -13016,7 +12941,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,50 00 00 00 00 00 00 00 70 A1 C6 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,50 00 00 00 00 00 00 00 70 59 CB 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -13054,7 +12979,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,50 00 00 00 00 00 00 00 70 A1 C6 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,50 00 00 00 00 00 00 00 70 59 CB 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -13092,7 +13017,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,50 00 00 00 00 00 00 00 70 A1 C6 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,50 00 00 00 00 00 00 00 70 59 CB 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -13150,7 +13075,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,00 00 00 00 00 00 00 00 70 A1 C6 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,00 00 00 00 00 00 00 00 70 59 CB 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -13188,7 +13113,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,00 00 00 00 00 00 00 00 70 A1 C6 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,00 00 00 00 00 00 00 00 70 59 CB 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -13226,7 +13151,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,00 00 00 00 00 00 00 00 70 A1 C6 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,00 00 00 00 00 00 00 00 70 59 CB 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -13264,7 +13189,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,00 00 00 00 00 00 00 00 70 A1 C6 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,00 00 00 00 00 00 00 00 70 59 CB 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -13302,7 +13227,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,00 00 00 00 00 00 00 00 70 A1 C6 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,00 00 00 00 00 00 00 00 70 59 CB 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -13350,7 +13275,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Ammo,00 00 00 00 00 00 00 00 70 A1 C6 42 01 00 00 00) // should be unique
+aobscan(INJECT_Ammo,00 00 00 00 00 00 00 00 70 59 CB 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -13388,7 +13313,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Ammo,00 00 00 00 00 00 00 00 70 A1 C6 42 01 00 00 00) // should be unique
+aobscan(INJECT_Ammo,00 00 00 00 00 00 00 00 70 59 CB 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -13426,7 +13351,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Ammo,00 00 00 00 00 00 00 00 70 A1 C6 42 01 00 00 00) // should be unique
+aobscan(INJECT_Ammo,00 00 00 00 00 00 00 00 70 59 CB 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -13464,7 +13389,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Ammo,00 00 00 00 00 00 00 00 70 A1 C6 42 01 00 00 00) // should be unique
+aobscan(INJECT_Ammo,00 00 00 00 00 00 00 00 70 59 CB 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -13502,7 +13427,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Ammo,00 00 00 00 00 00 00 00 70 A1 C6 42 01 00 00 00) // should be unique
+aobscan(INJECT_Ammo,00 00 00 00 00 00 00 00 70 59 CB 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -13550,7 +13475,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,00 00 00 00 00 00 00 00 70 A1 C6 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,00 00 00 00 00 00 00 00 70 59 CB 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -13588,7 +13513,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,00 00 00 00 00 00 00 00 70 A1 C6 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,00 00 00 00 00 00 00 00 70 59 CB 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -13626,7 +13551,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,00 00 00 00 00 00 00 00 70 A1 C6 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,00 00 00 00 00 00 00 00 70 59 CB 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -13664,7 +13589,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,00 00 00 00 00 00 00 00 70 A1 C6 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,00 00 00 00 00 00 00 00 70 59 CB 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -13702,7 +13627,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,00 00 00 00 00 00 00 00 70 A1 C6 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,00 00 00 00 00 00 00 00 70 59 CB 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -13750,7 +13675,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,00 00 00 00 00 00 00 00 70 A1 C6 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,00 00 00 00 00 00 00 00 70 59 CB 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -13788,7 +13713,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,00 00 00 00 00 00 00 00 70 A1 C6 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,00 00 00 00 00 00 00 00 70 59 CB 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -13826,7 +13751,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,00 00 00 00 00 00 00 00 70 A1 C6 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,00 00 00 00 00 00 00 00 70 59 CB 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -13864,7 +13789,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,00 00 00 00 00 00 00 00 70 A1 C6 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,00 00 00 00 00 00 00 00 70 59 CB 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -13902,7 +13827,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,00 00 00 00 00 00 00 00 70 A1 C6 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,00 00 00 00 00 00 00 00 70 59 CB 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -13950,7 +13875,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,00 00 00 00 00 00 00 00 70 A1 C6 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,00 00 00 00 00 00 00 00 70 59 CB 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -13988,7 +13913,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,00 00 00 00 00 00 00 00 70 A1 C6 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,00 00 00 00 00 00 00 00 70 59 CB 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -14026,7 +13951,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,00 00 00 00 00 00 00 00 70 A1 C6 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,00 00 00 00 00 00 00 00 70 59 CB 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -14064,7 +13989,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,00 00 00 00 00 00 00 00 70 A1 C6 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,00 00 00 00 00 00 00 00 70 59 CB 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -14102,7 +14027,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,00 00 00 00 00 00 00 00 70 A1 C6 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,00 00 00 00 00 00 00 00 70 59 CB 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -14160,7 +14085,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,00 00 00 00 00 00 00 00 70 A1 C6 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,00 00 00 00 00 00 00 00 70 59 CB 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -14198,7 +14123,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,00 00 00 00 00 00 00 00 70 A1 C6 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,00 00 00 00 00 00 00 00 70 59 CB 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -14236,7 +14161,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,00 00 00 00 00 00 00 00 70 A1 C6 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,00 00 00 00 00 00 00 00 70 59 CB 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -14274,7 +14199,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,00 00 00 00 00 00 00 00 70 A1 C6 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,00 00 00 00 00 00 00 00 70 59 CB 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -14312,7 +14237,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,00 00 00 00 00 00 00 00 70 A1 C6 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,00 00 00 00 00 00 00 00 70 59 CB 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -14360,7 +14285,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Ammo,00 00 00 00 00 00 00 00 70 A1 C6 42 01 00 00 00) // should be unique
+aobscan(INJECT_Ammo,00 00 00 00 00 00 00 00 70 59 CB 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -14398,7 +14323,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Ammo,00 00 00 00 00 00 00 00 70 A1 C6 42 01 00 00 00) // should be unique
+aobscan(INJECT_Ammo,00 00 00 00 00 00 00 00 70 59 CB 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -14436,7 +14361,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Ammo,00 00 00 00 00 00 00 00 70 A1 C6 42 01 00 00 00) // should be unique
+aobscan(INJECT_Ammo,00 00 00 00 00 00 00 00 70 59 CB 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -14474,7 +14399,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Ammo,00 00 00 00 00 00 00 00 70 A1 C6 42 01 00 00 00) // should be unique
+aobscan(INJECT_Ammo,00 00 00 00 00 00 00 00 70 59 CB 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -14512,7 +14437,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Ammo,00 00 00 00 00 00 00 00 70 A1 C6 42 01 00 00 00) // should be unique
+aobscan(INJECT_Ammo,00 00 00 00 00 00 00 00 70 59 CB 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -14560,7 +14485,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,00 00 00 00 00 00 00 00 70 A1 C6 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,00 00 00 00 00 00 00 00 70 59 CB 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -14598,7 +14523,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,00 00 00 00 00 00 00 00 70 A1 C6 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,00 00 00 00 00 00 00 00 70 59 CB 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -14636,7 +14561,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,00 00 00 00 00 00 00 00 70 A1 C6 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,00 00 00 00 00 00 00 00 70 59 CB 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -14674,7 +14599,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,00 00 00 00 00 00 00 00 70 A1 C6 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,00 00 00 00 00 00 00 00 70 59 CB 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -14712,7 +14637,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,00 00 00 00 00 00 00 00 70 A1 C6 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,00 00 00 00 00 00 00 00 70 59 CB 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -14760,7 +14685,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,00 00 00 00 00 00 00 00 70 A1 C6 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,00 00 00 00 00 00 00 00 70 59 CB 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -14798,7 +14723,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,00 00 00 00 00 00 00 00 70 A1 C6 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,00 00 00 00 00 00 00 00 70 59 CB 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -14836,7 +14761,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,00 00 00 00 00 00 00 00 70 A1 C6 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,00 00 00 00 00 00 00 00 70 59 CB 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -14874,7 +14799,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,00 00 00 00 00 00 00 00 70 A1 C6 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,00 00 00 00 00 00 00 00 70 59 CB 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -14912,7 +14837,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,00 00 00 00 00 00 00 00 70 A1 C6 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,00 00 00 00 00 00 00 00 70 59 CB 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -14960,7 +14885,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,00 00 00 00 00 00 00 00 70 A1 C6 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,00 00 00 00 00 00 00 00 70 59 CB 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -14998,7 +14923,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,00 00 00 00 00 00 00 00 70 A1 C6 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,00 00 00 00 00 00 00 00 70 59 CB 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -15036,7 +14961,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,00 00 00 00 00 00 00 00 70 A1 C6 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,00 00 00 00 00 00 00 00 70 59 CB 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -15074,7 +14999,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,00 00 00 00 00 00 00 00 70 A1 C6 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,00 00 00 00 00 00 00 00 70 59 CB 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -15112,7 +15037,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,00 00 00 00 00 00 00 00 70 A1 C6 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,00 00 00 00 00 00 00 00 70 59 CB 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -16348,28 +16273,25 @@ A3:Lunastra Favor
               </CheatEntries>
             </CheatEntry>
             <CheatEntry>
-              <ID>2</ID>
+              <ID>5938</ID>
               <Description>"设置道具数量"</Description>
               <LastState/>
               <VariableType>Auto Assembler Script</VariableType>
               <AssemblerScript>{ Game   : MonsterHunterWorld.exe
   Version: 
-  Date   : 2018-08-11
-  Author : Marcus101RR
-
-  This script does blah blah blah
+  Date   : 2018-10-04
+  Author : Squall8
 }
-
-define(address,"MonsterHunterWorld.exe"+144B20C)
-define(bytes,8B 48 0C 89 0A)
 
 [ENABLE]
 
-assert(address,bytes)
-alloc(newmem,$1000,"MonsterHunterWorld.exe"+144B20C)
+aobscanmodule(SetItemQuantity,MonsterHunterWorld.exe,8B 48 0C 89 0A)
+alloc(newmem,$1000,SetItemQuantity)
 
 label(code)
 label(return)
+
+registersymbol(SetItemQuantity)
 
 newmem:
 
@@ -16382,47 +16304,17 @@ code:
   mov [rdx],ecx
   jmp return
 
-address:
+SetItemQuantity:
   jmp newmem
 return:
 
 [DISABLE]
 
-address:
-  db bytes
-  // mov ecx,[rax+0C]
-  // mov [rdx],ecx
+SetItemQuantity:
+  db 8B 48 0C 89 0A
 
+unregistersymbol(SetItemQuantity)
 dealloc(newmem)
-
-{
-// ORIGINAL CODE - INJECTION POINT: "MonsterHunterWorld.exe"+144AC1C
-
-"MonsterHunterWorld.exe"+144ABFF: 44 8B C3              -  mov r8d,ebx
-"MonsterHunterWorld.exe"+144AC02: 8B D6                 -  mov edx,esi
-"MonsterHunterWorld.exe"+144AC04: E8 17 11 80 FF        -  call MonsterHunterWorld.exe+C4BD20
-"MonsterHunterWorld.exe"+144AC09: 48 85 C0              -  test rax,rax
-"MonsterHunterWorld.exe"+144AC0C: 74 13                 -  je MonsterHunterWorld.exe+144AC21
-"MonsterHunterWorld.exe"+144AC0E: 48 8B 0F              -  mov rcx,[rdi]
-"MonsterHunterWorld.exe"+144AC11: 8B 11                 -  mov edx,[rcx]
-"MonsterHunterWorld.exe"+144AC13: 39 50 08              -  cmp [rax+08],edx
-"MonsterHunterWorld.exe"+144AC16: 75 09                 -  jne MonsterHunterWorld.exe+144AC21
-"MonsterHunterWorld.exe"+144AC18: 48 8B 57 08           -  mov rdx,[rdi+08]
-// ---------- INJECTING HERE ----------
-"MonsterHunterWorld.exe"+144AC1C: 8B 48 0C              -  mov ecx,[rax+0C]
-"MonsterHunterWorld.exe"+144AC1F: 89 0A                 -  mov [rdx],ecx
-// ---------- DONE INJECTING  ----------
-"MonsterHunterWorld.exe"+144AC21: 48 8B 0D 90 CC 6D 02  -  mov rcx,[MonsterHunterWorld.exe+3B278B8]
-"MonsterHunterWorld.exe"+144AC28: FF C3                 -  inc ebx
-"MonsterHunterWorld.exe"+144AC2A: E8 F1 A5 30 00        -  call MonsterHunterWorld.exe+1755220
-"MonsterHunterWorld.exe"+144AC2F: 48 8B C8              -  mov rcx,rax
-"MonsterHunterWorld.exe"+144AC32: 8B D6                 -  mov edx,esi
-"MonsterHunterWorld.exe"+144AC34: E8 C7 0F 80 FF        -  call MonsterHunterWorld.exe+C4BC00
-"MonsterHunterWorld.exe"+144AC39: 3B D8                 -  cmp ebx,eax
-"MonsterHunterWorld.exe"+144AC3B: 72 B3                 -  jb MonsterHunterWorld.exe+144ABF0
-"MonsterHunterWorld.exe"+144AC3D: 48 8B 5C 24 30        -  mov rbx,[rsp+30]
-"MonsterHunterWorld.exe"+144AC42: 48 8B 74 24 38        -  mov rsi,[rsp+38]
-}
 </AssemblerScript>
             </CheatEntry>
             <CheatEntry>
@@ -16786,14 +16678,6 @@ MonsterHunterWorld.exe+CAE3BAD - 8B 87 340B0000        - mov eax,[rdi+00000B34]
   </CheatEntries>
   <UserdefinedSymbols>
     <SymbolEntry>
-      <Name>p_weapsel_range</Name>
-      <Address>13FFE004A</Address>
-    </SymbolEntry>
-    <SymbolEntry>
-      <Name>p_weapsel_close</Name>
-      <Address>13FFE0052</Address>
-    </SymbolEntry>
-    <SymbolEntry>
       <Name>inj_invoffsets</Name>
       <Address>14CFA52C7</Address>
     </SymbolEntry>
@@ -16826,10 +16710,6 @@ MonsterHunterWorld.exe+CAE3BAD - 8B 87 340B0000        - mov eax,[rdi+00000B34]
       <Address>14C19077C</Address>
     </SymbolEntry>
     <SymbolEntry>
-      <Name>equipmentp</Name>
-      <Address>13FFD001A</Address>
-    </SymbolEntry>
-    <SymbolEntry>
       <Name>hampc</Name>
       <Address>141C7586C</Address>
     </SymbolEntry>
@@ -16840,10 +16720,6 @@ MonsterHunterWorld.exe+CAE3BAD - 8B 87 340B0000        - mov eax,[rdi+00000B34]
     <SymbolEntry>
       <Name>maxbowcharge</Name>
       <Address>141C8C715</Address>
-    </SymbolEntry>
-    <SymbolEntry>
-      <Name>weaponusep</Name>
-      <Address>151D8001C</Address>
     </SymbolEntry>
     <SymbolEntry>
       <Name>p_playerstats</Name>
@@ -16870,144 +16746,12 @@ MonsterHunterWorld.exe+CAE3BAD - 8B 87 340B0000        - mov eax,[rdi+00000B34]
       <Address>14AA99339</Address>
     </SymbolEntry>
     <SymbolEntry>
-      <Name>ps1</Name>
-      <Address>151ED001C</Address>
-    </SymbolEntry>
-    <SymbolEntry>
       <Name>maxskills</Name>
       <Address>147995E3C</Address>
     </SymbolEntry>
     <SymbolEntry>
       <Name>maxskills2</Name>
       <Address>14F14C4D7</Address>
-    </SymbolEntry>
-    <SymbolEntry>
-      <Name>coordp</Name>
-      <Address>13FFE0115</Address>
-    </SymbolEntry>
-    <SymbolEntry>
-      <Name>ewpt</Name>
-      <Address>13FFE011D</Address>
-    </SymbolEntry>
-    <SymbolEntry>
-      <Name>ert</Name>
-      <Address>13FFE0125</Address>
-    </SymbolEntry>
-    <SymbolEntry>
-      <Name>wpX</Name>
-      <Address>13FFD003A</Address>
-    </SymbolEntry>
-    <SymbolEntry>
-      <Name>wpZ</Name>
-      <Address>13FFD0042</Address>
-    </SymbolEntry>
-    <SymbolEntry>
-      <Name>wpY</Name>
-      <Address>13FFD004A</Address>
-    </SymbolEntry>
-    <SymbolEntry>
-      <Name>retX</Name>
-      <Address>13FFC003A</Address>
-    </SymbolEntry>
-    <SymbolEntry>
-      <Name>retZ</Name>
-      <Address>13FFC0042</Address>
-    </SymbolEntry>
-    <SymbolEntry>
-      <Name>retY</Name>
-      <Address>13FFC004A</Address>
-    </SymbolEntry>
-    <SymbolEntry>
-      <Name>infstam</Name>
-      <Address>14F175416</Address>
-    </SymbolEntry>
-    <SymbolEntry>
-      <Name>infdur</Name>
-      <Address>141C6DEAC</Address>
-    </SymbolEntry>
-    <SymbolEntry>
-      <Name>infmantleuse</Name>
-      <Address>14E75D7EF</Address>
-    </SymbolEntry>
-    <SymbolEntry>
-      <Name>infmantleuse2</Name>
-      <Address>14E7571F9</Address>
-    </SymbolEntry>
-    <SymbolEntry>
-      <Name>infmantleuse3</Name>
-      <Address>14E758651</Address>
-    </SymbolEntry>
-    <SymbolEntry>
-      <Name>mantlecd</Name>
-      <Address>14E75D43F</Address>
-    </SymbolEntry>
-    <SymbolEntry>
-      <Name>nopgcd</Name>
-      <Address>141BBE83C</Address>
-    </SymbolEntry>
-    <SymbolEntry>
-      <Name>ebmp</Name>
-      <Address>1411A9350</Address>
-    </SymbolEntry>
-    <SymbolEntry>
-      <Name>scoutflylvl</Name>
-      <Address>14174F61A</Address>
-    </SymbolEntry>
-    <SymbolEntry>
-      <Name>scfll</Name>
-      <Address>14E351280</Address>
-    </SymbolEntry>
-    <SymbolEntry>
-      <Name>scfll2</Name>
-      <Address>141750059</Address>
-    </SymbolEntry>
-    <SymbolEntry>
-      <Name>inflv</Name>
-      <Address>14E601286</Address>
-    </SymbolEntry>
-    <SymbolEntry>
-      <Name>zeni</Name>
-      <Address>14F4524A0</Address>
-    </SymbolEntry>
-    <SymbolEntry>
-      <Name>hrexpmul</Name>
-      <Address>14F44EADC</Address>
-    </SymbolEntry>
-    <SymbolEntry>
-      <Name>palicoexpmul</Name>
-      <Address>14F49C6F0</Address>
-    </SymbolEntry>
-    <SymbolEntry>
-      <Name>pgadmul</Name>
-      <Address>14F49C966</Address>
-    </SymbolEntry>
-    <SymbolEntry>
-      <Name>monresearchmul</Name>
-      <Address>14F490F3C</Address>
-    </SymbolEntry>
-    <SymbolEntry>
-      <Name>monresp</Name>
-      <Address>14E3512AA</Address>
-    </SymbolEntry>
-    <SymbolEntry>
-      <Name>cannonsal</Name>
-      <Address>14DD896FF</Address>
-    </SymbolEntry>
-    <SymbolEntry>
-      <Name>cannonsnsf</Name>
-      <Address>14DD87BDA</Address>
-    </SymbolEntry>
-    <SymbolEntry>
-      <Name>pcoords</Name>
-      <Address>141922FAA</Address>
-    </SymbolEntry>
-    <SymbolEntry>
-      <Name>getwp</Name>
-      <Address>141984E2C</Address>
-    </SymbolEntry>
-    <SymbolEntry>
-      <Name>getretdata</Name>
-      <Address>141BDE20C</Address>
     </SymbolEntry>
     <SymbolEntry>
       <Name>InfGather1AOB</Name>
@@ -17026,18 +16770,6 @@ MonsterHunterWorld.exe+CAE3BAD - 8B 87 340B0000        - mov eax,[rdi+00000B34]
       <Address>90060098</Address>
     </SymbolEntry>
     <SymbolEntry>
-      <Name>invest</Name>
-      <Address>14E603279</Address>
-    </SymbolEntry>
-    <SymbolEntry>
-      <Name>bbp1</Name>
-      <Address>141663FC8</Address>
-    </SymbolEntry>
-    <SymbolEntry>
-      <Name>bbp2</Name>
-      <Address>141664018</Address>
-    </SymbolEntry>
-    <SymbolEntry>
       <Name>inj_catchpet</Name>
       <Address>14191E2DD</Address>
     </SymbolEntry>
@@ -17048,210 +16780,6 @@ MonsterHunterWorld.exe+CAE3BAD - 8B 87 340B0000        - mov eax,[rdi+00000B34]
     <SymbolEntry>
       <Name>inj_gatherwish</Name>
       <Address>14144A540</Address>
-    </SymbolEntry>
-    <SymbolEntry>
-      <Name>instgsch</Name>
-      <Address>141C71A07</Address>
-    </SymbolEntry>
-    <SymbolEntry>
-      <Name>infspirit</Name>
-      <Address>146E4E863</Address>
-    </SymbolEntry>
-    <SymbolEntry>
-      <Name>infdemonmode</Name>
-      <Address>14E219978</Address>
-    </SymbolEntry>
-    <SymbolEntry>
-      <Name>hammerch</Name>
-      <Address>146AD00B3</Address>
-    </SymbolEntry>
-    <SymbolEntry>
-      <Name>hpcaa</Name>
-      <Address>141C7756D</Address>
-    </SymbolEntry>
-    <SymbolEntry>
-      <Name>infglammonte</Name>
-      <Address>141C7B4C0</Address>
-    </SymbolEntry>
-    <SymbolEntry>
-      <Name>infglwsnte</Name>
-      <Address>141C7B7D9</Address>
-    </SymbolEntry>
-    <SymbolEntry>
-      <Name>noglcd</Name>
-      <Address>14721AAB0</Address>
-    </SymbolEntry>
-    <SymbolEntry>
-      <Name>fcswa</Name>
-      <Address>147751268</Address>
-    </SymbolEntry>
-    <SymbolEntry>
-      <Name>cbiphaw</Name>
-      <Address>146E40132</Address>
-    </SymbolEntry>
-    <SymbolEntry>
-      <Name>cbacsw</Name>
-      <Address>141C8387C</Address>
-    </SymbolEntry>
-    <SymbolEntry>
-      <Name>cbacsh</Name>
-      <Address>141C83851</Address>
-    </SymbolEntry>
-    <SymbolEntry>
-      <Name>infhhbd</Name>
-      <Address>1472A0736</Address>
-    </SymbolEntry>
-    <SymbolEntry>
-      <Name>extractdur</Name>
-      <Address>147741C73</Address>
-    </SymbolEntry>
-    <SymbolEntry>
-      <Name>infigstam</Name>
-      <Address>141C8A72C</Address>
-    </SymbolEntry>
-    <SymbolEntry>
-      <Name>infigja</Name>
-      <Address>141411CF8</Address>
-    </SymbolEntry>
-    <SymbolEntry>
-      <Name>allammo</Name>
-      <Address>146A056D0</Address>
-    </SymbolEntry>
-    <SymbolEntry>
-      <Name>allammo2</Name>
-      <Address>141C95732</Address>
-    </SymbolEntry>
-    <SymbolEntry>
-      <Name>infwyvernblast</Name>
-      <Address>147739B7F</Address>
-    </SymbolEntry>
-    <SymbolEntry>
-      <Name>infhbgsa</Name>
-      <Address>14D267D2B</Address>
-    </SymbolEntry>
-    <SymbolEntry>
-      <Name>infhbgsa2</Name>
-      <Address>141C959CB</Address>
-    </SymbolEntry>
-    <SymbolEntry>
-      <Name>allcoating</Name>
-      <Address>1414774A2</Address>
-    </SymbolEntry>
-    <SymbolEntry>
-      <Name>mbc1</Name>
-      <Address>141C8DCCA</Address>
-    </SymbolEntry>
-    <SymbolEntry>
-      <Name>mbc2</Name>
-      <Address>141C8E6F6</Address>
-    </SymbolEntry>
-    <SymbolEntry>
-      <Name>mealeditor</Name>
-      <Address>146F0B86F</Address>
-    </SymbolEntry>
-    <SymbolEntry>
-      <Name>abstam</Name>
-      <Address>146B68A10</Address>
-    </SymbolEntry>
-    <SymbolEntry>
-      <Name>monstersize</Name>
-      <Address>14EA6B975</Address>
-    </SymbolEntry>
-    <SymbolEntry>
-      <Name>sizemul</Name>
-      <Address>1417283AF</Address>
-    </SymbolEntry>
-    <SymbolEntry>
-      <Name>iar</Name>
-      <Address>14144BF4C</Address>
-    </SymbolEntry>
-    <SymbolEntry>
-      <Name>iar2</Name>
-      <Address>14144BF46</Address>
-    </SymbolEntry>
-    <SymbolEntry>
-      <Name>hitem</Name>
-      <Address>14144BF4C</Address>
-    </SymbolEntry>
-    <SymbolEntry>
-      <Name>hmatip</Name>
-      <Address>14F46D0FA</Address>
-    </SymbolEntry>
-    <SymbolEntry>
-      <Name>hapip</Name>
-      <Address>14F46D108</Address>
-    </SymbolEntry>
-    <SymbolEntry>
-      <Name>hitempouch</Name>
-      <Address>14F46D116</Address>
-    </SymbolEntry>
-    <SymbolEntry>
-      <Name>setmapzoom</Name>
-      <Address>141992665</Address>
-    </SymbolEntry>
-    <SymbolEntry>
-      <Name>ohklm</Name>
-      <Address>14189A3B0</Address>
-    </SymbolEntry>
-    <SymbolEntry>
-      <Name>maxslots</Name>
-      <Address>1411E5573</Address>
-    </SymbolEntry>
-    <SymbolEntry>
-      <Name>maxslotsmelee</Name>
-      <Address>1411E554A</Address>
-    </SymbolEntry>
-    <SymbolEntry>
-      <Name>maxslotsranged</Name>
-      <Address>1411E5517</Address>
-    </SymbolEntry>
-    <SymbolEntry>
-      <Name>addskilllvl</Name>
-      <Address>14F14C5DA</Address>
-    </SymbolEntry>
-    <SymbolEntry>
-      <Name>addskilllvl2</Name>
-      <Address>14F14C51A</Address>
-    </SymbolEntry>
-    <SymbolEntry>
-      <Name>maxsetb</Name>
-      <Address>14F14C4AF</Address>
-    </SymbolEntry>
-    <SymbolEntry>
-      <Name>armorskm</Name>
-      <Address>14F14C4D7</Address>
-    </SymbolEntry>
-    <SymbolEntry>
-      <Name>unlockcharms</Name>
-      <Address>141ACE935</Address>
-    </SymbolEntry>
-    <SymbolEntry>
-      <Name>unlockdec</Name>
-      <Address>141ACE902</Address>
-    </SymbolEntry>
-    <SymbolEntry>
-      <Name>unlockaug</Name>
-      <Address>141ACE8E8</Address>
-    </SymbolEntry>
-    <SymbolEntry>
-      <Name>unlockarmorwea2</Name>
-      <Address>1411E3581</Address>
-    </SymbolEntry>
-    <SymbolEntry>
-      <Name>weaponuse</Name>
-      <Address>14D1746F8</Address>
-    </SymbolEntry>
-    <SymbolEntry>
-      <Name>equipmenteditor</Name>
-      <Address>147995B5B</Address>
-    </SymbolEntry>
-    <SymbolEntry>
-      <Name>inj_weapsel_range</Name>
-      <Address>1411E5460</Address>
-    </SymbolEntry>
-    <SymbolEntry>
-      <Name>inj_weapsel_close</Name>
-      <Address>1411E5477</Address>
     </SymbolEntry>
     <SymbolEntry>
       <Name>inj_pchar</Name>
@@ -17288,62 +16816,6 @@ MonsterHunterWorld.exe+CAE3BAD - 8B 87 340B0000        - mov eax,[rdi+00000B34]
     <SymbolEntry>
       <Name>inj_investigation_ms</Name>
       <Address>14E62E041</Address>
-    </SymbolEntry>
-    <SymbolEntry>
-      <Name>targethealthaob</Name>
-      <Address>14EE279BC</Address>
-    </SymbolEntry>
-    <SymbolEntry>
-      <Name>bufftimer</Name>
-      <Address>14E8ABD62</Address>
-    </SymbolEntry>
-    <SymbolEntry>
-      <Name>ppaa</Name>
-      <Address>14E8AB12E</Address>
-    </SymbolEntry>
-    <SymbolEntry>
-      <Name>herosaa</Name>
-      <Address>14E8ABF50</Address>
-    </SymbolEntry>
-    <SymbolEntry>
-      <Name>herosaa2</Name>
-      <Address>14E8ABF62</Address>
-    </SymbolEntry>
-    <SymbolEntry>
-      <Name>rsaa</Name>
-      <Address>14E8AB1A9</Address>
-    </SymbolEntry>
-    <SymbolEntry>
-      <Name>superbuff</Name>
-      <Address>1472A0724</Address>
-    </SymbolEntry>
-    <SymbolEntry>
-      <Name>lpactt</Name>
-      <Address>14E8AAF16</Address>
-    </SymbolEntry>
-    <SymbolEntry>
-      <Name>lptdec</Name>
-      <Address>14E8AAEBE</Address>
-    </SymbolEntry>
-    <SymbolEntry>
-      <Name>buffy</Name>
-      <Address>151E9001D</Address>
-    </SymbolEntry>
-    <SymbolEntry>
-      <Name>targethealth</Name>
-      <Address>151EA0064</Address>
-    </SymbolEntry>
-    <SymbolEntry>
-      <Name>infitemuse1</Name>
-      <Address>14144C914</Address>
-    </SymbolEntry>
-    <SymbolEntry>
-      <Name>infitemuse2</Name>
-      <Address>14E8DCBE4</Address>
-    </SymbolEntry>
-    <SymbolEntry>
-      <Name>infsla</Name>
-      <Address>146A0513B</Address>
     </SymbolEntry>
     <SymbolEntry>
       <Name>infhealth</Name>
