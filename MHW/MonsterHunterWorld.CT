@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<CheatTable CheatEngineTableVersion="26">
+<CheatTable CheatEngineTableVersion="27">
   <Forms>
     <HealthBarOverlay Class="TCEForm" Encoding="Ascii85">*l_]L,AtJ#1H@[fX^*.TeZjOpsFJJ+Bt%#fsgKhoT!?9SnQdsZhpAt(xBcTjVNL=::sF)u*aAv#[t-Z,$LIP-hmdSK[(}GxYM{J]@$/bWA[AT4PzxyAV[ewQ^h2;RzAUVF)aO{O@[[HX[{mt*]+sj1Jx4vtl^5j[N2x6ZQh#P9N,OM6W4V)4AI1Bz.3)})bkKx^%AHsVr76utBp[e*2TI!aaRE9-OZ)v?9es_6.dOeI@(04Cc}Ix{rGIwoXaZ}WS=o?#1ej+ml-s/Zbg;!mJDfK@]LqSWZRxUKK5AIlW?Sw)?E0ahVoti1Tn+1R3zL=^q6=u,q!Xx?$S{8j2NvnYNOJp;IZdP@o3Bow$^;AP4@Ls^V2!70Pk}GOJnAPhE!6Gv.HwH6$qdZOB]GsD6t[=s!kj/GFhkLeoVN9;c82$0jPuGE-r3$4-]d=!?TFY4]:rc5;[+fq,+,0LugD%e)VeJw8R#Y2$Lqc,xWyNC-ToL#wXL^[hD$I7=I!gpSg#4HeJsc^NVBOEjMU0aL853mMNevW;GdMqp-8r[ylb9a*jY;7a);hzm*;5pPA.wwWL{J7e-)(jFiWae!XuBq;J7BRelr$17K!{3vHn^p5%;K9</HealthBarOverlay>
     <BuffTimerOverlay Class="TCEForm" Encoding="Ascii85">=U}PR):Z(zvxX+V)?6{C8.9O?o67jVTbizFQP-BG)![}+iQ8Cp;_)ns.Q?FDu81S:z(r2,yZ^o9K;n/i+qmuW.sD9XwSS2lfBaFMuloIgqD.o!mOinMx_9WX,so.6f($1!7m#5P-WkBDs3:,wqM0w$Z.Cphi.7Y]MV_20ABx$g%!91(Qo[x3(k-Spx@}WoltA4E3xO!nuFc*BF?i+FrZ([5dg]i8F:e^$.![[9+yvIs[H7=92MWDm4W0fQyJwv@N0WM5T3[DAz?3{PSUPv+XD#UsK;#)wjvkd[z_+[NNVvYPPZwSE4tnXAyjlW]L;P@{=JzJE;6OW/Ol]^B6njc7#,5E}XUd)B3mA1lI3f_C]iNMrKo;wjeYa1LxVm)GM54vI@Bby@L.ZfzTrC=;nZcXp9s?+#ysC_e/I_PAxE,]JWCHlS4VZ3lVc]]Bxne_q48S=W#%2336:UmCjLN.li;+s9J{ET_qZtXJ=bHnc=5Kszu$F;4:sh$xPSiVq]@{e2/ihIj]+,LjuDbXHdVhPfwE,m{GF{Q!mtu_qi#^aJVARu2e4k-X7$AI,3;eCFZU,fB@_K-cSLxl7o7(oM6$98Ksc5?-McY0[vl$MXgLpxx80a3$UE3^P%K-L7;e@mj+J{MBSdwUn6$9H-xo3N(XBohrNj+EveRv,ncQ,jfy/%^CE+I@v6fFbT3#n,wc_}hj9tZ#[f?-z)]*y0@,HvVx7BP7wILj=t2L[Zh$8[cW=,54xT{CQ6D]m=fCXWR=uWWaFfO+]97#B.pjA,11.j*NHvw]_S$sG:opEr+!XMYCHaPjL%SGxL#+vSLJ2Hvf8){t7/02c=GG$@Pa@Gj#3fHFQuq(V#4VPONWlr9ULG(HDRa!XgYDaFkWLu6izGvYv:88,z3WA!;RX:qTt:9X/_%(36ze:ab3lf#Jn1pz3J4jY1^bILC</BuffTimerOverlay>
@@ -7,9 +7,9 @@
   <CheatEntries>
     <CheatEntry>
       <ID>5447</ID>
-      <Description>"启用 (Update 46)"</Description>
+      <Description>"启用 (Update 47)"</Description>
       <Options moHideChildren="1"/>
-      <LastState Activated="1"/>
+      <LastState/>
       <VariableType>Auto Assembler Script</VariableType>
       <AssemblerScript>{$lua}
 local function hex(input)
@@ -374,7 +374,7 @@ unregistersymbol(infmantleuse2)
         <CheatEntry>
           <ID>99</ID>
           <Description>"无斗篷CD"</Description>
-          <LastState Activated="1"/>
+          <LastState/>
           <VariableType>Auto Assembler Script</VariableType>
           <AssemblerScript>{ Game   : MonsterHunterWorld.exe
   Version: 
@@ -418,7 +418,7 @@ dealloc(newmem)
         <CheatEntry>
           <ID>5940</ID>
           <Description>"Keep Mantle Effect After Removal (Read Table Extras)"</Description>
-          <LastState Activated="1"/>
+          <LastState/>
           <VariableType>Auto Assembler Script</VariableType>
           <AssemblerScript>{ Game   : MonsterHunterWorld.exe
   Version: 
@@ -1117,6 +1117,48 @@ dealloc(newmem2)
 </AssemblerScript>
         </CheatEntry>
         <CheatEntry>
+          <ID>6026</ID>
+          <Description>"Unlock Poogie's Outfits"</Description>
+          <LastState/>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>{ Game   : MonsterHunterWorld.exe
+  Version: 
+  Date   : 2018-10-13
+  Author : Squall8
+}
+
+[ENABLE]
+
+aobscanmodule(poul,MonsterHunterWorld.exe,8B 81 A8 75 13 00)
+alloc(newmem,$1000,poul)
+
+label(code)
+label(return)
+
+registersymbol(poul)
+
+newmem:
+  mov byte ptr [rcx+001375A8],FF
+
+code:
+  mov eax,[rcx+001375A8]
+  jmp return
+
+poul:
+  jmp newmem
+  nop
+return:
+
+[DISABLE]
+
+poul:
+  db 8B 81 A8 75 13 00
+
+unregistersymbol(poul)
+dealloc(newmem)
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
           <ID>4193</ID>
           <Description>"无限激运票"</Description>
           <LastState/>
@@ -1160,7 +1202,7 @@ dealloc(newmem)
         </CheatEntry>
         <CheatEntry>
           <ID>69</ID>
-          <Description>"Zeni/Research Points/Flags"</Description>
+          <Description>"Character Pointers"</Description>
           <Options moHideChildren="1"/>
           <LastState/>
           <VariableType>Auto Assembler Script</VariableType>
@@ -1246,10 +1288,232 @@ dealloc(newmem)
               </Offsets>
             </CheatEntry>
             <CheatEntry>
+              <ID>5996</ID>
+              <Description>"Poogie's Costume"</Description>
+              <VariableType>4 Bytes</VariableType>
+              <Address>ps1</Address>
+              <Offsets>
+                <Offset>13767C</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>6009</ID>
+              <Description>"[Poogie's Unlocked Outfits 1]"</Description>
+              <Options moHideChildren="1"/>
+              <LastState Value="" RealAddress="00000000"/>
+              <Color>000080</Color>
+              <GroupHeader>1</GroupHeader>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>6008</ID>
+                  <Description>"Momorial Stripes"</Description>
+                  <VariableType>Binary</VariableType>
+                  <BitStart>0</BitStart>
+                  <BitLength>1</BitLength>
+                  <ShowAsBinary>0</ShowAsBinary>
+                  <Address>ps1</Address>
+                  <Offsets>
+                    <Offset>1375A8</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>6016</ID>
+                  <Description>"Emperors New Duds"</Description>
+                  <VariableType>Binary</VariableType>
+                  <BitStart>1</BitStart>
+                  <BitLength>1</BitLength>
+                  <ShowAsBinary>0</ShowAsBinary>
+                  <Address>ps1</Address>
+                  <Offsets>
+                    <Offset>1375A8</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>6015</ID>
+                  <Description>"Hog In A Frog"</Description>
+                  <VariableType>Binary</VariableType>
+                  <BitStart>2</BitStart>
+                  <BitLength>1</BitLength>
+                  <ShowAsBinary>0</ShowAsBinary>
+                  <Address>ps1</Address>
+                  <Offsets>
+                    <Offset>1375A8</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>6014</ID>
+                  <Description>"White Jammies"</Description>
+                  <VariableType>Binary</VariableType>
+                  <BitStart>3</BitStart>
+                  <BitLength>1</BitLength>
+                  <ShowAsBinary>0</ShowAsBinary>
+                  <Address>ps1</Address>
+                  <Offsets>
+                    <Offset>1375A8</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>6013</ID>
+                  <Description>"Apprentice Fiver"</Description>
+                  <VariableType>Binary</VariableType>
+                  <BitStart>4</BitStart>
+                  <BitLength>1</BitLength>
+                  <ShowAsBinary>0</ShowAsBinary>
+                  <Address>ps1</Address>
+                  <Offsets>
+                    <Offset>1375A8</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>6012</ID>
+                  <Description>"Buzzy Bee"</Description>
+                  <VariableType>Binary</VariableType>
+                  <BitStart>5</BitStart>
+                  <BitLength>1</BitLength>
+                  <ShowAsBinary>0</ShowAsBinary>
+                  <Address>ps1</Address>
+                  <Offsets>
+                    <Offset>1375A8</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>6011</ID>
+                  <Description>"Seaside Sausage"</Description>
+                  <VariableType>Binary</VariableType>
+                  <BitStart>6</BitStart>
+                  <BitLength>1</BitLength>
+                  <ShowAsBinary>0</ShowAsBinary>
+                  <Address>ps1</Address>
+                  <Offsets>
+                    <Offset>1375A8</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>6010</ID>
+                  <Description>"Pumpkins Revenge"</Description>
+                  <VariableType>Binary</VariableType>
+                  <BitStart>7</BitStart>
+                  <BitLength>1</BitLength>
+                  <ShowAsBinary>0</ShowAsBinary>
+                  <Address>ps1</Address>
+                  <Offsets>
+                    <Offset>1375A8</Offset>
+                  </Offsets>
+                </CheatEntry>
+              </CheatEntries>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>6017</ID>
+              <Description>"[Poogie's Unlocked Outfits 2 (Future Stuff)]"</Description>
+              <Options moHideChildren="1"/>
+              <LastState Value="" RealAddress="00000000"/>
+              <Color>000080</Color>
+              <GroupHeader>1</GroupHeader>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>6018</ID>
+                  <Description>"???"</Description>
+                  <VariableType>Binary</VariableType>
+                  <BitStart>0</BitStart>
+                  <BitLength>1</BitLength>
+                  <ShowAsBinary>0</ShowAsBinary>
+                  <Address>ps1</Address>
+                  <Offsets>
+                    <Offset>1375A9</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>6019</ID>
+                  <Description>"???"</Description>
+                  <VariableType>Binary</VariableType>
+                  <BitStart>1</BitStart>
+                  <BitLength>1</BitLength>
+                  <ShowAsBinary>0</ShowAsBinary>
+                  <Address>ps1</Address>
+                  <Offsets>
+                    <Offset>1375A9</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>6020</ID>
+                  <Description>"Behemoth Bacon (Unimplemented)"</Description>
+                  <VariableType>Binary</VariableType>
+                  <BitStart>2</BitStart>
+                  <BitLength>1</BitLength>
+                  <ShowAsBinary>0</ShowAsBinary>
+                  <Address>ps1</Address>
+                  <Offsets>
+                    <Offset>1375A9</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>6021</ID>
+                  <Description>"Unavailabe"</Description>
+                  <VariableType>Binary</VariableType>
+                  <BitStart>3</BitStart>
+                  <BitLength>1</BitLength>
+                  <ShowAsBinary>0</ShowAsBinary>
+                  <Address>ps1</Address>
+                  <Offsets>
+                    <Offset>1375A9</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>6022</ID>
+                  <Description>"???"</Description>
+                  <VariableType>Binary</VariableType>
+                  <BitStart>4</BitStart>
+                  <BitLength>1</BitLength>
+                  <ShowAsBinary>0</ShowAsBinary>
+                  <Address>ps1</Address>
+                  <Offsets>
+                    <Offset>1375A9</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>6023</ID>
+                  <Description>"???"</Description>
+                  <VariableType>Binary</VariableType>
+                  <BitStart>5</BitStart>
+                  <BitLength>1</BitLength>
+                  <ShowAsBinary>0</ShowAsBinary>
+                  <Address>ps1</Address>
+                  <Offsets>
+                    <Offset>1375A9</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>6024</ID>
+                  <Description>"???"</Description>
+                  <VariableType>Binary</VariableType>
+                  <BitStart>6</BitStart>
+                  <BitLength>1</BitLength>
+                  <ShowAsBinary>0</ShowAsBinary>
+                  <Address>ps1</Address>
+                  <Offsets>
+                    <Offset>1375A9</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>6025</ID>
+                  <Description>"???"</Description>
+                  <VariableType>Binary</VariableType>
+                  <BitStart>7</BitStart>
+                  <BitLength>1</BitLength>
+                  <ShowAsBinary>0</ShowAsBinary>
+                  <Address>ps1</Address>
+                  <Offsets>
+                    <Offset>1375A9</Offset>
+                  </Offsets>
+                </CheatEntry>
+              </CheatEntries>
+            </CheatEntry>
+            <CheatEntry>
               <ID>186</ID>
               <Description>"[Flags]"</Description>
               <Options moHideChildren="1"/>
               <LastState Value="" RealAddress="00000000"/>
+              <Color>000080</Color>
               <GroupHeader>1</GroupHeader>
               <CheatEntries>
                 <CheatEntry>
@@ -12739,7 +13003,7 @@ dealloc(newmem)
           <ID>4408</ID>
           <Description>"传送"</Description>
           <Options moHideChildren="1"/>
-          <LastState Activated="1"/>
+          <LastState/>
           <VariableType>Auto Assembler Script</VariableType>
           <AssemblerScript>{ Game   : MonsterHunterWorld.exe
   Version: 
