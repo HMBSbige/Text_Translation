@@ -7,7 +7,7 @@
   <CheatEntries>
     <CheatEntry>
       <ID>5447</ID>
-      <Description>"启用 (Update 47)"</Description>
+      <Description>"启用 (Update 49)"</Description>
       <Options moHideChildren="1"/>
       <LastState/>
       <VariableType>Auto Assembler Script</VariableType>
@@ -159,7 +159,7 @@ unregistersymbol(infstam)
           <LastState/>
           <VariableType>Auto Assembler Script</VariableType>
           <AssemblerScript>{ Game   : MonsterHunterWorld.exe
-  Version: 
+  Version:
   Date   : 2018-08-27
   Author : Squall8
 }
@@ -171,6 +171,10 @@ alloc(newmem,$1000,infitemuse1)
 
 label(code)
 label(return)
+label(wff)
+label(pcw)
+label(ocw)
+label(efw)
 
 registersymbol(infitemuse1)
 
@@ -201,6 +205,14 @@ code:
   je ocw
   cmp [rax+08],B4
   je ocw
+  cmp [rax+08],3AC
+  je efw
+  cmp [rax+08],3AD
+  je efw
+  cmp [rax+08],3AE
+  je efw
+  cmp [rax+08],CC
+  jg @f
   inc [rax+0C]
 @@:
   mov r12d,[rax+0C]
@@ -225,7 +237,15 @@ ocw:
   cmp edi,r12d
   jmp return
 
+efw:
+  mov [rax+0C],B
+  mov r12d,[rax+0C]
+  cmp edi,r12d
+  jmp return
+
 newmem2:
+  cmp [rcx+08],CC
+  jg code2
   cmp r13,6
   je code2
   cmp r13,8
@@ -991,6 +1011,7 @@ dealloc(newmem)
           <ID>132</ID>
           <Description>"解锁装饰品"</Description>
           <LastState/>
+          <Color>000000</Color>
           <VariableType>Auto Assembler Script</VariableType>
           <AssemblerScript>{ Game   : MonsterHunterWorld.exe
   Version: 
@@ -1000,7 +1021,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscanmodule(unlockdec,MonsterHunterWorld.exe,34 C8 FF 0F B6 80 6B 6A 06 00)
+aobscanmodule(unlockdec,MonsterHunterWorld.exe,79 C8 FF 0F B6 80 6B 6A 06 00)
 alloc(newmem,$1000,unlockdec)
 
 label(code)
@@ -8768,6 +8789,7 @@ dealloc(newmem2)
           <Description>"Highlighted Armor Editor"</Description>
           <Options moHideChildren="1"/>
           <LastState/>
+          <Color>000000</Color>
           <VariableType>Auto Assembler Script</VariableType>
           <AssemblerScript>{ Game   : MonsterHunterWorld.exe
   Version: 
@@ -8777,7 +8799,7 @@ dealloc(newmem2)
 
 [ENABLE]
 
-aobscanmodule(equipmenteditor,MonsterHunterWorld.exe,48 8D 95 ** ** ** ** E8 ** ** ** ** 44 0F BE 46 2C)
+aobscanmodule(equipmenteditor,MonsterHunterWorld.exe,44 0F BE 46 2C 48 8D 15 * * * * 48 8D 4D 97)
 alloc(newmem,$1000,equipmenteditor)
 
 label(code)
@@ -8797,13 +8819,13 @@ code:
 equipmentp:
   dq 0
 
-equipmenteditor+0C:
+equipmenteditor:
   jmp newmem
 return:
 
 [DISABLE]
 
-equipmenteditor+0C:
+equipmenteditor:
   db 44 0F BE 46 2C
 
 unregistersymbol(equipmenteditor)
@@ -13000,8 +13022,54 @@ dealloc(newmem)
           </CheatEntries>
         </CheatEntry>
         <CheatEntry>
+          <ID>6455</ID>
+          <Description>"360 Degree Dragon Piercer (After Initial Shot)"</Description>
+          <LastState/>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>{ Game   : MonsterHunterWorld.exe
+  Version: 
+  Date   : 2018-10-22
+  Author : Squall8
+}
+
+[ENABLE]
+
+aobscanmodule(freeDP,MonsterHunterWorld.exe,0F 2F 47 10 76 13)
+alloc(newmem,$1000,freeDP)
+
+label(code)
+label(return)
+
+registersymbol(freeDP)
+
+newmem:
+  mov [rdi+8],(float)-70
+  mov [rdi+C],(float)90
+  mov [rdi+10],(float)360
+  mov [rdi+14],(float)-360
+
+code:
+  comiss xmm0,[rdi+10]
+  jna freeDP+19
+  jmp return
+
+freeDP:
+  jmp newmem
+  nop
+return:
+
+[DISABLE]
+
+freeDP:
+  db 0F 2F 47 10 76 13
+
+unregistersymbol(freeDP)
+dealloc(newmem)
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
           <ID>4408</ID>
-          <Description>"传送"</Description>
+          <Description>"Teleport"</Description>
           <Options moHideChildren="1"/>
           <LastState/>
           <VariableType>Auto Assembler Script</VariableType>
@@ -13338,6 +13406,51 @@ dealloc(newmem3)
           </CheatEntries>
         </CheatEntry>
         <CheatEntry>
+          <ID>6545</ID>
+          <Description>"Go To Character Edit Screen (Read Table Extras)"</Description>
+          <LastState/>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>{ Game   : MonsterHunterWorld.exe
+  Version: 
+  Date   : 2018-10-27
+  Author : Squall8
+}
+
+[ENABLE]
+
+assert(MonsterHunterWorld.exe+1A6947C,48 89 02 48 8B 41 08)
+alloc(newmem,$1000,MonsterHunterWorld.exe+1A6947C)
+
+label(code)
+label(return)
+
+newmem:
+  cmp cl,B0
+  jne code
+  mov [rdx],#1122069528 {Delete Save Ptr + 96}
+  mov rax,[rcx+08]
+  jmp return
+
+code:
+  mov [rdx],rax
+  mov rax,[rcx+08]
+  jmp return
+
+MonsterHunterWorld.exe+1A6947C:
+  jmp newmem
+  nop
+  nop
+return:
+
+[DISABLE]
+
+MonsterHunterWorld.exe+1A6947C:
+  db 48 89 02 48 8B 41 08
+
+dealloc(newmem)
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
           <ID>200</ID>
           <Description>"[pox911's Scripts]"</Description>
           <Options moHideChildren="1"/>
@@ -13410,7 +13523,7 @@ dealloc(newmem)
           <Description>"[Idlehands88's Scripts]"</Description>
           <Options moHideChildren="1"/>
           <LastState Value="" RealAddress="00000000"/>
-          <Color>FF0000</Color>
+          <Color>000000</Color>
           <GroupHeader>1</GroupHeader>
           <CheatEntries>
             <CheatEntry>
@@ -13444,7 +13557,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,50 00 00 00 00 00 00 00 70 59 CB 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,50 00 00 00 00 00 00 00 38 DE C5 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -13482,7 +13595,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,50 00 00 00 00 00 00 00 70 59 CB 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,50 00 00 00 00 00 00 00 38 DE C5 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -13520,7 +13633,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,50 00 00 00 00 00 00 00 70 59 CB 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,50 00 00 00 00 00 00 00 38 DE C5 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -13558,7 +13671,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,50 00 00 00 00 00 00 00 70 59 CB 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,50 00 00 00 00 00 00 00 38 DE C5 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -13596,7 +13709,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,50 00 00 00 00 00 00 00 70 59 CB 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,50 00 00 00 00 00 00 00 38 DE C5 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -13644,7 +13757,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Ammo,50 00 00 00 00 00 00 00 70 59 CB 42 01 00 00 00) // should be unique
+aobscan(INJECT_Ammo,50 00 00 00 00 00 00 00 38 DE C5 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -13682,7 +13795,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Ammo,50 00 00 00 00 00 00 00 70 59 CB 42 01 00 00 00) // should be unique
+aobscan(INJECT_Ammo,50 00 00 00 00 00 00 00 38 DE C5 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -13720,7 +13833,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Ammo,50 00 00 00 00 00 00 00 70 59 CB 42 01 00 00 00) // should be unique
+aobscan(INJECT_Ammo,50 00 00 00 00 00 00 00 38 DE C5 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -13758,7 +13871,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Ammo,50 00 00 00 00 00 00 00 70 59 CB 42 01 00 00 00) // should be unique
+aobscan(INJECT_Ammo,50 00 00 00 00 00 00 00 38 DE C5 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -13796,7 +13909,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Ammo,50 00 00 00 00 00 00 00 70 59 CB 42 01 00 00 00) // should be unique
+aobscan(INJECT_Ammo,50 00 00 00 00 00 00 00 38 DE C5 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -13844,7 +13957,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,50 00 00 00 00 00 00 00 70 59 CB 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,50 00 00 00 00 00 00 00 38 DE C5 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -13882,7 +13995,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,50 00 00 00 00 00 00 00 70 59 CB 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,50 00 00 00 00 00 00 00 38 DE C5 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -13920,7 +14033,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,50 00 00 00 00 00 00 00 70 59 CB 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,50 00 00 00 00 00 00 00 38 DE C5 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -13958,7 +14071,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,50 00 00 00 00 00 00 00 70 59 CB 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,50 00 00 00 00 00 00 00 38 DE C5 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -13996,7 +14109,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,50 00 00 00 00 00 00 00 70 59 CB 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,50 00 00 00 00 00 00 00 38 DE C5 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -14044,7 +14157,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,50 00 00 00 00 00 00 00 70 59 CB 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,50 00 00 00 00 00 00 00 38 DE C5 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -14082,7 +14195,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,50 00 00 00 00 00 00 00 70 59 CB 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,50 00 00 00 00 00 00 00 38 DE C5 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -14120,7 +14233,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,50 00 00 00 00 00 00 00 70 59 CB 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,50 00 00 00 00 00 00 00 38 DE C5 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -14158,7 +14271,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,50 00 00 00 00 00 00 00 70 59 CB 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,50 00 00 00 00 00 00 00 38 DE C5 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -14196,7 +14309,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,50 00 00 00 00 00 00 00 70 59 CB 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,50 00 00 00 00 00 00 00 38 DE C5 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -14244,7 +14357,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,50 00 00 00 00 00 00 00 70 59 CB 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,50 00 00 00 00 00 00 00 38 DE C5 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -14282,7 +14395,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,50 00 00 00 00 00 00 00 70 59 CB 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,50 00 00 00 00 00 00 00 38 DE C5 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -14320,7 +14433,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,50 00 00 00 00 00 00 00 70 59 CB 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,50 00 00 00 00 00 00 00 38 DE C5 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -14358,7 +14471,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,50 00 00 00 00 00 00 00 70 59 CB 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,50 00 00 00 00 00 00 00 38 DE C5 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -14396,7 +14509,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,50 00 00 00 00 00 00 00 70 59 CB 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,50 00 00 00 00 00 00 00 38 DE C5 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -14454,7 +14567,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,00 00 00 00 00 00 00 00 70 59 CB 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,00 00 00 00 00 00 00 00 38 DE C5 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -14492,7 +14605,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,00 00 00 00 00 00 00 00 70 59 CB 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,00 00 00 00 00 00 00 00 38 DE C5 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -14530,7 +14643,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,00 00 00 00 00 00 00 00 70 59 CB 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,00 00 00 00 00 00 00 00 38 DE C5 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -14568,7 +14681,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,00 00 00 00 00 00 00 00 70 59 CB 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,00 00 00 00 00 00 00 00 38 DE C5 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -14606,7 +14719,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,00 00 00 00 00 00 00 00 70 59 CB 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,00 00 00 00 00 00 00 00 38 DE C5 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -14654,7 +14767,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Ammo,00 00 00 00 00 00 00 00 70 59 CB 42 01 00 00 00) // should be unique
+aobscan(INJECT_Ammo,00 00 00 00 00 00 00 00 38 DE C5 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -14692,7 +14805,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Ammo,00 00 00 00 00 00 00 00 70 59 CB 42 01 00 00 00) // should be unique
+aobscan(INJECT_Ammo,00 00 00 00 00 00 00 00 38 DE C5 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -14730,7 +14843,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Ammo,00 00 00 00 00 00 00 00 70 59 CB 42 01 00 00 00) // should be unique
+aobscan(INJECT_Ammo,00 00 00 00 00 00 00 00 38 DE C5 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -14768,7 +14881,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Ammo,00 00 00 00 00 00 00 00 70 59 CB 42 01 00 00 00) // should be unique
+aobscan(INJECT_Ammo,00 00 00 00 00 00 00 00 38 DE C5 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -14806,7 +14919,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Ammo,00 00 00 00 00 00 00 00 70 59 CB 42 01 00 00 00) // should be unique
+aobscan(INJECT_Ammo,00 00 00 00 00 00 00 00 38 DE C5 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -14854,7 +14967,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,00 00 00 00 00 00 00 00 70 59 CB 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,00 00 00 00 00 00 00 00 38 DE C5 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -14892,7 +15005,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,00 00 00 00 00 00 00 00 70 59 CB 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,00 00 00 00 00 00 00 00 38 DE C5 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -14930,7 +15043,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,00 00 00 00 00 00 00 00 70 59 CB 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,00 00 00 00 00 00 00 00 38 DE C5 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -14968,7 +15081,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,00 00 00 00 00 00 00 00 70 59 CB 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,00 00 00 00 00 00 00 00 38 DE C5 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -15006,7 +15119,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,00 00 00 00 00 00 00 00 70 59 CB 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,00 00 00 00 00 00 00 00 38 DE C5 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -15054,7 +15167,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,00 00 00 00 00 00 00 00 70 59 CB 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,00 00 00 00 00 00 00 00 38 DE C5 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -15092,7 +15205,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,00 00 00 00 00 00 00 00 70 59 CB 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,00 00 00 00 00 00 00 00 38 DE C5 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -15130,7 +15243,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,00 00 00 00 00 00 00 00 70 59 CB 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,00 00 00 00 00 00 00 00 38 DE C5 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -15168,7 +15281,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,00 00 00 00 00 00 00 00 70 59 CB 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,00 00 00 00 00 00 00 00 38 DE C5 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -15206,7 +15319,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,00 00 00 00 00 00 00 00 70 59 CB 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,00 00 00 00 00 00 00 00 38 DE C5 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -15254,7 +15367,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,00 00 00 00 00 00 00 00 70 59 CB 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,00 00 00 00 00 00 00 00 38 DE C5 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -15292,7 +15405,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,00 00 00 00 00 00 00 00 70 59 CB 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,00 00 00 00 00 00 00 00 38 DE C5 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -15330,7 +15443,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,00 00 00 00 00 00 00 00 70 59 CB 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,00 00 00 00 00 00 00 00 38 DE C5 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -15368,7 +15481,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,00 00 00 00 00 00 00 00 70 59 CB 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,00 00 00 00 00 00 00 00 38 DE C5 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -15406,7 +15519,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,00 00 00 00 00 00 00 00 70 59 CB 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,00 00 00 00 00 00 00 00 38 DE C5 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -15464,7 +15577,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,00 00 00 00 00 00 00 00 70 59 CB 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,00 00 00 00 00 00 00 00 38 DE C5 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -15502,7 +15615,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,00 00 00 00 00 00 00 00 70 59 CB 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,00 00 00 00 00 00 00 00 38 DE C5 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -15540,7 +15653,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,00 00 00 00 00 00 00 00 70 59 CB 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,00 00 00 00 00 00 00 00 38 DE C5 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -15578,7 +15691,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,00 00 00 00 00 00 00 00 70 59 CB 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,00 00 00 00 00 00 00 00 38 DE C5 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -15616,7 +15729,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,00 00 00 00 00 00 00 00 70 59 CB 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,00 00 00 00 00 00 00 00 38 DE C5 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -15664,7 +15777,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Ammo,00 00 00 00 00 00 00 00 70 59 CB 42 01 00 00 00) // should be unique
+aobscan(INJECT_Ammo,00 00 00 00 00 00 00 00 38 DE C5 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -15702,7 +15815,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Ammo,00 00 00 00 00 00 00 00 70 59 CB 42 01 00 00 00) // should be unique
+aobscan(INJECT_Ammo,00 00 00 00 00 00 00 00 38 DE C5 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -15740,7 +15853,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Ammo,00 00 00 00 00 00 00 00 70 59 CB 42 01 00 00 00) // should be unique
+aobscan(INJECT_Ammo,00 00 00 00 00 00 00 00 38 DE C5 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -15778,7 +15891,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Ammo,00 00 00 00 00 00 00 00 70 59 CB 42 01 00 00 00) // should be unique
+aobscan(INJECT_Ammo,00 00 00 00 00 00 00 00 38 DE C5 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -15816,7 +15929,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Ammo,00 00 00 00 00 00 00 00 70 59 CB 42 01 00 00 00) // should be unique
+aobscan(INJECT_Ammo,00 00 00 00 00 00 00 00 38 DE C5 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -15864,7 +15977,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,00 00 00 00 00 00 00 00 70 59 CB 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,00 00 00 00 00 00 00 00 38 DE C5 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -15902,7 +16015,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,00 00 00 00 00 00 00 00 70 59 CB 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,00 00 00 00 00 00 00 00 38 DE C5 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -15940,7 +16053,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,00 00 00 00 00 00 00 00 70 59 CB 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,00 00 00 00 00 00 00 00 38 DE C5 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -15978,7 +16091,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,00 00 00 00 00 00 00 00 70 59 CB 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,00 00 00 00 00 00 00 00 38 DE C5 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -16016,7 +16129,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,00 00 00 00 00 00 00 00 70 59 CB 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,00 00 00 00 00 00 00 00 38 DE C5 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -16064,7 +16177,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,00 00 00 00 00 00 00 00 70 59 CB 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,00 00 00 00 00 00 00 00 38 DE C5 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -16102,7 +16215,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,00 00 00 00 00 00 00 00 70 59 CB 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,00 00 00 00 00 00 00 00 38 DE C5 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -16140,7 +16253,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,00 00 00 00 00 00 00 00 70 59 CB 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,00 00 00 00 00 00 00 00 38 DE C5 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -16178,7 +16291,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,00 00 00 00 00 00 00 00 70 59 CB 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,00 00 00 00 00 00 00 00 38 DE C5 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -16216,7 +16329,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,00 00 00 00 00 00 00 00 70 59 CB 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,00 00 00 00 00 00 00 00 38 DE C5 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -16264,7 +16377,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,00 00 00 00 00 00 00 00 70 59 CB 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,00 00 00 00 00 00 00 00 38 DE C5 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -16302,7 +16415,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,00 00 00 00 00 00 00 00 70 59 CB 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,00 00 00 00 00 00 00 00 38 DE C5 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -16340,7 +16453,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,00 00 00 00 00 00 00 00 70 59 CB 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,00 00 00 00 00 00 00 00 38 DE C5 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -16378,7 +16491,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,00 00 00 00 00 00 00 00 70 59 CB 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,00 00 00 00 00 00 00 00 38 DE C5 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -16416,7 +16529,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,00 00 00 00 00 00 00 00 70 59 CB 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,00 00 00 00 00 00 00 00 38 DE C5 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -17029,17 +17142,574 @@ dealloc(newmem)
           <GroupHeader>1</GroupHeader>
           <CheatEntries>
             <CheatEntry>
+              <ID>6361</ID>
+              <Description>"Investigation Editor"</Description>
+              <Options moHideChildren="1"/>
+              <LastState/>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>{ Game   : MonsterHunterWorld.exe
+  Version: 
+  Date   : 2018-10-22
+  Author : Marcus101RR
+
+  This script does blah blah blah
+}
+
+[ENABLE]
+
+aobscanmodule(gInvest,MonsterHunterWorld.exe,01 8B 42 08 89 41 08 0F) // should be unique
+alloc(newmem,$1000,gInvest)
+
+label(code)
+label(return)
+
+registersymbol(gInvest)
+
+label(getInvest)
+registersymbol(getInvest)
+
+newmem:
+code:
+  mov [getInvest],rdx
+  mov eax,[rdx+08]
+  mov [rcx+08],eax
+  jmp return
+
+getInvest:
+dq 0
+
+gInvest+01:
+  jmp newmem
+  nop
+return:
+
+[DISABLE]
+
+gInvest+01:
+  db 8B 42 08 89 41 08
+
+unregistersymbol(gInvest)
+dealloc(newmem)
+unregistersymbol(getInvest)
+
+{
+// ORIGINAL CODE - INJECTION POINT: "MonsterHunterWorld.exe"+E847E0A
+
+"MonsterHunterWorld.exe"+E847DDC: 48 83 C4 F8              -  add rsp,-08
+"MonsterHunterWorld.exe"+E847DE0: 4C 8D 0D 56 91 AA FE     -  lea r9,[MonsterHunterWorld.exe+D2F0F3D]
+"MonsterHunterWorld.exe"+E847DE7: 48 89 34 24              -  mov [rsp],rsi
+"MonsterHunterWorld.exe"+E847DEB: 49 8D 31                 -  lea rsi,[r9]
+"MonsterHunterWorld.exe"+E847DEE: 48 87 34 24              -  xchg [rsp],rsi
+"MonsterHunterWorld.exe"+E847DF2: C3                       -  ret 
+"MonsterHunterWorld.exe"+E847DF3: 68 66 66 66 2E           -  push 2E666666
+"MonsterHunterWorld.exe"+E847DF8: 0F 1F 84 00 00 00 00 00  -  nop [rax+rax+00000000]
+"MonsterHunterWorld.exe"+E847E00: 48 8D 05 31 D6 3E F4     -  lea rax,[MonsterHunterWorld.exe+2C35438]
+"MonsterHunterWorld.exe"+E847E07: 48 89 01                 -  mov [rcx],rax
+// ---------- INJECTING HERE ----------
+"MonsterHunterWorld.exe"+E847E0A: 8B 42 08                 -  mov eax,[rdx+08]
+"MonsterHunterWorld.exe"+E847E0D: 89 41 08                 -  mov [rcx+08],eax
+// ---------- DONE INJECTING  ----------
+"MonsterHunterWorld.exe"+E847E10: 0F B6 42 0C              -  movzx eax,byte ptr [rdx+0C]
+"MonsterHunterWorld.exe"+E847E14: 88 41 0C                 -  mov [rcx+0C],al
+"MonsterHunterWorld.exe"+E847E17: 8B 42 10                 -  mov eax,[rdx+10]
+"MonsterHunterWorld.exe"+E847E1A: 89 41 10                 -  mov [rcx+10],eax
+"MonsterHunterWorld.exe"+E847E1D: 48 8D 05 5C 1E 2B F4     -  lea rax,[MonsterHunterWorld.exe+2AF9C80]
+"MonsterHunterWorld.exe"+E847E24: 48 89 41 18              -  mov [rcx+18],rax
+"MonsterHunterWorld.exe"+E847E28: 8B 42 20                 -  mov eax,[rdx+20]
+"MonsterHunterWorld.exe"+E847E2B: 89 41 20                 -  mov [rcx+20],eax
+"MonsterHunterWorld.exe"+E847E2E: 0F 10 42 28              -  movups xmm0,[rdx+28]
+"MonsterHunterWorld.exe"+E847E32: 0F 11 41 28              -  movups [rcx+28],xmm0
+}
+</AssemblerScript>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>6362</ID>
+                  <Description>"Base"</Description>
+                  <ShowAsHex>1</ShowAsHex>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>getInvest</Address>
+                  <Offsets>
+                    <Offset>0</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>6363</ID>
+                  <Description>"???"</Description>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>getInvest</Address>
+                  <Offsets>
+                    <Offset>4</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>6364</ID>
+                  <Description>"???"</Description>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>getInvest</Address>
+                  <Offsets>
+                    <Offset>8</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>6365</ID>
+                  <Description>"Registered"</Description>
+                  <VariableType>Byte</VariableType>
+                  <Address>getInvest</Address>
+                  <Offsets>
+                    <Offset>C</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>6366</ID>
+                  <Description>"Attempts"</Description>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>getInvest</Address>
+                  <Offsets>
+                    <Offset>10</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>6367</ID>
+                  <Description>"???"</Description>
+                  <ShowAsHex>1</ShowAsHex>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>getInvest</Address>
+                  <Offsets>
+                    <Offset>0</Offset>
+                    <Offset>18</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>6368</ID>
+                  <Description>"???"</Description>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>getInvest</Address>
+                  <Offsets>
+                    <Offset>20</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>6369</ID>
+                  <Description>"Map"</Description>
+                  <DropDownList ReadOnly="1" DescriptionOnly="1" DisplayValueAsItem="1">DF B7 01 86 4C BD 63 AF 00 00 00 00 00 00 00 00 00 00 00 00:Ancient Forest
+2C B6 01 86 4C BC 63 AF 00 00 00 00 00 00 00 00 01 00 00 00:Wildspire Waste
+45 BB 01 86 4C BF 63 AF 00 00 00 00 00 00 00 00 02 00 00 00:Coral Highlands
+92 B9 01 86 4C BE 63 AF 00 00 00 00 00 00 00 00 03 00 00 00:Rotten Vale
+13 B1 01 86 4C B9 63 AF 00 00 00 00 00 00 00 00 04 00 00 00:Elder's Recess
+</DropDownList>
+                  <ShowAsHex>1</ShowAsHex>
+                  <VariableType>Array of byte</VariableType>
+                  <ByteLength>20</ByteLength>
+                  <Address>getInvest</Address>
+                  <Offsets>
+                    <Offset>28</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>6371</ID>
+                  <Description>"Rank"</Description>
+                  <DropDownList ReadOnly="1" DescriptionOnly="1" DisplayValueAsItem="1">DF B7 01 86 4C BD 63 AF 00 00 00 00 00 00 00 00 00 00 00 00:Low Rank
+2C B6 01 86 4C BC 63 AF 00 00 00 00 00 00 00 00 01 00 00 00:High Rank
+45 BB 01 86 4C BF 63 AF 00 00 00 00 00 00 00 00 02 00 00 00:Tempered
+</DropDownList>
+                  <ShowAsHex>1</ShowAsHex>
+                  <VariableType>Array of byte</VariableType>
+                  <ByteLength>20</ByteLength>
+                  <Address>getInvest</Address>
+                  <Offsets>
+                    <Offset>40</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>6372</ID>
+                  <Description>"Monsters"</Description>
+                  <Options moHideChildren="1"/>
+                  <LastState Value="" RealAddress="00000000"/>
+                  <GroupHeader>1</GroupHeader>
+                  <CheatEntries>
+                    <CheatEntry>
+                      <ID>6373</ID>
+                      <Description>"Monster 1"</Description>
+                      <DropDownList ReadOnly="1" DescriptionOnly="1" DisplayValueAsItem="1">51 39 2A 3E 65 76 4F 99 00 00 00 00 00 00 00 00 FF FF FF FF:-None-
+F5 13 CE 9D 7F 76 25 4D 00 00 00 00 00 00 00 00 00 00 00 00:Anjanath
+64 57 98 47 77 CA 2A AD 00 00 00 00 00 00 00 00 01 00 00 00:Rathalos
+42 DE 2C 9B 66 72 35 6D 00 00 00 00 00 00 00 00 07 00 00 00:Great Jagras
+EC 3B 46 F9 B9 2A 00 AD 00 00 00 00 00 00 00 00 09 00 00 00:Rathian
+9F 71 E7 FB D2 2E F0 8C 00 00 00 00 00 00 00 00 0A 00 00 00:Pink Rathian
+0E B5 B1 A5 CA 82 F5 EC 00 00 00 00 00 00 00 00 0B 00 00 00:Azure Rathalos
+39 06 A5 F6 A0 26 10 CD 00 00 00 00 00 00 00 00 0C 00 00 00:Diablos
+A8 49 6F A0 98 7A 15 2D 00 00 00 00 00 00 00 00 0D 00 00 00:Black Diablos
+5B 7F 10 A3 B1 7E 05 0D 00 00 00 00 00 00 00 00 0E 00 00 00:Kirin
+05 DD 29 01 05 37 D0 4C 00 00 00 00 00 00 00 00 10 00 00 00:Kushala Daora
+74 20 F4 AA FC 8A D5 AC 00 00 00 00 00 00 00 00 11 00 00 00:Lunastra
+27 56 95 AD 15 8F C5 8C 00 00 00 00 00 00 00 00 12 00 00 00:Teostra
+96 99 5F 57 0D E3 CA EC 00 00 00 00 00 00 00 00 13 00 00 00:Lavasioth
+C1 EA 52 A8 E3 86 E5 CC 00 00 00 00 00 00 00 00 14 00 00 00:Deviljho
+30 2E 1D 52 DB DA EA 2C 00 00 00 00 00 00 00 00 15 00 00 00:Barroth
+E3 63 BE 54 F4 DE DA 0C 00 00 00 00 00 00 00 00 16 00 00 00:Uragaan
+8D C1 D7 B2 47 97 A5 4C 00 00 00 00 00 00 00 00 18 00 00 00:Pukei-Pukei
+FC 04 A2 5C 3F EB AA AC 00 00 00 00 00 00 00 00 19 00 00 00:Nergigante
+1E 7E 0D 09 50 43 A0 EC 00 00 00 00 00 00 00 00 1B 00 00 00:Kulu-Ya-Ku
+49 CF 00 5A 26 E7 BA CC 00 00 00 00 00 00 00 00 1C 00 00 00:Tzitzi-Ya-Ku
+B8 12 CB 03 1E 3B C0 2C 00 00 00 00 00 00 00 00 1D 00 00 00:Jyuratodus
+6B 48 6C 06 37 3F B0 0C 00 00 00 00 00 00 00 00 1E 00 00 00:Tobi-Kadachi
+DA 8B 36 B0 2E 93 B5 6C 00 00 00 00 00 00 00 00 1F 00 00 00:Paolumu
+D5 81 16 D7 74 F5 CF 4D 00 00 00 00 00 00 00 00 20 00 00 00:Legiana
+44 C5 E0 80 6C 49 D5 AD 00 00 00 00 00 00 00 00 21 00 00 00:Great Girros
+F7 FA 81 83 85 4D C5 8D 00 00 00 00 00 00 00 00 22 00 00 00:Odogaron
+66 3E 4C 2D 7D A1 CA ED 00 00 00 00 00 00 00 00 23 00 00 00:Radobaan
+91 8F 3F 7E 53 45 E5 CD 00 00 00 00 00 00 00 00 24 00 00 00:Vaal Hazak
+00 D3 09 28 4B 99 EA 2D 00 00 00 00 00 00 00 00 25 00 00 00:Dodogama
+22 4C 75 D4 5B F1 DF 6D 00 00 00 00 00 00 00 00 27 00 00 00:Bazelgeuse
+</DropDownList>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>Array of byte</VariableType>
+                      <ByteLength>20</ByteLength>
+                      <Address>getInvest</Address>
+                      <Offsets>
+                        <Offset>40</Offset>
+                      </Offsets>
+                      <CheatEntries>
+                        <CheatEntry>
+                          <ID>6376</ID>
+                          <Description>"Tempered"</Description>
+                          <DropDownList ReadOnly="1" DescriptionOnly="1" DisplayValueAsItem="1">DF B7 01 86 4C BD 63 AF 00 00 00 00 00 00 00 00 00 00 00 00:Normal
+2C B6 01 86 4C BC 63 AF 00 00 00 00 00 00 00 00 01 00 00 00:Tempered
+</DropDownList>
+                          <ShowAsHex>1</ShowAsHex>
+                          <VariableType>Array of byte</VariableType>
+                          <ByteLength>20</ByteLength>
+                          <Address>getInvest</Address>
+                          <Offsets>
+                            <Offset>A0</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                      </CheatEntries>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>6374</ID>
+                      <Description>"Monster 2"</Description>
+                      <DropDownList ReadOnly="1" DescriptionOnly="1" DisplayValueAsItem="1">51 39 2A 3E 65 76 4F 99 00 00 00 00 00 00 00 00 FF FF FF FF:-None-
+F5 13 CE 9D 7F 76 25 4D 00 00 00 00 00 00 00 00 00 00 00 00:Anjanath
+64 57 98 47 77 CA 2A AD 00 00 00 00 00 00 00 00 01 00 00 00:Rathalos
+42 DE 2C 9B 66 72 35 6D 00 00 00 00 00 00 00 00 07 00 00 00:Great Jagras
+EC 3B 46 F9 B9 2A 00 AD 00 00 00 00 00 00 00 00 09 00 00 00:Rathian
+9F 71 E7 FB D2 2E F0 8C 00 00 00 00 00 00 00 00 0A 00 00 00:Pink Rathian
+0E B5 B1 A5 CA 82 F5 EC 00 00 00 00 00 00 00 00 0B 00 00 00:Azure Rathalos
+39 06 A5 F6 A0 26 10 CD 00 00 00 00 00 00 00 00 0C 00 00 00:Diablos
+A8 49 6F A0 98 7A 15 2D 00 00 00 00 00 00 00 00 0D 00 00 00:Black Diablos
+5B 7F 10 A3 B1 7E 05 0D 00 00 00 00 00 00 00 00 0E 00 00 00:Kirin
+05 DD 29 01 05 37 D0 4C 00 00 00 00 00 00 00 00 10 00 00 00:Kushala Daora
+74 20 F4 AA FC 8A D5 AC 00 00 00 00 00 00 00 00 11 00 00 00:Lunastra
+27 56 95 AD 15 8F C5 8C 00 00 00 00 00 00 00 00 12 00 00 00:Teostra
+96 99 5F 57 0D E3 CA EC 00 00 00 00 00 00 00 00 13 00 00 00:Lavasioth
+C1 EA 52 A8 E3 86 E5 CC 00 00 00 00 00 00 00 00 14 00 00 00:Deviljho
+30 2E 1D 52 DB DA EA 2C 00 00 00 00 00 00 00 00 15 00 00 00:Barroth
+E3 63 BE 54 F4 DE DA 0C 00 00 00 00 00 00 00 00 16 00 00 00:Uragaan
+8D C1 D7 B2 47 97 A5 4C 00 00 00 00 00 00 00 00 18 00 00 00:Pukei-Pukei
+FC 04 A2 5C 3F EB AA AC 00 00 00 00 00 00 00 00 19 00 00 00:Nergigante
+1E 7E 0D 09 50 43 A0 EC 00 00 00 00 00 00 00 00 1B 00 00 00:Kulu-Ya-Ku
+49 CF 00 5A 26 E7 BA CC 00 00 00 00 00 00 00 00 1C 00 00 00:Tzitzi-Ya-Ku
+B8 12 CB 03 1E 3B C0 2C 00 00 00 00 00 00 00 00 1D 00 00 00:Jyuratodus
+6B 48 6C 06 37 3F B0 0C 00 00 00 00 00 00 00 00 1E 00 00 00:Tobi-Kadachi
+DA 8B 36 B0 2E 93 B5 6C 00 00 00 00 00 00 00 00 1F 00 00 00:Paolumu
+D5 81 16 D7 74 F5 CF 4D 00 00 00 00 00 00 00 00 20 00 00 00:Legiana
+44 C5 E0 80 6C 49 D5 AD 00 00 00 00 00 00 00 00 21 00 00 00:Great Girros
+F7 FA 81 83 85 4D C5 8D 00 00 00 00 00 00 00 00 22 00 00 00:Odogaron
+66 3E 4C 2D 7D A1 CA ED 00 00 00 00 00 00 00 00 23 00 00 00:Radobaan
+91 8F 3F 7E 53 45 E5 CD 00 00 00 00 00 00 00 00 24 00 00 00:Vaal Hazak
+00 D3 09 28 4B 99 EA 2D 00 00 00 00 00 00 00 00 25 00 00 00:Dodogama
+22 4C 75 D4 5B F1 DF 6D 00 00 00 00 00 00 00 00 27 00 00 00:Bazelgeuse
+</DropDownList>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>Array of byte</VariableType>
+                      <ByteLength>20</ByteLength>
+                      <Address>getInvest</Address>
+                      <Offsets>
+                        <Offset>70</Offset>
+                      </Offsets>
+                      <CheatEntries>
+                        <CheatEntry>
+                          <ID>6377</ID>
+                          <Description>"Tempered"</Description>
+                          <DropDownList ReadOnly="1" DescriptionOnly="1" DisplayValueAsItem="1">DF B7 01 86 4C BD 63 AF 00 00 00 00 00 00 00 00 00 00 00 00:Normal
+2C B6 01 86 4C BC 63 AF 00 00 00 00 00 00 00 00 01 00 00 00:Tempered
+</DropDownList>
+                          <ShowAsHex>1</ShowAsHex>
+                          <VariableType>Array of byte</VariableType>
+                          <ByteLength>20</ByteLength>
+                          <Address>getInvest</Address>
+                          <Offsets>
+                            <Offset>B8</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                      </CheatEntries>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>6375</ID>
+                      <Description>"Monster 3"</Description>
+                      <DropDownList ReadOnly="1" DescriptionOnly="1" DisplayValueAsItem="1">51 39 2A 3E 65 76 4F 99 00 00 00 00 00 00 00 00 FF FF FF FF:-None-
+F5 13 CE 9D 7F 76 25 4D 00 00 00 00 00 00 00 00 00 00 00 00:Anjanath
+64 57 98 47 77 CA 2A AD 00 00 00 00 00 00 00 00 01 00 00 00:Rathalos
+42 DE 2C 9B 66 72 35 6D 00 00 00 00 00 00 00 00 07 00 00 00:Great Jagras
+EC 3B 46 F9 B9 2A 00 AD 00 00 00 00 00 00 00 00 09 00 00 00:Rathian
+9F 71 E7 FB D2 2E F0 8C 00 00 00 00 00 00 00 00 0A 00 00 00:Pink Rathian
+0E B5 B1 A5 CA 82 F5 EC 00 00 00 00 00 00 00 00 0B 00 00 00:Azure Rathalos
+39 06 A5 F6 A0 26 10 CD 00 00 00 00 00 00 00 00 0C 00 00 00:Diablos
+A8 49 6F A0 98 7A 15 2D 00 00 00 00 00 00 00 00 0D 00 00 00:Black Diablos
+5B 7F 10 A3 B1 7E 05 0D 00 00 00 00 00 00 00 00 0E 00 00 00:Kirin
+05 DD 29 01 05 37 D0 4C 00 00 00 00 00 00 00 00 10 00 00 00:Kushala Daora
+74 20 F4 AA FC 8A D5 AC 00 00 00 00 00 00 00 00 11 00 00 00:Lunastra
+27 56 95 AD 15 8F C5 8C 00 00 00 00 00 00 00 00 12 00 00 00:Teostra
+96 99 5F 57 0D E3 CA EC 00 00 00 00 00 00 00 00 13 00 00 00:Lavasioth
+C1 EA 52 A8 E3 86 E5 CC 00 00 00 00 00 00 00 00 14 00 00 00:Deviljho
+30 2E 1D 52 DB DA EA 2C 00 00 00 00 00 00 00 00 15 00 00 00:Barroth
+E3 63 BE 54 F4 DE DA 0C 00 00 00 00 00 00 00 00 16 00 00 00:Uragaan
+8D C1 D7 B2 47 97 A5 4C 00 00 00 00 00 00 00 00 18 00 00 00:Pukei-Pukei
+FC 04 A2 5C 3F EB AA AC 00 00 00 00 00 00 00 00 19 00 00 00:Nergigante
+1E 7E 0D 09 50 43 A0 EC 00 00 00 00 00 00 00 00 1B 00 00 00:Kulu-Ya-Ku
+49 CF 00 5A 26 E7 BA CC 00 00 00 00 00 00 00 00 1C 00 00 00:Tzitzi-Ya-Ku
+B8 12 CB 03 1E 3B C0 2C 00 00 00 00 00 00 00 00 1D 00 00 00:Jyuratodus
+6B 48 6C 06 37 3F B0 0C 00 00 00 00 00 00 00 00 1E 00 00 00:Tobi-Kadachi
+DA 8B 36 B0 2E 93 B5 6C 00 00 00 00 00 00 00 00 1F 00 00 00:Paolumu
+D5 81 16 D7 74 F5 CF 4D 00 00 00 00 00 00 00 00 20 00 00 00:Legiana
+44 C5 E0 80 6C 49 D5 AD 00 00 00 00 00 00 00 00 21 00 00 00:Great Girros
+F7 FA 81 83 85 4D C5 8D 00 00 00 00 00 00 00 00 22 00 00 00:Odogaron
+66 3E 4C 2D 7D A1 CA ED 00 00 00 00 00 00 00 00 23 00 00 00:Radobaan
+91 8F 3F 7E 53 45 E5 CD 00 00 00 00 00 00 00 00 24 00 00 00:Vaal Hazak
+00 D3 09 28 4B 99 EA 2D 00 00 00 00 00 00 00 00 25 00 00 00:Dodogama
+22 4C 75 D4 5B F1 DF 6D 00 00 00 00 00 00 00 00 27 00 00 00:Bazelgeuse
+</DropDownList>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>Array of byte</VariableType>
+                      <ByteLength>20</ByteLength>
+                      <Address>getInvest</Address>
+                      <Offsets>
+                        <Offset>88</Offset>
+                      </Offsets>
+                      <CheatEntries>
+                        <CheatEntry>
+                          <ID>6378</ID>
+                          <Description>"Tempered"</Description>
+                          <DropDownList ReadOnly="1" DescriptionOnly="1" DisplayValueAsItem="1">DF B7 01 86 4C BD 63 AF 00 00 00 00 00 00 00 00 00 00 00 00:Normal
+2C B6 01 86 4C BC 63 AF 00 00 00 00 00 00 00 00 01 00 00 00:Tempered
+</DropDownList>
+                          <ShowAsHex>1</ShowAsHex>
+                          <VariableType>Array of byte</VariableType>
+                          <ByteLength>20</ByteLength>
+                          <Address>getInvest</Address>
+                          <Offsets>
+                            <Offset>D0</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                      </CheatEntries>
+                    </CheatEntry>
+                  </CheatEntries>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>6380</ID>
+                  <Description>"Health Modifier"</Description>
+                  <DropDownList ReadOnly="1" DescriptionOnly="1" DisplayValueAsItem="1">0:lvl 0
+1:lvl 1
+2:lvl 2
+3:lvl 3
+4:lvl 4
+5:lvl 5
+</DropDownList>
+                  <Color>000000</Color>
+                  <VariableType>Byte</VariableType>
+                  <Address>getInvest</Address>
+                  <Offsets>
+                    <Offset>E8</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>6381</ID>
+                  <Description>"Attack Modifier"</Description>
+                  <DropDownList ReadOnly="1" DescriptionOnly="1" DisplayValueAsItem="1">0:lvl 0
+1:lvl 1
+2:lvl 2
+3:lvl 3
+4:lvl 4
+5:lvl 5
+</DropDownList>
+                  <Color>000000</Color>
+                  <VariableType>Byte</VariableType>
+                  <Address>getInvest</Address>
+                  <Offsets>
+                    <Offset>E9</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>6382</ID>
+                  <Description>"Defense Modifier"</Description>
+                  <DropDownList ReadOnly="1" DescriptionOnly="1" DisplayValueAsItem="1">0:lvl 0
+1:lvl 1
+2:lvl 2
+3:lvl 3
+4:lvl 4
+5:lvl 5
+</DropDownList>
+                  <Color>000000</Color>
+                  <VariableType>Byte</VariableType>
+                  <Address>getInvest</Address>
+                  <Offsets>
+                    <Offset>EA</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>6383</ID>
+                  <Description>"Size Modifier"</Description>
+                  <DropDownList DescriptionOnly="1" DisplayValueAsItem="1">0:None
+1:Small Chance
+2:Large Chance
+</DropDownList>
+                  <Color>000000</Color>
+                  <VariableType>Byte</VariableType>
+                  <Address>getInvest</Address>
+                  <Offsets>
+                    <Offset>EB</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>6384</ID>
+                  <Description>"???"</Description>
+                  <DropDownList ReadOnly="1" DescriptionOnly="1" DisplayValueAsItem="1">0:0
+1:1
+2:2
+</DropDownList>
+                  <Color>000000</Color>
+                  <VariableType>Byte</VariableType>
+                  <Address>getInvest</Address>
+                  <Offsets>
+                    <Offset>EC</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>6385</ID>
+                  <Description>"Locale"</Description>
+                  <DropDownList ReadOnly="1" DescriptionOnly="1" DisplayValueAsItem="1">0:Nothing to report
+1:Primary Unique Resource
+2:Secondary Unique Resource
+3:Upsurge: Mining Outcrops
+4:Upsurge: Bonepiless
+5:Flourishing: Plants
+</DropDownList>
+                  <Color>000000</Color>
+                  <VariableType>Byte</VariableType>
+                  <Address>getInvest</Address>
+                  <Offsets>
+                    <Offset>ED</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>6386</ID>
+                  <Description>"Type"</Description>
+                  <DropDownList ReadOnly="1" DescriptionOnly="1" DisplayValueAsItem="1">0:Hunt / 1T / 50 Min
+1:Hunt / 1T / 30 Min
+2:Hunt / 1T / 15 Min
+3:Hunt / 2T / 50 Min
+4:Hunt / 2T / 30 Min
+5:Hunt / 3T / 50 Min
+6:Hunt small monster 1 / 50 Min
+7:Hunt small monster 2 / 50 Min
+8:Capture / 1T / 50 Min
+9:Capture / 1T / 30 Min
+10:Capture / 1T / 15 Min
+</DropDownList>
+                  <Color>000000</Color>
+                  <VariableType>Byte</VariableType>
+                  <Address>getInvest</Address>
+                  <Offsets>
+                    <Offset>EE</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>6387</ID>
+                  <Description>"???"</Description>
+                  <DropDownList ReadOnly="1" DescriptionOnly="1" DisplayValueAsItem="1">0:0
+1:1
+</DropDownList>
+                  <Color>000000</Color>
+                  <VariableType>Byte</VariableType>
+                  <Address>getInvest</Address>
+                  <Offsets>
+                    <Offset>EF</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>6388</ID>
+                  <Description>"Faints"</Description>
+                  <DropDownList ReadOnly="1" DescriptionOnly="1" DisplayValueAsItem="1">0:Failure: Faint 5 time(s)
+1:Failure: Faint 3 time(s)
+2:Failure: Faint 2 time(s)
+3:Failure: Faint 1 time(s)
+</DropDownList>
+                  <Color>000000</Color>
+                  <VariableType>Byte</VariableType>
+                  <Address>getInvest</Address>
+                  <Offsets>
+                    <Offset>F0</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>6389</ID>
+                  <Description>"Players"</Description>
+                  <DropDownList ReadOnly="1" DescriptionOnly="1" DisplayValueAsItem="1">0:4 Players
+1:2 Players
+</DropDownList>
+                  <Color>000000</Color>
+                  <VariableType>Byte</VariableType>
+                  <Address>getInvest</Address>
+                  <Offsets>
+                    <Offset>F1</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>6390</ID>
+                  <Description>"Bonus Reward"</Description>
+                  <DropDownList ReadOnly="1" DescriptionOnly="1" DisplayValueAsItem="1">0:0
+1:1
+2:2
+</DropDownList>
+                  <Color>000000</Color>
+                  <VariableType>Byte</VariableType>
+                  <Address>getInvest</Address>
+                  <Offsets>
+                    <Offset>F2</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>6391</ID>
+                  <Description>"Zeni Reward"</Description>
+                  <DropDownList DescriptionOnly="1" DisplayValueAsItem="1">0:100%
+1:125%
+2:150%
+3:200%
+4:250%
+5:0%
+</DropDownList>
+                  <Color>000000</Color>
+                  <VariableType>Byte</VariableType>
+                  <Address>getInvest</Address>
+                  <Offsets>
+                    <Offset>F3</Offset>
+                  </Offsets>
+                </CheatEntry>
+              </CheatEntries>
+            </CheatEntry>
+            <CheatEntry>
               <ID>4227</ID>
               <Description>"护石编辑器"</Description>
               <Options moHideChildren="1"/>
               <LastState/>
               <VariableType>Auto Assembler Script</VariableType>
-              <AssemblerScript>{ Game : MonsterHunterWorld.exe
-Version:
-Date : 2018-08-21
-Author : Marcus101RR
+              <AssemblerScript>{ Game   : MonsterHunterWorld.exe
+  Version: 
+  Date   : 2018-08-21
+  Author : Marcus101RR
 
-This script allows editing for active charm.
+  This script allows editing for active charm.
 }
 
 [ENABLE]
@@ -17057,24 +17727,24 @@ registersymbol(charmIdi)
 newmem:
 
 code:
-mov r9,[rcx+rax*8+00005E18]
-mov [charmIdi],r9
-jmp return
+  mov r9,[rcx+rax*8+00005E18]
+  mov [charmIdi],r9
+  jmp return
 
 charmIdi:
-dq 0
+  dq 0
 
 charmeditor:
-jmp newmem
-nop
-nop
-nop
+  jmp newmem
+  nop
+  nop
+  nop
 return:
 
 [DISABLE]
 
 charmeditor:
-db 4C 8B 8C C1 18 5E 00 00
+  db 4C 8B 8C C1 18 5E 00 00
 
 unregistersymbol(charmeditor)
 dealloc(newmem)
@@ -17083,29 +17753,29 @@ unregistersymbol(charmIdi)
 {
 // ORIGINAL CODE - INJECTION POINT: "MonsterHunterWorld.exe"+1A6CC7
 
-"MonsterHunterWorld.exe"+1A6CA2: C3 - ret
-"MonsterHunterWorld.exe"+1A6CA3: 41 81 F8 2D 01 00 00 - cmp r8d,0000012D
-"MonsterHunterWorld.exe"+1A6CAA: 73 23 - jae MonsterHunterWorld.exe+1A6CCF
-"MonsterHunterWorld.exe"+1A6CAC: 49 63 C0 - movsxd rax,r8d
-"MonsterHunterWorld.exe"+1A6CAF: 4C 8B 8C C1 48 4B 00 00 - mov r9,[rcx+rax*8+00004B48]
-"MonsterHunterWorld.exe"+1A6CB7: 49 8B C1 - mov rax,r9
-"MonsterHunterWorld.exe"+1A6CBA: C3 - ret
-"MonsterHunterWorld.exe"+1A6CBB: 41 81 F8 2C 01 00 00 - cmp r8d,0000012C
-"MonsterHunterWorld.exe"+1A6CC2: 73 0B - jae MonsterHunterWorld.exe+1A6CCF
-"MonsterHunterWorld.exe"+1A6CC4: 49 63 C0 - movsxd rax,r8d
+"MonsterHunterWorld.exe"+1A6CA2: C3                          -  ret 
+"MonsterHunterWorld.exe"+1A6CA3: 41 81 F8 2D 01 00 00        -  cmp r8d,0000012D
+"MonsterHunterWorld.exe"+1A6CAA: 73 23                       -  jae MonsterHunterWorld.exe+1A6CCF
+"MonsterHunterWorld.exe"+1A6CAC: 49 63 C0                    -  movsxd  rax,r8d
+"MonsterHunterWorld.exe"+1A6CAF: 4C 8B 8C C1 48 4B 00 00     -  mov r9,[rcx+rax*8+00004B48]
+"MonsterHunterWorld.exe"+1A6CB7: 49 8B C1                    -  mov rax,r9
+"MonsterHunterWorld.exe"+1A6CBA: C3                          -  ret 
+"MonsterHunterWorld.exe"+1A6CBB: 41 81 F8 2C 01 00 00        -  cmp r8d,0000012C
+"MonsterHunterWorld.exe"+1A6CC2: 73 0B                       -  jae MonsterHunterWorld.exe+1A6CCF
+"MonsterHunterWorld.exe"+1A6CC4: 49 63 C0                    -  movsxd  rax,r8d
 // ---------- INJECTING HERE ----------
-"MonsterHunterWorld.exe"+1A6CC7: 4C 8B 8C C1 18 5E 00 00 - mov r9,[rcx+rax*8+00005E18]
-// ---------- DONE INJECTING ----------
-"MonsterHunterWorld.exe"+1A6CCF: 49 8B C1 - mov rax,r9
-"MonsterHunterWorld.exe"+1A6CD2: C3 - ret
-"MonsterHunterWorld.exe"+1A6CD3: 90 - nop
-"MonsterHunterWorld.exe"+1A6CD4: 42 6C - insb
-"MonsterHunterWorld.exe"+1A6CD6: 1A 00 - sbb al,byte ptr [rax]
-"MonsterHunterWorld.exe"+1A6CD8: 5B - pop rbx
-"MonsterHunterWorld.exe"+1A6CD9: 6C - insb
-"MonsterHunterWorld.exe"+1A6CDA: 1A 00 - sbb al,byte ptr [rax]
-"MonsterHunterWorld.exe"+1A6CDC: 73 6C - jae MonsterHunterWorld.exe+1A6D4A
-"MonsterHunterWorld.exe"+1A6CDE: 1A 00 - sbb al,byte ptr [rax]
+"MonsterHunterWorld.exe"+1A6CC7: 4C 8B 8C C1 18 5E 00 00     -  mov r9,[rcx+rax*8+00005E18]
+// ---------- DONE INJECTING  ----------
+"MonsterHunterWorld.exe"+1A6CCF: 49 8B C1                    -  mov rax,r9
+"MonsterHunterWorld.exe"+1A6CD2: C3                          -  ret 
+"MonsterHunterWorld.exe"+1A6CD3: 90                          -  nop 
+"MonsterHunterWorld.exe"+1A6CD4: 42 6C                       -  insb 
+"MonsterHunterWorld.exe"+1A6CD6: 1A 00                       -  sbb al,byte ptr [rax]
+"MonsterHunterWorld.exe"+1A6CD8: 5B                          -  pop rbx
+"MonsterHunterWorld.exe"+1A6CD9: 6C                          -  insb 
+"MonsterHunterWorld.exe"+1A6CDA: 1A 00                       -  sbb al,byte ptr [rax]
+"MonsterHunterWorld.exe"+1A6CDC: 73 6C                       -  jae MonsterHunterWorld.exe+1A6D4A
+"MonsterHunterWorld.exe"+1A6CDE: 1A 00                       -  sbb al,byte ptr [rax]
 }
 </AssemblerScript>
               <CheatEntries>
@@ -17132,15 +17802,44 @@ unregistersymbol(charmIdi)
                 </CheatEntry>
                 <CheatEntry>
                   <ID>5950</ID>
-                  <Description>"No description"</Description>
+                  <Description>"Gem Slots"</Description>
                   <VariableType>Byte</VariableType>
                   <Address>charmIdi</Address>
                   <Offsets>
-                    <Offset>40</Offset>
+                    <Offset>11</Offset>
                   </Offsets>
+                  <CheatEntries>
+                    <CheatEntry>
+                      <ID>6392</ID>
+                      <Description>"Slot 1"</Description>
+                      <VariableType>Byte</VariableType>
+                      <Address>charmIdi</Address>
+                      <Offsets>
+                        <Offset>40</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>6393</ID>
+                      <Description>"Slot 2"</Description>
+                      <VariableType>Byte</VariableType>
+                      <Address>charmIdi</Address>
+                      <Offsets>
+                        <Offset>41</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>6394</ID>
+                      <Description>"Slot 3"</Description>
+                      <VariableType>Byte</VariableType>
+                      <Address>charmIdi</Address>
+                      <Offsets>
+                        <Offset>42</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                  </CheatEntries>
                 </CheatEntry>
                 <CheatEntry>
-                  <ID>4228</ID>
+                  <ID>6395</ID>
                   <Description>"Skill 1"</Description>
                   <DropDownList DisplayValueAsItem="1">00:None
 01:Poison Resistance
@@ -17302,7 +18001,7 @@ A3:Lunastra Favor
                   </Offsets>
                   <CheatEntries>
                     <CheatEntry>
-                      <ID>4229</ID>
+                      <ID>6396</ID>
                       <Description>"Lv."</Description>
                       <VariableType>Byte</VariableType>
                       <Address>charmIdi</Address>
@@ -17661,94 +18360,16 @@ A3:Lunastra Favor
               </CheatEntries>
             </CheatEntry>
             <CheatEntry>
-              <ID>2</ID>
-              <Description>"设置道具数量"</Description>
-              <LastState/>
-              <VariableType>Auto Assembler Script</VariableType>
-              <AssemblerScript>{ Game : MonsterHunterWorld.exe
-Version:
-Date : 2018-08-11
-Author : Marcus101RR
-
-This script does blah blah blah
-}
-
-define(address,"MonsterHunterWorld.exe"+144BF4C)
-define(bytes,8B 48 0C 89 0A)
-
-[ENABLE]
-
-assert(address,bytes)
-alloc(newmem,$1000,"MonsterHunterWorld.exe"+144BF4C)
-
-label(code)
-label(return)
-
-newmem:
-
-code:
-cmp [rax+0C],#50
-jge @f
-mov [rax+0C],#50
-@@:
-mov ecx,[rax+0C]
-mov [rdx],ecx
-jmp return
-
-address:
-jmp newmem
-return:
-
-[DISABLE]
-
-address:
-db bytes
-// mov ecx,[rax+0C]
-// mov [rdx],ecx
-
-dealloc(newmem)
-
-{
-// ORIGINAL CODE - INJECTION POINT: "MonsterHunterWorld.exe"+144AC1C
-
-"MonsterHunterWorld.exe"+144ABFF: 44 8B C3 - mov r8d,ebx
-"MonsterHunterWorld.exe"+144AC02: 8B D6 - mov edx,esi
-"MonsterHunterWorld.exe"+144AC04: E8 17 11 80 FF - call MonsterHunterWorld.exe+C4BD20
-"MonsterHunterWorld.exe"+144AC09: 48 85 C0 - test rax,rax
-"MonsterHunterWorld.exe"+144AC0C: 74 13 - je MonsterHunterWorld.exe+144AC21
-"MonsterHunterWorld.exe"+144AC0E: 48 8B 0F - mov rcx,[rdi]
-"MonsterHunterWorld.exe"+144AC11: 8B 11 - mov edx,[rcx]
-"MonsterHunterWorld.exe"+144AC13: 39 50 08 - cmp [rax+08],edx
-"MonsterHunterWorld.exe"+144AC16: 75 09 - jne MonsterHunterWorld.exe+144AC21
-"MonsterHunterWorld.exe"+144AC18: 48 8B 57 08 - mov rdx,[rdi+08]
-// ---------- INJECTING HERE ----------
-"MonsterHunterWorld.exe"+144AC1C: 8B 48 0C - mov ecx,[rax+0C]
-"MonsterHunterWorld.exe"+144AC1F: 89 0A - mov [rdx],ecx
-// ---------- DONE INJECTING ----------
-"MonsterHunterWorld.exe"+144AC21: 48 8B 0D 90 CC 6D 02 - mov rcx,[MonsterHunterWorld.exe+3B278B8]
-"MonsterHunterWorld.exe"+144AC28: FF C3 - inc ebx
-"MonsterHunterWorld.exe"+144AC2A: E8 F1 A5 30 00 - call MonsterHunterWorld.exe+1755220
-"MonsterHunterWorld.exe"+144AC2F: 48 8B C8 - mov rcx,rax
-"MonsterHunterWorld.exe"+144AC32: 8B D6 - mov edx,esi
-"MonsterHunterWorld.exe"+144AC34: E8 C7 0F 80 FF - call MonsterHunterWorld.exe+C4BC00
-"MonsterHunterWorld.exe"+144AC39: 3B D8 - cmp ebx,eax
-"MonsterHunterWorld.exe"+144AC3B: 72 B3 - jb MonsterHunterWorld.exe+144ABF0
-"MonsterHunterWorld.exe"+144AC3D: 48 8B 5C 24 30 - mov rbx,[rsp+30]
-"MonsterHunterWorld.exe"+144AC42: 48 8B 74 24 38 - mov rsi,[rsp+38]
-}
-</AssemblerScript>
-            </CheatEntry>
-            <CheatEntry>
               <ID>5963</ID>
               <Description>"Set Item Box Quantity"</Description>
               <LastState/>
               <VariableType>Auto Assembler Script</VariableType>
-              <AssemblerScript>{ Game : MonsterHunterWorld.exe
-Version:
-Date : 2018-10-05
-Author : Marcus101RR
+              <AssemblerScript>{ Game   : MonsterHunterWorld.exe
+  Version: 
+  Date   : 2018-10-05
+  Author : Marcus101RR
 
-This script does blah blah blah
+  This script does blah blah blah
 }
 
 [ENABLE]
@@ -17762,23 +18383,23 @@ label(return)
 newmem:
 
 code:
-cmp [rax+0C],#300
-jge @f
-mov [rax+0C],#300
+  cmp [rax+0C],#450
+  jge @f
+  mov [rax+0C],#450
 @@:
-mov ecx,[rax+0C]
-mov [rdx],ecx
-jmp return
+  mov ecx,[rax+0C]
+  mov [rdx],ecx
+  jmp return
 
 boxCarry:
-jmp newmem
+  jmp newmem
 return:
 registersymbol(boxCarry)
 
 [DISABLE]
 
 boxCarry:
-db 8B 48 0C 89 0A
+  db 8B 48 0C 89 0A
 
 unregistersymbol(boxCarry)
 dealloc(newmem)
@@ -17786,44 +18407,44 @@ dealloc(newmem)
 {
 // ORIGINAL CODE - INJECTION POINT: "MonsterHunterWorld.exe"+14773BC
 
-"MonsterHunterWorld.exe"+147739F: 44 8B C3 - mov r8d,ebx
-"MonsterHunterWorld.exe"+14773A2: 8B D6 - mov edx,esi
-"MonsterHunterWorld.exe"+14773A4: E8 97 D9 7F FF - call MonsterHunterWorld.exe+C74D40
-"MonsterHunterWorld.exe"+14773A9: 48 85 C0 - test rax,rax
-"MonsterHunterWorld.exe"+14773AC: 74 13 - je MonsterHunterWorld.exe+14773C1
-"MonsterHunterWorld.exe"+14773AE: 48 8B 0F - mov rcx,[rdi]
-"MonsterHunterWorld.exe"+14773B1: 8B 11 - mov edx,[rcx]
-"MonsterHunterWorld.exe"+14773B3: 39 50 08 - cmp [rax+08],edx
-"MonsterHunterWorld.exe"+14773B6: 75 09 - jne MonsterHunterWorld.exe+14773C1
-"MonsterHunterWorld.exe"+14773B8: 48 8B 57 08 - mov rdx,[rdi+08]
+"MonsterHunterWorld.exe"+147739F: 44 8B C3              -  mov r8d,ebx
+"MonsterHunterWorld.exe"+14773A2: 8B D6                 -  mov edx,esi
+"MonsterHunterWorld.exe"+14773A4: E8 97 D9 7F FF        -  call MonsterHunterWorld.exe+C74D40
+"MonsterHunterWorld.exe"+14773A9: 48 85 C0              -  test rax,rax
+"MonsterHunterWorld.exe"+14773AC: 74 13                 -  je MonsterHunterWorld.exe+14773C1
+"MonsterHunterWorld.exe"+14773AE: 48 8B 0F              -  mov rcx,[rdi]
+"MonsterHunterWorld.exe"+14773B1: 8B 11                 -  mov edx,[rcx]
+"MonsterHunterWorld.exe"+14773B3: 39 50 08              -  cmp [rax+08],edx
+"MonsterHunterWorld.exe"+14773B6: 75 09                 -  jne MonsterHunterWorld.exe+14773C1
+"MonsterHunterWorld.exe"+14773B8: 48 8B 57 08           -  mov rdx,[rdi+08]
 // ---------- INJECTING HERE ----------
-"MonsterHunterWorld.exe"+14773BC: 8B 48 0C - mov ecx,[rax+0C]
-"MonsterHunterWorld.exe"+14773BF: 89 0A - mov [rdx],ecx
-// ---------- DONE INJECTING ----------
-"MonsterHunterWorld.exe"+14773C1: 48 8B 0D 80 28 70 02 - mov rcx,[MonsterHunterWorld.exe+3B79C48]
-"MonsterHunterWorld.exe"+14773C8: FF C3 - inc ebx
-"MonsterHunterWorld.exe"+14773CA: E8 71 E5 30 00 - call MonsterHunterWorld.exe+1785940
-"MonsterHunterWorld.exe"+14773CF: 48 8B C8 - mov rcx,rax
-"MonsterHunterWorld.exe"+14773D2: 8B D6 - mov edx,esi
-"MonsterHunterWorld.exe"+14773D4: E8 47 D8 7F FF - call MonsterHunterWorld.exe+C74C20
-"MonsterHunterWorld.exe"+14773D9: 3B D8 - cmp ebx,eax
-"MonsterHunterWorld.exe"+14773DB: 72 B3 - jb MonsterHunterWorld.exe+1477390
-"MonsterHunterWorld.exe"+14773DD: 48 8B 5C 24 30 - mov rbx,[rsp+30]
-"MonsterHunterWorld.exe"+14773E2: 48 8B 74 24 38 - mov rsi,[rsp+38]
+"MonsterHunterWorld.exe"+14773BC: 8B 48 0C              -  mov ecx,[rax+0C]
+"MonsterHunterWorld.exe"+14773BF: 89 0A                 -  mov [rdx],ecx
+// ---------- DONE INJECTING  ----------
+"MonsterHunterWorld.exe"+14773C1: 48 8B 0D 80 28 70 02  -  mov rcx,[MonsterHunterWorld.exe+3B79C48]
+"MonsterHunterWorld.exe"+14773C8: FF C3                 -  inc ebx
+"MonsterHunterWorld.exe"+14773CA: E8 71 E5 30 00        -  call MonsterHunterWorld.exe+1785940
+"MonsterHunterWorld.exe"+14773CF: 48 8B C8              -  mov rcx,rax
+"MonsterHunterWorld.exe"+14773D2: 8B D6                 -  mov edx,esi
+"MonsterHunterWorld.exe"+14773D4: E8 47 D8 7F FF        -  call MonsterHunterWorld.exe+C74C20
+"MonsterHunterWorld.exe"+14773D9: 3B D8                 -  cmp ebx,eax
+"MonsterHunterWorld.exe"+14773DB: 72 B3                 -  jb MonsterHunterWorld.exe+1477390
+"MonsterHunterWorld.exe"+14773DD: 48 8B 5C 24 30        -  mov rbx,[rsp+30]
+"MonsterHunterWorld.exe"+14773E2: 48 8B 74 24 38        -  mov rsi,[rsp+38]
 }
 </AssemblerScript>
             </CheatEntry>
             <CheatEntry>
               <ID>4448</ID>
-              <Description>"改变最大携带"</Description>
+              <Description>"Change Max Carry"</Description>
               <LastState/>
               <VariableType>Auto Assembler Script</VariableType>
-              <AssemblerScript>{ Game : MonsterHunterWorld.exe
-Version:
-Date : 2018-08-24
-Author : Marcus101RR
+              <AssemblerScript>{ Game   : MonsterHunterWorld.exe
+  Version: 
+  Date   : 2018-08-24
+  Author : Marcus101RR
 
-This script does blah blah blah
+  This script does blah blah blah
 }
 
 [ENABLE]
@@ -17839,26 +18460,26 @@ registersymbol(curCap)
 registersymbol(maxCap)
 
 newmem:
-mov ecx,[curCap]
-mov [rax+12],ecx
+  mov ecx,[curCap]
+  mov [rax+12],ecx
 code:
-movsx ecx,byte ptr [rax+12]
-jmp MonsterHunterWorld.exe+1477502
-jmp return
+  movsx ecx,byte ptr [rax+12]
+  jmp MonsterHunterWorld.exe+1477502
+  jmp return
 
 curCap:
 dq 0A
 
 maxCap:
-jmp newmem
-nop
+  jmp newmem
+  nop
 return:
 
 
 [DISABLE]
 
 maxCap:
-db 0F BE 48 12 EB 03
+  db 0F BE 48 12 EB 03
 
 unregistersymbol(maxCap)
 dealloc(newmem)
@@ -17866,43 +18487,43 @@ unregistersymbol(curCap)
 {
 // ORIGINAL CODE - INJECTION POINT: "MonsterHunterWorld.exe"+144AD79
 
-"MonsterHunterWorld.exe"+144AD57: 48 8B 4F 08 - mov rcx,[rdi+08]
-"MonsterHunterWorld.exe"+144AD5B: C6 01 01 - mov byte ptr [rcx],01
-"MonsterHunterWorld.exe"+144AD5E: 48 8B 0F - mov rcx,[rdi]
-"MonsterHunterWorld.exe"+144AD61: 8B 11 - mov edx,[rcx]
-"MonsterHunterWorld.exe"+144AD63: 48 8B 0D 46 4A 6D 02 - mov rcx,[MonsterHunterWorld.exe+3B1F7B0]
-"MonsterHunterWorld.exe"+144AD6A: 48 85 C9 - test rcx,rcx
-"MonsterHunterWorld.exe"+144AD6D: 74 10 - je MonsterHunterWorld.exe+144AD7F
-"MonsterHunterWorld.exe"+144AD6F: E8 8C 6B 16 00 - call MonsterHunterWorld.exe+15B1900
-"MonsterHunterWorld.exe"+144AD74: 48 85 C0 - test rax,rax
-"MonsterHunterWorld.exe"+144AD77: 74 06 - je MonsterHunterWorld.exe+144AD7F
+"MonsterHunterWorld.exe"+144AD57: 48 8B 4F 08           -  mov rcx,[rdi+08]
+"MonsterHunterWorld.exe"+144AD5B: C6 01 01              -  mov byte ptr [rcx],01
+"MonsterHunterWorld.exe"+144AD5E: 48 8B 0F              -  mov rcx,[rdi]
+"MonsterHunterWorld.exe"+144AD61: 8B 11                 -  mov edx,[rcx]
+"MonsterHunterWorld.exe"+144AD63: 48 8B 0D 46 4A 6D 02  -  mov rcx,[MonsterHunterWorld.exe+3B1F7B0]
+"MonsterHunterWorld.exe"+144AD6A: 48 85 C9              -  test rcx,rcx
+"MonsterHunterWorld.exe"+144AD6D: 74 10                 -  je MonsterHunterWorld.exe+144AD7F
+"MonsterHunterWorld.exe"+144AD6F: E8 8C 6B 16 00        -  call MonsterHunterWorld.exe+15B1900
+"MonsterHunterWorld.exe"+144AD74: 48 85 C0              -  test rax,rax
+"MonsterHunterWorld.exe"+144AD77: 74 06                 -  je MonsterHunterWorld.exe+144AD7F
 // ---------- INJECTING HERE ----------
-"MonsterHunterWorld.exe"+144AD79: 0F BE 48 12 - movsx ecx,byte ptr [rax+12]
-"MonsterHunterWorld.exe"+144AD7D: EB 03 - jmp MonsterHunterWorld.exe+144AD82
-// ---------- DONE INJECTING ----------
-"MonsterHunterWorld.exe"+144AD7F: 41 8B CE - mov ecx,r14d
-"MonsterHunterWorld.exe"+144AD82: 48 8B 47 10 - mov rax,[rdi+10]
-"MonsterHunterWorld.exe"+144AD86: 2B 4B 0C - sub ecx,[rbx+0C]
-"MonsterHunterWorld.exe"+144AD89: 89 08 - mov [rax],ecx
-"MonsterHunterWorld.exe"+144AD8B: 48 8B 47 10 - mov rax,[rdi+10]
-"MonsterHunterWorld.exe"+144AD8F: 44 39 30 - cmp [rax],r14d
-"MonsterHunterWorld.exe"+144AD92: 7D 10 - jnl MonsterHunterWorld.exe+144ADA4
-"MonsterHunterWorld.exe"+144AD94: 44 89 30 - mov [rax],r14d
-"MonsterHunterWorld.exe"+144AD97: EB 0B - jmp MonsterHunterWorld.exe+144ADA4
-"MonsterHunterWorld.exe"+144AD99: 85 C0 - test eax,eax
+"MonsterHunterWorld.exe"+144AD79: 0F BE 48 12           -  movsx ecx,byte ptr [rax+12]
+"MonsterHunterWorld.exe"+144AD7D: EB 03                 -  jmp MonsterHunterWorld.exe+144AD82
+// ---------- DONE INJECTING  ----------
+"MonsterHunterWorld.exe"+144AD7F: 41 8B CE              -  mov ecx,r14d
+"MonsterHunterWorld.exe"+144AD82: 48 8B 47 10           -  mov rax,[rdi+10]
+"MonsterHunterWorld.exe"+144AD86: 2B 4B 0C              -  sub ecx,[rbx+0C]
+"MonsterHunterWorld.exe"+144AD89: 89 08                 -  mov [rax],ecx
+"MonsterHunterWorld.exe"+144AD8B: 48 8B 47 10           -  mov rax,[rdi+10]
+"MonsterHunterWorld.exe"+144AD8F: 44 39 30              -  cmp [rax],r14d
+"MonsterHunterWorld.exe"+144AD92: 7D 10                 -  jnl MonsterHunterWorld.exe+144ADA4
+"MonsterHunterWorld.exe"+144AD94: 44 89 30              -  mov [rax],r14d
+"MonsterHunterWorld.exe"+144AD97: EB 0B                 -  jmp MonsterHunterWorld.exe+144ADA4
+"MonsterHunterWorld.exe"+144AD99: 85 C0                 -  test eax,eax
 }
 </AssemblerScript>
             </CheatEntry>
             <CheatEntry>
               <ID>4328</ID>
-              <Description>"静态数据 (字节数组)"</Description>
+              <Description>"Static Data (AOB)"</Description>
               <Options moHideChildren="1"/>
               <LastState/>
               <VariableType>Auto Assembler Script</VariableType>
-              <AssemblerScript>{ Game : MonsterHunterWorld.exe
-Version:
-Date : 2018-08-21
-Author : Marcus101RR
+              <AssemblerScript>{ Game   : MonsterHunterWorld.exe
+  Version: 
+  Date   : 2018-08-21
+  Author : Marcus101RR
 }
 
 [ENABLE]
@@ -17918,26 +18539,26 @@ registersymbol(conitemparam)
 registersymbol(itemparamp)
 
 newmem:
-mov [itemparamp],rax
+  mov [itemparamp],rax
 
 code:
-movss xmm0,[rax+000000A8]
-jmp return
+  movss xmm0,[rax+000000A8]
+  jmp return
 
 itemparamp:
-dq 0
+  dq 0
 
 conitemparam:
-jmp newmem
-nop
-nop
-nop
+  jmp newmem
+  nop
+  nop
+  nop
 return:
 
 [DISABLE]
 
 conitemparam:
-db F3 0F 10 80 A8 00 00 00
+  db F3 0F 10 80 A8 00 00 00
 
 unregistersymbol(conitemparam)
 unregistersymbol(itemparamp)
@@ -18053,15 +18674,309 @@ dealloc(newmem)
               <GroupHeader>1</GroupHeader>
               <CheatEntries>
                 <CheatEntry>
-                  <ID>5492</ID>
-                  <Description>"Data"</Description>
+                  <ID>5966</ID>
+                  <Description>"Character"</Description>
                   <Options moHideChildren="1"/>
                   <LastState Value="" RealAddress="00000000"/>
                   <GroupHeader>1</GroupHeader>
                   <CheatEntries>
                     <CheatEntry>
-                      <ID>5491</ID>
-                      <Description>"Max Health"</Description>
+                      <ID>5965</ID>
+                      <Description>"Hunter Rank"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>MonsterHunterWorld.exe+3B79C48</Address>
+                      <Offsets>
+                        <Offset>68</Offset>
+                        <Offset>90</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>6397</ID>
+                      <Description>"Zeni"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>MonsterHunterWorld.exe+3B79C48</Address>
+                      <Offsets>
+                        <Offset>6C</Offset>
+                        <Offset>90</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>6398</ID>
+                      <Description>"Research Points"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>MonsterHunterWorld.exe+3B79C48</Address>
+                      <Offsets>
+                        <Offset>70</Offset>
+                        <Offset>90</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>6399</ID>
+                      <Description>"Experience"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>MonsterHunterWorld.exe+3B79C48</Address>
+                      <Offsets>
+                        <Offset>74</Offset>
+                        <Offset>90</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>6400</ID>
+                      <Description>"Play Time"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>MonsterHunterWorld.exe+3B79C48</Address>
+                      <Offsets>
+                        <Offset>78</Offset>
+                        <Offset>90</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                  </CheatEntries>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>6160</ID>
+                  <Description>"Player Data (pl_item_param)"</Description>
+                  <Options moHideChildren="1"/>
+                  <LastState Value="" RealAddress="00000000"/>
+                  <GroupHeader>1</GroupHeader>
+                  <CheatEntries>
+                    <CheatEntry>
+                      <ID>6161</ID>
+                      <Description>"Base"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>MonsterHunterWorld.exe+3B78AE0</Address>
+                      <Offsets>
+                        <Offset>0</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>6413</ID>
+                      <Description>"Dash Juice (Duration)"</Description>
+                      <VariableType>2 Bytes</VariableType>
+                      <Address>MonsterHunterWorld.exe+3B78AE0</Address>
+                      <Offsets>
+                        <Offset>EC</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>6408</ID>
+                      <Description>"Dash Juice (Power)"</Description>
+                      <VariableType>Byte</VariableType>
+                      <Address>MonsterHunterWorld.exe+3B78AE0</Address>
+                      <Offsets>
+                        <Offset>EE</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>6409</ID>
+                      <Description>"Might Seed (Power)"</Description>
+                      <VariableType>2 Bytes</VariableType>
+                      <Address>MonsterHunterWorld.exe+3B78AE0</Address>
+                      <Offsets>
+                        <Offset>10E</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>6166</ID>
+                      <Description>"Might Seed (Power)"</Description>
+                      <VariableType>2 Bytes</VariableType>
+                      <Address>MonsterHunterWorld.exe+3B78AE0</Address>
+                      <Offsets>
+                        <Offset>110</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>6414</ID>
+                      <Description>"Might Pill (Duration)"</Description>
+                      <VariableType>2 Bytes</VariableType>
+                      <Address>MonsterHunterWorld.exe+3B78AE0</Address>
+                      <Offsets>
+                        <Offset>112</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>6401</ID>
+                      <Description>"Might Pill (Power)"</Description>
+                      <VariableType>2 Bytes</VariableType>
+                      <Address>MonsterHunterWorld.exe+3B78AE0</Address>
+                      <Offsets>
+                        <Offset>114</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>6402</ID>
+                      <Description>"Adamant Seed (Duration)"</Description>
+                      <VariableType>2 Bytes</VariableType>
+                      <Address>MonsterHunterWorld.exe+3B78AE0</Address>
+                      <Offsets>
+                        <Offset>116</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>6403</ID>
+                      <Description>"Adamant Seed (Power)"</Description>
+                      <VariableType>2 Bytes</VariableType>
+                      <Address>MonsterHunterWorld.exe+3B78AE0</Address>
+                      <Offsets>
+                        <Offset>118</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>6404</ID>
+                      <Description>"Adamant Pill (Duration)"</Description>
+                      <VariableType>2 Bytes</VariableType>
+                      <Address>MonsterHunterWorld.exe+3B78AE0</Address>
+                      <Offsets>
+                        <Offset>11A</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>6405</ID>
+                      <Description>"Adamant Pill (Power)"</Description>
+                      <VariableType>Float</VariableType>
+                      <Address>MonsterHunterWorld.exe+3B78AE0</Address>
+                      <Offsets>
+                        <Offset>11C</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>6419</ID>
+                      <Description>"Demondrug (Power)"</Description>
+                      <VariableType>Byte</VariableType>
+                      <Address>MonsterHunterWorld.exe+3B78AE0</Address>
+                      <Offsets>
+                        <Offset>120</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>6416</ID>
+                      <Description>"Mega Demondrug (Power)"</Description>
+                      <VariableType>Byte</VariableType>
+                      <Address>MonsterHunterWorld.exe+3B78AE0</Address>
+                      <Offsets>
+                        <Offset>121</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>6412</ID>
+                      <Description>"Life Powder (Power)"</Description>
+                      <VariableType>2 Bytes</VariableType>
+                      <Address>MonsterHunterWorld.exe+3B78AE0</Address>
+                      <Offsets>
+                        <Offset>126</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>6418</ID>
+                      <Description>"Herbal Powder (Power)"</Description>
+                      <VariableType>2 Bytes</VariableType>
+                      <Address>MonsterHunterWorld.exe+3B78AE0</Address>
+                      <Offsets>
+                        <Offset>128</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>6415</ID>
+                      <Description>"Armorskin (Power)"</Description>
+                      <VariableType>Byte</VariableType>
+                      <Address>MonsterHunterWorld.exe+3B78AE0</Address>
+                      <Offsets>
+                        <Offset>122</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>6420</ID>
+                      <Description>"Mega Armorskin (Power)"</Description>
+                      <VariableType>Byte</VariableType>
+                      <Address>MonsterHunterWorld.exe+3B78AE0</Address>
+                      <Offsets>
+                        <Offset>123</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>6410</ID>
+                      <Description>"Demon Powder (Power)"</Description>
+                      <VariableType>2 Bytes</VariableType>
+                      <Address>MonsterHunterWorld.exe+3B78AE0</Address>
+                      <Offsets>
+                        <Offset>12A</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>6406</ID>
+                      <Description>"Demon Powder (Duration)"</Description>
+                      <VariableType>2 Bytes</VariableType>
+                      <Address>MonsterHunterWorld.exe+3B78AE0</Address>
+                      <Offsets>
+                        <Offset>12C</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>6407</ID>
+                      <Description>"Hardshell Powder (Power)"</Description>
+                      <VariableType>2 Bytes</VariableType>
+                      <Address>MonsterHunterWorld.exe+3B78AE0</Address>
+                      <Offsets>
+                        <Offset>12E</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>6411</ID>
+                      <Description>"Hardshell Powder (Power)"</Description>
+                      <VariableType>2 Bytes</VariableType>
+                      <Address>MonsterHunterWorld.exe+3B78AE0</Address>
+                      <Offsets>
+                        <Offset>130</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                  </CheatEntries>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>5492</ID>
+                  <Description>"Player Data (pl_param)"</Description>
+                  <Options moHideChildren="1"/>
+                  <LastState Value="" RealAddress="00000000"/>
+                  <GroupHeader>1</GroupHeader>
+                  <CheatEntries>
+                    <CheatEntry>
+                      <ID>6155</ID>
+                      <Description>"Quick Shot (Delay)"</Description>
+                      <VariableType>Float</VariableType>
+                      <Address>MonsterHunterWorld.exe+3B78AD8</Address>
+                      <Offsets>
+                        <Offset>100</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>6421</ID>
+                      <Description>"Unknown"</Description>
+                      <VariableType>Float</VariableType>
+                      <Address>MonsterHunterWorld.exe+3B78AD8</Address>
+                      <Offsets>
+                        <Offset>2E0</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>6157</ID>
+                      <Description>"Unknown"</Description>
+                      <VariableType>Float</VariableType>
+                      <Address>MonsterHunterWorld.exe+3B78AD8</Address>
+                      <Offsets>
+                        <Offset>2E4</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>6156</ID>
+                      <Description>"Health (Initial)"</Description>
+                      <VariableType>Float</VariableType>
+                      <Address>MonsterHunterWorld.exe+3B78AD8</Address>
+                      <Offsets>
+                        <Offset>2E8</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>6154</ID>
+                      <Description>"Health (Max)"</Description>
                       <VariableType>Float</VariableType>
                       <Address>MonsterHunterWorld.exe+3B78AD8</Address>
                       <Offsets>
@@ -18069,12 +18984,309 @@ dealloc(newmem)
                       </Offsets>
                     </CheatEntry>
                     <CheatEntry>
+                      <ID>6150</ID>
+                      <Description>"HP Recover Ratio"</Description>
+                      <VariableType>Float</VariableType>
+                      <Address>MonsterHunterWorld.exe+3B78AD8</Address>
+                      <Offsets>
+                        <Offset>2F0</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>6149</ID>
+                      <Description>"HP Recover Delay"</Description>
+                      <VariableType>Float</VariableType>
+                      <Address>MonsterHunterWorld.exe+3B78AD8</Address>
+                      <Offsets>
+                        <Offset>2F4</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>6151</ID>
+                      <Description>"HP Recover Rate"</Description>
+                      <VariableType>Float</VariableType>
+                      <Address>MonsterHunterWorld.exe+3B78AD8</Address>
+                      <Offsets>
+                        <Offset>2F8</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>6152</ID>
+                      <Description>"HP Recover Amount"</Description>
+                      <VariableType>Float</VariableType>
+                      <Address>MonsterHunterWorld.exe+3B78AD8</Address>
+                      <Offsets>
+                        <Offset>2FC</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>6153</ID>
+                      <Description>"Stamina (Initial)"</Description>
+                      <VariableType>Float</VariableType>
+                      <Address>MonsterHunterWorld.exe+3B78AD8</Address>
+                      <Offsets>
+                        <Offset>300</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
                       <ID>5493</ID>
-                      <Description>"Max Stamina"</Description>
+                      <Description>"Stamina (Max)"</Description>
                       <VariableType>Float</VariableType>
                       <Address>MonsterHunterWorld.exe+3B78AD8</Address>
                       <Offsets>
                         <Offset>304</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>6158</ID>
+                      <Description>"Unknown"</Description>
+                      <VariableType>Float</VariableType>
+                      <Address>MonsterHunterWorld.exe+3B78AD8</Address>
+                      <Offsets>
+                        <Offset>308</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>6164</ID>
+                      <Description>"Unknown"</Description>
+                      <VariableType>Float</VariableType>
+                      <Address>MonsterHunterWorld.exe+3B78AD8</Address>
+                      <Offsets>
+                        <Offset>30C</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>6163</ID>
+                      <Description>"Stamina Regen Rate"</Description>
+                      <VariableType>Float</VariableType>
+                      <Address>MonsterHunterWorld.exe+3B78AD8</Address>
+                      <Offsets>
+                        <Offset>310</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>6159</ID>
+                      <Description>"Unknown"</Description>
+                      <VariableType>Float</VariableType>
+                      <Address>MonsterHunterWorld.exe+3B78AD8</Address>
+                      <Offsets>
+                        <Offset>314</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>6165</ID>
+                      <Description>"Unknown"</Description>
+                      <VariableType>Float</VariableType>
+                      <Address>MonsterHunterWorld.exe+3B78AD8</Address>
+                      <Offsets>
+                        <Offset>318</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>6167</ID>
+                      <Description>"Unknown"</Description>
+                      <VariableType>Float</VariableType>
+                      <Address>MonsterHunterWorld.exe+3B78AD8</Address>
+                      <Offsets>
+                        <Offset>31C</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>6168</ID>
+                      <Description>"Unknown"</Description>
+                      <VariableType>Float</VariableType>
+                      <Address>MonsterHunterWorld.exe+3B78AD8</Address>
+                      <Offsets>
+                        <Offset>320</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>6354</ID>
+                      <Description>"Stamina Multiplier (Actions)"</Description>
+                      <VariableType>Float</VariableType>
+                      <Address>MonsterHunterWorld.exe+3B78AD8</Address>
+                      <Offsets>
+                        <Offset>324</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>6355</ID>
+                      <Description>"Stamina Multiplier (Bow Hold Charge)"</Description>
+                      <VariableType>Float</VariableType>
+                      <Address>MonsterHunterWorld.exe+3B78AD8</Address>
+                      <Offsets>
+                        <Offset>328</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>6358</ID>
+                      <Description>"Unknown"</Description>
+                      <VariableType>Float</VariableType>
+                      <Address>MonsterHunterWorld.exe+3B78AD8</Address>
+                      <Offsets>
+                        <Offset>32C</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>6359</ID>
+                      <Description>"Stamina (Actions)"</Description>
+                      <VariableType>Float</VariableType>
+                      <Address>MonsterHunterWorld.exe+3B78AD8</Address>
+                      <Offsets>
+                        <Offset>338</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>6422</ID>
+                      <Description>"Unknown"</Description>
+                      <VariableType>Float</VariableType>
+                      <Address>MonsterHunterWorld.exe+3B78AD8</Address>
+                      <Offsets>
+                        <Offset>350</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>6423</ID>
+                      <Description>"Unknown"</Description>
+                      <VariableType>Float</VariableType>
+                      <Address>MonsterHunterWorld.exe+3B78AD8</Address>
+                      <Offsets>
+                        <Offset>380</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>6424</ID>
+                      <Description>"Unknown"</Description>
+                      <VariableType>Float</VariableType>
+                      <Address>MonsterHunterWorld.exe+3B78AD8</Address>
+                      <Offsets>
+                        <Offset>398</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>6425</ID>
+                      <Description>"Unknown"</Description>
+                      <VariableType>Float</VariableType>
+                      <Address>MonsterHunterWorld.exe+3B78AD8</Address>
+                      <Offsets>
+                        <Offset>398</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>6426</ID>
+                      <Description>"Stamina (Shoot)"</Description>
+                      <VariableType>Float</VariableType>
+                      <Address>MonsterHunterWorld.exe+3B78AD8</Address>
+                      <Offsets>
+                        <Offset>3C8</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>6427</ID>
+                      <Description>"Stamina (Charging Sidestep)"</Description>
+                      <VariableType>Float</VariableType>
+                      <Address>MonsterHunterWorld.exe+3B78AD8</Address>
+                      <Offsets>
+                        <Offset>428</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>6170</ID>
+                      <Description>"Elemental Limit Multiplier"</Description>
+                      <VariableType>Float</VariableType>
+                      <Address>MonsterHunterWorld.exe+3B78AD8</Address>
+                      <Offsets>
+                        <Offset>68C</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>6356</ID>
+                      <Description>"Unknown"</Description>
+                      <VariableType>Float</VariableType>
+                      <Address>MonsterHunterWorld.exe+3B78AD8</Address>
+                      <Offsets>
+                        <Offset>6EC</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>6357</ID>
+                      <Description>"Unknown"</Description>
+                      <VariableType>Float</VariableType>
+                      <Address>MonsterHunterWorld.exe+3B78AD8</Address>
+                      <Offsets>
+                        <Offset>814</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>6347</ID>
+                      <Description>"Unknown"</Description>
+                      <VariableType>Float</VariableType>
+                      <Address>MonsterHunterWorld.exe+3B78AD8</Address>
+                      <Offsets>
+                        <Offset>1DF0</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>6348</ID>
+                      <Description>"Unknown"</Description>
+                      <VariableType>Float</VariableType>
+                      <Address>MonsterHunterWorld.exe+3B78AD8</Address>
+                      <Offsets>
+                        <Offset>1AE0</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>6349</ID>
+                      <Description>"Unknown"</Description>
+                      <VariableType>Float</VariableType>
+                      <Address>MonsterHunterWorld.exe+3B78AD8</Address>
+                      <Offsets>
+                        <Offset>2B48</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>6353</ID>
+                      <Description>"Unknown"</Description>
+                      <VariableType>Float</VariableType>
+                      <Address>MonsterHunterWorld.exe+3B78AD8</Address>
+                      <Offsets>
+                        <Offset>2B48</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>6350</ID>
+                      <Description>"Unknown"</Description>
+                      <VariableType>Float</VariableType>
+                      <Address>MonsterHunterWorld.exe+3B78AD8</Address>
+                      <Offsets>
+                        <Offset>2B4C</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>6351</ID>
+                      <Description>"Unknown"</Description>
+                      <VariableType>Float</VariableType>
+                      <Address>MonsterHunterWorld.exe+3B78AD8</Address>
+                      <Offsets>
+                        <Offset>2B50</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>6352</ID>
+                      <Description>"Unknown"</Description>
+                      <VariableType>Float</VariableType>
+                      <Address>MonsterHunterWorld.exe+3B78AD8</Address>
+                      <Offsets>
+                        <Offset>1074</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>6428</ID>
+                      <Description>"Unknown"</Description>
+                      <VariableType>Float</VariableType>
+                      <Address>MonsterHunterWorld.exe+3B78AD8</Address>
+                      <Offsets>
+                        <Offset>668</Offset>
                       </Offsets>
                     </CheatEntry>
                   </CheatEntries>
@@ -18344,14 +19556,6 @@ MonsterHunterWorld.exe+CAE3BAD - 8B 87 340B0000        - mov eax,[rdi+00000B34]
       <Address>14F14C4D7</Address>
     </SymbolEntry>
     <SymbolEntry>
-      <Name>InfGather1AOB</Name>
-      <Address>14F0D001D</Address>
-    </SymbolEntry>
-    <SymbolEntry>
-      <Name>InfGather2AOB</Name>
-      <Address>14F0D0212</Address>
-    </SymbolEntry>
-    <SymbolEntry>
       <Name>inj_gathertracks</Name>
       <Address>141BFCAC3</Address>
     </SymbolEntry>
@@ -18446,6 +19650,19 @@ Only works on windowed / borderless fullscreen mode since it's an overlay.
 Also lacks the ability to "latch on" to a target window, so it doesn't follow the game window around if you move it. Thus, borderless fullscreen is highly recommended.
 ====================================================================================
 Keep Mantle Effect After Removal - The game can only register one effect at a time, so if you try doing this with two mantles you'll only get the effect of the last mantle equipped. You won't be able to re-equip/remove the mantle until the original duration has ended.
+====================================================================================
+Go To Character Edit Screen - This will replace the Delete Save Data functionality with the one that will allow you to re-edit your character. In order to ensure this works, just follow these steps:
+                                                                                       
+1. While in the Select Save Data window, bring up the Delete Save Data window once, then close it. Doing this on any save will do.
+                                                                                       
+2. Enable the 'Go To Character Edit Screen' script.
+                                                                                        
+3. Hover over the character you wish to edit and press 'Delete Save Data', then select 'Yes'.
+                                                                                       
+Instead of your save being deleted, you will be brought to the character edit screen!
+                                                                                        
+Use this only when re-editing your character, who knows what other menus can be affected.
+====================================================================================
 </Comments>
   <LuaScript>--Overlays by Berserk Knight
 screenWidth = 1920
