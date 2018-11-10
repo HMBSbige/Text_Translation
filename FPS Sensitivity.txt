@@ -4,6 +4,11 @@
 sensitivity "2.5"
 fov_cs_debug 90
 
+[h1]Overkill's The Walking Dead[/h1]
+Path: %LOCALAPPDATA%\OTWD\Saved\Config\WindowsNoEditor\GameUserSettings.ini
+MouseSensitivity=0.046718
+FieldOfView=75
+
 [h1]Killing Floor 2[/h1]
 fov 112.5
 SetSensitivity 10.746980
