@@ -104,7 +104,8 @@ seta sensitivity "1.796329"
 seta sensitivity "1.796329"
 
 [h1]Call of Duty: Black Ops III[/h1]
-MouseSensitivity = "1.85550"
+Path:.\SteamApps\common\Call of Duty Black Ops III\players\config.ini
+MouseSensitivity = "1.80982"
 
 [h1]Call of Duty: Infinite Warfare[/h1]
 FOV Scale 80
