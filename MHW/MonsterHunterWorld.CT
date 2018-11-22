@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<CheatTable CheatEngineTableVersion="27">
+<CheatTable CheatEngineTableVersion="26">
   <Forms>
     <HealthBarOverlay Class="TCEForm" Encoding="Ascii85">*l_]L,AtJ#1H@[fX^*.TeZjOpsFJJ+Bt%#fsgKhoT!?9SnQdsZhpAt(xBcTjVNL=::sF)u*aAv#[t-Z,$LIP-hmdSK[(}GxYM{J]@$/bWA[AT4PzxyAV[ewQ^h2;RzAUVF)aO{O@[[HX[{mt*]+sj1Jx4vtl^5j[N2x6ZQh#P9N,OM6W4V)4AI1Bz.3)})bkKx^%AHsVr76utBp[e*2TI!aaRE9-OZ)v?9es_6.dOeI@(04Cc}Ix{rGIwoXaZ}WS=o?#1ej+ml-s/Zbg;!mJDfK@]LqSWZRxUKK5AIlW?Sw)?E0ahVoti1Tn+1R3zL=^q6=u,q!Xx?$S{8j2NvnYNOJp;IZdP@o3Bow$^;AP4@Ls^V2!70Pk}GOJnAPhE!6Gv.HwH6$qdZOB]GsD6t[=s!kj/GFhkLeoVN9;c82$0jPuGE-r3$4-]d=!?TFY4]:rc5;[+fq,+,0LugD%e)VeJw8R#Y2$Lqc,xWyNC-ToL#wXL^[hD$I7=I!gpSg#4HeJsc^NVBOEjMU0aL853mMNevW;GdMqp-8r[ylb9a*jY;7a);hzm*;5pPA.wwWL{J7e-)(jFiWae!XuBq;J7BRelr$17K!{3vHn^p5%;K9</HealthBarOverlay>
     <BuffTimerOverlay Class="TCEForm" Encoding="Ascii85">=U}PR):Z(zvxX+V)?6{C8.9O?o67jVTbizFQP-BG)![}+iQ8Cp;_)ns.Q?FDu81S:z(r2,yZ^o9K;n/i+qmuW.sD9XwSS2lfBaFMuloIgqD.o!mOinMx_9WX,so.6f($1!7m#5P-WkBDs3:,wqM0w$Z.Cphi.7Y]MV_20ABx$g%!91(Qo[x3(k-Spx@}WoltA4E3xO!nuFc*BF?i+FrZ([5dg]i8F:e^$.![[9+yvIs[H7=92MWDm4W0fQyJwv@N0WM5T3[DAz?3{PSUPv+XD#UsK;#)wjvkd[z_+[NNVvYPPZwSE4tnXAyjlW]L;P@{=JzJE;6OW/Ol]^B6njc7#,5E}XUd)B3mA1lI3f_C]iNMrKo;wjeYa1LxVm)GM54vI@Bby@L.ZfzTrC=;nZcXp9s?+#ysC_e/I_PAxE,]JWCHlS4VZ3lVc]]Bxne_q48S=W#%2336:UmCjLN.li;+s9J{ET_qZtXJ=bHnc=5Kszu$F;4:sh$xPSiVq]@{e2/ihIj]+,LjuDbXHdVhPfwE,m{GF{Q!mtu_qi#^aJVARu2e4k-X7$AI,3;eCFZU,fB@_K-cSLxl7o7(oM6$98Ksc5?-McY0[vl$MXgLpxx80a3$UE3^P%K-L7;e@mj+J{MBSdwUn6$9H-xo3N(XBohrNj+EveRv,ncQ,jfy/%^CE+I@v6fFbT3#n,wc_}hj9tZ#[f?-z)]*y0@,HvVx7BP7wILj=t2L[Zh$8[cW=,54xT{CQ6D]m=fCXWR=uWWaFfO+]97#B.pjA,11.j*NHvw]_S$sG:opEr+!XMYCHaPjL%SGxL#+vSLJ2Hvf8){t7/02c=GG$@Pa@Gj#3fHFQuq(V#4VPONWlr9ULG(HDRa!XgYDaFkWLu6izGvYv:88,z3WA!;RX:qTt:9X/_%(36ze:ab3lf#Jn1pz3J4jY1^bILC</BuffTimerOverlay>
@@ -7,7 +7,7 @@
   <CheatEntries>
     <CheatEntry>
       <ID>5447</ID>
-      <Description>"启用 (Update 50)"</Description>
+      <Description>"启用 (Update 51)"</Description>
       <LastState/>
       <VariableType>Auto Assembler Script</VariableType>
       <AssemblerScript>{$lua}
@@ -1020,7 +1020,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscanmodule(unlockdec,MonsterHunterWorld.exe,79 C8 FF 0F B6 80 6B 6A 06 00)
+aobscanmodule(unlockdec,MonsterHunterWorld.exe,74 C8 FF 0F B6 80 6B 6A 06 00)
 alloc(newmem,$1000,unlockdec)
 
 label(code)
@@ -1224,7 +1224,7 @@ dealloc(newmem)
           <ID>69</ID>
           <Description>"Character Pointers"</Description>
           <Options moHideChildren="1"/>
-          <LastState/>
+          <LastState Activated="1"/>
           <VariableType>Auto Assembler Script</VariableType>
           <AssemblerScript>{ Game   : MonsterHunterWorld.exe
   Version: 
@@ -1274,6 +1274,7 @@ dealloc(newmem)
             <CheatEntry>
               <ID>70</ID>
               <Description>"base"</Description>
+              <LastState Value="1120107624" RealAddress="981D00A0"/>
               <VariableType>4 Bytes</VariableType>
               <Address>ps1</Address>
               <Offsets>
@@ -1283,6 +1284,7 @@ dealloc(newmem)
             <CheatEntry>
               <ID>4410</ID>
               <Description>"Zeni"</Description>
+              <LastState Value="99999799" RealAddress="981D010C"/>
               <VariableType>4 Bytes</VariableType>
               <Address>ps1</Address>
               <Offsets>
@@ -1292,6 +1294,7 @@ dealloc(newmem)
             <CheatEntry>
               <ID>71</ID>
               <Description>"Research Points"</Description>
+              <LastState Value="238350" RealAddress="981D0110"/>
               <VariableType>4 Bytes</VariableType>
               <Address>ps1</Address>
               <Offsets>
@@ -1301,6 +1304,7 @@ dealloc(newmem)
             <CheatEntry>
               <ID>4188</ID>
               <Description>"Time Played"</Description>
+              <LastState Value="1456919" RealAddress="981D0118"/>
               <VariableType>4 Bytes</VariableType>
               <Address>ps1</Address>
               <Offsets>
@@ -1310,6 +1314,7 @@ dealloc(newmem)
             <CheatEntry>
               <ID>5996</ID>
               <Description>"Poogie's Costume"</Description>
+              <LastState Value="7" RealAddress="9830771C"/>
               <VariableType>4 Bytes</VariableType>
               <Address>ps1</Address>
               <Offsets>
@@ -1327,6 +1332,7 @@ dealloc(newmem)
                 <CheatEntry>
                   <ID>6008</ID>
                   <Description>"Momorial Stripes"</Description>
+                  <LastState Value="1" RealAddress="98307648"/>
                   <VariableType>Binary</VariableType>
                   <BitStart>0</BitStart>
                   <BitLength>1</BitLength>
@@ -1339,6 +1345,7 @@ dealloc(newmem)
                 <CheatEntry>
                   <ID>6016</ID>
                   <Description>"Emperors New Duds"</Description>
+                  <LastState Value="1" RealAddress="98307648"/>
                   <VariableType>Binary</VariableType>
                   <BitStart>1</BitStart>
                   <BitLength>1</BitLength>
@@ -1351,6 +1358,7 @@ dealloc(newmem)
                 <CheatEntry>
                   <ID>6015</ID>
                   <Description>"Hog In A Frog"</Description>
+                  <LastState Value="1" RealAddress="98307648"/>
                   <VariableType>Binary</VariableType>
                   <BitStart>2</BitStart>
                   <BitLength>1</BitLength>
@@ -1363,6 +1371,7 @@ dealloc(newmem)
                 <CheatEntry>
                   <ID>6014</ID>
                   <Description>"White Jammies"</Description>
+                  <LastState Value="1" RealAddress="98307648"/>
                   <VariableType>Binary</VariableType>
                   <BitStart>3</BitStart>
                   <BitLength>1</BitLength>
@@ -1375,6 +1384,7 @@ dealloc(newmem)
                 <CheatEntry>
                   <ID>6013</ID>
                   <Description>"Apprentice Fiver"</Description>
+                  <LastState Value="1" RealAddress="98307648"/>
                   <VariableType>Binary</VariableType>
                   <BitStart>4</BitStart>
                   <BitLength>1</BitLength>
@@ -1387,6 +1397,7 @@ dealloc(newmem)
                 <CheatEntry>
                   <ID>6012</ID>
                   <Description>"Buzzy Bee"</Description>
+                  <LastState Value="1" RealAddress="98307648"/>
                   <VariableType>Binary</VariableType>
                   <BitStart>5</BitStart>
                   <BitLength>1</BitLength>
@@ -1399,6 +1410,7 @@ dealloc(newmem)
                 <CheatEntry>
                   <ID>6011</ID>
                   <Description>"Seaside Sausage"</Description>
+                  <LastState Value="1" RealAddress="98307648"/>
                   <VariableType>Binary</VariableType>
                   <BitStart>6</BitStart>
                   <BitLength>1</BitLength>
@@ -1411,6 +1423,7 @@ dealloc(newmem)
                 <CheatEntry>
                   <ID>6010</ID>
                   <Description>"Pumpkins Revenge"</Description>
+                  <LastState Value="1" RealAddress="98307648"/>
                   <VariableType>Binary</VariableType>
                   <BitStart>7</BitStart>
                   <BitLength>1</BitLength>
@@ -1433,6 +1446,7 @@ dealloc(newmem)
                 <CheatEntry>
                   <ID>6018</ID>
                   <Description>"???"</Description>
+                  <LastState Value="0" RealAddress="98307649"/>
                   <VariableType>Binary</VariableType>
                   <BitStart>0</BitStart>
                   <BitLength>1</BitLength>
@@ -1445,6 +1459,7 @@ dealloc(newmem)
                 <CheatEntry>
                   <ID>6019</ID>
                   <Description>"???"</Description>
+                  <LastState Value="0" RealAddress="98307649"/>
                   <VariableType>Binary</VariableType>
                   <BitStart>1</BitStart>
                   <BitLength>1</BitLength>
@@ -1457,6 +1472,7 @@ dealloc(newmem)
                 <CheatEntry>
                   <ID>6020</ID>
                   <Description>"Behemoth Bacon (Unimplemented)"</Description>
+                  <LastState Value="0" RealAddress="98307649"/>
                   <VariableType>Binary</VariableType>
                   <BitStart>2</BitStart>
                   <BitLength>1</BitLength>
@@ -1469,6 +1485,7 @@ dealloc(newmem)
                 <CheatEntry>
                   <ID>6021</ID>
                   <Description>"Unavailabe"</Description>
+                  <LastState Value="0" RealAddress="98307649"/>
                   <VariableType>Binary</VariableType>
                   <BitStart>3</BitStart>
                   <BitLength>1</BitLength>
@@ -1481,6 +1498,7 @@ dealloc(newmem)
                 <CheatEntry>
                   <ID>6022</ID>
                   <Description>"???"</Description>
+                  <LastState Value="0" RealAddress="98307649"/>
                   <VariableType>Binary</VariableType>
                   <BitStart>4</BitStart>
                   <BitLength>1</BitLength>
@@ -1493,6 +1511,7 @@ dealloc(newmem)
                 <CheatEntry>
                   <ID>6023</ID>
                   <Description>"???"</Description>
+                  <LastState Value="0" RealAddress="98307649"/>
                   <VariableType>Binary</VariableType>
                   <BitStart>5</BitStart>
                   <BitLength>1</BitLength>
@@ -1505,6 +1524,7 @@ dealloc(newmem)
                 <CheatEntry>
                   <ID>6024</ID>
                   <Description>"???"</Description>
+                  <LastState Value="0" RealAddress="98307649"/>
                   <VariableType>Binary</VariableType>
                   <BitStart>6</BitStart>
                   <BitLength>1</BitLength>
@@ -1517,6 +1537,7 @@ dealloc(newmem)
                 <CheatEntry>
                   <ID>6025</ID>
                   <Description>"???"</Description>
+                  <LastState Value="0" RealAddress="98307649"/>
                   <VariableType>Binary</VariableType>
                   <BitStart>7</BitStart>
                   <BitLength>1</BitLength>
@@ -1546,6 +1567,7 @@ dealloc(newmem)
                     <CheatEntry>
                       <ID>188</ID>
                       <Description>"???"</Description>
+                      <LastState Value="180" RealAddress="98236AAC"/>
                       <VariableType>Byte</VariableType>
                       <Address>ps1</Address>
                       <Offsets>
@@ -1555,6 +1577,7 @@ dealloc(newmem)
                         <CheatEntry>
                           <ID>189</ID>
                           <Description>"???"</Description>
+                          <LastState Value="0" RealAddress="98236AAC"/>
                           <VariableType>Binary</VariableType>
                           <BitStart>0</BitStart>
                           <BitLength>1</BitLength>
@@ -1567,6 +1590,7 @@ dealloc(newmem)
                         <CheatEntry>
                           <ID>190</ID>
                           <Description>"???"</Description>
+                          <LastState Value="0" RealAddress="98236AAC"/>
                           <VariableType>Binary</VariableType>
                           <BitStart>1</BitStart>
                           <BitLength>1</BitLength>
@@ -1579,6 +1603,7 @@ dealloc(newmem)
                         <CheatEntry>
                           <ID>191</ID>
                           <Description>"???"</Description>
+                          <LastState Value="1" RealAddress="98236AAC"/>
                           <VariableType>Binary</VariableType>
                           <BitStart>2</BitStart>
                           <BitLength>1</BitLength>
@@ -1591,6 +1616,7 @@ dealloc(newmem)
                         <CheatEntry>
                           <ID>192</ID>
                           <Description>"???"</Description>
+                          <LastState Value="0" RealAddress="98236AAC"/>
                           <VariableType>Binary</VariableType>
                           <BitStart>3</BitStart>
                           <BitLength>1</BitLength>
@@ -1603,6 +1629,7 @@ dealloc(newmem)
                         <CheatEntry>
                           <ID>193</ID>
                           <Description>"???"</Description>
+                          <LastState Value="1" RealAddress="98236AAC"/>
                           <VariableType>Binary</VariableType>
                           <BitStart>4</BitStart>
                           <BitLength>1</BitLength>
@@ -1615,6 +1642,7 @@ dealloc(newmem)
                         <CheatEntry>
                           <ID>194</ID>
                           <Description>"???"</Description>
+                          <LastState Value="1" RealAddress="98236AAC"/>
                           <VariableType>Binary</VariableType>
                           <BitStart>5</BitStart>
                           <BitLength>1</BitLength>
@@ -1627,6 +1655,7 @@ dealloc(newmem)
                         <CheatEntry>
                           <ID>195</ID>
                           <Description>"???"</Description>
+                          <LastState Value="0" RealAddress="98236AAC"/>
                           <VariableType>Binary</VariableType>
                           <BitStart>6</BitStart>
                           <BitLength>1</BitLength>
@@ -1639,6 +1668,7 @@ dealloc(newmem)
                         <CheatEntry>
                           <ID>196</ID>
                           <Description>"???"</Description>
+                          <LastState Value="1" RealAddress="98236AAC"/>
                           <VariableType>Binary</VariableType>
                           <BitStart>7</BitStart>
                           <BitLength>1</BitLength>
@@ -1662,6 +1692,7 @@ dealloc(newmem)
                     <CheatEntry>
                       <ID>152</ID>
                       <Description>"???"</Description>
+                      <LastState Value="192" RealAddress="98236AAD"/>
                       <VariableType>Byte</VariableType>
                       <Address>ps1</Address>
                       <Offsets>
@@ -1671,6 +1702,7 @@ dealloc(newmem)
                         <CheatEntry>
                           <ID>160</ID>
                           <Description>"???"</Description>
+                          <LastState Value="0" RealAddress="98236AAD"/>
                           <VariableType>Binary</VariableType>
                           <BitStart>0</BitStart>
                           <BitLength>1</BitLength>
@@ -1683,6 +1715,7 @@ dealloc(newmem)
                         <CheatEntry>
                           <ID>161</ID>
                           <Description>"???"</Description>
+                          <LastState Value="0" RealAddress="98236AAD"/>
                           <VariableType>Binary</VariableType>
                           <BitStart>1</BitStart>
                           <BitLength>1</BitLength>
@@ -1695,6 +1728,7 @@ dealloc(newmem)
                         <CheatEntry>
                           <ID>162</ID>
                           <Description>"???"</Description>
+                          <LastState Value="0" RealAddress="98236AAD"/>
                           <VariableType>Binary</VariableType>
                           <BitStart>2</BitStart>
                           <BitLength>1</BitLength>
@@ -1707,6 +1741,7 @@ dealloc(newmem)
                         <CheatEntry>
                           <ID>163</ID>
                           <Description>"???"</Description>
+                          <LastState Value="0" RealAddress="98236AAD"/>
                           <VariableType>Binary</VariableType>
                           <BitStart>3</BitStart>
                           <BitLength>1</BitLength>
@@ -1719,6 +1754,7 @@ dealloc(newmem)
                         <CheatEntry>
                           <ID>164</ID>
                           <Description>"???"</Description>
+                          <LastState Value="0" RealAddress="98236AAD"/>
                           <VariableType>Binary</VariableType>
                           <BitStart>4</BitStart>
                           <BitLength>1</BitLength>
@@ -1731,6 +1767,7 @@ dealloc(newmem)
                         <CheatEntry>
                           <ID>165</ID>
                           <Description>"???"</Description>
+                          <LastState Value="0" RealAddress="98236AAD"/>
                           <VariableType>Binary</VariableType>
                           <BitStart>5</BitStart>
                           <BitLength>1</BitLength>
@@ -1743,6 +1780,7 @@ dealloc(newmem)
                         <CheatEntry>
                           <ID>166</ID>
                           <Description>"???"</Description>
+                          <LastState Value="1" RealAddress="98236AAD"/>
                           <VariableType>Binary</VariableType>
                           <BitStart>6</BitStart>
                           <BitLength>1</BitLength>
@@ -1755,6 +1793,7 @@ dealloc(newmem)
                         <CheatEntry>
                           <ID>167</ID>
                           <Description>"???"</Description>
+                          <LastState Value="1" RealAddress="98236AAD"/>
                           <VariableType>Binary</VariableType>
                           <BitStart>7</BitStart>
                           <BitLength>1</BitLength>
@@ -1778,6 +1817,7 @@ dealloc(newmem)
                     <CheatEntry>
                       <ID>150</ID>
                       <Description>"Case Of Missing NPCs (Plus Armor/Wea)"</Description>
+                      <LastState Value="13" RealAddress="98236AAE"/>
                       <VariableType>Byte</VariableType>
                       <Address>ps1</Address>
                       <Offsets>
@@ -1787,6 +1827,7 @@ dealloc(newmem)
                         <CheatEntry>
                           <ID>168</ID>
                           <Description>"Set To 1"</Description>
+                          <LastState Value="1" RealAddress="98236AAE"/>
                           <VariableType>Binary</VariableType>
                           <BitStart>0</BitStart>
                           <BitLength>1</BitLength>
@@ -1799,6 +1840,7 @@ dealloc(newmem)
                         <CheatEntry>
                           <ID>169</ID>
                           <Description>"Set To 0"</Description>
+                          <LastState Value="0" RealAddress="98236AAE"/>
                           <VariableType>Binary</VariableType>
                           <BitStart>1</BitStart>
                           <BitLength>1</BitLength>
@@ -1811,6 +1853,7 @@ dealloc(newmem)
                         <CheatEntry>
                           <ID>170</ID>
                           <Description>"Progression Flag (Zorah) (Unlocks Teir 2 Weapons)"</Description>
+                          <LastState Value="1" RealAddress="98236AAE"/>
                           <VariableType>Binary</VariableType>
                           <BitStart>2</BitStart>
                           <BitLength>1</BitLength>
@@ -1823,6 +1866,7 @@ dealloc(newmem)
                         <CheatEntry>
                           <ID>171</ID>
                           <Description>"Progression Flag (HR Armor) (Unlocks Teir 3 Weapons)"</Description>
+                          <LastState Value="1" RealAddress="98236AAE"/>
                           <VariableType>Binary</VariableType>
                           <BitStart>3</BitStart>
                           <BitLength>1</BitLength>
@@ -1835,6 +1879,7 @@ dealloc(newmem)
                         <CheatEntry>
                           <ID>172</ID>
                           <Description>"(Unlocks Xeno Armor/Weapons)(Makes NPCs Disappear)"</Description>
+                          <LastState Value="0" RealAddress="98236AAE"/>
                           <VariableType>Binary</VariableType>
                           <BitStart>4</BitStart>
                           <BitLength>1</BitLength>
@@ -1847,6 +1892,7 @@ dealloc(newmem)
                         <CheatEntry>
                           <ID>173</ID>
                           <Description>"Also Makes NPC Disappear (Set to 0 If NPCs Are Gone)"</Description>
+                          <LastState Value="0" RealAddress="98236AAE"/>
                           <VariableType>Binary</VariableType>
                           <BitStart>5</BitStart>
                           <BitLength>1</BitLength>
@@ -1859,6 +1905,7 @@ dealloc(newmem)
                         <CheatEntry>
                           <ID>174</ID>
                           <Description>"Also Makes NPC Disappear (Set to 0 If NPCs Are Gone)"</Description>
+                          <LastState Value="0" RealAddress="98236AAE"/>
                           <VariableType>Binary</VariableType>
                           <BitStart>6</BitStart>
                           <BitLength>1</BitLength>
@@ -1871,6 +1918,7 @@ dealloc(newmem)
                         <CheatEntry>
                           <ID>175</ID>
                           <Description>"Also Makes NPC Disappear (Set to 0 If NPCs Are Gone)"</Description>
+                          <LastState Value="0" RealAddress="98236AAE"/>
                           <VariableType>Binary</VariableType>
                           <BitStart>7</BitStart>
                           <BitLength>1</BitLength>
@@ -1894,6 +1942,7 @@ dealloc(newmem)
                     <CheatEntry>
                       <ID>149</ID>
                       <Description>"If NPCs are still missing, Set These To 0"</Description>
+                      <LastState Value="0" RealAddress="98236AAF"/>
                       <VariableType>Byte</VariableType>
                       <Address>ps1</Address>
                       <Offsets>
@@ -1903,6 +1952,7 @@ dealloc(newmem)
                         <CheatEntry>
                           <ID>176</ID>
                           <Description>"???"</Description>
+                          <LastState Value="0" RealAddress="98236AAF"/>
                           <VariableType>Binary</VariableType>
                           <BitStart>0</BitStart>
                           <BitLength>1</BitLength>
@@ -1915,6 +1965,7 @@ dealloc(newmem)
                         <CheatEntry>
                           <ID>177</ID>
                           <Description>"???"</Description>
+                          <LastState Value="0" RealAddress="98236AAF"/>
                           <VariableType>Binary</VariableType>
                           <BitStart>1</BitStart>
                           <BitLength>1</BitLength>
@@ -1927,6 +1978,7 @@ dealloc(newmem)
                         <CheatEntry>
                           <ID>178</ID>
                           <Description>"???"</Description>
+                          <LastState Value="0" RealAddress="98236AAF"/>
                           <VariableType>Binary</VariableType>
                           <BitStart>2</BitStart>
                           <BitLength>1</BitLength>
@@ -1939,6 +1991,7 @@ dealloc(newmem)
                         <CheatEntry>
                           <ID>179</ID>
                           <Description>"???"</Description>
+                          <LastState Value="0" RealAddress="98236AAF"/>
                           <VariableType>Binary</VariableType>
                           <BitStart>3</BitStart>
                           <BitLength>1</BitLength>
@@ -1951,6 +2004,7 @@ dealloc(newmem)
                         <CheatEntry>
                           <ID>180</ID>
                           <Description>"???"</Description>
+                          <LastState Value="0" RealAddress="98236AAF"/>
                           <VariableType>Binary</VariableType>
                           <BitStart>4</BitStart>
                           <BitLength>1</BitLength>
@@ -1963,6 +2017,7 @@ dealloc(newmem)
                         <CheatEntry>
                           <ID>181</ID>
                           <Description>"???"</Description>
+                          <LastState Value="0" RealAddress="98236AAF"/>
                           <VariableType>Binary</VariableType>
                           <BitStart>5</BitStart>
                           <BitLength>1</BitLength>
@@ -1975,6 +2030,7 @@ dealloc(newmem)
                         <CheatEntry>
                           <ID>182</ID>
                           <Description>"???"</Description>
+                          <LastState Value="0" RealAddress="98236AAF"/>
                           <VariableType>Binary</VariableType>
                           <BitStart>6</BitStart>
                           <BitLength>1</BitLength>
@@ -1987,6 +2043,7 @@ dealloc(newmem)
                         <CheatEntry>
                           <ID>183</ID>
                           <Description>"???"</Description>
+                          <LastState Value="0" RealAddress="98236AAF"/>
                           <VariableType>Binary</VariableType>
                           <BitStart>7</BitStart>
                           <BitLength>1</BitLength>
@@ -3656,6 +3713,7 @@ dealloc(newmem)
             <CheatEntry>
               <ID>4237</ID>
               <Description>"Multiplier"</Description>
+              <LastState Value="0" RealAddress="15A58001A"/>
               <VariableType>4 Bytes</VariableType>
               <Address>mulval2</Address>
             </CheatEntry>
@@ -3713,6 +3771,7 @@ dealloc(newmem)
             <CheatEntry>
               <ID>4239</ID>
               <Description>"Multiplier"</Description>
+              <LastState Value="0" RealAddress="15A59001B"/>
               <VariableType>4 Bytes</VariableType>
               <Address>mulval3</Address>
             </CheatEntry>
@@ -3771,6 +3830,7 @@ dealloc(newmem)
             <CheatEntry>
               <ID>4141</ID>
               <Description>"Multiplier"</Description>
+              <LastState Value="1157627904" RealAddress="15A5A001D"/>
               <VariableType>4 Bytes</VariableType>
               <Address>mulval1</Address>
             </CheatEntry>
@@ -3836,6 +3896,7 @@ dealloc(newmem)
             <CheatEntry>
               <ID>4247</ID>
               <Description>"Multiplier"</Description>
+              <LastState Value="0" RealAddress="15A5B0023"/>
               <VariableType>Float</VariableType>
               <Address>mulval4</Address>
             </CheatEntry>
@@ -8778,6 +8839,7 @@ dealloc(newmem2)
             <CheatEntry>
               <ID>5686</ID>
               <Description>"Size"</Description>
+              <LastState Value="0" RealAddress="15A5F003A"/>
               <VariableType>Float</VariableType>
               <Address>monstersizev</Address>
             </CheatEntry>
@@ -13416,8 +13478,8 @@ dealloc(newmem3)
 
 [ENABLE]
 
-assert(MonsterHunterWorld.exe+1A68E6C,48 89 02 48 8B 41 08)
-alloc(newmem,$1000,MonsterHunterWorld.exe+1A68E6C)
+assert(MonsterHunterWorld.exe+1A74B2C,48 89 02 48 8B 41 08)
+alloc(newmem,$1000,MonsterHunterWorld.exe+1A74B2C)
 
 label(code)
 label(return)
@@ -13425,7 +13487,7 @@ label(return)
 newmem:
   cmp cl,B0
   jne code
-  mov [rdx],#1122011640 {Delete Save Ptr + 96}
+  mov [rdx],#1121910040 {Delete Save Ptr + 96}
   mov rax,[rcx+08]
   jmp return
 
@@ -13434,7 +13496,7 @@ code:
   mov rax,[rcx+08]
   jmp return
 
-MonsterHunterWorld.exe+1A68E6C:
+MonsterHunterWorld.exe+1A74B2C:
   jmp newmem
   nop
   nop
@@ -13442,7 +13504,7 @@ return:
 
 [DISABLE]
 
-MonsterHunterWorld.exe+1A68E6C:
+MonsterHunterWorld.exe+1A74B2C:
   db 48 89 02 48 8B 41 08
 
 dealloc(newmem)
@@ -13520,7 +13582,7 @@ dealloc(newmem)
           <ID>205</ID>
           <Description>"[Idlehands88's Scripts]"</Description>
           <Options moHideChildren="1"/>
-          <LastState Value="" RealAddress="00000000"/>
+          <LastState Value="" Activated="1" RealAddress="00000000"/>
           <Color>FF0000</Color>
           <GroupHeader>1</GroupHeader>
           <CheatEntries>
@@ -13528,7 +13590,7 @@ dealloc(newmem)
               <ID>4248</ID>
               <Description>"Save Slot 1"</Description>
               <Options moHideChildren="1"/>
-              <LastState Value="" RealAddress="00000000"/>
+              <LastState Value="" Activated="1" RealAddress="00000000"/>
               <Color>808000</Color>
               <GroupHeader>1</GroupHeader>
               <CheatEntries>
@@ -13536,7 +13598,7 @@ dealloc(newmem)
                   <ID>4249</ID>
                   <Description>"所有道具"</Description>
                   <Options moHideChildren="1"/>
-                  <LastState Value="" RealAddress="00000000"/>
+                  <LastState Value="" Activated="1" RealAddress="00000000"/>
                   <Color>008000</Color>
                   <GroupHeader>1</GroupHeader>
                   <CheatEntries>
@@ -13555,7 +13617,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,50 00 00 00 00 00 00 00 38 FC C4 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,50 00 00 00 00 00 00 00 68 7C C3 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -13593,7 +13655,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,50 00 00 00 00 00 00 00 38 FC C4 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,50 00 00 00 00 00 00 00 68 7C C3 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -13631,7 +13693,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,50 00 00 00 00 00 00 00 38 FC C4 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,50 00 00 00 00 00 00 00 68 7C C3 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -13669,7 +13731,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,50 00 00 00 00 00 00 00 38 FC C4 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,50 00 00 00 00 00 00 00 68 7C C3 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -13707,7 +13769,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,50 00 00 00 00 00 00 00 38 FC C4 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,50 00 00 00 00 00 00 00 68 7C C3 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -13755,7 +13817,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Ammo,50 00 00 00 00 00 00 00 38 FC C4 42 01 00 00 00) // should be unique
+aobscan(INJECT_Ammo,50 00 00 00 00 00 00 00 68 7C C3 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -13793,7 +13855,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Ammo,50 00 00 00 00 00 00 00 38 FC C4 42 01 00 00 00) // should be unique
+aobscan(INJECT_Ammo,50 00 00 00 00 00 00 00 68 7C C3 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -13831,7 +13893,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Ammo,50 00 00 00 00 00 00 00 38 FC C4 42 01 00 00 00) // should be unique
+aobscan(INJECT_Ammo,50 00 00 00 00 00 00 00 68 7C C3 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -13869,7 +13931,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Ammo,50 00 00 00 00 00 00 00 38 FC C4 42 01 00 00 00) // should be unique
+aobscan(INJECT_Ammo,50 00 00 00 00 00 00 00 68 7C C3 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -13907,7 +13969,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Ammo,50 00 00 00 00 00 00 00 38 FC C4 42 01 00 00 00) // should be unique
+aobscan(INJECT_Ammo,50 00 00 00 00 00 00 00 68 7C C3 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -13955,7 +14017,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,50 00 00 00 00 00 00 00 38 FC C4 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,50 00 00 00 00 00 00 00 68 7C C3 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -13993,7 +14055,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,50 00 00 00 00 00 00 00 38 FC C4 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,50 00 00 00 00 00 00 00 68 7C C3 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -14031,7 +14093,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,50 00 00 00 00 00 00 00 38 FC C4 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,50 00 00 00 00 00 00 00 68 7C C3 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -14069,7 +14131,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,50 00 00 00 00 00 00 00 38 FC C4 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,50 00 00 00 00 00 00 00 68 7C C3 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -14107,7 +14169,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,50 00 00 00 00 00 00 00 38 FC C4 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,50 00 00 00 00 00 00 00 68 7C C3 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -14155,7 +14217,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,50 00 00 00 00 00 00 00 38 FC C4 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,50 00 00 00 00 00 00 00 68 7C C3 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -14193,7 +14255,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,50 00 00 00 00 00 00 00 38 FC C4 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,50 00 00 00 00 00 00 00 68 7C C3 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -14231,7 +14293,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,50 00 00 00 00 00 00 00 38 FC C4 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,50 00 00 00 00 00 00 00 68 7C C3 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -14269,7 +14331,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,50 00 00 00 00 00 00 00 38 FC C4 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,50 00 00 00 00 00 00 00 68 7C C3 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -14307,7 +14369,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,50 00 00 00 00 00 00 00 38 FC C4 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,50 00 00 00 00 00 00 00 68 7C C3 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -14355,7 +14417,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,50 00 00 00 00 00 00 00 38 FC C4 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,50 00 00 00 00 00 00 00 68 7C C3 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -14393,7 +14455,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,50 00 00 00 00 00 00 00 38 FC C4 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,50 00 00 00 00 00 00 00 68 7C C3 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -14431,7 +14493,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,50 00 00 00 00 00 00 00 38 FC C4 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,50 00 00 00 00 00 00 00 68 7C C3 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -14469,7 +14531,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,50 00 00 00 00 00 00 00 38 FC C4 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,50 00 00 00 00 00 00 00 68 7C C3 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -14507,7 +14569,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,50 00 00 00 00 00 00 00 38 FC C4 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,50 00 00 00 00 00 00 00 68 7C C3 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -14565,7 +14627,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,00 00 00 00 00 00 00 00 38 FC C4 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,00 00 00 00 00 00 00 00 68 7C C3 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -14603,7 +14665,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,00 00 00 00 00 00 00 00 38 FC C4 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,00 00 00 00 00 00 00 00 68 7C C3 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -14641,7 +14703,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,00 00 00 00 00 00 00 00 38 FC C4 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,00 00 00 00 00 00 00 00 68 7C C3 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -14679,7 +14741,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,00 00 00 00 00 00 00 00 38 FC C4 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,00 00 00 00 00 00 00 00 68 7C C3 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -14717,7 +14779,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,00 00 00 00 00 00 00 00 38 FC C4 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,00 00 00 00 00 00 00 00 68 7C C3 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -14765,7 +14827,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Ammo,00 00 00 00 00 00 00 00 38 FC C4 42 01 00 00 00) // should be unique
+aobscan(INJECT_Ammo,00 00 00 00 00 00 00 00 68 7C C3 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -14803,7 +14865,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Ammo,00 00 00 00 00 00 00 00 38 FC C4 42 01 00 00 00) // should be unique
+aobscan(INJECT_Ammo,00 00 00 00 00 00 00 00 68 7C C3 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -14841,7 +14903,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Ammo,00 00 00 00 00 00 00 00 38 FC C4 42 01 00 00 00) // should be unique
+aobscan(INJECT_Ammo,00 00 00 00 00 00 00 00 68 7C C3 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -14879,7 +14941,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Ammo,00 00 00 00 00 00 00 00 38 FC C4 42 01 00 00 00) // should be unique
+aobscan(INJECT_Ammo,00 00 00 00 00 00 00 00 68 7C C3 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -14917,7 +14979,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Ammo,00 00 00 00 00 00 00 00 38 FC C4 42 01 00 00 00) // should be unique
+aobscan(INJECT_Ammo,00 00 00 00 00 00 00 00 68 7C C3 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -14965,7 +15027,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,00 00 00 00 00 00 00 00 38 FC C4 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,00 00 00 00 00 00 00 00 68 7C C3 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -15003,7 +15065,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,00 00 00 00 00 00 00 00 38 FC C4 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,00 00 00 00 00 00 00 00 68 7C C3 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -15041,7 +15103,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,00 00 00 00 00 00 00 00 38 FC C4 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,00 00 00 00 00 00 00 00 68 7C C3 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -15079,7 +15141,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,00 00 00 00 00 00 00 00 38 FC C4 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,00 00 00 00 00 00 00 00 68 7C C3 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -15117,7 +15179,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,00 00 00 00 00 00 00 00 38 FC C4 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,00 00 00 00 00 00 00 00 68 7C C3 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -15165,7 +15227,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,00 00 00 00 00 00 00 00 38 FC C4 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,00 00 00 00 00 00 00 00 68 7C C3 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -15203,7 +15265,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,00 00 00 00 00 00 00 00 38 FC C4 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,00 00 00 00 00 00 00 00 68 7C C3 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -15241,7 +15303,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,00 00 00 00 00 00 00 00 38 FC C4 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,00 00 00 00 00 00 00 00 68 7C C3 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -15279,7 +15341,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,00 00 00 00 00 00 00 00 38 FC C4 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,00 00 00 00 00 00 00 00 68 7C C3 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -15317,7 +15379,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,00 00 00 00 00 00 00 00 38 FC C4 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,00 00 00 00 00 00 00 00 68 7C C3 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -15365,7 +15427,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,00 00 00 00 00 00 00 00 38 FC C4 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,00 00 00 00 00 00 00 00 68 7C C3 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -15403,7 +15465,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,00 00 00 00 00 00 00 00 38 FC C4 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,00 00 00 00 00 00 00 00 68 7C C3 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -15441,7 +15503,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,00 00 00 00 00 00 00 00 38 FC C4 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,00 00 00 00 00 00 00 00 68 7C C3 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -15479,7 +15541,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,00 00 00 00 00 00 00 00 38 FC C4 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,00 00 00 00 00 00 00 00 68 7C C3 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -15517,7 +15579,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,00 00 00 00 00 00 00 00 38 FC C4 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,00 00 00 00 00 00 00 00 68 7C C3 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -15575,7 +15637,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,00 00 00 00 00 00 00 00 38 FC C4 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,00 00 00 00 00 00 00 00 68 7C C3 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -15613,7 +15675,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,00 00 00 00 00 00 00 00 38 FC C4 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,00 00 00 00 00 00 00 00 68 7C C3 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -15651,7 +15713,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,00 00 00 00 00 00 00 00 38 FC C4 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,00 00 00 00 00 00 00 00 68 7C C3 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -15689,7 +15751,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,00 00 00 00 00 00 00 00 38 FC C4 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,00 00 00 00 00 00 00 00 68 7C C3 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -15727,7 +15789,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,00 00 00 00 00 00 00 00 38 FC C4 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,00 00 00 00 00 00 00 00 68 7C C3 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -15775,7 +15837,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Ammo,00 00 00 00 00 00 00 00 38 FC C4 42 01 00 00 00) // should be unique
+aobscan(INJECT_Ammo,00 00 00 00 00 00 00 00 68 7C C3 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -15813,7 +15875,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Ammo,00 00 00 00 00 00 00 00 38 FC C4 42 01 00 00 00) // should be unique
+aobscan(INJECT_Ammo,00 00 00 00 00 00 00 00 68 7C C3 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -15851,7 +15913,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Ammo,00 00 00 00 00 00 00 00 38 FC C4 42 01 00 00 00) // should be unique
+aobscan(INJECT_Ammo,00 00 00 00 00 00 00 00 68 7C C3 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -15889,7 +15951,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Ammo,00 00 00 00 00 00 00 00 38 FC C4 42 01 00 00 00) // should be unique
+aobscan(INJECT_Ammo,00 00 00 00 00 00 00 00 68 7C C3 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -15927,7 +15989,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Ammo,00 00 00 00 00 00 00 00 38 FC C4 42 01 00 00 00) // should be unique
+aobscan(INJECT_Ammo,00 00 00 00 00 00 00 00 68 7C C3 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -15975,7 +16037,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,00 00 00 00 00 00 00 00 38 FC C4 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,00 00 00 00 00 00 00 00 68 7C C3 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -16013,7 +16075,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,00 00 00 00 00 00 00 00 38 FC C4 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,00 00 00 00 00 00 00 00 68 7C C3 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -16051,7 +16113,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,00 00 00 00 00 00 00 00 38 FC C4 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,00 00 00 00 00 00 00 00 68 7C C3 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -16089,7 +16151,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,00 00 00 00 00 00 00 00 38 FC C4 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,00 00 00 00 00 00 00 00 68 7C C3 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -16127,7 +16189,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,00 00 00 00 00 00 00 00 38 FC C4 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,00 00 00 00 00 00 00 00 68 7C C3 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -16175,7 +16237,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,00 00 00 00 00 00 00 00 38 FC C4 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,00 00 00 00 00 00 00 00 68 7C C3 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -16213,7 +16275,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,00 00 00 00 00 00 00 00 38 FC C4 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,00 00 00 00 00 00 00 00 68 7C C3 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -16251,7 +16313,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,00 00 00 00 00 00 00 00 38 FC C4 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,00 00 00 00 00 00 00 00 68 7C C3 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -16289,7 +16351,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,00 00 00 00 00 00 00 00 38 FC C4 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,00 00 00 00 00 00 00 00 68 7C C3 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -16327,7 +16389,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,00 00 00 00 00 00 00 00 38 FC C4 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,00 00 00 00 00 00 00 00 68 7C C3 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -16375,7 +16437,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,00 00 00 00 00 00 00 00 38 FC C4 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,00 00 00 00 00 00 00 00 68 7C C3 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -16413,7 +16475,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,00 00 00 00 00 00 00 00 38 FC C4 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,00 00 00 00 00 00 00 00 68 7C C3 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -16451,7 +16513,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,00 00 00 00 00 00 00 00 38 FC C4 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,00 00 00 00 00 00 00 00 68 7C C3 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -16489,7 +16551,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,00 00 00 00 00 00 00 00 38 FC C4 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,00 00 00 00 00 00 00 00 68 7C C3 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -16527,7 +16589,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscan(INJECT_Items,00 00 00 00 00 00 00 00 38 FC C4 42 01 00 00 00) // should be unique
+aobscan(INJECT_Items,00 00 00 00 00 00 00 00 68 7C C3 42 01 00 00 00) // should be unique
 alloc(newmem,$1000)
 
 label(code)
@@ -19454,18 +19516,21 @@ MonsterHunterWorld.exe+CAE3BAD - 8B 87 340B0000        - mov eax,[rdi+00000B34]
                 <CheatEntry>
                   <ID>5444</ID>
                   <Description>"Current Health"</Description>
+                  <LastState Value="1.401298464E-45" RealAddress="15A600064"/>
                   <VariableType>Float</VariableType>
                   <Address>targethealth</Address>
                 </CheatEntry>
                 <CheatEntry>
                   <ID>5445</ID>
                   <Description>"Max Health"</Description>
+                  <LastState Value="1.57965633E16" RealAddress="15A600068"/>
                   <VariableType>Float</VariableType>
                   <Address>targethealth+4</Address>
                 </CheatEntry>
                 <CheatEntry>
                   <ID>5446</ID>
                   <Description>"Tick Count"</Description>
+                  <LastState Value="1" RealAddress="15A60006C"/>
                   <VariableType>4 Bytes</VariableType>
                   <Address>targethealth+8</Address>
                 </CheatEntry>
