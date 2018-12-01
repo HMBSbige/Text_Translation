@@ -1,12 +1,10 @@
 # 简体中文翻译&&一些文本
 ## 软件列表
-* TrayStatus 3.1.0.0
+* TrayStatus
 
-    作者说下一版本更新中文然后到现在还没更新...
+    3.2.0.0 版本官方已经添加简体中文，请前往[官网](https://www.traystatus.com)下载
 
-    [简体中文翻译](TrayStatus/ZH-CN.lang)
-
-    [官网](https://www.traystatus.com)
+    [3.1.0.0 简体中文翻译](TrayStatus/ZH-CN.lang)
 
 * PingInfoView 1.80
 
