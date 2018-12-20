@@ -13,24 +13,3 @@
 # 111.230.82.224 steamcommunity.com
 118.126.70.145 steamcommunity.com
 # Steam End
-
-# R6S Start
-103.86.70.254 r6statuspc.azureedge.net
-103.86.70.254 r6pcaddons.azureedge.net
-103.86.70.254 msr-public-ubiservices.ubi.com
-103.86.70.254 api-discovery.live01.pc-live.r6.ubi.com
-103.86.70.254 api-configuration-live01.live01.pc-live.r6.ubi.com
-103.86.70.254 r6logstorage05.blob.core.windows.net
-103.86.70.254 public-ubiservices.ubi.com
-103.86.70.254 public-ws-ubiservices.ubi.com
-103.86.70.254 msr-public-ubiservices.ubi.com
-103.86.70.254 mercury.ubi.com
-# R6S End
-
-# COD Start
-54.230.86.62 mwr-cloudfront.prod.aws.demonware.net
-54.230.86.62 iw7-cloudfront.prod.aws.demonware.net
-54.230.86.62 ops3-cloudfront.prod.aws.demonware.net
-54.230.86.62 s2-beta-cloudfront.prod.aws.demonware.net
-54.230.86.62 s2-cloudfront.prod.aws.demonware.net
-# COD End
