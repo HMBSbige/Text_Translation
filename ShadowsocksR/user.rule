@@ -6,6 +6,3 @@
 # localproxy: direct connect or go through local proxy
 # direct: direct connect
 # reject: reject connect
-
-.steamcommunity.com 23.52.74.146
-23.52.74.145 23.52.74.146 direct
