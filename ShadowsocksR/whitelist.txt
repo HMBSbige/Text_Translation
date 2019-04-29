@@ -7,3 +7,4 @@ broadcast.mileweb.steampowered.com.8686c.com
 cdn.steamstatic.com.8686c.com
 cdn.mileweb.cs.steampowered.com.8686c.com
 yuplay.ru
+zmz2019.com
