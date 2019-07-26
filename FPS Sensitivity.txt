@@ -60,6 +60,11 @@ Wolfenstein: The Old Blood 跳过开场动画：
 +com_skipIntroVideo 1//Wolfenstein: The New Order 跳过开场动画
 m_sensitivity "2.219285"
 
+[h1]Wolfenstein: Youngblood[/h1]
+%USERPROFILE%\Saved Games\MachineGames\Wolfenstein Youngblood\base\Wolfenstein YoungbloodConfig.local
+m_sensitivity "2.042755"
++com_skipBootSequence 1 //跳过开场动画
+
 [h1]Battlefield 3[/h1]
 GstInput.MouseSensitivity 0.075854
 
