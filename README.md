@@ -20,6 +20,10 @@
 
     [官网](https://www.nirsoft.net/utils/network_traffic_view.html)
 
+* [CustomDesktopLogo 2.2](https://github.com/HMBSbige/CustomDesktopLogo)
+
+    [简体中文翻译](CustomDesktopLogo/zh-CN.ini)    
+
 ## 自用hosts
 
 https://raw.githubusercontent.com/HMBSbige/Text_Translation/master/hosts
