@@ -33,7 +33,7 @@ var subnetIpRangeList = [
 3758096384,4026531840   //224.0.0.0/4
 ];
 
-var white_domains = {__white_domains__};
+var white_domains = __white_domains__;
 
 var hasOwnProperty = Object.hasOwnProperty;
 
