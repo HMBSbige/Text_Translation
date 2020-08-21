@@ -34,7 +34,7 @@ https://raw.githubusercontent.com/HMBSbige/Text_Translation/master/chndomains.tx
 
 ## 白名单ACL
 
-https://raw.githubusercontent.com/HMBSbige/Text_Translation/master/ShadowsocksR/whitelist.acl
+https://git.io/ssracl
 
 ## bilibili弹幕屏蔽XML
 
