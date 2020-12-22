@@ -72218,7 +72218,6 @@
 ^(.*\.)?checkin\.gstatic\.com$
 ^(.*\.)?clickserve\.dartsearch\.net$
 ^(.*\.)?clientservices\.googleapis\.com$
-^(.*\.)?connectivitycheck\.gstatic\.com$
 ^(.*\.)?corp\.google\.com$
 ^(.*\.)?crl\.pki\.goog$
 ^(.*\.)?csi\.gstatic\.com$
