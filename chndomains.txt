@@ -10983,9 +10983,9 @@ banjuanshu.com
 bank-of-china.com
 bank-swift-code.info
 bankaiyuan.com
+bankcomm.com
 bankcomm.com.mo
 bankcomm.com.tw
-bankcomm.com
 bankcz.com
 bankgz.com
 bankhr.com
@@ -12888,8 +12888,8 @@ boryou.com
 bosdile.com
 bosdsoft.com
 bosenrui.com
-bosera.com.hk
 bosera.com
+bosera.com.hk
 boshi.tv
 boshika.com
 boshixitong.com
@@ -16733,6 +16733,7 @@ cmzd.com
 cmzj.net
 cmzy168.com
 cmzyk.com
+cn
 cn-api.samsungcloud.com
 cn-bowei.com
 cn-c114.net
@@ -16762,7 +16763,6 @@ cn.net
 cn.pandora.net
 cn.vc
 cn.windowssearch.com
-cn
 cn0-6.com
 cn00.com
 cn006.com
@@ -27162,8 +27162,8 @@ h2ero.com
 h2ex.com
 h2os.com
 h2vm.com
-h3c.com.hk
 h3c.com
+h3c.com.hk
 h3dns.net
 h3ue2s.com
 h3yun.com
@@ -27569,8 +27569,8 @@ hao007.net
 hao0202.com
 hao120.cc
 hao123-hao123.com
-hao123.com.sg
 hao123.com
+hao123.com.sg
 hao123img.com
 hao1258.com
 hao163.com
@@ -35924,8 +35924,8 @@ kaoder.com
 kaodianer.com
 kaogua.com
 kaojionline.com
-kaola.com.hk
 kaola.com
+kaola.com.hk
 kaola100.com
 kaolacdn.com
 kaolafm.com
@@ -36064,8 +36064,8 @@ keda-u.com
 keda.com
 kedang.net
 keddoo.com
-kede.com.hk
 kede.com
+kede.com.hk
 kedi.cc
 kedou.com
 keede.com
@@ -36319,8 +36319,8 @@ kingbrother.com
 kingcheergame.com
 kingclouddns.com
 kingdee-soft.com
-kingdee.com.tw
 kingdee.com
+kingdee.com.tw
 kingdee.org
 kingdeemall.com
 kingdeestar.com
@@ -37619,9 +37619,9 @@ layui.com
 layuicdn.com
 lazada.co.id
 lazada.co.th
+lazada.com
 lazada.com.my
 lazada.com.ph
-lazada.com
 lazada.sg
 lazada.vn
 lazybios.com
@@ -40966,8 +40966,8 @@ meizhejie.com
 meizhou.com
 meizhou.net
 meizitu.net
-meizu.com.hk
 meizu.com
+meizu.com.hk
 meizu.net
 meizudy.com
 mejoybaby.com
@@ -41290,8 +41290,8 @@ midaijihua.com
 midainc.com
 midasbuy.com
 midday.me
-midea.com.tr
 midea.com
+midea.com.tr
 midicn.com
 midifan.com
 midifan.org
@@ -45623,8 +45623,8 @@ pineprint.com
 ping-jia.net
 ping-qu.com
 ping.ubnt.com
-pingan.com.hk
 pingan.com
+pingan.com.hk
 pingancdn.com
 pinganfang.com
 pingansale.com
@@ -51567,8 +51567,8 @@ sinovdc.com
 sinovio.org
 sinovo-tech.com
 sinovoice.com
-sinowealth.com.hk
 sinowealth.com
+sinowealth.com.hk
 sinowel.com
 sinoxk.com
 sinreweb.com
@@ -54298,8 +54298,8 @@ tchbgz.com
 tchilde.com
 tchzt.com
 tciplay.com
-tcl.com.ru
 tcl.com
+tcl.com.ru
 tclbusiness.com
 tclclouds.com
 tclking.com
@@ -54471,8 +54471,8 @@ tencent-blackboard.com
 tencent-cloud.com
 tencent-cloud.net
 tencent-gf.com
-tencent.com.hk
 tencent.com
+tencent.com.hk
 tencentads.com
 tencentclb.com
 tencentcloud.com
@@ -55437,8 +55437,8 @@ tooopen.com
 tooseo.com
 tootour.com
 toouoo.com
-top-iot.com
 top
+top-iot.com
 top100summit.com
 top147.com
 top1food.com
@@ -56354,8 +56354,8 @@ txwb.com
 txweekly.com
 txwestart.com
 txwgame.com
-txwy.com.tw
 txwy.com
+txwy.com.tw
 txxbxx.com
 txxtw16.com
 txy8.com
@@ -56534,8 +56534,8 @@ ubooo.com
 uboxol.com
 uboxsale.com
 ubs001.com
-ubssdic.com.hk
 ubssdic.com
+ubssdic.com.hk
 ubtrobot.com
 ubuntubar.com
 ubuntukylin.com
@@ -57482,8 +57482,8 @@ via.com.tw
 viabtc.com
 viaeda.com
 vial.cc
-viatech.com.tw
 viatech.com
+viatech.com.tw
 viayoo.com
 vibaike.com
 vic18.com
