@@ -1,18 +1,18 @@
 @echo off
 color a
-title CSGOÍø°ÉVAC£¦VPNÐÞ¸´¹¤¾ß     -by °Ù¶ÈÌù°É ¾Ñ»÷ÊÖRicky
-echo  ¨©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥¨
-echo  ©§                                                                        ©§
-echo  ©§    ¨€¨€¨€¨€¨€¨€¨€  ¨€¨€¨€¨€¨€¨€¨€    ¨€¨€¨€¨€¨€¨€¨€  ¨€¨€¨€¨€¨€¨€¨€    ©§
-echo  ©§    ¨€¨€            ¨€¨€           ¡ñ ¨€¨€            ¨€¨€      ¨€¨€    ©§
-echo  ©§    ¨€¨€            ¨€¨€¨€¨€¨€¨€¨€    ¨€¨€  ¨€¨€¨€¨€  ¨€¨€      ¨€¨€    ©§
-echo  ©§    ¨€¨€                      ¨€¨€ ¡ñ ¨€¨€      ¨€¨€  ¨€¨€      ¨€¨€    ©§
-echo  ©§    ¨€¨€¨€¨€¨€¨€¨€  ¨€¨€¨€¨€¨€¨€¨€    ¨€¨€¨€¨€¨€¨€¨€  ¨€¨€¨€¨€¨€¨€¨€    ©§
-echo  ©§                                                                        ©§
-echo  ¨Ž©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥¨
-echo                            ©³©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©·
-echo           °Ù¶ÈÌù°É¡îCSGO°É ©§ Íø°É½â³ýVACÆÁ±Î¹¤¾ß©§ ¾Ñ»÷ÊÖRicky ÈÙÓþ³öÆ·
-echo                            ©»©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¿                   
+title CSGOç½‘å§VACï¼†VPNä¿®å¤å·¥å…·     -by ç™¾åº¦è´´å§ ç‹™å‡»æ‰‹Ricky
+echo  â—¤â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â—¥
+echo  â”ƒ                                                                        â”ƒ
+echo  â”ƒ    â–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆ  â–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆ    â–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆ  â–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆ    â”ƒ
+echo  â”ƒ    â–ˆâ–ˆ            â–ˆâ–ˆ           â— â–ˆâ–ˆ            â–ˆâ–ˆ      â–ˆâ–ˆ    â”ƒ
+echo  â”ƒ    â–ˆâ–ˆ            â–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆ    â–ˆâ–ˆ  â–ˆâ–ˆâ–ˆâ–ˆ  â–ˆâ–ˆ      â–ˆâ–ˆ    â”ƒ
+echo  â”ƒ    â–ˆâ–ˆ                      â–ˆâ–ˆ â— â–ˆâ–ˆ      â–ˆâ–ˆ  â–ˆâ–ˆ      â–ˆâ–ˆ    â”ƒ
+echo  â”ƒ    â–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆ  â–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆ    â–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆ  â–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆ    â”ƒ
+echo  â”ƒ                                                                        â”ƒ
+echo  â—£â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â—¢
+echo                            â”â”â”â”â”â”â”â”â”â”â”â”“
+echo           ç™¾åº¦è´´å§â˜†CSGOå§ â”ƒ ç½‘å§è§£é™¤VACå±è”½å·¥å…·â”ƒ ç‹™å‡»æ‰‹Ricky è£èª‰å‡ºå“
+echo                            â”—â”â”â”â”â”â”â”â”â”â”â”›                   
 sc config Netman start= AUTO
 sc start Netman
 sc config rasman start= AUTO
@@ -24,32 +24,32 @@ sc start mpssvc
 netsh advfirewall set allprofiles state on
 bcdedit.exe /set {current} nx alwayson
 cls
-echo  ¨©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥¨
-echo  ©§                                                                        ©§
-echo  ©§    ¨€¨€¨€¨€¨€¨€¨€  ¨€¨€¨€¨€¨€¨€¨€    ¨€¨€¨€¨€¨€¨€¨€  ¨€¨€¨€¨€¨€¨€¨€    ©§
-echo  ©§    ¨€¨€            ¨€¨€           ¡ñ ¨€¨€            ¨€¨€      ¨€¨€    ©§
-echo  ©§    ¨€¨€            ¨€¨€¨€¨€¨€¨€¨€    ¨€¨€  ¨€¨€¨€¨€  ¨€¨€      ¨€¨€    ©§
-echo  ©§    ¨€¨€                      ¨€¨€ ¡ñ ¨€¨€      ¨€¨€  ¨€¨€      ¨€¨€    ©§
-echo  ©§    ¨€¨€¨€¨€¨€¨€¨€  ¨€¨€¨€¨€¨€¨€¨€    ¨€¨€¨€¨€¨€¨€¨€  ¨€¨€¨€¨€¨€¨€¨€    ©§
-echo  ©§                                                                        ©§
-echo  ¨Ž©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥¨
-echo                            ©³©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©·
-echo           °Ù¶ÈÌù°É¡îCSGO°É ©§ Íø°É½â³ýVACÆÁ±Î¹¤¾ß©§ ¾Ñ»÷ÊÖRicky ÈÙÓþ³öÆ·
-echo                            ©»©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¿   
+echo  â—¤â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â—¥
+echo  â”ƒ                                                                        â”ƒ
+echo  â”ƒ    â–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆ  â–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆ    â–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆ  â–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆ    â”ƒ
+echo  â”ƒ    â–ˆâ–ˆ            â–ˆâ–ˆ           â— â–ˆâ–ˆ            â–ˆâ–ˆ      â–ˆâ–ˆ    â”ƒ
+echo  â”ƒ    â–ˆâ–ˆ            â–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆ    â–ˆâ–ˆ  â–ˆâ–ˆâ–ˆâ–ˆ  â–ˆâ–ˆ      â–ˆâ–ˆ    â”ƒ
+echo  â”ƒ    â–ˆâ–ˆ                      â–ˆâ–ˆ â— â–ˆâ–ˆ      â–ˆâ–ˆ  â–ˆâ–ˆ      â–ˆâ–ˆ    â”ƒ
+echo  â”ƒ    â–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆ  â–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆ    â–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆ  â–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆ    â”ƒ
+echo  â”ƒ                                                                        â”ƒ
+echo  â—£â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â—¢
+echo                            â”â”â”â”â”â”â”â”â”â”â”â”“
+echo           ç™¾åº¦è´´å§â˜†CSGOå§ â”ƒ ç½‘å§è§£é™¤VACå±è”½å·¥å…·â”ƒ ç‹™å‡»æ‰‹Ricky è£èª‰å‡ºå“
+echo                            â”—â”â”â”â”â”â”â”â”â”â”â”›   
 echo.
-echo ÇëÊäÈëÄãµÄSteamÎÄ¼þ¼ÐËùÔÚÎ»ÖÃ,È»ºó°´»Ø³µ 
-echo  (Àý: d:\program Files\steam  ¸ñÊ½Ò»¶¨ÒªÕýÈ·£¬Èô³ö´íÇëÖØÆô±¾Èí¼þ!)
+echo è¯·è¾“å…¥ä½ çš„Steamæ–‡ä»¶å¤¹æ‰€åœ¨ä½ç½®,ç„¶åŽæŒ‰å›žè½¦ 
+echo  (ä¾‹: d:\program Files\steam  æ ¼å¼ä¸€å®šè¦æ­£ç¡®ï¼Œè‹¥å‡ºé”™è¯·é‡å¯æœ¬è½¯ä»¶!)
 echo.
 set /p steampath=
 cd /d %steampath%\bin
 echo.
-echo == ²Ù×÷ÖÐ£¬ÇëµÈ´ý ==
+echo == æ“ä½œä¸­ï¼Œè¯·ç­‰å¾… ==
 echo.
 steamservice.exe /install
 echo.
 steamservice.exe /repair
 echo.
 echo.
-echo ==    ²Ù×÷Íê³É    ==
+echo ==    æ“ä½œå®Œæˆ    ==
 echo.
 pause
